@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ca.uqam.inf5153.editeur/src" modelPluginID="ca.uqam.inf5153.editeur"
+    modelName="ModelEditeur" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>model.ecore</foreignModel>
+  <genPackages prefix="Model" disposableProviderFactory="true" ecorePackage="model.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//TypeAction">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/DEPLACER"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/INSERER"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/SUPPRIMER"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/COLLER"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/COPIER"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/DEFAIRE"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TypeAction/REFAIRE"/>
+    </genEnums>
+    <genClasses ecoreClass="model.ecore#//Document">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Document/debutSel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Document/historique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Document/finSel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Document/positionCurseur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Document/titre"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Document/sectionRacine"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Document/pressePapier"/>
+      <genOperations ecoreOperation="model.ecore#//Document/renommer"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="model.ecore#//Section">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Section/titre"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference model.ecore#//Section/document"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Section/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Section/contenu"/>
+      <genOperations ecoreOperation="model.ecore#//Section/renommer">
+        <genParameters ecoreParameter="model.ecore#//Section/renommer/titre"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//Section/ajouterSousSection">
+        <genParameters ecoreParameter="model.ecore#//Section/ajouterSousSection/titre"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//Section/supprimer"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//SectionFeuille">
+      <genOperations ecoreOperation="model.ecore#//SectionFeuille/renommer">
+        <genParameters ecoreParameter="model.ecore#//SectionFeuille/renommer/titre"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//SectionFeuille/supprimer"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//SectionBranche">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//SectionBranche/enfant"/>
+      <genOperations ecoreOperation="model.ecore#//SectionBranche/renommer">
+        <genParameters ecoreParameter="model.ecore#//SectionBranche/renommer/titre"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//SectionBranche/ajouterSousSection">
+        <genParameters ecoreParameter="model.ecore#//SectionBranche/ajouterSousSection/titre"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//SectionBranche/supprimer"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Contenu">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Contenu/strategie"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Contenu/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Contenu/position"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Contenu/section"/>
+      <genOperations ecoreOperation="model.ecore#//Contenu/deplacer">
+        <genParameters ecoreParameter="model.ecore#//Contenu/deplacer/contenu"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//Contenu/supprimer"/>
+      <genOperations ecoreOperation="model.ecore#//Contenu/coller">
+        <genParameters ecoreParameter="model.ecore#//Contenu/coller/contenu"/>
+      </genOperations>
+      <genOperations ecoreOperation="model.ecore#//Contenu/copier"/>
+      <genOperations ecoreOperation="model.ecore#//Contenu/defaire"/>
+      <genOperations ecoreOperation="model.ecore#//Contenu/refaire"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="model.ecore#//StrategieInsertion">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference model.ecore#//StrategieInsertion/contenu"/>
+      <genOperations ecoreOperation="model.ecore#//StrategieInsertion/inserer">
+        <genParameters ecoreParameter="model.ecore#//StrategieInsertion/inserer/element"/>
+        <genParameters ecoreParameter="model.ecore#//StrategieInsertion/inserer/position"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//StrategieInsertionTexte">
+      <genOperations ecoreOperation="model.ecore#//StrategieInsertionTexte/inserer">
+        <genParameters ecoreParameter="model.ecore#//StrategieInsertionTexte/inserer/element"/>
+        <genParameters ecoreParameter="model.ecore#//StrategieInsertionTexte/inserer/position"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="model.ecore#//Element"/>
+    <genClasses ecoreClass="model.ecore#//Caractere">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Caractere/caractere"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Historique">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Historique/actions"/>
+      <genOperations ecoreOperation="model.ecore#//Historique/getAction"/>
+      <genOperations ecoreOperation="model.ecore#//Historique/getActionDefaite"/>
+      <genOperations ecoreOperation="model.ecore#//Historique/vider"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Action">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Action/j"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Action/iiy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Action/contenu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Action/typeAction"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//PressePapier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//PressePapier/contenu"/>
+      <genOperations ecoreOperation="model.ecore#//PressePapier/ajouterContenu"/>
+      <genOperations ecoreOperation="model.ecore#//PressePapier/vider"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
