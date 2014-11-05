@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link model.Section#getDocument <em>Document</em>}</li>
  *   <li>{@link model.Section#getParent <em>Parent</em>}</li>
  *   <li>{@link model.Section#getContenu <em>Contenu</em>}</li>
+ *   <li>{@link model.Section#getNiveau <em>Niveau</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,28 +52,28 @@ public interface Section extends EObject {
 	void setTitre(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Document</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
+	 * Returns the value of the '<em><b>Document</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link model.Document#getSectionCourante <em>Section Courante</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Document</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Document</em>' container reference.
+	 * @return the value of the '<em>Document</em>' reference.
 	 * @see #setDocument(Document)
 	 * @see model.ModelPackage#getSection_Document()
-	 * @see model.Document#getSectionRacine
-	 * @model opposite="sectionRacine" required="true" transient="false"
+	 * @see model.Document#getSectionCourante
+	 * @model opposite="sectionCourante" required="true"
 	 * @generated
 	 */
 	Document getDocument();
 
 	/**
-	 * Sets the value of the '{@link model.Section#getDocument <em>Document</em>}' container reference.
+	 * Sets the value of the '{@link model.Section#getDocument <em>Document</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Document</em>' container reference.
+	 * @param value the new value of the '<em>Document</em>' reference.
 	 * @see #getDocument()
 	 * @generated
 	 */
@@ -135,12 +136,31 @@ public interface Section extends EObject {
 	void setContenu(Contenu value);
 
 	/**
+	 * Returns the value of the '<em><b>Niveau</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Niveau</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @return the value of the '<em>Niveau</em>' attribute.
+	 * @see #setNiveau(int)
+	 * @see model.ModelPackage#getSection_Niveau()
+	 * @model default="0"
 	 * @generated
 	 */
-	void renommer(String titre);
+	int getNiveau();
+
+	/**
+	 * Sets the value of the '{@link model.Section#getNiveau <em>Niveau</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Niveau</em>' attribute.
+	 * @see #getNiveau()
+	 * @generated
+	 */
+	void setNiveau(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

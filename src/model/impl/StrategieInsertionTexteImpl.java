@@ -112,6 +112,17 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void inserer(Contenu contenu, int position) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -219,6 +230,9 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 		switch (operationID) {
 			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT:
 				inserer((Element)arguments.get(0), (Integer)arguments.get(1));
+				return null;
+			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__CONTENU_INT:
+				inserer((Contenu)arguments.get(0), (Integer)arguments.get(1));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);

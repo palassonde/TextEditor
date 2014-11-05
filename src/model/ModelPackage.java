@@ -132,22 +132,22 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT__PRESSE_PAPIER = 6;
 
 	/**
+	 * The feature id for the '<em><b>Section Courante</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__SECTION_COURANTE = 7;
+
+	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 7;
-
-	/**
-	 * The operation id for the '<em>Renommer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT___RENOMMER = 0;
+	int DOCUMENT_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Document</em>' class.
@@ -156,7 +156,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_OPERATION_COUNT = 1;
+	int DOCUMENT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link model.Section <em>Section</em>}' class.
@@ -178,7 +178,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION__TITRE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' container reference.
+	 * The feature id for the '<em><b>Document</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -205,22 +205,22 @@ public interface ModelPackage extends EPackage {
 	int SECTION__CONTENU = 3;
 
 	/**
+	 * The feature id for the '<em><b>Niveau</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION__NIVEAU = 4;
+
+	/**
 	 * The number of structural features of the '<em>Section</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_FEATURE_COUNT = 4;
-
-	/**
-	 * The operation id for the '<em>Renommer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION___RENOMMER__STRING = 0;
+	int SECTION_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>Ajouter Sous Section</em>' operation.
@@ -229,7 +229,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION___AJOUTER_SOUS_SECTION__STRING = 1;
+	int SECTION___AJOUTER_SOUS_SECTION__STRING = 0;
 
 	/**
 	 * The operation id for the '<em>Supprimer</em>' operation.
@@ -238,7 +238,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION___SUPPRIMER = 2;
+	int SECTION___SUPPRIMER = 1;
 
 	/**
 	 * The number of operations of the '<em>Section</em>' class.
@@ -247,7 +247,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_OPERATION_COUNT = 3;
+	int SECTION_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link model.impl.SectionFeuilleImpl <em>Section Feuille</em>}' class.
@@ -269,7 +269,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_FEUILLE__TITRE = SECTION__TITRE;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' container reference.
+	 * The feature id for the '<em><b>Document</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -294,6 +294,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECTION_FEUILLE__CONTENU = SECTION__CONTENU;
+
+	/**
+	 * The feature id for the '<em><b>Niveau</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION_FEUILLE__NIVEAU = SECTION__NIVEAU;
 
 	/**
 	 * The number of structural features of the '<em>Section Feuille</em>' class.
@@ -360,7 +369,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__TITRE = SECTION__TITRE;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' container reference.
+	 * The feature id for the '<em><b>Document</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -385,6 +394,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECTION_BRANCHE__CONTENU = SECTION__CONTENU;
+
+	/**
+	 * The feature id for the '<em><b>Niveau</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION_BRANCHE__NIVEAU = SECTION__NIVEAU;
 
 	/**
 	 * The feature id for the '<em><b>Enfant</b></em>' reference list.
@@ -502,7 +520,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___DEPLACER__CONTENU = 0;
+	int CONTENU___DEPLACER__CONTENU_INT = 0;
 
 	/**
 	 * The operation id for the '<em>Supprimer</em>' operation.
@@ -511,7 +529,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___SUPPRIMER = 1;
+	int CONTENU___SUPPRIMER__INT_INT = 1;
 
 	/**
 	 * The operation id for the '<em>Coller</em>' operation.
@@ -520,7 +538,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___COLLER__CONTENU = 2;
+	int CONTENU___COLLER__CONTENU_INT = 2;
 
 	/**
 	 * The operation id for the '<em>Copier</em>' operation.
@@ -529,7 +547,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___COPIER = 3;
+	int CONTENU___COPIER__INT_INT = 3;
 
 	/**
 	 * The operation id for the '<em>Defaire</em>' operation.
@@ -538,7 +556,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___DEFAIRE = 4;
+	int CONTENU___DEFAIRE__ACTION = 4;
 
 	/**
 	 * The operation id for the '<em>Refaire</em>' operation.
@@ -547,7 +565,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___REFAIRE = 5;
+	int CONTENU___REFAIRE__ACTION = 5;
 
 	/**
 	 * The number of operations of the '<em>Contenu</em>' class.
@@ -596,13 +614,22 @@ public interface ModelPackage extends EPackage {
 	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT = 0;
 
 	/**
+	 * The operation id for the '<em>Inserer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGIE_INSERTION___INSERER__CONTENU_INT = 1;
+
+	/**
 	 * The number of operations of the '<em>Strategie Insertion</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_OPERATION_COUNT = 1;
+	int STRATEGIE_INSERTION_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link model.impl.StrategieInsertionTexteImpl <em>Strategie Insertion Texte</em>}' class.
@@ -642,13 +669,22 @@ public interface ModelPackage extends EPackage {
 	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = STRATEGIE_INSERTION_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Inserer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGIE_INSERTION_TEXTE___INSERER__CONTENU_INT = STRATEGIE_INSERTION_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Strategie Insertion Texte</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_TEXTE_OPERATION_COUNT = STRATEGIE_INSERTION_OPERATION_COUNT + 1;
+	int STRATEGIE_INSERTION_TEXTE_OPERATION_COUNT = STRATEGIE_INSERTION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
@@ -726,13 +762,22 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Actions Defaites</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HISTORIQUE__ACTIONS = 0;
+	int HISTORIQUE__ACTIONS_DEFAITES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Actions Refaites</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HISTORIQUE__ACTIONS_REFAITES = 1;
 
 	/**
 	 * The number of structural features of the '<em>Historique</em>' class.
@@ -741,16 +786,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HISTORIQUE_FEATURE_COUNT = 1;
+	int HISTORIQUE_FEATURE_COUNT = 2;
 
 	/**
-	 * The operation id for the '<em>Get Action</em>' operation.
+	 * The operation id for the '<em>Get Action Refaite</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HISTORIQUE___GET_ACTION = 0;
+	int HISTORIQUE___GET_ACTION_REFAITE = 0;
 
 	/**
 	 * The operation id for the '<em>Get Action Defaite</em>' operation.
@@ -790,22 +835,22 @@ public interface ModelPackage extends EPackage {
 	int ACTION = 10;
 
 	/**
-	 * The feature id for the '<em><b>J</b></em>' reference.
+	 * The feature id for the '<em><b>Historique</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION__J = 0;
+	int ACTION__HISTORIQUE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Iiy</b></em>' reference.
+	 * The feature id for the '<em><b>Strategie Insertion</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION__IIY = 1;
+	int ACTION__STRATEGIE_INSERTION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
@@ -854,7 +899,7 @@ public interface ModelPackage extends EPackage {
 	int PRESSE_PAPIER = 11;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -872,13 +917,13 @@ public interface ModelPackage extends EPackage {
 	int PRESSE_PAPIER_FEATURE_COUNT = 1;
 
 	/**
-	 * The operation id for the '<em>Ajouter Contenu</em>' operation.
+	 * The operation id for the '<em>Ajouter</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSE_PAPIER___AJOUTER_CONTENU = 0;
+	int PRESSE_PAPIER___AJOUTER__CONTENU = 0;
 
 	/**
 	 * The operation id for the '<em>Vider</em>' operation.
@@ -997,14 +1042,15 @@ public interface ModelPackage extends EPackage {
 	EReference getDocument_PressePapier();
 
 	/**
-	 * Returns the meta object for the '{@link model.Document#renommer() <em>Renommer</em>}' operation.
+	 * Returns the meta object for the reference '{@link model.Document#getSectionCourante <em>Section Courante</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Renommer</em>' operation.
-	 * @see model.Document#renommer()
+	 * @return the meta object for the reference '<em>Section Courante</em>'.
+	 * @see model.Document#getSectionCourante()
+	 * @see #getDocument()
 	 * @generated
 	 */
-	EOperation getDocument__Renommer();
+	EReference getDocument_SectionCourante();
 
 	/**
 	 * Returns the meta object for class '{@link model.Section <em>Section</em>}'.
@@ -1028,10 +1074,10 @@ public interface ModelPackage extends EPackage {
 	EAttribute getSection_Titre();
 
 	/**
-	 * Returns the meta object for the container reference '{@link model.Section#getDocument <em>Document</em>}'.
+	 * Returns the meta object for the reference '{@link model.Section#getDocument <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Document</em>'.
+	 * @return the meta object for the reference '<em>Document</em>'.
 	 * @see model.Section#getDocument()
 	 * @see #getSection()
 	 * @generated
@@ -1061,14 +1107,15 @@ public interface ModelPackage extends EPackage {
 	EReference getSection_Contenu();
 
 	/**
-	 * Returns the meta object for the '{@link model.Section#renommer(java.lang.String) <em>Renommer</em>}' operation.
+	 * Returns the meta object for the attribute '{@link model.Section#getNiveau <em>Niveau</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Renommer</em>' operation.
-	 * @see model.Section#renommer(java.lang.String)
+	 * @return the meta object for the attribute '<em>Niveau</em>'.
+	 * @see model.Section#getNiveau()
+	 * @see #getSection()
 	 * @generated
 	 */
-	EOperation getSection__Renommer__String();
+	EAttribute getSection_Niveau();
 
 	/**
 	 * Returns the meta object for the '{@link model.Section#ajouterSousSection(java.lang.String) <em>Ajouter Sous Section</em>}' operation.
@@ -1226,64 +1273,64 @@ public interface ModelPackage extends EPackage {
 	EReference getContenu_Section();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#deplacer(model.Contenu) <em>Deplacer</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#deplacer(model.Contenu, int) <em>Deplacer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Deplacer</em>' operation.
-	 * @see model.Contenu#deplacer(model.Contenu)
+	 * @see model.Contenu#deplacer(model.Contenu, int)
 	 * @generated
 	 */
-	EOperation getContenu__Deplacer__Contenu();
+	EOperation getContenu__Deplacer__Contenu_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#supprimer() <em>Supprimer</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#supprimer(int, int) <em>Supprimer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Supprimer</em>' operation.
-	 * @see model.Contenu#supprimer()
+	 * @see model.Contenu#supprimer(int, int)
 	 * @generated
 	 */
-	EOperation getContenu__Supprimer();
+	EOperation getContenu__Supprimer__int_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#coller(model.Contenu) <em>Coller</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#coller(model.Contenu, int) <em>Coller</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Coller</em>' operation.
-	 * @see model.Contenu#coller(model.Contenu)
+	 * @see model.Contenu#coller(model.Contenu, int)
 	 * @generated
 	 */
-	EOperation getContenu__Coller__Contenu();
+	EOperation getContenu__Coller__Contenu_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#copier() <em>Copier</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#copier(int, int) <em>Copier</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Copier</em>' operation.
-	 * @see model.Contenu#copier()
+	 * @see model.Contenu#copier(int, int)
 	 * @generated
 	 */
-	EOperation getContenu__Copier();
+	EOperation getContenu__Copier__int_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#defaire() <em>Defaire</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#defaire(model.Action) <em>Defaire</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Defaire</em>' operation.
-	 * @see model.Contenu#defaire()
+	 * @see model.Contenu#defaire(model.Action)
 	 * @generated
 	 */
-	EOperation getContenu__Defaire();
+	EOperation getContenu__Defaire__Action();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#refaire() <em>Refaire</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#refaire(model.Action) <em>Refaire</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Refaire</em>' operation.
-	 * @see model.Contenu#refaire()
+	 * @see model.Contenu#refaire(model.Action)
 	 * @generated
 	 */
-	EOperation getContenu__Refaire();
+	EOperation getContenu__Refaire__Action();
 
 	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertion <em>Strategie Insertion</em>}'.
@@ -1317,6 +1364,16 @@ public interface ModelPackage extends EPackage {
 	EOperation getStrategieInsertion__Inserer__Element_int();
 
 	/**
+	 * Returns the meta object for the '{@link model.StrategieInsertion#inserer(model.Contenu, int) <em>Inserer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Inserer</em>' operation.
+	 * @see model.StrategieInsertion#inserer(model.Contenu, int)
+	 * @generated
+	 */
+	EOperation getStrategieInsertion__Inserer__Contenu_int();
+
+	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertionTexte <em>Strategie Insertion Texte</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1335,6 +1392,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getStrategieInsertionTexte__Inserer__Element_int();
+
+	/**
+	 * Returns the meta object for the '{@link model.StrategieInsertionTexte#inserer(model.Contenu, int) <em>Inserer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Inserer</em>' operation.
+	 * @see model.StrategieInsertionTexte#inserer(model.Contenu, int)
+	 * @generated
+	 */
+	EOperation getStrategieInsertionTexte__Inserer__Contenu_int();
 
 	/**
 	 * Returns the meta object for class '{@link model.Element <em>Element</em>}'.
@@ -1378,25 +1445,36 @@ public interface ModelPackage extends EPackage {
 	EClass getHistorique();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link model.Historique#getActions <em>Actions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Actions</em>'.
-	 * @see model.Historique#getActions()
+	 * @return the meta object for the containment reference list '<em>Actions Defaites</em>'.
+	 * @see model.Historique#getActionsDefaites()
 	 * @see #getHistorique()
 	 * @generated
 	 */
-	EReference getHistorique_Actions();
+	EReference getHistorique_ActionsDefaites();
 
 	/**
-	 * Returns the meta object for the '{@link model.Historique#getAction() <em>Get Action</em>}' operation.
+	 * Returns the meta object for the reference list '{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Action</em>' operation.
-	 * @see model.Historique#getAction()
+	 * @return the meta object for the reference list '<em>Actions Refaites</em>'.
+	 * @see model.Historique#getActionsRefaites()
+	 * @see #getHistorique()
 	 * @generated
 	 */
-	EOperation getHistorique__GetAction();
+	EReference getHistorique_ActionsRefaites();
+
+	/**
+	 * Returns the meta object for the '{@link model.Historique#getActionRefaite() <em>Get Action Refaite</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Action Refaite</em>' operation.
+	 * @see model.Historique#getActionRefaite()
+	 * @generated
+	 */
+	EOperation getHistorique__GetActionRefaite();
 
 	/**
 	 * Returns the meta object for the '{@link model.Historique#getActionDefaite() <em>Get Action Defaite</em>}' operation.
@@ -1429,26 +1507,26 @@ public interface ModelPackage extends EPackage {
 	EClass getAction();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Action#getJ <em>J</em>}'.
+	 * Returns the meta object for the reference '{@link model.Action#getHistorique <em>Historique</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>J</em>'.
-	 * @see model.Action#getJ()
+	 * @return the meta object for the reference '<em>Historique</em>'.
+	 * @see model.Action#getHistorique()
 	 * @see #getAction()
 	 * @generated
 	 */
-	EReference getAction_J();
+	EReference getAction_Historique();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Action#getIiy <em>Iiy</em>}'.
+	 * Returns the meta object for the reference '{@link model.Action#getStrategieInsertion <em>Strategie Insertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Iiy</em>'.
-	 * @see model.Action#getIiy()
+	 * @return the meta object for the reference '<em>Strategie Insertion</em>'.
+	 * @see model.Action#getStrategieInsertion()
 	 * @see #getAction()
 	 * @generated
 	 */
-	EReference getAction_Iiy();
+	EReference getAction_StrategieInsertion();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link model.Action#getContenu <em>Contenu</em>}'.
@@ -1483,10 +1561,10 @@ public interface ModelPackage extends EPackage {
 	EClass getPressePapier();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link model.PressePapier#getContenu <em>Contenu</em>}'.
+	 * Returns the meta object for the containment reference '{@link model.PressePapier#getContenu <em>Contenu</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Contenu</em>'.
+	 * @return the meta object for the containment reference '<em>Contenu</em>'.
 	 * @see model.PressePapier#getContenu()
 	 * @see #getPressePapier()
 	 * @generated
@@ -1494,14 +1572,14 @@ public interface ModelPackage extends EPackage {
 	EReference getPressePapier_Contenu();
 
 	/**
-	 * Returns the meta object for the '{@link model.PressePapier#ajouterContenu() <em>Ajouter Contenu</em>}' operation.
+	 * Returns the meta object for the '{@link model.PressePapier#ajouter(model.Contenu) <em>Ajouter</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Ajouter Contenu</em>' operation.
-	 * @see model.PressePapier#ajouterContenu()
+	 * @return the meta object for the '<em>Ajouter</em>' operation.
+	 * @see model.PressePapier#ajouter(model.Contenu)
 	 * @generated
 	 */
-	EOperation getPressePapier__AjouterContenu();
+	EOperation getPressePapier__Ajouter__Contenu();
 
 	/**
 	 * Returns the meta object for the '{@link model.PressePapier#vider() <em>Vider</em>}' operation.
@@ -1613,12 +1691,12 @@ public interface ModelPackage extends EPackage {
 		EReference DOCUMENT__PRESSE_PAPIER = eINSTANCE.getDocument_PressePapier();
 
 		/**
-		 * The meta object literal for the '<em><b>Renommer</b></em>' operation.
+		 * The meta object literal for the '<em><b>Section Courante</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation DOCUMENT___RENOMMER = eINSTANCE.getDocument__Renommer();
+		EReference DOCUMENT__SECTION_COURANTE = eINSTANCE.getDocument_SectionCourante();
 
 		/**
 		 * The meta object literal for the '{@link model.Section <em>Section</em>}' class.
@@ -1639,7 +1717,7 @@ public interface ModelPackage extends EPackage {
 		EAttribute SECTION__TITRE = eINSTANCE.getSection_Titre();
 
 		/**
-		 * The meta object literal for the '<em><b>Document</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Document</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1663,12 +1741,12 @@ public interface ModelPackage extends EPackage {
 		EReference SECTION__CONTENU = eINSTANCE.getSection_Contenu();
 
 		/**
-		 * The meta object literal for the '<em><b>Renommer</b></em>' operation.
+		 * The meta object literal for the '<em><b>Niveau</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation SECTION___RENOMMER__STRING = eINSTANCE.getSection__Renommer__String();
+		EAttribute SECTION__NIVEAU = eINSTANCE.getSection_Niveau();
 
 		/**
 		 * The meta object literal for the '<em><b>Ajouter Sous Section</b></em>' operation.
@@ -1802,7 +1880,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___DEPLACER__CONTENU = eINSTANCE.getContenu__Deplacer__Contenu();
+		EOperation CONTENU___DEPLACER__CONTENU_INT = eINSTANCE.getContenu__Deplacer__Contenu_int();
 
 		/**
 		 * The meta object literal for the '<em><b>Supprimer</b></em>' operation.
@@ -1810,7 +1888,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___SUPPRIMER = eINSTANCE.getContenu__Supprimer();
+		EOperation CONTENU___SUPPRIMER__INT_INT = eINSTANCE.getContenu__Supprimer__int_int();
 
 		/**
 		 * The meta object literal for the '<em><b>Coller</b></em>' operation.
@@ -1818,7 +1896,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___COLLER__CONTENU = eINSTANCE.getContenu__Coller__Contenu();
+		EOperation CONTENU___COLLER__CONTENU_INT = eINSTANCE.getContenu__Coller__Contenu_int();
 
 		/**
 		 * The meta object literal for the '<em><b>Copier</b></em>' operation.
@@ -1826,7 +1904,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___COPIER = eINSTANCE.getContenu__Copier();
+		EOperation CONTENU___COPIER__INT_INT = eINSTANCE.getContenu__Copier__int_int();
 
 		/**
 		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
@@ -1834,7 +1912,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___DEFAIRE = eINSTANCE.getContenu__Defaire();
+		EOperation CONTENU___DEFAIRE__ACTION = eINSTANCE.getContenu__Defaire__Action();
 
 		/**
 		 * The meta object literal for the '<em><b>Refaire</b></em>' operation.
@@ -1842,7 +1920,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___REFAIRE = eINSTANCE.getContenu__Refaire();
+		EOperation CONTENU___REFAIRE__ACTION = eINSTANCE.getContenu__Refaire__Action();
 
 		/**
 		 * The meta object literal for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
@@ -1871,6 +1949,14 @@ public interface ModelPackage extends EPackage {
 		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertion__Inserer__Element_int();
 
 		/**
+		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STRATEGIE_INSERTION___INSERER__CONTENU_INT = eINSTANCE.getStrategieInsertion__Inserer__Contenu_int();
+
+		/**
 		 * The meta object literal for the '{@link model.impl.StrategieInsertionTexteImpl <em>Strategie Insertion Texte</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1887,6 +1973,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertionTexte__Inserer__Element_int();
+
+		/**
+		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__CONTENU_INT = eINSTANCE.getStrategieInsertionTexte__Inserer__Contenu_int();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
@@ -1927,20 +2021,28 @@ public interface ModelPackage extends EPackage {
 		EClass HISTORIQUE = eINSTANCE.getHistorique();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Actions Defaites</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference HISTORIQUE__ACTIONS = eINSTANCE.getHistorique_Actions();
+		EReference HISTORIQUE__ACTIONS_DEFAITES = eINSTANCE.getHistorique_ActionsDefaites();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Action</b></em>' operation.
+		 * The meta object literal for the '<em><b>Actions Refaites</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation HISTORIQUE___GET_ACTION = eINSTANCE.getHistorique__GetAction();
+		EReference HISTORIQUE__ACTIONS_REFAITES = eINSTANCE.getHistorique_ActionsRefaites();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Action Refaite</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation HISTORIQUE___GET_ACTION_REFAITE = eINSTANCE.getHistorique__GetActionRefaite();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Action Defaite</b></em>' operation.
@@ -1969,20 +2071,20 @@ public interface ModelPackage extends EPackage {
 		EClass ACTION = eINSTANCE.getAction();
 
 		/**
-		 * The meta object literal for the '<em><b>J</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Historique</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION__J = eINSTANCE.getAction_J();
+		EReference ACTION__HISTORIQUE = eINSTANCE.getAction_Historique();
 
 		/**
-		 * The meta object literal for the '<em><b>Iiy</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Strategie Insertion</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION__IIY = eINSTANCE.getAction_Iiy();
+		EReference ACTION__STRATEGIE_INSERTION = eINSTANCE.getAction_StrategieInsertion();
 
 		/**
 		 * The meta object literal for the '<em><b>Contenu</b></em>' containment reference feature.
@@ -2011,7 +2113,7 @@ public interface ModelPackage extends EPackage {
 		EClass PRESSE_PAPIER = eINSTANCE.getPressePapier();
 
 		/**
-		 * The meta object literal for the '<em><b>Contenu</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contenu</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2019,12 +2121,12 @@ public interface ModelPackage extends EPackage {
 		EReference PRESSE_PAPIER__CONTENU = eINSTANCE.getPressePapier_Contenu();
 
 		/**
-		 * The meta object literal for the '<em><b>Ajouter Contenu</b></em>' operation.
+		 * The meta object literal for the '<em><b>Ajouter</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PRESSE_PAPIER___AJOUTER_CONTENU = eINSTANCE.getPressePapier__AjouterContenu();
+		EOperation PRESSE_PAPIER___AJOUTER__CONTENU = eINSTANCE.getPressePapier__Ajouter__Contenu();
 
 		/**
 		 * The meta object literal for the '<em><b>Vider</b></em>' operation.

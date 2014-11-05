@@ -130,7 +130,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void deplacer(Contenu contenu);
+	void deplacer(Contenu contenu, int position);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,7 +138,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void supprimer();
+	void supprimer(int positionDebut, int positionFin);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,7 +146,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void coller(Contenu contenu);
+	void coller(Contenu contenu, int position);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,7 +154,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void copier();
+	Contenu copier(int positionDebut, int positionFin);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,7 +162,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void defaire();
+	void defaire(Action action);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,6 +170,6 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void refaire();
+	void refaire(Action action);
 
 } // Contenu

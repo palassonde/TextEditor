@@ -2,8 +2,6 @@
  */
 package model;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,20 +22,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface PressePapier extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Contenu</b></em>' containment reference list.
-	 * The list contents are of type {@link model.Contenu}.
+	 * Returns the value of the '<em><b>Contenu</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contenu</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contenu</em>' containment reference list.
+	 * @return the value of the '<em>Contenu</em>' containment reference.
+	 * @see #setContenu(Contenu)
 	 * @see model.ModelPackage#getPressePapier_Contenu()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Contenu> getContenu();
+	Contenu getContenu();
+
+	/**
+	 * Sets the value of the '{@link model.PressePapier#getContenu <em>Contenu</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Contenu</em>' containment reference.
+	 * @see #getContenu()
+	 * @generated
+	 */
+	void setContenu(Contenu value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -45,7 +53,7 @@ public interface PressePapier extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void ajouterContenu();
+	void ajouter(Contenu contenu);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -3,25 +3,18 @@
 package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
-
 import model.Contenu;
 import model.Document;
 import model.ModelPackage;
 import model.SectionBranche;
 import model.SectionFeuille;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link model.impl.SectionFeuilleImpl#getDocument <em>Document</em>}</li>
  *   <li>{@link model.impl.SectionFeuilleImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link model.impl.SectionFeuilleImpl#getContenu <em>Contenu</em>}</li>
+ *   <li>{@link model.impl.SectionFeuilleImpl#getNiveau <em>Niveau</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,6 +55,16 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	protected String titre = TITRE_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getDocument() <em>Document</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocument()
+	 * @generated
+	 * @ordered
+	 */
+	protected Document document;
+
+	/**
 	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +83,26 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected Contenu contenu;
+
+	/**
+	 * The default value of the '{@link #getNiveau() <em>Niveau</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNiveau()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NIVEAU_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNiveau() <em>Niveau</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNiveau()
+	 * @generated
+	 * @ordered
+	 */
+	protected int niveau = NIVEAU_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,8 +150,24 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public Document getDocument() {
-		if (eContainerFeatureID() != ModelPackage.SECTION_FEUILLE__DOCUMENT) return null;
-		return (Document)eInternalContainer();
+		if (document != null && document.eIsProxy()) {
+			InternalEObject oldDocument = (InternalEObject)document;
+			document = (Document)eResolveProxy(oldDocument);
+			if (document != oldDocument) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.SECTION_FEUILLE__DOCUMENT, oldDocument, document));
+			}
+		}
+		return document;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Document basicGetDocument() {
+		return document;
 	}
 
 	/**
@@ -136,7 +176,12 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetDocument(Document newDocument, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newDocument, ModelPackage.SECTION_FEUILLE__DOCUMENT, msgs);
+		Document oldDocument = document;
+		document = newDocument;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.SECTION_FEUILLE__DOCUMENT, oldDocument, newDocument);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -146,14 +191,12 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public void setDocument(Document newDocument) {
-		if (newDocument != eInternalContainer() || (eContainerFeatureID() != ModelPackage.SECTION_FEUILLE__DOCUMENT && newDocument != null)) {
-			if (EcoreUtil.isAncestor(this, newDocument))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+		if (newDocument != document) {
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
+			if (document != null)
+				msgs = ((InternalEObject)document).eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_COURANTE, Document.class, msgs);
 			if (newDocument != null)
-				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
+				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTION_COURANTE, Document.class, msgs);
 			msgs = basicSetDocument(newDocument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -286,6 +329,27 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getNiveau() {
+		return niveau;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNiveau(int newNiveau) {
+		int oldNiveau = niveau;
+		niveau = newNiveau;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SECTION_FEUILLE__NIVEAU, oldNiveau, niveau));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void renommer(String titre) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -323,8 +387,8 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
+				if (document != null)
+					msgs = ((InternalEObject)document).eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_COURANTE, Document.class, msgs);
 				return basicSetDocument((Document)otherEnd, msgs);
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				if (parent != null)
@@ -362,32 +426,21 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.SECTION_FEUILLE__TITRE:
 				return getTitre();
 			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return getDocument();
+				if (resolve) return getDocument();
+				return basicGetDocument();
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				if (resolve) return getParent();
 				return basicGetParent();
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
 				if (resolve) return getContenu();
 				return basicGetContenu();
+			case ModelPackage.SECTION_FEUILLE__NIVEAU:
+				return getNiveau();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -411,6 +464,9 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
 				setContenu((Contenu)newValue);
+				return;
+			case ModelPackage.SECTION_FEUILLE__NIVEAU:
+				setNiveau((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -436,6 +492,9 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
 				setContenu((Contenu)null);
 				return;
+			case ModelPackage.SECTION_FEUILLE__NIVEAU:
+				setNiveau(NIVEAU_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -451,11 +510,13 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_FEUILLE__TITRE:
 				return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
 			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return getDocument() != null;
+				return document != null;
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				return parent != null;
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
 				return contenu != null;
+			case ModelPackage.SECTION_FEUILLE__NIVEAU:
+				return niveau != NIVEAU_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -493,6 +554,8 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (titre: ");
 		result.append(titre);
+		result.append(", niveau: ");
+		result.append(niveau);
 		result.append(')');
 		return result.toString();
 	}

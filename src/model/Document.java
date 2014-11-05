@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link model.Document#getTitre <em>Titre</em>}</li>
  *   <li>{@link model.Document#getSectionRacine <em>Section Racine</em>}</li>
  *   <li>{@link model.Document#getPressePapier <em>Presse Papier</em>}</li>
+ *   <li>{@link model.Document#getSectionCourante <em>Section Courante</em>}</li>
  * </ul>
  * </p>
  *
@@ -159,7 +160,6 @@ public interface Document extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Section Racine</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link model.Section#getDocument <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Section Racine</em>' containment reference isn't clear,
@@ -169,8 +169,7 @@ public interface Document extends EObject {
 	 * @return the value of the '<em>Section Racine</em>' containment reference.
 	 * @see #setSectionRacine(Section)
 	 * @see model.ModelPackage#getDocument_SectionRacine()
-	 * @see model.Section#getDocument
-	 * @model opposite="document" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Section getSectionRacine();
@@ -212,11 +211,31 @@ public interface Document extends EObject {
 	void setPressePapier(PressePapier value);
 
 	/**
+	 * Returns the value of the '<em><b>Section Courante</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link model.Section#getDocument <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Section Courante</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @return the value of the '<em>Section Courante</em>' reference.
+	 * @see #setSectionCourante(Section)
+	 * @see model.ModelPackage#getDocument_SectionCourante()
+	 * @see model.Section#getDocument
+	 * @model opposite="document" required="true"
 	 * @generated
 	 */
-	void renommer();
+	Section getSectionCourante();
+
+	/**
+	 * Sets the value of the '{@link model.Document#getSectionCourante <em>Section Courante</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Section Courante</em>' reference.
+	 * @see #getSectionCourante()
+	 * @generated
+	 */
+	void setSectionCourante(Section value);
 
 } // Document

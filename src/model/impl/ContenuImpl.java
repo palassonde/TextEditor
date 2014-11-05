@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import model.Action;
 import model.Contenu;
 import model.Element;
 import model.ModelPackage;
@@ -253,7 +254,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void deplacer(Contenu contenu) {
+	public void deplacer(Contenu contenu, int position) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -264,7 +265,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void supprimer() {
+	public void supprimer(int positionDebut, int positionFin) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -275,7 +276,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void coller(Contenu contenu) {
+	public void coller(Contenu contenu, int position) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -286,7 +287,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void copier() {
+	public Contenu copier(int positionDebut, int positionFin) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -297,7 +298,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void defaire() {
+	public void defaire(Action action) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -308,7 +309,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void refaire() {
+	public void refaire(Action action) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -451,23 +452,22 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.CONTENU___DEPLACER__CONTENU:
-				deplacer((Contenu)arguments.get(0));
+			case ModelPackage.CONTENU___DEPLACER__CONTENU_INT:
+				deplacer((Contenu)arguments.get(0), (Integer)arguments.get(1));
 				return null;
-			case ModelPackage.CONTENU___SUPPRIMER:
-				supprimer();
+			case ModelPackage.CONTENU___SUPPRIMER__INT_INT:
+				supprimer((Integer)arguments.get(0), (Integer)arguments.get(1));
 				return null;
-			case ModelPackage.CONTENU___COLLER__CONTENU:
-				coller((Contenu)arguments.get(0));
+			case ModelPackage.CONTENU___COLLER__CONTENU_INT:
+				coller((Contenu)arguments.get(0), (Integer)arguments.get(1));
 				return null;
-			case ModelPackage.CONTENU___COPIER:
-				copier();
+			case ModelPackage.CONTENU___COPIER__INT_INT:
+				return copier((Integer)arguments.get(0), (Integer)arguments.get(1));
+			case ModelPackage.CONTENU___DEFAIRE__ACTION:
+				defaire((Action)arguments.get(0));
 				return null;
-			case ModelPackage.CONTENU___DEFAIRE:
-				defaire();
-				return null;
-			case ModelPackage.CONTENU___REFAIRE:
-				refaire();
+			case ModelPackage.CONTENU___REFAIRE__ACTION:
+				refaire((Action)arguments.get(0));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);

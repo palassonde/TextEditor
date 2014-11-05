@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link model.impl.ActionImpl#getJ <em>J</em>}</li>
- *   <li>{@link model.impl.ActionImpl#getIiy <em>Iiy</em>}</li>
+ *   <li>{@link model.impl.ActionImpl#getHistorique <em>Historique</em>}</li>
+ *   <li>{@link model.impl.ActionImpl#getStrategieInsertion <em>Strategie Insertion</em>}</li>
  *   <li>{@link model.impl.ActionImpl#getContenu <em>Contenu</em>}</li>
  *   <li>{@link model.impl.ActionImpl#getTypeAction <em>Type Action</em>}</li>
  * </ul>
@@ -36,24 +36,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	/**
-	 * The cached value of the '{@link #getJ() <em>J</em>}' reference.
+	 * The cached value of the '{@link #getHistorique() <em>Historique</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJ()
+	 * @see #getHistorique()
 	 * @generated
 	 * @ordered
 	 */
-	protected Historique j;
+	protected Historique historique;
 
 	/**
-	 * The cached value of the '{@link #getIiy() <em>Iiy</em>}' reference.
+	 * The cached value of the '{@link #getStrategieInsertion() <em>Strategie Insertion</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIiy()
+	 * @see #getStrategieInsertion()
 	 * @generated
 	 * @ordered
 	 */
-	protected StrategieInsertion iiy;
+	protected StrategieInsertion strategieInsertion;
 
 	/**
 	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' containment reference.
@@ -109,16 +109,16 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Historique getJ() {
-		if (j != null && j.eIsProxy()) {
-			InternalEObject oldJ = (InternalEObject)j;
-			j = (Historique)eResolveProxy(oldJ);
-			if (j != oldJ) {
+	public Historique getHistorique() {
+		if (historique != null && historique.eIsProxy()) {
+			InternalEObject oldHistorique = (InternalEObject)historique;
+			historique = (Historique)eResolveProxy(oldHistorique);
+			if (historique != oldHistorique) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION__J, oldJ, j));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION__HISTORIQUE, oldHistorique, historique));
 			}
 		}
-		return j;
+		return historique;
 	}
 
 	/**
@@ -126,8 +126,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Historique basicGetJ() {
-		return j;
+	public Historique basicGetHistorique() {
+		return historique;
 	}
 
 	/**
@@ -135,11 +135,14 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJ(Historique newJ) {
-		Historique oldJ = j;
-		j = newJ;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__J, oldJ, j));
+	public NotificationChain basicSetHistorique(Historique newHistorique, NotificationChain msgs) {
+		Historique oldHistorique = historique;
+		historique = newHistorique;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__HISTORIQUE, oldHistorique, newHistorique);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -147,16 +150,35 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StrategieInsertion getIiy() {
-		if (iiy != null && iiy.eIsProxy()) {
-			InternalEObject oldIiy = (InternalEObject)iiy;
-			iiy = (StrategieInsertion)eResolveProxy(oldIiy);
-			if (iiy != oldIiy) {
+	public void setHistorique(Historique newHistorique) {
+		if (newHistorique != historique) {
+			NotificationChain msgs = null;
+			if (historique != null)
+				msgs = ((InternalEObject)historique).eInverseRemove(this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, Historique.class, msgs);
+			if (newHistorique != null)
+				msgs = ((InternalEObject)newHistorique).eInverseAdd(this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, Historique.class, msgs);
+			msgs = basicSetHistorique(newHistorique, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__HISTORIQUE, newHistorique, newHistorique));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StrategieInsertion getStrategieInsertion() {
+		if (strategieInsertion != null && strategieInsertion.eIsProxy()) {
+			InternalEObject oldStrategieInsertion = (InternalEObject)strategieInsertion;
+			strategieInsertion = (StrategieInsertion)eResolveProxy(oldStrategieInsertion);
+			if (strategieInsertion != oldStrategieInsertion) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION__IIY, oldIiy, iiy));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION__STRATEGIE_INSERTION, oldStrategieInsertion, strategieInsertion));
 			}
 		}
-		return iiy;
+		return strategieInsertion;
 	}
 
 	/**
@@ -164,8 +186,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StrategieInsertion basicGetIiy() {
-		return iiy;
+	public StrategieInsertion basicGetStrategieInsertion() {
+		return strategieInsertion;
 	}
 
 	/**
@@ -173,11 +195,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIiy(StrategieInsertion newIiy) {
-		StrategieInsertion oldIiy = iiy;
-		iiy = newIiy;
+	public void setStrategieInsertion(StrategieInsertion newStrategieInsertion) {
+		StrategieInsertion oldStrategieInsertion = strategieInsertion;
+		strategieInsertion = newStrategieInsertion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__IIY, oldIiy, iiy));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__STRATEGIE_INSERTION, oldStrategieInsertion, strategieInsertion));
 	}
 
 	/**
@@ -250,8 +272,26 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ModelPackage.ACTION__HISTORIQUE:
+				if (historique != null)
+					msgs = ((InternalEObject)historique).eInverseRemove(this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, Historique.class, msgs);
+				return basicSetHistorique((Historique)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case ModelPackage.ACTION__HISTORIQUE:
+				return basicSetHistorique(null, msgs);
 			case ModelPackage.ACTION__CONTENU:
 				return basicSetContenu(null, msgs);
 		}
@@ -266,12 +306,12 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.ACTION__J:
-				if (resolve) return getJ();
-				return basicGetJ();
-			case ModelPackage.ACTION__IIY:
-				if (resolve) return getIiy();
-				return basicGetIiy();
+			case ModelPackage.ACTION__HISTORIQUE:
+				if (resolve) return getHistorique();
+				return basicGetHistorique();
+			case ModelPackage.ACTION__STRATEGIE_INSERTION:
+				if (resolve) return getStrategieInsertion();
+				return basicGetStrategieInsertion();
 			case ModelPackage.ACTION__CONTENU:
 				return getContenu();
 			case ModelPackage.ACTION__TYPE_ACTION:
@@ -288,11 +328,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.ACTION__J:
-				setJ((Historique)newValue);
+			case ModelPackage.ACTION__HISTORIQUE:
+				setHistorique((Historique)newValue);
 				return;
-			case ModelPackage.ACTION__IIY:
-				setIiy((StrategieInsertion)newValue);
+			case ModelPackage.ACTION__STRATEGIE_INSERTION:
+				setStrategieInsertion((StrategieInsertion)newValue);
 				return;
 			case ModelPackage.ACTION__CONTENU:
 				setContenu((Contenu)newValue);
@@ -312,11 +352,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.ACTION__J:
-				setJ((Historique)null);
+			case ModelPackage.ACTION__HISTORIQUE:
+				setHistorique((Historique)null);
 				return;
-			case ModelPackage.ACTION__IIY:
-				setIiy((StrategieInsertion)null);
+			case ModelPackage.ACTION__STRATEGIE_INSERTION:
+				setStrategieInsertion((StrategieInsertion)null);
 				return;
 			case ModelPackage.ACTION__CONTENU:
 				setContenu((Contenu)null);
@@ -336,10 +376,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.ACTION__J:
-				return j != null;
-			case ModelPackage.ACTION__IIY:
-				return iiy != null;
+			case ModelPackage.ACTION__HISTORIQUE:
+				return historique != null;
+			case ModelPackage.ACTION__STRATEGIE_INSERTION:
+				return strategieInsertion != null;
 			case ModelPackage.ACTION__CONTENU:
 				return contenu != null;
 			case ModelPackage.ACTION__TYPE_ACTION:

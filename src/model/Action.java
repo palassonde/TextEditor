@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link model.Action#getJ <em>J</em>}</li>
- *   <li>{@link model.Action#getIiy <em>Iiy</em>}</li>
+ *   <li>{@link model.Action#getHistorique <em>Historique</em>}</li>
+ *   <li>{@link model.Action#getStrategieInsertion <em>Strategie Insertion</em>}</li>
  *   <li>{@link model.Action#getContenu <em>Contenu</em>}</li>
  *   <li>{@link model.Action#getTypeAction <em>Type Action</em>}</li>
  * </ul>
@@ -25,56 +25,58 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Action extends EObject {
 	/**
-	 * Returns the value of the '<em><b>J</b></em>' reference.
+	 * Returns the value of the '<em><b>Historique</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>J</em>' reference isn't clear,
+	 * If the meaning of the '<em>Historique</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>J</em>' reference.
-	 * @see #setJ(Historique)
-	 * @see model.ModelPackage#getAction_J()
-	 * @model
+	 * @return the value of the '<em>Historique</em>' reference.
+	 * @see #setHistorique(Historique)
+	 * @see model.ModelPackage#getAction_Historique()
+	 * @see model.Historique#getActionsRefaites
+	 * @model opposite="actionsRefaites"
 	 * @generated
 	 */
-	Historique getJ();
+	Historique getHistorique();
 
 	/**
-	 * Sets the value of the '{@link model.Action#getJ <em>J</em>}' reference.
+	 * Sets the value of the '{@link model.Action#getHistorique <em>Historique</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>J</em>' reference.
-	 * @see #getJ()
+	 * @param value the new value of the '<em>Historique</em>' reference.
+	 * @see #getHistorique()
 	 * @generated
 	 */
-	void setJ(Historique value);
+	void setHistorique(Historique value);
 
 	/**
-	 * Returns the value of the '<em><b>Iiy</b></em>' reference.
+	 * Returns the value of the '<em><b>Strategie Insertion</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Iiy</em>' reference isn't clear,
+	 * If the meaning of the '<em>Strategie Insertion</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Iiy</em>' reference.
-	 * @see #setIiy(StrategieInsertion)
-	 * @see model.ModelPackage#getAction_Iiy()
+	 * @return the value of the '<em>Strategie Insertion</em>' reference.
+	 * @see #setStrategieInsertion(StrategieInsertion)
+	 * @see model.ModelPackage#getAction_StrategieInsertion()
 	 * @model
 	 * @generated
 	 */
-	StrategieInsertion getIiy();
+	StrategieInsertion getStrategieInsertion();
 
 	/**
-	 * Sets the value of the '{@link model.Action#getIiy <em>Iiy</em>}' reference.
+	 * Sets the value of the '{@link model.Action#getStrategieInsertion <em>Strategie Insertion</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Iiy</em>' reference.
-	 * @see #getIiy()
+	 * @param value the new value of the '<em>Strategie Insertion</em>' reference.
+	 * @see #getStrategieInsertion()
 	 * @generated
 	 */
-	void setIiy(StrategieInsertion value);
+	void setStrategieInsertion(StrategieInsertion value);
 
 	/**
 	 * Returns the value of the '<em><b>Contenu</b></em>' containment reference.

@@ -2,7 +2,6 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://model/1.0" nsPrefix="model">
   <eClassifiers xsi:type="ecore:EClass" name="Document">
-    <eOperations name="renommer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="debutSel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="historique" lowerBound="1"
         eType="#//Historique" containment="true"/>
@@ -10,25 +9,26 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurseur" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionRacine" lowerBound="1"
-        eType="#//Section" containment="true" eOpposite="#//Section/document"/>
+        eType="#//Section" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pressePapier" lowerBound="1"
         eType="#//PressePapier" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sectionCourante" lowerBound="1"
+        eType="#//Section" eOpposite="#//Section/document"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Section" abstract="true" interface="true">
-    <eOperations name="renommer">
-      <eParameters name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="ajouterSousSection">
       <eParameters name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="supprimer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="document" lowerBound="1"
-        eType="#//Document" eOpposite="#//Document/sectionRacine"/>
+        eType="#//Document" eOpposite="#//Document/sectionCourante"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//SectionBranche" eOpposite="#//SectionBranche/enfant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu" eOpposite="#//Contenu/section"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="niveau" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SectionFeuille" eSuperTypes="#//Section">
     <eOperations name="renommer">
@@ -50,14 +50,26 @@
   <eClassifiers xsi:type="ecore:EClass" name="Contenu">
     <eOperations name="deplacer">
       <eParameters name="contenu" eType="#//Contenu"/>
+      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="supprimer"/>
+    <eOperations name="supprimer">
+      <eParameters name="positionDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="positionFin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="coller">
       <eParameters name="contenu" eType="#//Contenu"/>
+      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="copier"/>
-    <eOperations name="defaire"/>
-    <eOperations name="refaire"/>
+    <eOperations name="copier" eType="#//Contenu">
+      <eParameters name="positionDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="positionFin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="defaire">
+      <eParameters name="action" eType="#//Action"/>
+    </eOperations>
+    <eOperations name="refaire">
+      <eParameters name="action" eType="#//Action"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategie" lowerBound="1"
         eType="#//StrategieInsertion" containment="true" eOpposite="#//StrategieInsertion/contenu"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
@@ -72,6 +84,10 @@
       <eParameters name="element" eType="#//Element"/>
       <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="inserer">
+      <eParameters name="contenu" eType="#//Contenu"/>
+      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu" eOpposite="#//Contenu/strategie"/>
   </eClassifiers>
@@ -80,30 +96,39 @@
       <eParameters name="element" eType="#//Element"/>
       <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="inserer">
+      <eParameters name="contenu" eType="#//Contenu"/>
+      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Caractere" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="caractere" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Historique">
-    <eOperations name="getAction"/>
+    <eOperations name="getActionRefaite"/>
     <eOperations name="getActionDefaite"/>
     <eOperations name="vider"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionsDefaites" upperBound="-1"
         eType="#//Action" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionsRefaites" upperBound="-1"
+        eType="#//Action" eOpposite="#//Action/historique"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="j" eType="#//Historique"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="iiy" eType="#//StrategieInsertion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="historique" eType="#//Historique"
+        eOpposite="#//Historique/actionsRefaites"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="strategieInsertion" eType="#//StrategieInsertion"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeAction" eType="#//TypeAction"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PressePapier">
-    <eOperations name="ajouterContenu"/>
+    <eOperations name="ajouter">
+      <eParameters name="contenu" eType="#//Contenu"/>
+    </eOperations>
     <eOperations name="vider"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" upperBound="-1"
-        eType="#//Contenu" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" eType="#//Contenu"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TypeAction">
     <eLiterals name="DEPLACER"/>

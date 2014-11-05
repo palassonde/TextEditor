@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link model.Historique#getActions <em>Actions</em>}</li>
+ *   <li>{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}</li>
+ *   <li>{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,20 +25,38 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Historique extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Actions Defaites</b></em>' containment reference list.
 	 * The list contents are of type {@link model.Action}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Actions Defaites</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions</em>' containment reference list.
-	 * @see model.ModelPackage#getHistorique_Actions()
+	 * @return the value of the '<em>Actions Defaites</em>' containment reference list.
+	 * @see model.ModelPackage#getHistorique_ActionsDefaites()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Action> getActions();
+	EList<Action> getActionsDefaites();
+
+	/**
+	 * Returns the value of the '<em><b>Actions Refaites</b></em>' reference list.
+	 * The list contents are of type {@link model.Action}.
+	 * It is bidirectional and its opposite is '{@link model.Action#getHistorique <em>Historique</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Actions Refaites</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actions Refaites</em>' reference list.
+	 * @see model.ModelPackage#getHistorique_ActionsRefaites()
+	 * @see model.Action#getHistorique
+	 * @model opposite="historique"
+	 * @generated
+	 */
+	EList<Action> getActionsRefaites();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -45,7 +64,7 @@ public interface Historique extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	void getAction();
+	void getActionRefaite();
 
 	/**
 	 * <!-- begin-user-doc -->

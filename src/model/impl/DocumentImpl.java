@@ -2,22 +2,15 @@
  */
 package model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import model.Document;
 import model.Historique;
 import model.ModelPackage;
 import model.PressePapier;
 import model.Section;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -35,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link model.impl.DocumentImpl#getTitre <em>Titre</em>}</li>
  *   <li>{@link model.impl.DocumentImpl#getSectionRacine <em>Section Racine</em>}</li>
  *   <li>{@link model.impl.DocumentImpl#getPressePapier <em>Presse Papier</em>}</li>
+ *   <li>{@link model.impl.DocumentImpl#getSectionCourante <em>Section Courante</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +144,16 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * @ordered
 	 */
 	protected PressePapier pressePapier;
+
+	/**
+	 * The cached value of the '{@link #getSectionCourante() <em>Section Courante</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionCourante()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section sectionCourante;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -330,9 +334,9 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 		if (newSectionRacine != sectionRacine) {
 			NotificationChain msgs = null;
 			if (sectionRacine != null)
-				msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+				msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.DOCUMENT__SECTION_RACINE, null, msgs);
 			if (newSectionRacine != null)
-				msgs = ((InternalEObject)newSectionRacine).eInverseAdd(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+				msgs = ((InternalEObject)newSectionRacine).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.DOCUMENT__SECTION_RACINE, null, msgs);
 			msgs = basicSetSectionRacine(newSectionRacine, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -388,10 +392,59 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void renommer() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public Section getSectionCourante() {
+		if (sectionCourante != null && sectionCourante.eIsProxy()) {
+			InternalEObject oldSectionCourante = (InternalEObject)sectionCourante;
+			sectionCourante = (Section)eResolveProxy(oldSectionCourante);
+			if (sectionCourante != oldSectionCourante) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.DOCUMENT__SECTION_COURANTE, oldSectionCourante, sectionCourante));
+			}
+		}
+		return sectionCourante;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSectionCourante() {
+		return sectionCourante;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSectionCourante(Section newSectionCourante, NotificationChain msgs) {
+		Section oldSectionCourante = sectionCourante;
+		sectionCourante = newSectionCourante;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_COURANTE, oldSectionCourante, newSectionCourante);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSectionCourante(Section newSectionCourante) {
+		if (newSectionCourante != sectionCourante) {
+			NotificationChain msgs = null;
+			if (sectionCourante != null)
+				msgs = ((InternalEObject)sectionCourante).eInverseRemove(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+			if (newSectionCourante != null)
+				msgs = ((InternalEObject)newSectionCourante).eInverseAdd(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+			msgs = basicSetSectionCourante(newSectionCourante, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_COURANTE, newSectionCourante, newSectionCourante));
 	}
 
 	/**
@@ -402,10 +455,10 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.DOCUMENT__SECTION_RACINE:
-				if (sectionRacine != null)
-					msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.DOCUMENT__SECTION_RACINE, null, msgs);
-				return basicSetSectionRacine((Section)otherEnd, msgs);
+			case ModelPackage.DOCUMENT__SECTION_COURANTE:
+				if (sectionCourante != null)
+					msgs = ((InternalEObject)sectionCourante).eInverseRemove(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+				return basicSetSectionCourante((Section)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -424,6 +477,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return basicSetSectionRacine(null, msgs);
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				return basicSetPressePapier(null, msgs);
+			case ModelPackage.DOCUMENT__SECTION_COURANTE:
+				return basicSetSectionCourante(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -450,6 +505,9 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return getSectionRacine();
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				return getPressePapier();
+			case ModelPackage.DOCUMENT__SECTION_COURANTE:
+				if (resolve) return getSectionCourante();
+				return basicGetSectionCourante();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -482,6 +540,9 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return;
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				setPressePapier((PressePapier)newValue);
+				return;
+			case ModelPackage.DOCUMENT__SECTION_COURANTE:
+				setSectionCourante((Section)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -516,6 +577,9 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				setPressePapier((PressePapier)null);
 				return;
+			case ModelPackage.DOCUMENT__SECTION_COURANTE:
+				setSectionCourante((Section)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -542,23 +606,10 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return sectionRacine != null;
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				return pressePapier != null;
+			case ModelPackage.DOCUMENT__SECTION_COURANTE:
+				return sectionCourante != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case ModelPackage.DOCUMENT___RENOMMER:
-				renommer();
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -12,7 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 
@@ -40,7 +40,7 @@ public class InterfaceEditeur extends JFrame {
 	JMenuItem ajouterSection;
 	JMenuItem aPropos;
 
-	JTextArea surface;
+	JTextPane surface;
 
 	JPanel panneau;
 
@@ -124,11 +124,11 @@ public class InterfaceEditeur extends JFrame {
 
       	getContentPane().add(panneau, BorderLayout.CENTER);
 
-      	surface = new JTextArea(25, 65);
+      	surface = new JTextPane();
 
-      	surface.setLineWrap(false);
+      	//surface.setLineWrap(false);
 
-      	surface.setWrapStyleWord(false);
+      	//surface.setWrapStyleWord(false);
       	
       	panneauDefilement = new JScrollPane(surface);
 
@@ -157,6 +157,11 @@ public class InterfaceEditeur extends JFrame {
 
 		ie.setVisible(true);
 
+	}
+
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
    
 }
