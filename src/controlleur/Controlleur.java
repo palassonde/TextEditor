@@ -16,6 +16,10 @@ public class Controlleur {
 	public void setTitreDocument(String titre) {
 		document.setTitre(titre);
 	}
+	
+	public void setTitreSection(String titre) {
+		document.getSectionCourante().setTitre(titre);
+	}
 
 	public void updateView() {
 		vue.update();
