@@ -27,10 +27,10 @@ public class InterfaceEditeur extends JFrame {
 	JMenu sections;
 	JMenu aide;
 
-	JMenuItem ouvrir;
-	JMenuItem enregistrer;
-	JMenuItem fermer;
-	JMenuItem annuler;
+	private JMenuItem ouvrir;
+	private JMenuItem enregistrer;
+	private JMenuItem fermer;
+	private JMenuItem annuler;
 	JMenuItem retablir;
 	JMenuItem deplacer;
 	JMenuItem copier;
@@ -65,6 +65,7 @@ public class InterfaceEditeur extends JFrame {
 
 		fichier.setMnemonic('f');
 		editer.setMnemonic('e');
+		sections.setMnemonic('s');
 		outils.setMnemonic('o');
 		aide.setMnemonic('a');
 
@@ -141,10 +142,92 @@ public class InterfaceEditeur extends JFrame {
       		}
       	});  	
 	}
+	
+	public void afficherVue(){
+		this.setSize(725, 460);
+		this.setVisible(true);	
+	}
 
-	public void update() {
-		// TODO Auto-generated method stub
+	public void update(String contenu) {
+		this.surface.setText(contenu);
 		
+	}
+	
+	/**
+	 * @return the ouvrir
+	 */
+	public JMenuItem getOuvrir() {
+		return ouvrir;
+	}
+
+	/**
+	 * @return the enregistrer
+	 */
+	public JMenuItem getEnregistrer() {
+		return enregistrer;
+	}
+
+	/**
+	 * @return the annuler
+	 */
+	public JMenuItem getAnnuler() {
+		return annuler;
+	}
+
+	/**
+	 * @return the retablir
+	 */
+	public JMenuItem getRetablir() {
+		return retablir;
+	}
+
+	/**
+	 * @return the deplacer
+	 */
+	public JMenuItem getDeplacer() {
+		return deplacer;
+	}
+
+	/**
+	 * @return the copier
+	 */
+	public JMenuItem getCopier() {
+		return copier;
+	}
+
+	/**
+	 * @return the coller
+	 */
+	public JMenuItem getColler() {
+		return coller;
+	}
+
+	/**
+	 * @return the selectionnerTout
+	 */
+	public JMenuItem getSelectionnerTout() {
+		return selectionnerTout;
+	}
+
+	/**
+	 * @return the ajouterSection
+	 */
+	public JMenuItem getAjouterSection() {
+		return ajouterSection;
+	}
+
+	/**
+	 * @return the aPropos
+	 */
+	public JMenuItem getaPropos() {
+		return aPropos;
+	}
+
+	/**
+	 * @return the surface
+	 */
+	public JTextPane getSurface() {
+		return surface;
 	}
    
 }

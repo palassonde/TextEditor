@@ -66,6 +66,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.HISTORIQUE: return createHistorique();
 			case ModelPackage.ACTION: return createAction();
 			case ModelPackage.PRESSE_PAPIER: return createPressePapier();
+			case ModelPackage.EDITEUR: return createEditeur();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -189,6 +190,16 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public PressePapier createPressePapier() {
 		PressePapierImpl pressePapier = new PressePapierImpl();
 		return pressePapier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Editeur createEditeur() {
+		EditeurImpl editeur = new EditeurImpl();
+		return editeur;
 	}
 
 	/**

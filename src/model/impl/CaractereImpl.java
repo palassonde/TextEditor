@@ -53,6 +53,15 @@ public class CaractereImpl extends ElementImpl implements Caractere {
 	protected CaractereImpl() {
 		super();
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public CaractereImpl(char c) {
+		super();
+		this.caractere = c;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,16 +155,12 @@ public class CaractereImpl extends ElementImpl implements Caractere {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (caractere: ");
+		StringBuffer result = new StringBuffer();
 		result.append(caractere);
-		result.append(')');
 		return result.toString();
 	}
 

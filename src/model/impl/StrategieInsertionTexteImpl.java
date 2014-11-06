@@ -43,6 +43,7 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	 */
 	protected StrategieInsertionTexteImpl() {
 		super();
+		
 	}
 
 	/**
@@ -99,23 +100,20 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void inserer(Element element, int position) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.getContenu().getElements().add(position, element);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void inserer(Contenu contenu, int position) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Element> liste = contenu.getElements();
+		for (int i=0; i < liste.size(); i++){
+			this.getContenu().getElements().add(position+i, liste.get(i));
+		}
 	}
 
 	/**

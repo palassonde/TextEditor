@@ -3,7 +3,6 @@
 package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
 
 import model.Action;
@@ -15,15 +14,11 @@ import model.StrategieInsertion;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -88,10 +83,12 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	protected ContenuImpl() {
 		super();
+		this.strategie = new StrategieInsertionTexteImpl();
+		this.strategie.setContenu(this);
+		
 	}
 
 	/**
@@ -235,12 +232,10 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void supprimer(int positionDebut, int positionFin) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		for(int i=0; i < positionFin; i++)
+			this.elements.remove(i);
 	}
 
 	/**
@@ -249,20 +244,22 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @generated
 	 */
 	public void coller(Contenu contenu, int position) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.strategie.inserer(contenu, position);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public Contenu copier(int positionDebut, int positionFin) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Contenu contenu = new ContenuImpl();
+		int j = 0;
+		for (int i = positionDebut; i < positionFin; i++) {
+			contenu.getStrategie().inserer(this.elements.get(i), j);
+			j++;
+		}
+		contenu.setPosition(positionDebut);
+		return contenu;
 	}
 
 	/**
@@ -461,16 +458,14 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (position: ");
-		result.append(position);
-		result.append(')');
+		
+		StringBuffer result = new StringBuffer();
+		for(int i=0; i<elements.size(); i++){
+			result.append(elements.get(i).toString());
+		}
 		return result.toString();
 	}
 

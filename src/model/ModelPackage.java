@@ -114,7 +114,7 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT__TITRE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Section Racine</b></em>' reference.
+	 * The feature id for the '<em><b>Section Racine</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,22 +141,13 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT__SECTION_COURANTE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__SECTIONS = 8;
-
-	/**
 	 * The feature id for the '<em><b>Modifie</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MODIFIE = 9;
+	int DOCUMENT__MODIFIE = 8;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -165,7 +156,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 10;
+	int DOCUMENT_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Document</em>' class.
@@ -962,6 +953,70 @@ public interface ModelPackage extends EPackage {
 	int PRESSE_PAPIER_OPERATION_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link model.impl.EditeurImpl <em>Editeur</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.EditeurImpl
+	 * @see model.impl.ModelPackageImpl#getEditeur()
+	 * @generated
+	 */
+	int EDITEUR = 12;
+
+	/**
+	 * The feature id for the '<em><b>Document Courant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR__DOCUMENT_COURANT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Editeur</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR_FEATURE_COUNT = 1;
+
+	/**
+	 * The operation id for the '<em>Sauvegarder</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR___SAUVEGARDER__STRING_DOCUMENT = 0;
+
+	/**
+	 * The operation id for the '<em>Ouvrir</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR___OUVRIR__STRING = 1;
+
+	/**
+	 * The operation id for the '<em>Creer Nouv Document</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR___CREER_NOUV_DOCUMENT = 2;
+
+	/**
+	 * The number of operations of the '<em>Editeur</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR_OPERATION_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link model.TypeAction <em>Type Action</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -969,7 +1024,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.impl.ModelPackageImpl#getTypeAction()
 	 * @generated
 	 */
-	int TYPE_ACTION = 12;
+	int TYPE_ACTION = 13;
 
 
 	/**
@@ -1038,10 +1093,10 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDocument_Titre();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
+	 * Returns the meta object for the containment reference '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Section Racine</em>'.
+	 * @return the meta object for the containment reference '<em>Section Racine</em>'.
 	 * @see model.Document#getSectionRacine()
 	 * @see #getDocument()
 	 * @generated
@@ -1069,17 +1124,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDocument_SectionCourante();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link model.Document#getSections <em>Sections</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sections</em>'.
-	 * @see model.Document#getSections()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EReference getDocument_Sections();
 
 	/**
 	 * Returns the meta object for the attribute '{@link model.Document#isModifie <em>Modifie</em>}'.
@@ -1632,6 +1676,57 @@ public interface ModelPackage extends EPackage {
 	EOperation getPressePapier__Vider();
 
 	/**
+	 * Returns the meta object for class '{@link model.Editeur <em>Editeur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Editeur</em>'.
+	 * @see model.Editeur
+	 * @generated
+	 */
+	EClass getEditeur();
+
+	/**
+	 * Returns the meta object for the reference '{@link model.Editeur#getDocumentCourant <em>Document Courant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Document Courant</em>'.
+	 * @see model.Editeur#getDocumentCourant()
+	 * @see #getEditeur()
+	 * @generated
+	 */
+	EReference getEditeur_DocumentCourant();
+
+	/**
+	 * Returns the meta object for the '{@link model.Editeur#sauvegarder(java.lang.String) <em>Sauvegarder</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Sauvegarder</em>' operation.
+	 * @see model.Editeur#sauvegarder(java.lang.String)
+	 * @generated
+	 */
+	EOperation getEditeur__Sauvegarder__String_Document();
+
+	/**
+	 * Returns the meta object for the '{@link model.Editeur#ouvrir(java.lang.String) <em>Ouvrir</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Ouvrir</em>' operation.
+	 * @see model.Editeur#ouvrir(java.lang.String)
+	 * @generated
+	 */
+	EOperation getEditeur__Ouvrir__String();
+
+	/**
+	 * Returns the meta object for the '{@link model.Editeur#creerNouvDocument() <em>Creer Nouv Document</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Creer Nouv Document</em>' operation.
+	 * @see model.Editeur#creerNouvDocument()
+	 * @generated
+	 */
+	EOperation getEditeur__CreerNouvDocument();
+
+	/**
 	 * Returns the meta object for enum '{@link model.TypeAction <em>Type Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1715,7 +1810,7 @@ public interface ModelPackage extends EPackage {
 		EAttribute DOCUMENT__TITRE = eINSTANCE.getDocument_Titre();
 
 		/**
-		 * The meta object literal for the '<em><b>Section Racine</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Section Racine</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1737,14 +1832,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOCUMENT__SECTION_COURANTE = eINSTANCE.getDocument_SectionCourante();
-
-		/**
-		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCUMENT__SECTIONS = eINSTANCE.getDocument_Sections();
 
 		/**
 		 * The meta object literal for the '<em><b>Modifie</b></em>' attribute feature.
@@ -2191,6 +2278,48 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation PRESSE_PAPIER___VIDER = eINSTANCE.getPressePapier__Vider();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.EditeurImpl <em>Editeur</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.EditeurImpl
+		 * @see model.impl.ModelPackageImpl#getEditeur()
+		 * @generated
+		 */
+		EClass EDITEUR = eINSTANCE.getEditeur();
+
+		/**
+		 * The meta object literal for the '<em><b>Document Courant</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDITEUR__DOCUMENT_COURANT = eINSTANCE.getEditeur_DocumentCourant();
+
+		/**
+		 * The meta object literal for the '<em><b>Sauvegarder</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EDITEUR___SAUVEGARDER__STRING_DOCUMENT = eINSTANCE.getEditeur__Sauvegarder__String_Document();
+
+		/**
+		 * The meta object literal for the '<em><b>Ouvrir</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EDITEUR___OUVRIR__STRING = eINSTANCE.getEditeur__Ouvrir__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Creer Nouv Document</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EDITEUR___CREER_NOUV_DOCUMENT = eINSTANCE.getEditeur__CreerNouvDocument();
 
 		/**
 		 * The meta object literal for the '{@link model.TypeAction <em>Type Action</em>}' enum.

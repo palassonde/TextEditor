@@ -102,10 +102,10 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	protected SectionBrancheImpl() {
 		super();
+		this.contenu = new ContenuImpl();
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDocument != null)
-				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTIONS, Document.class, msgs);
+				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
 			msgs = basicSetDocument(newDocument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -386,7 +386,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTIONS, Document.class, msgs);
+				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				return eInternalContainer().eInverseRemove(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
 		}

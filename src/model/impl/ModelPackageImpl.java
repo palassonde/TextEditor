@@ -6,6 +6,7 @@ import model.Action;
 import model.Caractere;
 import model.Contenu;
 import model.Document;
+import model.Editeur;
 import model.Element;
 import model.Historique;
 import model.ModelFactory;
@@ -117,6 +118,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass pressePapierEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass editeurEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,17 +280,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDocument_Sections() {
-		return (EReference)documentEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getDocument_Modifie() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(9);
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -758,6 +757,51 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEditeur() {
+		return editeurEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEditeur_DocumentCourant() {
+		return (EReference)editeurEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEditeur__Sauvegarder__String_Document() {
+		return editeurEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEditeur__Ouvrir__String() {
+		return editeurEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEditeur__CreerNouvDocument() {
+		return editeurEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTypeAction() {
 		return typeActionEEnum;
 	}
@@ -799,7 +843,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(documentEClass, DOCUMENT__SECTION_RACINE);
 		createEReference(documentEClass, DOCUMENT__PRESSE_PAPIER);
 		createEReference(documentEClass, DOCUMENT__SECTION_COURANTE);
-		createEReference(documentEClass, DOCUMENT__SECTIONS);
 		createEAttribute(documentEClass, DOCUMENT__MODIFIE);
 
 		sectionEClass = createEClass(SECTION);
@@ -865,6 +908,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEOperation(pressePapierEClass, PRESSE_PAPIER___AJOUTER__CONTENU);
 		createEOperation(pressePapierEClass, PRESSE_PAPIER___VIDER);
 
+		editeurEClass = createEClass(EDITEUR);
+		createEReference(editeurEClass, EDITEUR__DOCUMENT_COURANT);
+		createEOperation(editeurEClass, EDITEUR___SAUVEGARDER__STRING_DOCUMENT);
+		createEOperation(editeurEClass, EDITEUR___OUVRIR__STRING);
+		createEOperation(editeurEClass, EDITEUR___CREER_NOUV_DOCUMENT);
+
 		// Create enums
 		typeActionEEnum = createEEnum(TYPE_ACTION);
 	}
@@ -909,16 +958,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getDocument_FinSel(), ecorePackage.getEInt(), "finSel", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_PositionCurseur(), ecorePackage.getEInt(), "positionCurseur", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocument_SectionRacine(), this.getSection(), null, "sectionRacine", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocument_SectionRacine(), this.getSection(), this.getSection_Document(), "sectionRacine", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_PressePapier(), this.getPressePapier(), null, "pressePapier", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_SectionCourante(), this.getSection(), null, "sectionCourante", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocument_Sections(), this.getSection(), this.getSection_Document(), "sections", null, 1, -1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Modifie(), ecorePackage.getEBoolean(), "modifie", "false", 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sectionEClass, Section.class, "Section", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSection_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSection_Document(), this.getDocument(), this.getDocument_Sections(), "document", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSection_Parent(), this.getSectionBranche(), this.getSectionBranche_Enfant(), "parent", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSection_Document(), this.getDocument(), this.getDocument_SectionRacine(), "document", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSection_Parent(), this.getSectionBranche(), this.getSectionBranche_Enfant(), "parent", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Contenu(), this.getContenu(), this.getContenu_Section(), "contenu", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSection_Niveau(), ecorePackage.getEInt(), "niveau", "0", 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1022,6 +1070,17 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getPressePapier__Vider(), null, "vider", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(editeurEClass, Editeur.class, "Editeur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEditeur_DocumentCourant(), this.getDocument(), null, "documentCourant", null, 0, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getEditeur__Sauvegarder__String_Document(), null, "sauvegarder", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "nomFichier", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEditeur__Ouvrir__String(), null, "ouvrir", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "nomFichier", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEditeur__CreerNouvDocument(), null, "creerNouvDocument", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(typeActionEEnum, TypeAction.class, "TypeAction");

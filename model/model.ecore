@@ -9,13 +9,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurseur" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionRacine" lowerBound="1"
-        eType="#//Section"/>
+        eType="#//Section" containment="true" eOpposite="#//Section/document"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pressePapier" lowerBound="1"
         eType="#//PressePapier" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionCourante" lowerBound="1"
         eType="#//Section"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sections" lowerBound="1"
-        upperBound="-1" eType="#//Section" containment="true" eOpposite="#//Section/document"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
@@ -26,9 +24,9 @@
     <eOperations name="supprimer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="document" lowerBound="1"
-        eType="#//Document" eOpposite="#//Document/sections"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
-        eType="#//SectionBranche" eOpposite="#//SectionBranche/enfant"/>
+        eType="#//Document" eOpposite="#//Document/sectionRacine"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//SectionBranche"
+        eOpposite="#//SectionBranche/enfant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu" containment="true" eOpposite="#//Contenu/section"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="niveau" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -141,5 +139,15 @@
     <eLiterals name="COPIER" value="4"/>
     <eLiterals name="DEFAIRE" value="5"/>
     <eLiterals name="REFAIRE" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Editeur">
+    <eOperations name="sauvegarder">
+      <eParameters name="nomFichier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="ouvrir">
+      <eParameters name="nomFichier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="creerNouvDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="documentCourant" eType="#//Document"/>
   </eClassifiers>
 </ecore:EPackage>

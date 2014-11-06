@@ -53,7 +53,7 @@ public interface Section extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Document</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link model.Document#getSections <em>Sections</em>}'.
+	 * It is bidirectional and its opposite is '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Document</em>' container reference isn't clear,
@@ -63,8 +63,8 @@ public interface Section extends EObject {
 	 * @return the value of the '<em>Document</em>' container reference.
 	 * @see #setDocument(Document)
 	 * @see model.ModelPackage#getSection_Document()
-	 * @see model.Document#getSections
-	 * @model opposite="sections" required="true" transient="false"
+	 * @see model.Document#getSectionRacine
+	 * @model opposite="sectionRacine" required="true" transient="false"
 	 * @generated
 	 */
 	Document getDocument();
@@ -92,7 +92,7 @@ public interface Section extends EObject {
 	 * @see #setParent(SectionBranche)
 	 * @see model.ModelPackage#getSection_Parent()
 	 * @see model.SectionBranche#getEnfant
-	 * @model opposite="enfant" required="true" transient="false"
+	 * @model opposite="enfant" transient="false"
 	 * @generated
 	 */
 	SectionBranche getParent();
