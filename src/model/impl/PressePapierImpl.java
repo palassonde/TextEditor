@@ -7,7 +7,6 @@ import model.Contenu;
 import model.ModelPackage;
 import model.PressePapier;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class PressePapierImpl extends MinimalEObjectImpl.Container implements PressePapier {
 	/**
-	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' containment reference.
+	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContenu()
@@ -63,6 +62,14 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	 * @generated
 	 */
 	public Contenu getContenu() {
+		if (contenu != null && contenu.eIsProxy()) {
+			InternalEObject oldContenu = (InternalEObject)contenu;
+			contenu = (Contenu)eResolveProxy(oldContenu);
+			if (contenu != oldContenu) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.PRESSE_PAPIER__CONTENU, oldContenu, contenu));
+			}
+		}
 		return contenu;
 	}
 
@@ -71,14 +78,8 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContenu(Contenu newContenu, NotificationChain msgs) {
-		Contenu oldContenu = contenu;
-		contenu = newContenu;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.PRESSE_PAPIER__CONTENU, oldContenu, newContenu);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Contenu basicGetContenu() {
+		return contenu;
 	}
 
 	/**
@@ -87,17 +88,10 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	 * @generated
 	 */
 	public void setContenu(Contenu newContenu) {
-		if (newContenu != contenu) {
-			NotificationChain msgs = null;
-			if (contenu != null)
-				msgs = ((InternalEObject)contenu).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.PRESSE_PAPIER__CONTENU, null, msgs);
-			if (newContenu != null)
-				msgs = ((InternalEObject)newContenu).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.PRESSE_PAPIER__CONTENU, null, msgs);
-			msgs = basicSetContenu(newContenu, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PRESSE_PAPIER__CONTENU, newContenu, newContenu));
+		Contenu oldContenu = contenu;
+		contenu = newContenu;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PRESSE_PAPIER__CONTENU, oldContenu, contenu));
 	}
 
 	/**
@@ -128,24 +122,11 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModelPackage.PRESSE_PAPIER__CONTENU:
-				return basicSetContenu(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.PRESSE_PAPIER__CONTENU:
-				return getContenu();
+				if (resolve) return getContenu();
+				return basicGetContenu();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

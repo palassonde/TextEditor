@@ -12,6 +12,11 @@ public class Controlleur {
 		this.document = model;
 		this.vue = vue;
 	}
+	
+	public void creerNouveauDocument(){
+		
+		
+	}
 
 	public void setTitreDocument(String titre) {
 		document.setTitre(titre);
@@ -23,6 +28,12 @@ public class Controlleur {
 
 	public void updateView() {
 		vue.update();
+	}
+
+	public void afficherVue() {
+		vue.setSize(725, 460);
+		vue.setVisible(true);
+		
 	}
 
 }

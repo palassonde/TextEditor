@@ -97,7 +97,7 @@ public interface Contenu extends EObject {
 	void setPosition(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Section</b></em>' reference.
+	 * Returns the value of the '<em><b>Section</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link model.Section#getContenu <em>Contenu</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -105,20 +105,20 @@ public interface Contenu extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Section</em>' reference.
+	 * @return the value of the '<em>Section</em>' container reference.
 	 * @see #setSection(Section)
 	 * @see model.ModelPackage#getContenu_Section()
 	 * @see model.Section#getContenu
-	 * @model opposite="contenu" required="true"
+	 * @model opposite="contenu" required="true" transient="false"
 	 * @generated
 	 */
 	Section getSection();
 
 	/**
-	 * Sets the value of the '{@link model.Contenu#getSection <em>Section</em>}' reference.
+	 * Sets the value of the '{@link model.Contenu#getSection <em>Section</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Section</em>' reference.
+	 * @param value the new value of the '<em>Section</em>' container reference.
 	 * @see #getSection()
 	 * @generated
 	 */

@@ -114,7 +114,7 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT__TITRE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Section Racine</b></em>' containment reference.
+	 * The feature id for the '<em><b>Section Racine</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,13 +141,31 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT__SECTION_COURANTE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__SECTIONS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Modifie</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__MODIFIE = 9;
+
+	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 8;
+	int DOCUMENT_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Document</em>' class.
@@ -178,7 +196,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION__TITRE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' reference.
+	 * The feature id for the '<em><b>Document</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -187,7 +205,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION__DOCUMENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -196,7 +214,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION__PARENT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' reference.
+	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -269,7 +287,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_FEUILLE__TITRE = SECTION__TITRE;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' reference.
+	 * The feature id for the '<em><b>Document</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -278,7 +296,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_FEUILLE__DOCUMENT = SECTION__DOCUMENT;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -287,7 +305,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_FEUILLE__PARENT = SECTION__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' reference.
+	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -369,7 +387,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__TITRE = SECTION__TITRE;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' reference.
+	 * The feature id for the '<em><b>Document</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -378,7 +396,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__DOCUMENT = SECTION__DOCUMENT;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -387,7 +405,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__PARENT = SECTION__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' reference.
+	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -405,7 +423,7 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__NIVEAU = SECTION__NIVEAU;
 
 	/**
-	 * The feature id for the '<em><b>Enfant</b></em>' reference list.
+	 * The feature id for the '<em><b>Enfant</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -496,7 +514,7 @@ public interface ModelPackage extends EPackage {
 	int CONTENU__POSITION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Section</b></em>' reference.
+	 * The feature id for the '<em><b>Section</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -762,7 +780,7 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Actions Defaites</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Actions Defaites</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -853,7 +871,7 @@ public interface ModelPackage extends EPackage {
 	int ACTION__STRATEGIE_INSERTION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
+	 * The feature id for the '<em><b>Contenu</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -899,7 +917,7 @@ public interface ModelPackage extends EPackage {
 	int PRESSE_PAPIER = 11;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
+	 * The feature id for the '<em><b>Contenu</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1020,10 +1038,10 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDocument_Titre();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
+	 * Returns the meta object for the reference '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Section Racine</em>'.
+	 * @return the meta object for the reference '<em>Section Racine</em>'.
 	 * @see model.Document#getSectionRacine()
 	 * @see #getDocument()
 	 * @generated
@@ -1053,6 +1071,28 @@ public interface ModelPackage extends EPackage {
 	EReference getDocument_SectionCourante();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link model.Document#getSections <em>Sections</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sections</em>'.
+	 * @see model.Document#getSections()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EReference getDocument_Sections();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Document#isModifie <em>Modifie</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Modifie</em>'.
+	 * @see model.Document#isModifie()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EAttribute getDocument_Modifie();
+
+	/**
 	 * Returns the meta object for class '{@link model.Section <em>Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1074,10 +1114,10 @@ public interface ModelPackage extends EPackage {
 	EAttribute getSection_Titre();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Section#getDocument <em>Document</em>}'.
+	 * Returns the meta object for the container reference '{@link model.Section#getDocument <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Document</em>'.
+	 * @return the meta object for the container reference '<em>Document</em>'.
 	 * @see model.Section#getDocument()
 	 * @see #getSection()
 	 * @generated
@@ -1085,10 +1125,10 @@ public interface ModelPackage extends EPackage {
 	EReference getSection_Document();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Section#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link model.Section#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @return the meta object for the container reference '<em>Parent</em>'.
 	 * @see model.Section#getParent()
 	 * @see #getSection()
 	 * @generated
@@ -1096,10 +1136,10 @@ public interface ModelPackage extends EPackage {
 	EReference getSection_Parent();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Section#getContenu <em>Contenu</em>}'.
+	 * Returns the meta object for the containment reference '{@link model.Section#getContenu <em>Contenu</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Contenu</em>'.
+	 * @return the meta object for the containment reference '<em>Contenu</em>'.
 	 * @see model.Section#getContenu()
 	 * @see #getSection()
 	 * @generated
@@ -1178,10 +1218,10 @@ public interface ModelPackage extends EPackage {
 	EClass getSectionBranche();
 
 	/**
-	 * Returns the meta object for the reference list '{@link model.SectionBranche#getEnfant <em>Enfant</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.SectionBranche#getEnfant <em>Enfant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Enfant</em>'.
+	 * @return the meta object for the containment reference list '<em>Enfant</em>'.
 	 * @see model.SectionBranche#getEnfant()
 	 * @see #getSectionBranche()
 	 * @generated
@@ -1262,10 +1302,10 @@ public interface ModelPackage extends EPackage {
 	EAttribute getContenu_Position();
 
 	/**
-	 * Returns the meta object for the reference '{@link model.Contenu#getSection <em>Section</em>}'.
+	 * Returns the meta object for the container reference '{@link model.Contenu#getSection <em>Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Section</em>'.
+	 * @return the meta object for the container reference '<em>Section</em>'.
 	 * @see model.Contenu#getSection()
 	 * @see #getContenu()
 	 * @generated
@@ -1445,10 +1485,10 @@ public interface ModelPackage extends EPackage {
 	EClass getHistorique();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
+	 * Returns the meta object for the reference list '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Actions Defaites</em>'.
+	 * @return the meta object for the reference list '<em>Actions Defaites</em>'.
 	 * @see model.Historique#getActionsDefaites()
 	 * @see #getHistorique()
 	 * @generated
@@ -1529,10 +1569,10 @@ public interface ModelPackage extends EPackage {
 	EReference getAction_StrategieInsertion();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link model.Action#getContenu <em>Contenu</em>}'.
+	 * Returns the meta object for the reference '{@link model.Action#getContenu <em>Contenu</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Contenu</em>'.
+	 * @return the meta object for the reference '<em>Contenu</em>'.
 	 * @see model.Action#getContenu()
 	 * @see #getAction()
 	 * @generated
@@ -1561,10 +1601,10 @@ public interface ModelPackage extends EPackage {
 	EClass getPressePapier();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link model.PressePapier#getContenu <em>Contenu</em>}'.
+	 * Returns the meta object for the reference '{@link model.PressePapier#getContenu <em>Contenu</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Contenu</em>'.
+	 * @return the meta object for the reference '<em>Contenu</em>'.
 	 * @see model.PressePapier#getContenu()
 	 * @see #getPressePapier()
 	 * @generated
@@ -1675,7 +1715,7 @@ public interface ModelPackage extends EPackage {
 		EAttribute DOCUMENT__TITRE = eINSTANCE.getDocument_Titre();
 
 		/**
-		 * The meta object literal for the '<em><b>Section Racine</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Section Racine</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1699,6 +1739,22 @@ public interface ModelPackage extends EPackage {
 		EReference DOCUMENT__SECTION_COURANTE = eINSTANCE.getDocument_SectionCourante();
 
 		/**
+		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT__SECTIONS = eINSTANCE.getDocument_Sections();
+
+		/**
+		 * The meta object literal for the '<em><b>Modifie</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT__MODIFIE = eINSTANCE.getDocument_Modifie();
+
+		/**
 		 * The meta object literal for the '{@link model.Section <em>Section</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1717,7 +1773,7 @@ public interface ModelPackage extends EPackage {
 		EAttribute SECTION__TITRE = eINSTANCE.getSection_Titre();
 
 		/**
-		 * The meta object literal for the '<em><b>Document</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Document</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1725,7 +1781,7 @@ public interface ModelPackage extends EPackage {
 		EReference SECTION__DOCUMENT = eINSTANCE.getSection_Document();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1733,7 +1789,7 @@ public interface ModelPackage extends EPackage {
 		EReference SECTION__PARENT = eINSTANCE.getSection_Parent();
 
 		/**
-		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Contenu</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1801,7 +1857,7 @@ public interface ModelPackage extends EPackage {
 		EClass SECTION_BRANCHE = eINSTANCE.getSectionBranche();
 
 		/**
-		 * The meta object literal for the '<em><b>Enfant</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Enfant</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1867,7 +1923,7 @@ public interface ModelPackage extends EPackage {
 		EAttribute CONTENU__POSITION = eINSTANCE.getContenu_Position();
 
 		/**
-		 * The meta object literal for the '<em><b>Section</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Section</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2021,7 +2077,7 @@ public interface ModelPackage extends EPackage {
 		EClass HISTORIQUE = eINSTANCE.getHistorique();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions Defaites</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Actions Defaites</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2087,7 +2143,7 @@ public interface ModelPackage extends EPackage {
 		EReference ACTION__STRATEGIE_INSERTION = eINSTANCE.getAction_StrategieInsertion();
 
 		/**
-		 * The meta object literal for the '<em><b>Contenu</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2113,7 +2169,7 @@ public interface ModelPackage extends EPackage {
 		EClass PRESSE_PAPIER = eINSTANCE.getPressePapier();
 
 		/**
-		 * The meta object literal for the '<em><b>Contenu</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -3,23 +3,16 @@
 package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
-
 import model.Action;
 import model.Historique;
 import model.ModelPackage;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -39,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Historique {
 	/**
-	 * The cached value of the '{@link #getActionsDefaites() <em>Actions Defaites</em>}' containment reference list.
+	 * The cached value of the '{@link #getActionsDefaites() <em>Actions Defaites</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActionsDefaites()
@@ -82,7 +75,7 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 */
 	public EList<Action> getActionsDefaites() {
 		if (actionsDefaites == null) {
-			actionsDefaites = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES);
+			actionsDefaites = new EObjectWithInverseResolvingEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES, ModelPackage.ACTION__HISTORIQUE);
 		}
 		return actionsDefaites;
 	}
@@ -94,7 +87,7 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 */
 	public EList<Action> getActionsRefaites() {
 		if (actionsRefaites == null) {
-			actionsRefaites = new EObjectWithInverseResolvingEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, ModelPackage.ACTION__HISTORIQUE);
+			actionsRefaites = new EObjectResolvingEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES);
 		}
 		return actionsRefaites;
 	}
@@ -141,8 +134,8 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActionsRefaites()).basicAdd(otherEnd, msgs);
+			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActionsDefaites()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -157,8 +150,6 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 		switch (featureID) {
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				return ((InternalEList<?>)getActionsDefaites()).basicRemove(otherEnd, msgs);
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				return ((InternalEList<?>)getActionsRefaites()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

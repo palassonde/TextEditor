@@ -16,7 +16,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -59,27 +60,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	protected String titre = TITRE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDocument() <em>Document</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDocument()
-	 * @generated
-	 * @ordered
-	 */
-	protected Document document;
-
-	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParent()
-	 * @generated
-	 * @ordered
-	 */
-	protected SectionBranche parent;
-
-	/**
-	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' reference.
+	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContenu()
@@ -109,7 +90,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	protected int niveau = NIVEAU_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEnfant() <em>Enfant</em>}' reference list.
+	 * The cached value of the '{@link #getEnfant() <em>Enfant</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEnfant()
@@ -164,24 +145,8 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public Document getDocument() {
-		if (document != null && document.eIsProxy()) {
-			InternalEObject oldDocument = (InternalEObject)document;
-			document = (Document)eResolveProxy(oldDocument);
-			if (document != oldDocument) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.SECTION_BRANCHE__DOCUMENT, oldDocument, document));
-			}
-		}
-		return document;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Document basicGetDocument() {
-		return document;
+		if (eContainerFeatureID() != ModelPackage.SECTION_BRANCHE__DOCUMENT) return null;
+		return (Document)eInternalContainer();
 	}
 
 	/**
@@ -190,12 +155,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetDocument(Document newDocument, NotificationChain msgs) {
-		Document oldDocument = document;
-		document = newDocument;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.SECTION_BRANCHE__DOCUMENT, oldDocument, newDocument);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newDocument, ModelPackage.SECTION_BRANCHE__DOCUMENT, msgs);
 		return msgs;
 	}
 
@@ -205,12 +165,14 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public void setDocument(Document newDocument) {
-		if (newDocument != document) {
+		if (newDocument != eInternalContainer() || (eContainerFeatureID() != ModelPackage.SECTION_BRANCHE__DOCUMENT && newDocument != null)) {
+			if (EcoreUtil.isAncestor(this, newDocument))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (document != null)
-				msgs = ((InternalEObject)document).eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_COURANTE, Document.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDocument != null)
-				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTION_COURANTE, Document.class, msgs);
+				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTIONS, Document.class, msgs);
 			msgs = basicSetDocument(newDocument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -224,24 +186,8 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public SectionBranche getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject)parent;
-			parent = (SectionBranche)eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.SECTION_BRANCHE__PARENT, oldParent, parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SectionBranche basicGetParent() {
-		return parent;
+		if (eContainerFeatureID() != ModelPackage.SECTION_BRANCHE__PARENT) return null;
+		return (SectionBranche)eInternalContainer();
 	}
 
 	/**
@@ -250,12 +196,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetParent(SectionBranche newParent, NotificationChain msgs) {
-		SectionBranche oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.SECTION_BRANCHE__PARENT, oldParent, newParent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newParent, ModelPackage.SECTION_BRANCHE__PARENT, msgs);
 		return msgs;
 	}
 
@@ -265,10 +206,12 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public void setParent(SectionBranche newParent) {
-		if (newParent != parent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != ModelPackage.SECTION_BRANCHE__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (parent != null)
-				msgs = ((InternalEObject)parent).eInverseRemove(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
 				msgs = ((InternalEObject)newParent).eInverseAdd(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
 			msgs = basicSetParent(newParent, msgs);
@@ -284,23 +227,6 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public Contenu getContenu() {
-		if (contenu != null && contenu.eIsProxy()) {
-			InternalEObject oldContenu = (InternalEObject)contenu;
-			contenu = (Contenu)eResolveProxy(oldContenu);
-			if (contenu != oldContenu) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.SECTION_BRANCHE__CONTENU, oldContenu, contenu));
-			}
-		}
-		return contenu;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu basicGetContenu() {
 		return contenu;
 	}
 
@@ -366,7 +292,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public EList<Section> getEnfant() {
 		if (enfant == null) {
-			enfant = new EObjectWithInverseResolvingEList<Section>(Section.class, this, ModelPackage.SECTION_BRANCHE__ENFANT, ModelPackage.SECTION__PARENT);
+			enfant = new EObjectContainmentWithInverseEList<Section>(Section.class, this, ModelPackage.SECTION_BRANCHE__ENFANT, ModelPackage.SECTION__PARENT);
 		}
 		return enfant;
 	}
@@ -414,16 +340,16 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				if (document != null)
-					msgs = ((InternalEObject)document).eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_COURANTE, Document.class, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetDocument((Document)otherEnd, msgs);
 			case ModelPackage.SECTION_BRANCHE__PARENT:
-				if (parent != null)
-					msgs = ((InternalEObject)parent).eInverseRemove(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParent((SectionBranche)otherEnd, msgs);
 			case ModelPackage.SECTION_BRANCHE__CONTENU:
 				if (contenu != null)
-					msgs = ((InternalEObject)contenu).eInverseRemove(this, ModelPackage.CONTENU__SECTION, Contenu.class, msgs);
+					msgs = ((InternalEObject)contenu).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.SECTION_BRANCHE__CONTENU, null, msgs);
 				return basicSetContenu((Contenu)otherEnd, msgs);
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getEnfant()).basicAdd(otherEnd, msgs);
@@ -457,19 +383,32 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTIONS, Document.class, msgs);
+			case ModelPackage.SECTION_BRANCHE__PARENT:
+				return eInternalContainer().eInverseRemove(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.SECTION_BRANCHE__TITRE:
 				return getTitre();
 			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				if (resolve) return getDocument();
-				return basicGetDocument();
+				return getDocument();
 			case ModelPackage.SECTION_BRANCHE__PARENT:
-				if (resolve) return getParent();
-				return basicGetParent();
+				return getParent();
 			case ModelPackage.SECTION_BRANCHE__CONTENU:
-				if (resolve) return getContenu();
-				return basicGetContenu();
+				return getContenu();
 			case ModelPackage.SECTION_BRANCHE__NIVEAU:
 				return getNiveau();
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
@@ -551,9 +490,9 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_BRANCHE__TITRE:
 				return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
 			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				return document != null;
+				return getDocument() != null;
 			case ModelPackage.SECTION_BRANCHE__PARENT:
-				return parent != null;
+				return getParent() != null;
 			case ModelPackage.SECTION_BRANCHE__CONTENU:
 				return contenu != null;
 			case ModelPackage.SECTION_BRANCHE__NIVEAU:

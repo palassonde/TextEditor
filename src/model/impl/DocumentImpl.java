@@ -2,6 +2,7 @@
  */
 package model.impl;
 
+import java.util.Collection;
 import model.Document;
 import model.Historique;
 import model.ModelPackage;
@@ -9,10 +10,13 @@ import model.PressePapier;
 import model.Section;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +33,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link model.impl.DocumentImpl#getSectionRacine <em>Section Racine</em>}</li>
  *   <li>{@link model.impl.DocumentImpl#getPressePapier <em>Presse Papier</em>}</li>
  *   <li>{@link model.impl.DocumentImpl#getSectionCourante <em>Section Courante</em>}</li>
+ *   <li>{@link model.impl.DocumentImpl#getSections <em>Sections</em>}</li>
+ *   <li>{@link model.impl.DocumentImpl#isModifie <em>Modifie</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,7 +132,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	protected String titre = TITRE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSectionRacine() <em>Section Racine</em>}' containment reference.
+	 * The cached value of the '{@link #getSectionRacine() <em>Section Racine</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSectionRacine()
@@ -156,12 +162,57 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	protected Section sectionCourante;
 
 	/**
+	 * The cached value of the '{@link #getSections() <em>Sections</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSections()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Section> sections;
+
+	/**
+	 * The default value of the '{@link #isModifie() <em>Modifie</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isModifie()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MODIFIE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isModifie() <em>Modifie</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isModifie()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean modifie = MODIFIE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected DocumentImpl() {
 		super();
+		this.titre = "untitled";
+		this.sectionRacine = new SectionBrancheImpl();
+		this.historique = new HistoriqueImpl();
+		this.pressePapier = new PressePapierImpl();
+		this.sectionCourante = this.sectionRacine;
+	}
+	
+	public DocumentImpl(String titre) {
+		super();
+		this.titre = titre;
+		this.sectionRacine = new SectionBrancheImpl();
+		this.historique = new HistoriqueImpl();
+		this.pressePapier = new PressePapierImpl();
+		this.sectionCourante = this.sectionRacine;
+		
 	}
 
 	/**
@@ -307,6 +358,14 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * @generated
 	 */
 	public Section getSectionRacine() {
+		if (sectionRacine != null && sectionRacine.eIsProxy()) {
+			InternalEObject oldSectionRacine = (InternalEObject)sectionRacine;
+			sectionRacine = (Section)eResolveProxy(oldSectionRacine);
+			if (sectionRacine != oldSectionRacine) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.DOCUMENT__SECTION_RACINE, oldSectionRacine, sectionRacine));
+			}
+		}
 		return sectionRacine;
 	}
 
@@ -315,14 +374,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSectionRacine(Section newSectionRacine, NotificationChain msgs) {
-		Section oldSectionRacine = sectionRacine;
-		sectionRacine = newSectionRacine;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_RACINE, oldSectionRacine, newSectionRacine);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Section basicGetSectionRacine() {
+		return sectionRacine;
 	}
 
 	/**
@@ -331,17 +384,10 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * @generated
 	 */
 	public void setSectionRacine(Section newSectionRacine) {
-		if (newSectionRacine != sectionRacine) {
-			NotificationChain msgs = null;
-			if (sectionRacine != null)
-				msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.DOCUMENT__SECTION_RACINE, null, msgs);
-			if (newSectionRacine != null)
-				msgs = ((InternalEObject)newSectionRacine).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.DOCUMENT__SECTION_RACINE, null, msgs);
-			msgs = basicSetSectionRacine(newSectionRacine, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_RACINE, newSectionRacine, newSectionRacine));
+		Section oldSectionRacine = sectionRacine;
+		sectionRacine = newSectionRacine;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_RACINE, oldSectionRacine, sectionRacine));
 	}
 
 	/**
@@ -418,14 +464,11 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSectionCourante(Section newSectionCourante, NotificationChain msgs) {
+	public void setSectionCourante(Section newSectionCourante) {
 		Section oldSectionCourante = sectionCourante;
 		sectionCourante = newSectionCourante;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_COURANTE, oldSectionCourante, newSectionCourante);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_COURANTE, oldSectionCourante, sectionCourante));
 	}
 
 	/**
@@ -433,18 +476,11 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSectionCourante(Section newSectionCourante) {
-		if (newSectionCourante != sectionCourante) {
-			NotificationChain msgs = null;
-			if (sectionCourante != null)
-				msgs = ((InternalEObject)sectionCourante).eInverseRemove(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
-			if (newSectionCourante != null)
-				msgs = ((InternalEObject)newSectionCourante).eInverseAdd(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
-			msgs = basicSetSectionCourante(newSectionCourante, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList<Section> getSections() {
+		if (sections == null) {
+			sections = new EObjectContainmentWithInverseEList<Section>(Section.class, this, ModelPackage.DOCUMENT__SECTIONS, ModelPackage.SECTION__DOCUMENT);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_COURANTE, newSectionCourante, newSectionCourante));
+		return sections;
 	}
 
 	/**
@@ -452,13 +488,33 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isModifie() {
+		return modifie;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setModifie(boolean newModifie) {
+		boolean oldModifie = modifie;
+		modifie = newModifie;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__MODIFIE, oldModifie, modifie));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.DOCUMENT__SECTION_COURANTE:
-				if (sectionCourante != null)
-					msgs = ((InternalEObject)sectionCourante).eInverseRemove(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
-				return basicSetSectionCourante((Section)otherEnd, msgs);
+			case ModelPackage.DOCUMENT__SECTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSections()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -473,12 +529,10 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 		switch (featureID) {
 			case ModelPackage.DOCUMENT__HISTORIQUE:
 				return basicSetHistorique(null, msgs);
-			case ModelPackage.DOCUMENT__SECTION_RACINE:
-				return basicSetSectionRacine(null, msgs);
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				return basicSetPressePapier(null, msgs);
-			case ModelPackage.DOCUMENT__SECTION_COURANTE:
-				return basicSetSectionCourante(null, msgs);
+			case ModelPackage.DOCUMENT__SECTIONS:
+				return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -502,12 +556,17 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 			case ModelPackage.DOCUMENT__TITRE:
 				return getTitre();
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
-				return getSectionRacine();
+				if (resolve) return getSectionRacine();
+				return basicGetSectionRacine();
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				return getPressePapier();
 			case ModelPackage.DOCUMENT__SECTION_COURANTE:
 				if (resolve) return getSectionCourante();
 				return basicGetSectionCourante();
+			case ModelPackage.DOCUMENT__SECTIONS:
+				return getSections();
+			case ModelPackage.DOCUMENT__MODIFIE:
+				return isModifie();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -517,6 +576,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -543,6 +603,13 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return;
 			case ModelPackage.DOCUMENT__SECTION_COURANTE:
 				setSectionCourante((Section)newValue);
+				return;
+			case ModelPackage.DOCUMENT__SECTIONS:
+				getSections().clear();
+				getSections().addAll((Collection<? extends Section>)newValue);
+				return;
+			case ModelPackage.DOCUMENT__MODIFIE:
+				setModifie((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -580,6 +647,12 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 			case ModelPackage.DOCUMENT__SECTION_COURANTE:
 				setSectionCourante((Section)null);
 				return;
+			case ModelPackage.DOCUMENT__SECTIONS:
+				getSections().clear();
+				return;
+			case ModelPackage.DOCUMENT__MODIFIE:
+				setModifie(MODIFIE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -608,6 +681,10 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return pressePapier != null;
 			case ModelPackage.DOCUMENT__SECTION_COURANTE:
 				return sectionCourante != null;
+			case ModelPackage.DOCUMENT__SECTIONS:
+				return sections != null && !sections.isEmpty();
+			case ModelPackage.DOCUMENT__MODIFIE:
+				return modifie != MODIFIE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -630,6 +707,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 		result.append(positionCurseur);
 		result.append(", titre: ");
 		result.append(titre);
+		result.append(", modifie: ");
+		result.append(modifie);
 		result.append(')');
 		return result.toString();
 	}

@@ -2,6 +2,7 @@
  */
 package model;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link model.Document#getSectionRacine <em>Section Racine</em>}</li>
  *   <li>{@link model.Document#getPressePapier <em>Presse Papier</em>}</li>
  *   <li>{@link model.Document#getSectionCourante <em>Section Courante</em>}</li>
+ *   <li>{@link model.Document#getSections <em>Sections</em>}</li>
+ *   <li>{@link model.Document#isModifie <em>Modifie</em>}</li>
  * </ul>
  * </p>
  *
@@ -159,26 +162,26 @@ public interface Document extends EObject {
 	void setTitre(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Section Racine</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Section Racine</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Section Racine</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Section Racine</em>' containment reference.
+	 * @return the value of the '<em>Section Racine</em>' reference.
 	 * @see #setSectionRacine(Section)
 	 * @see model.ModelPackage#getDocument_SectionRacine()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Section getSectionRacine();
 
 	/**
-	 * Sets the value of the '{@link model.Document#getSectionRacine <em>Section Racine</em>}' containment reference.
+	 * Sets the value of the '{@link model.Document#getSectionRacine <em>Section Racine</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Section Racine</em>' containment reference.
+	 * @param value the new value of the '<em>Section Racine</em>' reference.
 	 * @see #getSectionRacine()
 	 * @generated
 	 */
@@ -212,7 +215,6 @@ public interface Document extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Section Courante</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link model.Section#getDocument <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Section Courante</em>' reference isn't clear,
@@ -222,8 +224,7 @@ public interface Document extends EObject {
 	 * @return the value of the '<em>Section Courante</em>' reference.
 	 * @see #setSectionCourante(Section)
 	 * @see model.ModelPackage#getDocument_SectionCourante()
-	 * @see model.Section#getDocument
-	 * @model opposite="document" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Section getSectionCourante();
@@ -237,5 +238,50 @@ public interface Document extends EObject {
 	 * @generated
 	 */
 	void setSectionCourante(Section value);
+
+	/**
+	 * Returns the value of the '<em><b>Sections</b></em>' containment reference list.
+	 * The list contents are of type {@link model.Section}.
+	 * It is bidirectional and its opposite is '{@link model.Section#getDocument <em>Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sections</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sections</em>' containment reference list.
+	 * @see model.ModelPackage#getDocument_Sections()
+	 * @see model.Section#getDocument
+	 * @model opposite="document" containment="true" required="true"
+	 * @generated
+	 */
+	EList<Section> getSections();
+
+	/**
+	 * Returns the value of the '<em><b>Modifie</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Modifie</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Modifie</em>' attribute.
+	 * @see #setModifie(boolean)
+	 * @see model.ModelPackage#getDocument_Modifie()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isModifie();
+
+	/**
+	 * Sets the value of the '{@link model.Document#isModifie <em>Modifie</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Modifie</em>' attribute.
+	 * @see #isModifie()
+	 * @generated
+	 */
+	void setModifie(boolean value);
 
 } // Document

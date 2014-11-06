@@ -25,17 +25,19 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Historique extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Actions Defaites</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Actions Defaites</b></em>' reference list.
 	 * The list contents are of type {@link model.Action}.
+	 * It is bidirectional and its opposite is '{@link model.Action#getHistorique <em>Historique</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Actions Defaites</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions Defaites</em>' containment reference list.
+	 * @return the value of the '<em>Actions Defaites</em>' reference list.
 	 * @see model.ModelPackage#getHistorique_ActionsDefaites()
-	 * @model containment="true"
+	 * @see model.Action#getHistorique
+	 * @model opposite="historique"
 	 * @generated
 	 */
 	EList<Action> getActionsDefaites();
@@ -43,7 +45,6 @@ public interface Historique extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Actions Refaites</b></em>' reference list.
 	 * The list contents are of type {@link model.Action}.
-	 * It is bidirectional and its opposite is '{@link model.Action#getHistorique <em>Historique</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Actions Refaites</em>' reference list isn't clear,
@@ -52,8 +53,7 @@ public interface Historique extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions Refaites</em>' reference list.
 	 * @see model.ModelPackage#getHistorique_ActionsRefaites()
-	 * @see model.Action#getHistorique
-	 * @model opposite="historique"
+	 * @model
 	 * @generated
 	 */
 	EList<Action> getActionsRefaites();

@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface Action extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Historique</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}'.
+	 * It is bidirectional and its opposite is '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Historique</em>' reference isn't clear,
@@ -36,8 +36,8 @@ public interface Action extends EObject {
 	 * @return the value of the '<em>Historique</em>' reference.
 	 * @see #setHistorique(Historique)
 	 * @see model.ModelPackage#getAction_Historique()
-	 * @see model.Historique#getActionsRefaites
-	 * @model opposite="actionsRefaites"
+	 * @see model.Historique#getActionsDefaites
+	 * @model opposite="actionsDefaites"
 	 * @generated
 	 */
 	Historique getHistorique();
@@ -79,26 +79,26 @@ public interface Action extends EObject {
 	void setStrategieInsertion(StrategieInsertion value);
 
 	/**
-	 * Returns the value of the '<em><b>Contenu</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Contenu</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contenu</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contenu</em>' containment reference.
+	 * @return the value of the '<em>Contenu</em>' reference.
 	 * @see #setContenu(Contenu)
 	 * @see model.ModelPackage#getAction_Contenu()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Contenu getContenu();
 
 	/**
-	 * Sets the value of the '{@link model.Action#getContenu <em>Contenu</em>}' containment reference.
+	 * Sets the value of the '{@link model.Action#getContenu <em>Contenu</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contenu</em>' containment reference.
+	 * @param value the new value of the '<em>Contenu</em>' reference.
 	 * @see #getContenu()
 	 * @generated
 	 */

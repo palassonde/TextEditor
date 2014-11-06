@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface SectionBranche extends Section {
 	/**
-	 * Returns the value of the '<em><b>Enfant</b></em>' reference list.
+	 * Returns the value of the '<em><b>Enfant</b></em>' containment reference list.
 	 * The list contents are of type {@link model.Section}.
 	 * It is bidirectional and its opposite is '{@link model.Section#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
@@ -31,10 +31,10 @@ public interface SectionBranche extends Section {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Enfant</em>' reference list.
+	 * @return the value of the '<em>Enfant</em>' containment reference list.
 	 * @see model.ModelPackage#getSectionBranche_Enfant()
 	 * @see model.Section#getParent
-	 * @model opposite="parent"
+	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */
 	EList<Section> getEnfant();

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -83,16 +84,6 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @ordered
 	 */
 	protected int position = POSITION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getSection() <em>Section</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSection()
-	 * @generated
-	 * @ordered
-	 */
-	protected Section section;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,24 +186,8 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @generated
 	 */
 	public Section getSection() {
-		if (section != null && section.eIsProxy()) {
-			InternalEObject oldSection = (InternalEObject)section;
-			section = (Section)eResolveProxy(oldSection);
-			if (section != oldSection) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.CONTENU__SECTION, oldSection, section));
-			}
-		}
-		return section;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Section basicGetSection() {
-		return section;
+		if (eContainerFeatureID() != ModelPackage.CONTENU__SECTION) return null;
+		return (Section)eInternalContainer();
 	}
 
 	/**
@@ -221,12 +196,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @generated
 	 */
 	public NotificationChain basicSetSection(Section newSection, NotificationChain msgs) {
-		Section oldSection = section;
-		section = newSection;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.CONTENU__SECTION, oldSection, newSection);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newSection, ModelPackage.CONTENU__SECTION, msgs);
 		return msgs;
 	}
 
@@ -236,10 +206,12 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @generated
 	 */
 	public void setSection(Section newSection) {
-		if (newSection != section) {
+		if (newSection != eInternalContainer() || (eContainerFeatureID() != ModelPackage.CONTENU__SECTION && newSection != null)) {
+			if (EcoreUtil.isAncestor(this, newSection))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (section != null)
-				msgs = ((InternalEObject)section).eInverseRemove(this, ModelPackage.SECTION__CONTENU, Section.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSection != null)
 				msgs = ((InternalEObject)newSection).eInverseAdd(this, ModelPackage.SECTION__CONTENU, Section.class, msgs);
 			msgs = basicSetSection(newSection, msgs);
@@ -328,8 +300,8 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 					msgs = ((InternalEObject)strategie).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.CONTENU__STRATEGIE, null, msgs);
 				return basicSetStrategie((StrategieInsertion)otherEnd, msgs);
 			case ModelPackage.CONTENU__SECTION:
-				if (section != null)
-					msgs = ((InternalEObject)section).eInverseRemove(this, ModelPackage.SECTION__CONTENU, Section.class, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSection((Section)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -359,6 +331,20 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case ModelPackage.CONTENU__SECTION:
+				return eInternalContainer().eInverseRemove(this, ModelPackage.SECTION__CONTENU, Section.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.CONTENU__STRATEGIE:
@@ -368,8 +354,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 			case ModelPackage.CONTENU__POSITION:
 				return getPosition();
 			case ModelPackage.CONTENU__SECTION:
-				if (resolve) return getSection();
-				return basicGetSection();
+				return getSection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -439,7 +424,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 			case ModelPackage.CONTENU__POSITION:
 				return position != POSITION_EDEFAULT;
 			case ModelPackage.CONTENU__SECTION:
-				return section != null;
+				return getSection() != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
-import javax.swing.UIManager;
 
 
 @SuppressWarnings("serial")
@@ -140,23 +139,7 @@ public class InterfaceEditeur extends JFrame {
       		public void windowClosing(WindowEvent we) {
       			System.exit(0);
       		}
-      	}); 
-     	}
-      	
-	public static void main(String args[]) {
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		}
-		catch(Exception e) {
-			System.out.println(e); 
-		}
-
-		InterfaceEditeur ie = new InterfaceEditeur();
-
-		ie.setSize(725, 460);
-
-		ie.setVisible(true);
-
+      	});  	
 	}
 
 	public void update() {

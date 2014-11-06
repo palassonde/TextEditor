@@ -52,35 +52,35 @@ public interface Section extends EObject {
 	void setTitre(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Document</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link model.Document#getSectionCourante <em>Section Courante</em>}'.
+	 * Returns the value of the '<em><b>Document</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link model.Document#getSections <em>Sections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Document</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Document</em>' reference.
+	 * @return the value of the '<em>Document</em>' container reference.
 	 * @see #setDocument(Document)
 	 * @see model.ModelPackage#getSection_Document()
-	 * @see model.Document#getSectionCourante
-	 * @model opposite="sectionCourante" required="true"
+	 * @see model.Document#getSections
+	 * @model opposite="sections" required="true" transient="false"
 	 * @generated
 	 */
 	Document getDocument();
 
 	/**
-	 * Sets the value of the '{@link model.Section#getDocument <em>Document</em>}' reference.
+	 * Sets the value of the '{@link model.Section#getDocument <em>Document</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Document</em>' reference.
+	 * @param value the new value of the '<em>Document</em>' container reference.
 	 * @see #getDocument()
 	 * @generated
 	 */
 	void setDocument(Document value);
 
 	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' reference.
+	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link model.SectionBranche#getEnfant <em>Enfant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -88,27 +88,27 @@ public interface Section extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' reference.
+	 * @return the value of the '<em>Parent</em>' container reference.
 	 * @see #setParent(SectionBranche)
 	 * @see model.ModelPackage#getSection_Parent()
 	 * @see model.SectionBranche#getEnfant
-	 * @model opposite="enfant" required="true"
+	 * @model opposite="enfant" required="true" transient="false"
 	 * @generated
 	 */
 	SectionBranche getParent();
 
 	/**
-	 * Sets the value of the '{@link model.Section#getParent <em>Parent</em>}' reference.
+	 * Sets the value of the '{@link model.Section#getParent <em>Parent</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' reference.
+	 * @param value the new value of the '<em>Parent</em>' container reference.
 	 * @see #getParent()
 	 * @generated
 	 */
 	void setParent(SectionBranche value);
 
 	/**
-	 * Returns the value of the '<em><b>Contenu</b></em>' reference.
+	 * Returns the value of the '<em><b>Contenu</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link model.Contenu#getSection <em>Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -116,20 +116,20 @@ public interface Section extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contenu</em>' reference.
+	 * @return the value of the '<em>Contenu</em>' containment reference.
 	 * @see #setContenu(Contenu)
 	 * @see model.ModelPackage#getSection_Contenu()
 	 * @see model.Contenu#getSection
-	 * @model opposite="section" required="true"
+	 * @model opposite="section" containment="true" required="true"
 	 * @generated
 	 */
 	Contenu getContenu();
 
 	/**
-	 * Sets the value of the '{@link model.Section#getContenu <em>Contenu</em>}' reference.
+	 * Sets the value of the '{@link model.Section#getContenu <em>Contenu</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contenu</em>' reference.
+	 * @param value the new value of the '<em>Contenu</em>' containment reference.
 	 * @see #getContenu()
 	 * @generated
 	 */

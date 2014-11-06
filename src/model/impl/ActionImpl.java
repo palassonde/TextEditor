@@ -56,7 +56,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	protected StrategieInsertion strategieInsertion;
 
 	/**
-	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' containment reference.
+	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContenu()
@@ -154,9 +154,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 		if (newHistorique != historique) {
 			NotificationChain msgs = null;
 			if (historique != null)
-				msgs = ((InternalEObject)historique).eInverseRemove(this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, Historique.class, msgs);
+				msgs = ((InternalEObject)historique).eInverseRemove(this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES, Historique.class, msgs);
 			if (newHistorique != null)
-				msgs = ((InternalEObject)newHistorique).eInverseAdd(this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, Historique.class, msgs);
+				msgs = ((InternalEObject)newHistorique).eInverseAdd(this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES, Historique.class, msgs);
 			msgs = basicSetHistorique(newHistorique, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -208,6 +208,14 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * @generated
 	 */
 	public Contenu getContenu() {
+		if (contenu != null && contenu.eIsProxy()) {
+			InternalEObject oldContenu = (InternalEObject)contenu;
+			contenu = (Contenu)eResolveProxy(oldContenu);
+			if (contenu != oldContenu) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION__CONTENU, oldContenu, contenu));
+			}
+		}
 		return contenu;
 	}
 
@@ -216,14 +224,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContenu(Contenu newContenu, NotificationChain msgs) {
-		Contenu oldContenu = contenu;
-		contenu = newContenu;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__CONTENU, oldContenu, newContenu);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Contenu basicGetContenu() {
+		return contenu;
 	}
 
 	/**
@@ -232,17 +234,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * @generated
 	 */
 	public void setContenu(Contenu newContenu) {
-		if (newContenu != contenu) {
-			NotificationChain msgs = null;
-			if (contenu != null)
-				msgs = ((InternalEObject)contenu).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.ACTION__CONTENU, null, msgs);
-			if (newContenu != null)
-				msgs = ((InternalEObject)newContenu).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.ACTION__CONTENU, null, msgs);
-			msgs = basicSetContenu(newContenu, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__CONTENU, newContenu, newContenu));
+		Contenu oldContenu = contenu;
+		contenu = newContenu;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__CONTENU, oldContenu, contenu));
 	}
 
 	/**
@@ -276,7 +271,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 		switch (featureID) {
 			case ModelPackage.ACTION__HISTORIQUE:
 				if (historique != null)
-					msgs = ((InternalEObject)historique).eInverseRemove(this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES, Historique.class, msgs);
+					msgs = ((InternalEObject)historique).eInverseRemove(this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES, Historique.class, msgs);
 				return basicSetHistorique((Historique)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -292,8 +287,6 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 		switch (featureID) {
 			case ModelPackage.ACTION__HISTORIQUE:
 				return basicSetHistorique(null, msgs);
-			case ModelPackage.ACTION__CONTENU:
-				return basicSetContenu(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -313,7 +306,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 				if (resolve) return getStrategieInsertion();
 				return basicGetStrategieInsertion();
 			case ModelPackage.ACTION__CONTENU:
-				return getContenu();
+				if (resolve) return getContenu();
+				return basicGetContenu();
 			case ModelPackage.ACTION__TYPE_ACTION:
 				return getTypeAction();
 		}

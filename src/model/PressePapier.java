@@ -22,26 +22,26 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface PressePapier extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Contenu</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Contenu</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contenu</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contenu</em>' containment reference.
+	 * @return the value of the '<em>Contenu</em>' reference.
 	 * @see #setContenu(Contenu)
 	 * @see model.ModelPackage#getPressePapier_Contenu()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Contenu getContenu();
 
 	/**
-	 * Sets the value of the '{@link model.PressePapier#getContenu <em>Contenu</em>}' containment reference.
+	 * Sets the value of the '{@link model.PressePapier#getContenu <em>Contenu</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contenu</em>' containment reference.
+	 * @param value the new value of the '<em>Contenu</em>' reference.
 	 * @see #getContenu()
 	 * @generated
 	 */
