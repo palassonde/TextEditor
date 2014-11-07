@@ -98,14 +98,17 @@ public class InterfaceEditeur extends JFrame {
       	deplacer = new JMenuItem("D\u00e9placer");
       	editer.add(deplacer);
       	deplacer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK)); // Ctrl+X
+      	deplacer.setEnabled(false);
       	/* Editer->Copier */
       	copier = new JMenuItem("Copier");
       	editer.add(copier);
       	copier.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK)); // Ctrl+C
+      	copier.setEnabled(false);
       	/* Editer->Coller */
       	coller = new JMenuItem("Coller");
       	editer.add(coller);
       	coller.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK)); // Ctrl+V
+      	coller.setEnabled(false);
       	/* Editer->Selectionner tout */
       	selectionnerTout = new JMenuItem("S\u00e9lectionner tout");
       	editer.add(selectionnerTout);

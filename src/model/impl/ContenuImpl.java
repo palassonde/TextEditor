@@ -4,6 +4,7 @@ package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.ListIterator;
 
 import model.Action;
 import model.Contenu;
@@ -241,10 +242,14 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void coller(Contenu contenu, int position) {
-		this.strategie.inserer(contenu, position);
+		ListIterator<Element> iter = contenu.getElements().listIterator();
+		while(iter.hasNext()){
+			Element c = new CaractereImpl(iter.next());
+			this.strategie.inserer(c, position);
+			position++;
+		}
 	}
 
 	/**
@@ -253,9 +258,13 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 */
 	public Contenu copier(int positionDebut, int positionFin) {
 		Contenu contenu = new ContenuImpl();
+		int i = positionDebut;
 		int j = 0;
-		for (int i = positionDebut; i < positionFin; i++) {
-			contenu.getStrategie().inserer(this.elements.get(i), j);
+		ListIterator<Element> iter = this.getElements().listIterator(positionDebut);
+		while(i != positionFin){
+			Element c = new CaractereImpl(iter.next());
+			contenu.getStrategie().inserer(c, j);
+			i++;
 			j++;
 		}
 		contenu.setPosition(positionDebut);
@@ -463,11 +472,16 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	public String toString() {
 		
 		StringBuffer result = new StringBuffer();
-		for(int i=0; i<elements.size(); i++){
-			result.append(elements.get(i).toString());
-		}
-		if (result.toString() == null)
+		if(elements == null)
 			result.append("");
+		else {
+			for(int i=0; i<elements.size(); i++){
+				result.append(elements.get(i).toString());
+			}
+			if (elements.size() == 0)
+				result.append("");
+		}
+		
 		return result.toString();
 	}
 

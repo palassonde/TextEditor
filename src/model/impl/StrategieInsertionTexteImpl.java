@@ -111,9 +111,8 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	 */
 	public void inserer(Contenu contenu, int position) {
 		EList<Element> liste = contenu.getElements();
-		for (int i=0; i < liste.size(); i++){
-			this.getContenu().getElements().addAll(position, contenu.getElements());
-		}
+		this.getContenu().getElements().addAll(position, liste);
+		
 	}
 
 	/**

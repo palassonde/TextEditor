@@ -66,18 +66,13 @@ public class Controlleur {
 			public void actionPerformed(ActionEvent actionEvent) {
 				
 				if (actionEvent.getSource() == vue.getCopier()){
-					int positionDebut = vue.getSurface().getSelectionStart();
-					int positionFin = vue.getSurface().getSelectionEnd();
-					Contenu contenu = editeur.getDocumentCourant().getSectionCourante().getContenu().copier(positionDebut, positionFin);
-					editeur.getDocumentCourant().getPressePapier().setContenu(contenu);
+					copier();
 				}
 				else if (actionEvent.getSource() == vue.getColler()){
-					Contenu contenu = editeur.getDocumentCourant().getPressePapier().getContenu();
-					System.out.println(contenu.toString());
-					int position = vue.getSurface().getCaretPosition();
-					System.out.println(position);
-					editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
-					vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+					coller();
+				}
+				else if (actionEvent.getSource() == vue.getDeplacer()){
+					deplacer();
 				}
 				else if (actionEvent.getSource() == vue.getNouveau()){
 					editeur.creerNouvDocument();
@@ -102,32 +97,32 @@ public class Controlleur {
 			public void keyPressed(KeyEvent e) {
 				displayInfo(e,"Key Pressed");
 				if(e.getKeyCode() == 8){
-					if(vue.getSurface().getSelectedText() == null){
-						if(vue.getSurface().getCaretPosition() != 0)
-						 	editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(vue.getSurface().getCaretPosition()-1, vue.getSurface().getCaretPosition());
-							System.out.println(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
-					}	
-					else{
-						editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(vue.getSurface().getSelectionStart(), vue.getSurface().getSelectionEnd());
-						System.out.println(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+					supprimer();
+				}
+				else if(e.getKeyCode() == 67 && e.getModifiers() == 2)
+					copier();
+				else if(e.getKeyCode() == 86 && e.getModifiers() == 2)
+					coller();
+				
+				else if((e.getKeyCode()>=10 && e.getKeyCode()<=90) || e.getKeyCode() == 192){
+					if ((e.getKeyCode() < 16 || e.getKeyCode() > 20) && (e.getKeyCode()< 37 || e.getKeyCode() > 40)){
+						int pos = vue.getSurface().getCaretPosition();
+						editeur.getDocumentCourant().getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(e.getKeyChar()), pos);
+						updateView();
+						setCaretPosition(pos+1);
 					}
+					
 				}
-				else if(e.getKeyCode()>=65 && e.getKeyCode()<=90){
-					editeur.getDocumentCourant().getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(e.getKeyChar()), vue.getSurface().getCaretPosition());
-					System.out.println(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
-				}
-				updateView();
+				
+				vue.getSurface().getCaret().setVisible(true);
 				
 			}
 		};
-		//Peut etre pas necessaire
 		mouseListener = new MouseListener(){
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				editeur.getDocumentCourant().setDebutSel(vue.getSurface().getSelectionStart());
-				editeur.getDocumentCourant().setFinSel(vue.getSurface().getSelectionEnd());
-				editeur.getDocumentCourant().setPositionCurseur(vue.getSurface().getCaretPosition());
+				
 			}
 
 			@Override
@@ -138,9 +133,11 @@ public class Controlleur {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				editeur.getDocumentCourant().setDebutSel(vue.getSurface().getSelectionStart());
-				editeur.getDocumentCourant().setFinSel(vue.getSurface().getSelectionEnd());
-				editeur.getDocumentCourant().setPositionCurseur(vue.getSurface().getCaretPosition());
+				vue.getSurface().getCaret().setVisible(true);
+				if(vue.getSurface().getSelectedText() != null)
+					vue.getCopier().setEnabled(true);
+				else
+					vue.getCopier().setEnabled(false);
 				
 			}
 
@@ -170,6 +167,56 @@ public class Controlleur {
 		vue.getSurface().addKeyListener(keyListener);
 		vue.getSurface().addMouseListener(mouseListener);
 		
+	}
+
+	protected void setCaretPosition(int i) {
+		vue.getSurface().setCaretPosition(i);
+		
+	}
+
+	protected void supprimer() {
+		int pos = vue.getSurface().getCaretPosition();
+		if(vue.getSurface().getSelectedText() == null){
+			if(pos != 0){
+			 	editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(pos-1, pos);
+			 	updateView();
+				setCaretPosition(pos-1);
+			}
+		}	
+		else{
+			int debut = vue.getSurface().getSelectionStart();
+			int fin = vue.getSurface().getSelectionEnd();
+			editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(debut, fin);
+			updateView();
+			setCaretPosition(debut);
+		}
+		
+	}
+
+	protected void deplacer() {
+		// TODO Auto-generated method stub
+		vue.getColler().setEnabled(false);
+		vue.getDeplacer().setEnabled(false);
+		editeur.getDocumentCourant().getPressePapier().vider();
+		
+	}
+
+	protected void coller() {
+		Contenu contenu = editeur.getDocumentCourant().getPressePapier().getContenu();
+		int position = vue.getSurface().getCaretPosition();
+		editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
+		vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+		updateView();
+		setCaretPosition(position+contenu.getElements().size());
+	}
+
+	protected void copier() {
+		int positionDebut = vue.getSurface().getSelectionStart();
+		int positionFin = vue.getSurface().getSelectionEnd();
+		Contenu contenu = editeur.getDocumentCourant().getSectionCourante().getContenu().copier(positionDebut, positionFin);
+		editeur.getDocumentCourant().getPressePapier().setContenu(contenu);
+		vue.getColler().setEnabled(true);
+		vue.getDeplacer().setEnabled(true);
 	}
 
 	public void creerNouveauDocument() {
