@@ -194,7 +194,12 @@ public class Controlleur {
 	}
 
 	protected void deplacer() {
-		// TODO Auto-generated method stub
+		Contenu contenu = editeur.getDocumentCourant().getPressePapier().getContenu();
+		int position = vue.getSurface().getCaretPosition();
+		editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
+		vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+		updateView();
+		setCaretPosition(position);
 		vue.getColler().setEnabled(false);
 		vue.getDeplacer().setEnabled(false);
 		editeur.getDocumentCourant().getPressePapier().vider();

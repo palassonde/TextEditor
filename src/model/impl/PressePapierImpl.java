@@ -108,12 +108,9 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void vider() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.setContenu(null);
 	}
 
 	/**

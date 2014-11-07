@@ -225,9 +225,8 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * @generated
 	 */
 	public void deplacer(Contenu contenu, int position) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.supprimer(contenu.getPosition(), contenu.getPosition()+contenu.getElements().size());
+		this.coller(contenu, position);
 	}
 
 	/**
