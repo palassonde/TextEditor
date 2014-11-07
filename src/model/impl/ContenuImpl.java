@@ -234,7 +234,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 */
 	public void supprimer(int positionDebut, int positionFin) {
-		for(int i=0; i < positionFin; i++)
+		for(int i=positionFin-1; i >= positionDebut; i--)
 			this.elements.remove(i);
 	}
 
@@ -466,6 +466,8 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 		for(int i=0; i<elements.size(); i++){
 			result.append(elements.get(i).toString());
 		}
+		if (result.toString() == null)
+			result.append("");
 		return result.toString();
 	}
 

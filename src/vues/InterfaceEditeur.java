@@ -27,10 +27,10 @@ public class InterfaceEditeur extends JFrame {
 	JMenu sections;
 	JMenu aide;
 
-	private JMenuItem ouvrir;
-	private JMenuItem enregistrer;
-	private JMenuItem fermer;
-	private JMenuItem annuler;
+	JMenuItem ouvrir;
+	JMenuItem enregistrer;
+	JMenuItem fermer;
+	JMenuItem annuler;
 	JMenuItem retablir;
 	JMenuItem deplacer;
 	JMenuItem copier;
@@ -38,6 +38,7 @@ public class InterfaceEditeur extends JFrame {
 	JMenuItem selectionnerTout;
 	JMenuItem ajouterSection;
 	JMenuItem aPropos;
+	JMenuItem nouveau;
 
 	JTextPane surface;
 
@@ -69,6 +70,10 @@ public class InterfaceEditeur extends JFrame {
 		outils.setMnemonic('o');
 		aide.setMnemonic('a');
 
+      	/* Fichier->Nouveau */
+      	nouveau = new JMenuItem("Nouveau");
+      	nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK)); // Ctrl+O
+      	fichier.add(nouveau);
 		/* Fichier->Ouvrir */
 		ouvrir = new JMenuItem("Ouvrir");
 		ouvrir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK)); // Ctrl+O
@@ -125,6 +130,8 @@ public class InterfaceEditeur extends JFrame {
       	getContentPane().add(panneau, BorderLayout.CENTER);
 
       	surface = new JTextPane();
+      	surface.setEditable(false);
+      	surface.getCaret().setVisible(true);
 
       	//surface.setLineWrap(false);
 
@@ -149,6 +156,7 @@ public class InterfaceEditeur extends JFrame {
 	}
 
 	public void update(String contenu) {
+
 		this.surface.setText(contenu);
 		
 	}
@@ -167,6 +175,13 @@ public class InterfaceEditeur extends JFrame {
 		return enregistrer;
 	}
 
+	/**
+	 * @return the nouveau
+	 */
+	public JMenuItem getNouveau() {
+		return nouveau;
+	}
+	
 	/**
 	 * @return the annuler
 	 */

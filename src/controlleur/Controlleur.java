@@ -25,7 +25,42 @@ public class Controlleur {
 		this.vue = vue;
 		this.listen();
 	}
+	
+	protected void displayInfo(KeyEvent e, String s){
+		String charString, keyCodeString, modString, tmpString;
 
+		char c = e.getKeyChar();
+		int keyCode = e.getKeyCode();
+		int modifiers = e.getModifiers();
+
+		if (Character.isISOControl(c)) {
+		    charString = "key character = (an unprintable control character)";
+		} else {
+		    charString = "key character = '" + c + "'";
+		}
+
+		keyCodeString = "key code = " + keyCode
+				+ " ("
+				+ KeyEvent.getKeyText(keyCode)
+				+ ")";
+
+		modString = "modifiers = " + modifiers;
+		tmpString = KeyEvent.getKeyModifiersText(modifiers);
+		if (tmpString.length() > 0) {
+		    modString += " (" + tmpString + ")";
+		} else {
+		    modString += " (no modifiers)";
+		}
+
+		System.out.println(s
+	                           + "\n    "
+		                   + charString 
+		                   + "\n    "
+			           + keyCodeString
+	                           + "\n    "
+			           + modString
+			           + "\n");
+	    }
 	public void listen() {
 		listener = new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -44,27 +79,45 @@ public class Controlleur {
 					editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
 					vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
 				}
+				else if (actionEvent.getSource() == vue.getNouveau()){
+					editeur.creerNouvDocument();
+					vue.update("");
+				}
 
 			}
 		};
 		keyListener = new KeyListener() {
 
 			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+
+			@Override
 			public void keyTyped(KeyEvent e) {
-				editeur.getDocumentCourant().getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(e.getKeyChar()), vue.getSurface().getCaretPosition());
-				vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+				
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
+				displayInfo(e,"Key Pressed");
+				if(e.getKeyCode() == 8){
+					if(vue.getSurface().getSelectedText() == null){
+						if(vue.getSurface().getCaretPosition() != 0)
+						 	editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(vue.getSurface().getCaretPosition()-1, vue.getSurface().getCaretPosition());
+							System.out.println(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+					}	
+					else{
+						editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(vue.getSurface().getSelectionStart(), vue.getSurface().getSelectionEnd());
+						System.out.println(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+					}
+				}
+				else if(e.getKeyCode()>=65 && e.getKeyCode()<=90){
+					editeur.getDocumentCourant().getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(e.getKeyChar()), vue.getSurface().getCaretPosition());
+					System.out.println(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+				}
+				updateView();
+				
 			}
 		};
 		//Peut etre pas necessaire
@@ -110,10 +163,13 @@ public class Controlleur {
 		vue.getCopier().addActionListener(listener);
 		vue.getDeplacer().addActionListener(listener);
 		vue.getEnregistrer().addActionListener(listener);
+		vue.getOuvrir().addActionListener(listener);
+		vue.getNouveau().addActionListener(listener);
 		vue.getRetablir().addActionListener(listener);
 		vue.getSelectionnerTout().addActionListener(listener);
-		vue.addKeyListener(keyListener);
+		vue.getSurface().addKeyListener(keyListener);
 		vue.getSurface().addMouseListener(mouseListener);
+		
 	}
 
 	public void creerNouveauDocument() {
@@ -132,7 +188,7 @@ public class Controlleur {
 	}
 
 	public void updateView() {
-		vue.update(editeur.getDocumentCourant().getSectionCourante().toString());
+		vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
 	}
 
 	public void afficherVue() {
