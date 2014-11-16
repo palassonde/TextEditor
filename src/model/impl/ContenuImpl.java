@@ -222,7 +222,6 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void deplacer(Contenu contenu, int position) {
 		this.supprimer(contenu.getPosition(), contenu.getPosition()+contenu.getElements().size());

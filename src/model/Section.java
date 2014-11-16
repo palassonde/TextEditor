@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link model.Section#getTitre <em>Titre</em>}</li>
- *   <li>{@link model.Section#getDocument <em>Document</em>}</li>
  *   <li>{@link model.Section#getParent <em>Parent</em>}</li>
  *   <li>{@link model.Section#getContenu <em>Contenu</em>}</li>
  *   <li>{@link model.Section#getNiveau <em>Niveau</em>}</li>
@@ -50,34 +49,6 @@ public interface Section extends EObject {
 	 * @generated
 	 */
 	void setTitre(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Document</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link model.Document#getSectionRacine <em>Section Racine</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Document</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Document</em>' container reference.
-	 * @see #setDocument(Document)
-	 * @see model.ModelPackage#getSection_Document()
-	 * @see model.Document#getSectionRacine
-	 * @model opposite="sectionRacine" required="true" transient="false"
-	 * @generated
-	 */
-	Document getDocument();
-
-	/**
-	 * Sets the value of the '{@link model.Section#getDocument <em>Document</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Document</em>' container reference.
-	 * @see #getDocument()
-	 * @generated
-	 */
-	void setDocument(Document value);
 
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.

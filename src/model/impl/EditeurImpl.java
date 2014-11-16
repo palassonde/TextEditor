@@ -2,7 +2,6 @@
  */
 package model.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -114,9 +113,7 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		Map<String,Object> m = reg.getExtensionToFactoryMap();
 		m.put("document", new XMIResourceFactoryImpl());
 		ResourceSet resSet = new ResourceSetImpl();
-		//ligne ajoute
-		resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
-		URI fileURI = URI.createFileURI(new File(nomFichier).getAbsolutePath());
+		URI fileURI = URI.createFileURI(nomFichier);
 		Resource restaurantResource = resSet.createResource(fileURI);
 		restaurantResource.getContents().add(this.getDocumentCourant());
 		restaurantResource.save(null);
@@ -131,9 +128,7 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		Map<String,Object> m = reg.getExtensionToFactoryMap();
 		m.put("document", new XMIResourceFactoryImpl());
 		ResourceSet resSet = new ResourceSetImpl();
-		//ligne ajoute
-		resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
-		URI fileURI = URI.createFileURI(new File(nomFichier).getAbsolutePath());
+		URI fileURI = URI.createFileURI(nomFichier);
 		Resource documentResource = resSet.getResource(fileURI,true);
 		Document document = (Document)documentResource.getContents().get(0);
 		this.documentCourant = document;
@@ -215,13 +210,13 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.EDITEUR___SAUVEGARDER__STRING_DOCUMENT:
-			try {
-				sauvegarder((String)arguments.get(0));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			case ModelPackage.EDITEUR___SAUVEGARDER__STRING:
+				try {
+					sauvegarder((String)arguments.get(0));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return null;
 			case ModelPackage.EDITEUR___OUVRIR__STRING:
 				ouvrir((String)arguments.get(0));

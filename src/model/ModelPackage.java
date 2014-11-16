@@ -187,22 +187,13 @@ public interface ModelPackage extends EPackage {
 	int SECTION__TITRE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION__DOCUMENT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION__PARENT = 2;
+	int SECTION__PARENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Contenu</b></em>' containment reference.
@@ -211,7 +202,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION__CONTENU = 3;
+	int SECTION__CONTENU = 2;
 
 	/**
 	 * The feature id for the '<em><b>Niveau</b></em>' attribute.
@@ -220,7 +211,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION__NIVEAU = 4;
+	int SECTION__NIVEAU = 3;
 
 	/**
 	 * The number of structural features of the '<em>Section</em>' class.
@@ -229,7 +220,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_FEATURE_COUNT = 5;
+	int SECTION_FEATURE_COUNT = 4;
 
 	/**
 	 * The operation id for the '<em>Ajouter Sous Section</em>' operation.
@@ -276,15 +267,6 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECTION_FEUILLE__TITRE = SECTION__TITRE;
-
-	/**
-	 * The feature id for the '<em><b>Document</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION_FEUILLE__DOCUMENT = SECTION__DOCUMENT;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -378,15 +360,6 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__TITRE = SECTION__TITRE;
 
 	/**
-	 * The feature id for the '<em><b>Document</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION_BRANCHE__DOCUMENT = SECTION__DOCUMENT;
-
-	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -423,13 +396,22 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE__ENFANT = SECTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Document</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION_BRANCHE__DOCUMENT = SECTION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Section Branche</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_BRANCHE_FEATURE_COUNT = SECTION_FEATURE_COUNT + 1;
+	int SECTION_BRANCHE_FEATURE_COUNT = SECTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Renommer</em>' operation.
@@ -987,7 +969,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDITEUR___SAUVEGARDER__STRING_DOCUMENT = 0;
+	int EDITEUR___SAUVEGARDER__STRING = 0;
 
 	/**
 	 * The operation id for the '<em>Ouvrir</em>' operation.
@@ -1158,17 +1140,6 @@ public interface ModelPackage extends EPackage {
 	EAttribute getSection_Titre();
 
 	/**
-	 * Returns the meta object for the container reference '{@link model.Section#getDocument <em>Document</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Document</em>'.
-	 * @see model.Section#getDocument()
-	 * @see #getSection()
-	 * @generated
-	 */
-	EReference getSection_Document();
-
-	/**
 	 * Returns the meta object for the container reference '{@link model.Section#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1271,6 +1242,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSectionBranche_Enfant();
+
+	/**
+	 * Returns the meta object for the container reference '{@link model.SectionBranche#getDocument <em>Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Document</em>'.
+	 * @see model.SectionBranche#getDocument()
+	 * @see #getSectionBranche()
+	 * @generated
+	 */
+	EReference getSectionBranche_Document();
 
 	/**
 	 * Returns the meta object for the '{@link model.SectionBranche#renommer(java.lang.String) <em>Renommer</em>}' operation.
@@ -1704,7 +1686,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.Editeur#sauvegarder(java.lang.String)
 	 * @generated
 	 */
-	EOperation getEditeur__Sauvegarder__String_Document();
+	EOperation getEditeur__Sauvegarder__String();
 
 	/**
 	 * Returns the meta object for the '{@link model.Editeur#ouvrir(java.lang.String) <em>Ouvrir</em>}' operation.
@@ -1860,14 +1842,6 @@ public interface ModelPackage extends EPackage {
 		EAttribute SECTION__TITRE = eINSTANCE.getSection_Titre();
 
 		/**
-		 * The meta object literal for the '<em><b>Document</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SECTION__DOCUMENT = eINSTANCE.getSection_Document();
-
-		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1950,6 +1924,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SECTION_BRANCHE__ENFANT = eINSTANCE.getSectionBranche_Enfant();
+
+		/**
+		 * The meta object literal for the '<em><b>Document</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SECTION_BRANCHE__DOCUMENT = eINSTANCE.getSectionBranche_Document();
 
 		/**
 		 * The meta object literal for the '<em><b>Renommer</b></em>' operation.
@@ -2303,7 +2285,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation EDITEUR___SAUVEGARDER__STRING_DOCUMENT = eINSTANCE.getEditeur__Sauvegarder__String_Document();
+		EOperation EDITEUR___SAUVEGARDER__STRING = eINSTANCE.getEditeur__Sauvegarder__String();
 
 		/**
 		 * The meta object literal for the '<em><b>Ouvrir</b></em>' operation.

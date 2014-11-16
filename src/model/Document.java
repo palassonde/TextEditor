@@ -161,7 +161,7 @@ public interface Document extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Section Racine</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link model.Section#getDocument <em>Document</em>}'.
+	 * It is bidirectional and its opposite is '{@link model.SectionBranche#getDocument <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Section Racine</em>' containment reference isn't clear,
@@ -169,13 +169,13 @@ public interface Document extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Section Racine</em>' containment reference.
-	 * @see #setSectionRacine(Section)
+	 * @see #setSectionRacine(SectionBranche)
 	 * @see model.ModelPackage#getDocument_SectionRacine()
-	 * @see model.Section#getDocument
+	 * @see model.SectionBranche#getDocument
 	 * @model opposite="document" containment="true" required="true"
 	 * @generated
 	 */
-	Section getSectionRacine();
+	SectionBranche getSectionRacine();
 
 	/**
 	 * Sets the value of the '{@link model.Document#getSectionRacine <em>Section Racine</em>}' containment reference.
@@ -185,7 +185,7 @@ public interface Document extends EObject {
 	 * @see #getSectionRacine()
 	 * @generated
 	 */
-	void setSectionRacine(Section value);
+	void setSectionRacine(SectionBranche value);
 
 	/**
 	 * Returns the value of the '<em><b>Presse Papier</b></em>' containment reference.

@@ -6,6 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import vues.InterfaceEditeur;
 import model.Contenu;
@@ -60,7 +64,7 @@ public class Controlleur {
 	                           + "\n    "
 			           + modString
 			           + "\n");
-	    }
+	}
 	public void listen() {
 		listener = new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -75,8 +79,13 @@ public class Controlleur {
 					deplacer();
 				}
 				else if (actionEvent.getSource() == vue.getNouveau()){
-					editeur.creerNouvDocument();
-					vue.update("");
+					creerNouveauDocument();
+				}
+				else if (actionEvent.getSource() == vue.getEnregistrer()){
+					sauvergarder();	
+				}
+				else if (actionEvent.getSource() == vue.getOuvrir()){
+					ouvrir();	
 				}
 
 			}
@@ -99,9 +108,9 @@ public class Controlleur {
 				if(e.getKeyCode() == 8){
 					supprimer();
 				}
-				else if(e.getKeyCode() == 67 && e.getModifiers() == 2)
+				else if(e.getKeyCode() == 67 && e.getModifiers() == 2 && vue.getCopier().isEnabled())
 					copier();
-				else if(e.getKeyCode() == 86 && e.getModifiers() == 2)
+				else if(e.getKeyCode() == 86 && e.getModifiers() == 2 && vue.getColler().isEnabled())
 					coller();
 				
 				else if((e.getKeyCode()>=10 && e.getKeyCode()<=90) || e.getKeyCode() == 192){
@@ -110,10 +119,9 @@ public class Controlleur {
 						editeur.getDocumentCourant().getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(e.getKeyChar()), pos);
 						updateView();
 						setCaretPosition(pos+1);
-					}
-					
+						editeur.getDocumentCourant().setModifie(true);
+					}		
 				}
-				
 				vue.getSurface().getCaret().setVisible(true);
 				
 			}
@@ -127,7 +135,6 @@ public class Controlleur {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
@@ -143,13 +150,11 @@ public class Controlleur {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 		};
@@ -167,6 +172,67 @@ public class Controlleur {
 		vue.getSurface().addKeyListener(keyListener);
 		vue.getSurface().addMouseListener(mouseListener);
 		
+	}
+	
+	public void creerNouveauDocument() {
+		if(editeur.getDocumentCourant().isModifie()){
+			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
+			        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		    
+			if (response == JOptionPane.YES_OPTION) {
+		    	sauvergarder();
+		    	this.editeur.creerNouvDocument();
+		    }
+			else if (response == JOptionPane.NO_OPTION){
+				this.editeur.creerNouvDocument();
+			}
+		}
+	    updateView();
+
+	}
+
+	protected void ouvrir() {
+		
+		if(editeur.getDocumentCourant().isModifie()){
+			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
+			        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		    
+			if (response == JOptionPane.YES_OPTION) {
+		    	sauvergarder();
+		    	JFileChooser chooser = new JFileChooser();
+			    chooser.setCurrentDirectory(new File("/Desktop"));
+			    int retrival = chooser.showOpenDialog(null);
+			    if (retrival == JFileChooser.APPROVE_OPTION) {
+			    	editeur.ouvrir(chooser.getSelectedFile().toString());
+			    }
+		    }
+			else if (response == JOptionPane.NO_OPTION){
+				JFileChooser chooser = new JFileChooser();
+			    chooser.setCurrentDirectory(new File("/Desktop"));
+			    int retrival = chooser.showOpenDialog(null);
+			    if (retrival == JFileChooser.APPROVE_OPTION) {
+			    	editeur.ouvrir(chooser.getSelectedFile().toString());
+			    }
+			}
+		}
+	    updateView();
+		
+	}
+
+	protected void sauvergarder() {
+		
+		JFileChooser chooser = new JFileChooser();
+	    chooser.setCurrentDirectory(new File("/Desktop"));
+	    int retrival = chooser.showSaveDialog(null);
+	    if (retrival == JFileChooser.APPROVE_OPTION) {
+	        try {
+	            editeur.sauvegarder(chooser.getSelectedFile()+".document");
+	            editeur.getDocumentCourant().setModifie(false);
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	    updateView();	
 	}
 
 	protected void setCaretPosition(int i) {
@@ -203,6 +269,7 @@ public class Controlleur {
 		vue.getColler().setEnabled(false);
 		vue.getDeplacer().setEnabled(false);
 		editeur.getDocumentCourant().getPressePapier().vider();
+		editeur.getDocumentCourant().setModifie(true);
 		
 	}
 
@@ -213,6 +280,7 @@ public class Controlleur {
 		vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
 		updateView();
 		setCaretPosition(position+contenu.getElements().size());
+		editeur.getDocumentCourant().setModifie(true);
 	}
 
 	protected void copier() {
@@ -222,13 +290,6 @@ public class Controlleur {
 		editeur.getDocumentCourant().getPressePapier().setContenu(contenu);
 		vue.getColler().setEnabled(true);
 		vue.getDeplacer().setEnabled(true);
-	}
-
-	public void creerNouveauDocument() {
-		// TODO
-		// Ajouter demande sauvegarde
-		this.editeur.creerNouvDocument();
-
 	}
 
 	public void setTitreDocument(String titre) {

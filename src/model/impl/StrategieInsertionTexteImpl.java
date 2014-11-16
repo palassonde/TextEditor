@@ -43,7 +43,6 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	 */
 	protected StrategieInsertionTexteImpl() {
 		super();
-		
 	}
 
 	/**

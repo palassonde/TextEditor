@@ -9,6 +9,7 @@ import model.Historique;
 import model.ModelPackage;
 import model.PressePapier;
 import model.Section;
+import model.SectionBranche;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.URI;
@@ -141,7 +142,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * @generated
 	 * @ordered
 	 */
-	protected Section sectionRacine;
+	protected SectionBranche sectionRacine;
 
 	/**
 	 * The cached value of the '{@link #getPressePapier() <em>Presse Papier</em>}' containment reference.
@@ -195,7 +196,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	public DocumentImpl(String titre) {
 		super();
 		this.titre = titre;
-		this.sectionRacine = new SectionBrancheImpl();
+		this.sectionRacine = new SectionBrancheImpl(this);
 		this.historique = new HistoriqueImpl();
 		this.pressePapier = new PressePapierImpl();
 		this.sectionCourante = this.sectionRacine;
@@ -344,7 +345,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Section getSectionRacine() {
+	public SectionBranche getSectionRacine() {
 		return sectionRacine;
 	}
 
@@ -353,8 +354,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSectionRacine(Section newSectionRacine, NotificationChain msgs) {
-		Section oldSectionRacine = sectionRacine;
+	public NotificationChain basicSetSectionRacine(SectionBranche newSectionRacine, NotificationChain msgs) {
+		SectionBranche oldSectionRacine = sectionRacine;
 		sectionRacine = newSectionRacine;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_RACINE, oldSectionRacine, newSectionRacine);
@@ -368,13 +369,13 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSectionRacine(Section newSectionRacine) {
+	public void setSectionRacine(SectionBranche newSectionRacine) {
 		if (newSectionRacine != sectionRacine) {
 			NotificationChain msgs = null;
 			if (sectionRacine != null)
-				msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+				msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, ModelPackage.SECTION_BRANCHE__DOCUMENT, SectionBranche.class, msgs);
 			if (newSectionRacine != null)
-				msgs = ((InternalEObject)newSectionRacine).eInverseAdd(this, ModelPackage.SECTION__DOCUMENT, Section.class, msgs);
+				msgs = ((InternalEObject)newSectionRacine).eInverseAdd(this, ModelPackage.SECTION_BRANCHE__DOCUMENT, SectionBranche.class, msgs);
 			msgs = basicSetSectionRacine(newSectionRacine, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -495,7 +496,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
 				if (sectionRacine != null)
 					msgs = ((InternalEObject)sectionRacine).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.DOCUMENT__SECTION_RACINE, null, msgs);
-				return basicSetSectionRacine((Section)otherEnd, msgs);
+				return basicSetSectionRacine((SectionBranche)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -599,7 +600,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				setTitre((String)newValue);
 				return;
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
-				setSectionRacine((Section)newValue);
+				setSectionRacine((SectionBranche)newValue);
 				return;
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				setPressePapier((PressePapier)newValue);
@@ -638,7 +639,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				setTitre(TITRE_EDEFAULT);
 				return;
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
-				setSectionRacine((Section)null);
+				setSectionRacine((SectionBranche)null);
 				return;
 			case ModelPackage.DOCUMENT__PRESSE_PAPIER:
 				setPressePapier((PressePapier)null);

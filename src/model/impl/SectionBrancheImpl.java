@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.SectionBrancheImpl#getTitre <em>Titre</em>}</li>
- *   <li>{@link model.impl.SectionBrancheImpl#getDocument <em>Document</em>}</li>
  *   <li>{@link model.impl.SectionBrancheImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link model.impl.SectionBrancheImpl#getContenu <em>Contenu</em>}</li>
  *   <li>{@link model.impl.SectionBrancheImpl#getNiveau <em>Niveau</em>}</li>
  *   <li>{@link model.impl.SectionBrancheImpl#getEnfant <em>Enfant</em>}</li>
+ *   <li>{@link model.impl.SectionBrancheImpl#getDocument <em>Document</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,6 +106,16 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	protected SectionBrancheImpl() {
 		super();
 		this.contenu = new ContenuImpl();
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	protected SectionBrancheImpl(Document document) {
+		super();
+		this.contenu = new ContenuImpl();
+		this.setDocument(document);
 	}
 
 	/**
@@ -339,10 +349,6 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetDocument((Document)otherEnd, msgs);
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -353,6 +359,10 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 				return basicSetContenu((Contenu)otherEnd, msgs);
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getEnfant()).basicAdd(otherEnd, msgs);
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetDocument((Document)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -365,14 +375,14 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				return basicSetDocument(null, msgs);
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				return basicSetParent(null, msgs);
 			case ModelPackage.SECTION_BRANCHE__CONTENU:
 				return basicSetContenu(null, msgs);
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				return ((InternalEList<?>)getEnfant()).basicRemove(otherEnd, msgs);
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				return basicSetDocument(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -385,10 +395,10 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				return eInternalContainer().eInverseRemove(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -403,8 +413,6 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.SECTION_BRANCHE__TITRE:
 				return getTitre();
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				return getDocument();
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				return getParent();
 			case ModelPackage.SECTION_BRANCHE__CONTENU:
@@ -413,6 +421,8 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 				return getNiveau();
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				return getEnfant();
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				return getDocument();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -429,9 +439,6 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_BRANCHE__TITRE:
 				setTitre((String)newValue);
 				return;
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				setDocument((Document)newValue);
-				return;
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				setParent((SectionBranche)newValue);
 				return;
@@ -444,6 +451,9 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				getEnfant().clear();
 				getEnfant().addAll((Collection<? extends Section>)newValue);
+				return;
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				setDocument((Document)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -460,9 +470,6 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_BRANCHE__TITRE:
 				setTitre(TITRE_EDEFAULT);
 				return;
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				setDocument((Document)null);
-				return;
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				setParent((SectionBranche)null);
 				return;
@@ -474,6 +481,9 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				getEnfant().clear();
+				return;
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				setDocument((Document)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -489,8 +499,6 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.SECTION_BRANCHE__TITRE:
 				return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
-			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
-				return getDocument() != null;
 			case ModelPackage.SECTION_BRANCHE__PARENT:
 				return getParent() != null;
 			case ModelPackage.SECTION_BRANCHE__CONTENU:
@@ -499,6 +507,8 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 				return niveau != NIVEAU_EDEFAULT;
 			case ModelPackage.SECTION_BRANCHE__ENFANT:
 				return enfant != null && !enfant.isEmpty();
+			case ModelPackage.SECTION_BRANCHE__DOCUMENT:
+				return getDocument() != null;
 		}
 		return super.eIsSet(featureID);
 	}

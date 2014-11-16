@@ -52,7 +52,6 @@ public interface Editeur extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @throws IOException 
 	 * @model
 	 * @generated
 	 */

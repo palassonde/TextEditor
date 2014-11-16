@@ -307,7 +307,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSection_Document() {
+	public EReference getSection_Parent() {
 		return (EReference)sectionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -316,7 +316,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSection_Parent() {
+	public EReference getSection_Contenu() {
 		return (EReference)sectionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -325,17 +325,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSection_Contenu() {
-		return (EReference)sectionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSection_Niveau() {
-		return (EAttribute)sectionEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)sectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -399,6 +390,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EReference getSectionBranche_Enfant() {
 		return (EReference)sectionBrancheEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSectionBranche_Document() {
+		return (EReference)sectionBrancheEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -775,7 +775,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEditeur__Sauvegarder__String_Document() {
+	public EOperation getEditeur__Sauvegarder__String() {
 		return editeurEClass.getEOperations().get(0);
 	}
 
@@ -847,7 +847,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		sectionEClass = createEClass(SECTION);
 		createEAttribute(sectionEClass, SECTION__TITRE);
-		createEReference(sectionEClass, SECTION__DOCUMENT);
 		createEReference(sectionEClass, SECTION__PARENT);
 		createEReference(sectionEClass, SECTION__CONTENU);
 		createEAttribute(sectionEClass, SECTION__NIVEAU);
@@ -860,6 +859,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		sectionBrancheEClass = createEClass(SECTION_BRANCHE);
 		createEReference(sectionBrancheEClass, SECTION_BRANCHE__ENFANT);
+		createEReference(sectionBrancheEClass, SECTION_BRANCHE__DOCUMENT);
 		createEOperation(sectionBrancheEClass, SECTION_BRANCHE___RENOMMER__STRING);
 		createEOperation(sectionBrancheEClass, SECTION_BRANCHE___AJOUTER_SOUS_SECTION__STRING);
 		createEOperation(sectionBrancheEClass, SECTION_BRANCHE___SUPPRIMER);
@@ -910,7 +910,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		editeurEClass = createEClass(EDITEUR);
 		createEReference(editeurEClass, EDITEUR__DOCUMENT_COURANT);
-		createEOperation(editeurEClass, EDITEUR___SAUVEGARDER__STRING_DOCUMENT);
+		createEOperation(editeurEClass, EDITEUR___SAUVEGARDER__STRING);
 		createEOperation(editeurEClass, EDITEUR___OUVRIR__STRING);
 		createEOperation(editeurEClass, EDITEUR___CREER_NOUV_DOCUMENT);
 
@@ -958,14 +958,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getDocument_FinSel(), ecorePackage.getEInt(), "finSel", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_PositionCurseur(), ecorePackage.getEInt(), "positionCurseur", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocument_SectionRacine(), this.getSection(), this.getSection_Document(), "sectionRacine", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocument_SectionRacine(), this.getSectionBranche(), this.getSectionBranche_Document(), "sectionRacine", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_PressePapier(), this.getPressePapier(), null, "pressePapier", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_SectionCourante(), this.getSection(), null, "sectionCourante", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Modifie(), ecorePackage.getEBoolean(), "modifie", "false", 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sectionEClass, Section.class, "Section", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSection_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSection_Document(), this.getDocument(), this.getDocument_SectionRacine(), "document", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Parent(), this.getSectionBranche(), this.getSectionBranche_Enfant(), "parent", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Contenu(), this.getContenu(), this.getContenu_Section(), "contenu", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSection_Niveau(), ecorePackage.getEInt(), "niveau", "0", 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -984,6 +983,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(sectionBrancheEClass, SectionBranche.class, "SectionBranche", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSectionBranche_Enfant(), this.getSection(), this.getSection_Parent(), "enfant", null, 0, -1, SectionBranche.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSectionBranche_Document(), this.getDocument(), this.getDocument_SectionRacine(), "document", null, 1, 1, SectionBranche.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getSectionBranche__Renommer__String(), null, "renommer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "titre", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1074,7 +1074,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(editeurEClass, Editeur.class, "Editeur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEditeur_DocumentCourant(), this.getDocument(), null, "documentCourant", null, 0, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getEditeur__Sauvegarder__String_Document(), null, "sauvegarder", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getEditeur__Sauvegarder__String(), null, "sauvegarder", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "nomFichier", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getEditeur__Ouvrir__String(), null, "ouvrir", 0, 1, IS_UNIQUE, IS_ORDERED);

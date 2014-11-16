@@ -4,7 +4,6 @@ package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import model.Contenu;
-import model.Document;
 import model.ModelPackage;
 import model.SectionBranche;
 import model.SectionFeuille;
@@ -25,7 +24,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.SectionFeuilleImpl#getTitre <em>Titre</em>}</li>
- *   <li>{@link model.impl.SectionFeuilleImpl#getDocument <em>Document</em>}</li>
  *   <li>{@link model.impl.SectionFeuilleImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link model.impl.SectionFeuilleImpl#getContenu <em>Contenu</em>}</li>
  *   <li>{@link model.impl.SectionFeuilleImpl#getNiveau <em>Niveau</em>}</li>
@@ -123,47 +121,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 		titre = newTitre;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SECTION_FEUILLE__TITRE, oldTitre, titre));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Document getDocument() {
-		if (eContainerFeatureID() != ModelPackage.SECTION_FEUILLE__DOCUMENT) return null;
-		return (Document)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDocument(Document newDocument, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newDocument, ModelPackage.SECTION_FEUILLE__DOCUMENT, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDocument(Document newDocument) {
-		if (newDocument != eInternalContainer() || (eContainerFeatureID() != ModelPackage.SECTION_FEUILLE__DOCUMENT && newDocument != null)) {
-			if (EcoreUtil.isAncestor(this, newDocument))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newDocument != null)
-				msgs = ((InternalEObject)newDocument).eInverseAdd(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
-			msgs = basicSetDocument(newDocument, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SECTION_FEUILLE__DOCUMENT, newDocument, newDocument));
 	}
 
 	/**
@@ -312,10 +269,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetDocument((Document)otherEnd, msgs);
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -336,8 +289,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return basicSetDocument(null, msgs);
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				return basicSetParent(null, msgs);
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
@@ -354,8 +305,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return eInternalContainer().eInverseRemove(this, ModelPackage.DOCUMENT__SECTION_RACINE, Document.class, msgs);
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				return eInternalContainer().eInverseRemove(this, ModelPackage.SECTION_BRANCHE__ENFANT, SectionBranche.class, msgs);
 		}
@@ -372,8 +321,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.SECTION_FEUILLE__TITRE:
 				return getTitre();
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return getDocument();
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				return getParent();
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
@@ -394,9 +341,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.SECTION_FEUILLE__TITRE:
 				setTitre((String)newValue);
-				return;
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				setDocument((Document)newValue);
 				return;
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				setParent((SectionBranche)newValue);
@@ -422,9 +366,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.SECTION_FEUILLE__TITRE:
 				setTitre(TITRE_EDEFAULT);
 				return;
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				setDocument((Document)null);
-				return;
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				setParent((SectionBranche)null);
 				return;
@@ -448,8 +389,6 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.SECTION_FEUILLE__TITRE:
 				return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
-			case ModelPackage.SECTION_FEUILLE__DOCUMENT:
-				return getDocument() != null;
 			case ModelPackage.SECTION_FEUILLE__PARENT:
 				return getParent() != null;
 			case ModelPackage.SECTION_FEUILLE__CONTENU:
