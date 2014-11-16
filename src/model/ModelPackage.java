@@ -69,49 +69,13 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Debut Sel</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__DEBUT_SEL = 0;
-
-	/**
-	 * The feature id for the '<em><b>Historique</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__HISTORIQUE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Fin Sel</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__FIN_SEL = 2;
-
-	/**
-	 * The feature id for the '<em><b>Position Curseur</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__POSITION_CURSEUR = 3;
-
-	/**
 	 * The feature id for the '<em><b>Titre</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__TITRE = 4;
+	int DOCUMENT__TITRE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Section Racine</b></em>' containment reference.
@@ -120,16 +84,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__SECTION_RACINE = 5;
-
-	/**
-	 * The feature id for the '<em><b>Presse Papier</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__PRESSE_PAPIER = 6;
+	int DOCUMENT__SECTION_RACINE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Section Courante</b></em>' reference.
@@ -138,7 +93,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__SECTION_COURANTE = 7;
+	int DOCUMENT__SECTION_COURANTE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Modifie</b></em>' attribute.
@@ -147,7 +102,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MODIFIE = 8;
+	int DOCUMENT__MODIFIE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -156,7 +111,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 9;
+	int DOCUMENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Document</em>' class.
@@ -496,13 +451,22 @@ public interface ModelPackage extends EPackage {
 	int CONTENU__SECTION = 3;
 
 	/**
+	 * The feature id for the '<em><b>Section Src</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENU__SECTION_SRC = 4;
+
+	/**
 	 * The number of structural features of the '<em>Contenu</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU_FEATURE_COUNT = 4;
+	int CONTENU_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>Deplacer</em>' operation.
@@ -753,7 +717,7 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Actions Defaites</b></em>' reference list.
+	 * The feature id for the '<em><b>Actions Defaites</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -762,7 +726,7 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE__ACTIONS_DEFAITES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Actions Refaites</b></em>' reference list.
+	 * The feature id for the '<em><b>Actions Refaites</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -780,31 +744,13 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE_FEATURE_COUNT = 2;
 
 	/**
-	 * The operation id for the '<em>Get Action Refaite</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HISTORIQUE___GET_ACTION_REFAITE = 0;
-
-	/**
-	 * The operation id for the '<em>Get Action Defaite</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HISTORIQUE___GET_ACTION_DEFAITE = 1;
-
-	/**
 	 * The operation id for the '<em>Vider</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HISTORIQUE___VIDER = 2;
+	int HISTORIQUE___VIDER = 0;
 
 	/**
 	 * The number of operations of the '<em>Historique</em>' class.
@@ -813,7 +759,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HISTORIQUE_OPERATION_COUNT = 3;
+	int HISTORIQUE_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link model.impl.ActionImpl <em>Action</em>}' class.
@@ -826,31 +772,13 @@ public interface ModelPackage extends EPackage {
 	int ACTION = 10;
 
 	/**
-	 * The feature id for the '<em><b>Historique</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__HISTORIQUE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Strategie Insertion</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__STRATEGIE_INSERTION = 1;
-
-	/**
 	 * The feature id for the '<em><b>Contenu</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION__CONTENU = 2;
+	int ACTION__CONTENU = 0;
 
 	/**
 	 * The feature id for the '<em><b>Type Action</b></em>' attribute.
@@ -859,7 +787,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION__TYPE_ACTION = 3;
+	int ACTION__TYPE_ACTION = 1;
 
 	/**
 	 * The number of structural features of the '<em>Action</em>' class.
@@ -868,7 +796,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_FEATURE_COUNT = 4;
+	int ACTION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Action</em>' class.
@@ -954,13 +882,31 @@ public interface ModelPackage extends EPackage {
 	int EDITEUR__DOCUMENT_COURANT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Presse Papier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR__PRESSE_PAPIER = 1;
+
+	/**
+	 * The feature id for the '<em><b>Historique</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR__HISTORIQUE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Editeur</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDITEUR_FEATURE_COUNT = 1;
+	int EDITEUR_FEATURE_COUNT = 3;
 
 	/**
 	 * The operation id for the '<em>Sauvegarder</em>' operation.
@@ -1020,50 +966,6 @@ public interface ModelPackage extends EPackage {
 	EClass getDocument();
 
 	/**
-	 * Returns the meta object for the attribute '{@link model.Document#getDebutSel <em>Debut Sel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Debut Sel</em>'.
-	 * @see model.Document#getDebutSel()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EAttribute getDocument_DebutSel();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link model.Document#getHistorique <em>Historique</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Historique</em>'.
-	 * @see model.Document#getHistorique()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EReference getDocument_Historique();
-
-	/**
-	 * Returns the meta object for the attribute '{@link model.Document#getFinSel <em>Fin Sel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Fin Sel</em>'.
-	 * @see model.Document#getFinSel()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EAttribute getDocument_FinSel();
-
-	/**
-	 * Returns the meta object for the attribute '{@link model.Document#getPositionCurseur <em>Position Curseur</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position Curseur</em>'.
-	 * @see model.Document#getPositionCurseur()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EAttribute getDocument_PositionCurseur();
-
-	/**
 	 * Returns the meta object for the attribute '{@link model.Document#getTitre <em>Titre</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1084,17 +986,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDocument_SectionRacine();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link model.Document#getPressePapier <em>Presse Papier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Presse Papier</em>'.
-	 * @see model.Document#getPressePapier()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EReference getDocument_PressePapier();
 
 	/**
 	 * Returns the meta object for the reference '{@link model.Document#getSectionCourante <em>Section Courante</em>}'.
@@ -1339,6 +1230,17 @@ public interface ModelPackage extends EPackage {
 	EReference getContenu_Section();
 
 	/**
+	 * Returns the meta object for the reference '{@link model.Contenu#getSectionSrc <em>Section Src</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Section Src</em>'.
+	 * @see model.Contenu#getSectionSrc()
+	 * @see #getContenu()
+	 * @generated
+	 */
+	EReference getContenu_SectionSrc();
+
+	/**
 	 * Returns the meta object for the '{@link model.Contenu#deplacer(model.Contenu, int) <em>Deplacer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1511,10 +1413,10 @@ public interface ModelPackage extends EPackage {
 	EClass getHistorique();
 
 	/**
-	 * Returns the meta object for the reference list '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Actions Defaites</em>'.
+	 * @return the meta object for the containment reference list '<em>Actions Defaites</em>'.
 	 * @see model.Historique#getActionsDefaites()
 	 * @see #getHistorique()
 	 * @generated
@@ -1522,35 +1424,15 @@ public interface ModelPackage extends EPackage {
 	EReference getHistorique_ActionsDefaites();
 
 	/**
-	 * Returns the meta object for the reference list '{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Actions Refaites</em>'.
+	 * @return the meta object for the containment reference list '<em>Actions Refaites</em>'.
 	 * @see model.Historique#getActionsRefaites()
 	 * @see #getHistorique()
 	 * @generated
 	 */
 	EReference getHistorique_ActionsRefaites();
-
-	/**
-	 * Returns the meta object for the '{@link model.Historique#getActionRefaite() <em>Get Action Refaite</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Action Refaite</em>' operation.
-	 * @see model.Historique#getActionRefaite()
-	 * @generated
-	 */
-	EOperation getHistorique__GetActionRefaite();
-
-	/**
-	 * Returns the meta object for the '{@link model.Historique#getActionDefaite() <em>Get Action Defaite</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Action Defaite</em>' operation.
-	 * @see model.Historique#getActionDefaite()
-	 * @generated
-	 */
-	EOperation getHistorique__GetActionDefaite();
 
 	/**
 	 * Returns the meta object for the '{@link model.Historique#vider() <em>Vider</em>}' operation.
@@ -1571,28 +1453,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAction();
-
-	/**
-	 * Returns the meta object for the reference '{@link model.Action#getHistorique <em>Historique</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Historique</em>'.
-	 * @see model.Action#getHistorique()
-	 * @see #getAction()
-	 * @generated
-	 */
-	EReference getAction_Historique();
-
-	/**
-	 * Returns the meta object for the reference '{@link model.Action#getStrategieInsertion <em>Strategie Insertion</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Strategie Insertion</em>'.
-	 * @see model.Action#getStrategieInsertion()
-	 * @see #getAction()
-	 * @generated
-	 */
-	EReference getAction_StrategieInsertion();
 
 	/**
 	 * Returns the meta object for the reference '{@link model.Action#getContenu <em>Contenu</em>}'.
@@ -1679,6 +1539,28 @@ public interface ModelPackage extends EPackage {
 	EReference getEditeur_DocumentCourant();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link model.Editeur#getPressePapier <em>Presse Papier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Presse Papier</em>'.
+	 * @see model.Editeur#getPressePapier()
+	 * @see #getEditeur()
+	 * @generated
+	 */
+	EReference getEditeur_PressePapier();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link model.Editeur#getHistorique <em>Historique</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Historique</em>'.
+	 * @see model.Editeur#getHistorique()
+	 * @see #getEditeur()
+	 * @generated
+	 */
+	EReference getEditeur_Historique();
+
+	/**
 	 * Returns the meta object for the '{@link model.Editeur#sauvegarder(java.lang.String) <em>Sauvegarder</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1752,38 +1634,6 @@ public interface ModelPackage extends EPackage {
 		EClass DOCUMENT = eINSTANCE.getDocument();
 
 		/**
-		 * The meta object literal for the '<em><b>Debut Sel</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT__DEBUT_SEL = eINSTANCE.getDocument_DebutSel();
-
-		/**
-		 * The meta object literal for the '<em><b>Historique</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCUMENT__HISTORIQUE = eINSTANCE.getDocument_Historique();
-
-		/**
-		 * The meta object literal for the '<em><b>Fin Sel</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT__FIN_SEL = eINSTANCE.getDocument_FinSel();
-
-		/**
-		 * The meta object literal for the '<em><b>Position Curseur</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT__POSITION_CURSEUR = eINSTANCE.getDocument_PositionCurseur();
-
-		/**
 		 * The meta object literal for the '<em><b>Titre</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1798,14 +1648,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOCUMENT__SECTION_RACINE = eINSTANCE.getDocument_SectionRacine();
-
-		/**
-		 * The meta object literal for the '<em><b>Presse Papier</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCUMENT__PRESSE_PAPIER = eINSTANCE.getDocument_PressePapier();
 
 		/**
 		 * The meta object literal for the '<em><b>Section Courante</b></em>' reference feature.
@@ -2000,6 +1842,14 @@ public interface ModelPackage extends EPackage {
 		EReference CONTENU__SECTION = eINSTANCE.getContenu_Section();
 
 		/**
+		 * The meta object literal for the '<em><b>Section Src</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTENU__SECTION_SRC = eINSTANCE.getContenu_SectionSrc();
+
+		/**
 		 * The meta object literal for the '<em><b>Deplacer</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2146,7 +1996,7 @@ public interface ModelPackage extends EPackage {
 		EClass HISTORIQUE = eINSTANCE.getHistorique();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions Defaites</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Actions Defaites</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2154,28 +2004,12 @@ public interface ModelPackage extends EPackage {
 		EReference HISTORIQUE__ACTIONS_DEFAITES = eINSTANCE.getHistorique_ActionsDefaites();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions Refaites</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Actions Refaites</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference HISTORIQUE__ACTIONS_REFAITES = eINSTANCE.getHistorique_ActionsRefaites();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Action Refaite</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation HISTORIQUE___GET_ACTION_REFAITE = eINSTANCE.getHistorique__GetActionRefaite();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Action Defaite</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation HISTORIQUE___GET_ACTION_DEFAITE = eINSTANCE.getHistorique__GetActionDefaite();
 
 		/**
 		 * The meta object literal for the '<em><b>Vider</b></em>' operation.
@@ -2194,22 +2028,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACTION = eINSTANCE.getAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Historique</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTION__HISTORIQUE = eINSTANCE.getAction_Historique();
-
-		/**
-		 * The meta object literal for the '<em><b>Strategie Insertion</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTION__STRATEGIE_INSERTION = eINSTANCE.getAction_StrategieInsertion();
 
 		/**
 		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
@@ -2278,6 +2096,22 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EDITEUR__DOCUMENT_COURANT = eINSTANCE.getEditeur_DocumentCourant();
+
+		/**
+		 * The meta object literal for the '<em><b>Presse Papier</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDITEUR__PRESSE_PAPIER = eINSTANCE.getEditeur_PressePapier();
+
+		/**
+		 * The meta object literal for the '<em><b>Historique</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDITEUR__HISTORIQUE = eINSTANCE.getEditeur_Historique();
 
 		/**
 		 * The meta object literal for the '<em><b>Sauvegarder</b></em>' operation.

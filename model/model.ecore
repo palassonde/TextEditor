@@ -2,16 +2,9 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://model/1.0" nsPrefix="model">
   <eClassifiers xsi:type="ecore:EClass" name="Document">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="debutSel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="historique" lowerBound="1"
-        eType="#//Historique" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="finSel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurseur" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionRacine" lowerBound="1"
         eType="#//SectionBranche" containment="true" eOpposite="#//SectionBranche/document"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pressePapier" lowerBound="1"
-        eType="#//PressePapier" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionCourante" lowerBound="1"
         eType="#//Section"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -79,6 +72,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="section" lowerBound="1"
         eType="#//Section" eOpposite="#//Section/contenu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sectionSrc" eType="#//Section"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StrategieInsertion" abstract="true"
       interface="true">
@@ -108,21 +102,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="caractere" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Historique">
-    <eOperations name="getActionRefaite"/>
-    <eOperations name="getActionDefaite"/>
     <eOperations name="vider"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actionsDefaites" upperBound="-1"
-        eType="#//Action" eOpposite="#//Action/historique"/>
+        eType="#//Action" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actionsRefaites" upperBound="-1"
-        eType="#//Action"/>
+        eType="#//Action" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="historique" eType="#//Historique"
-        eOpposite="#//Historique/actionsDefaites"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="strategieInsertion" eType="#//StrategieInsertion"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeAction" eType="#//TypeAction"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeAction" lowerBound="1"
+        eType="#//TypeAction"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PressePapier">
     <eOperations name="ajouter">
@@ -149,5 +139,9 @@
     </eOperations>
     <eOperations name="creerNouvDocument"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="documentCourant" eType="#//Document"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pressePapier" lowerBound="1"
+        eType="#//PressePapier" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="historique" lowerBound="1"
+        eType="#//Historique" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link model.impl.ContenuImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link model.impl.ContenuImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link model.impl.ContenuImpl#getSection <em>Section</em>}</li>
+ *   <li>{@link model.impl.ContenuImpl#getSectionSrc <em>Section Src</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,11 +83,33 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	protected int position = POSITION_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getSectionSrc() <em>Section Src</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionSrc()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section sectionSrc;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
 	protected ContenuImpl() {
 		super();
+		this.strategie = new StrategieInsertionTexteImpl();
+		this.strategie.setContenu(this);
+		
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	protected ContenuImpl(Section section) {
+		super();
+		this.setSection(section);
 		this.strategie = new StrategieInsertionTexteImpl();
 		this.strategie.setContenu(this);
 		
@@ -217,6 +240,44 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTENU__SECTION, newSection, newSection));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section getSectionSrc() {
+		if (sectionSrc != null && sectionSrc.eIsProxy()) {
+			InternalEObject oldSectionSrc = (InternalEObject)sectionSrc;
+			sectionSrc = (Section)eResolveProxy(oldSectionSrc);
+			if (sectionSrc != oldSectionSrc) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.CONTENU__SECTION_SRC, oldSectionSrc, sectionSrc));
+			}
+		}
+		return sectionSrc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSectionSrc() {
+		return sectionSrc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSectionSrc(Section newSectionSrc) {
+		Section oldSectionSrc = sectionSrc;
+		sectionSrc = newSectionSrc;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTENU__SECTION_SRC, oldSectionSrc, sectionSrc));
 	}
 
 	/**
@@ -359,6 +420,9 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 				return getPosition();
 			case ModelPackage.CONTENU__SECTION:
 				return getSection();
+			case ModelPackage.CONTENU__SECTION_SRC:
+				if (resolve) return getSectionSrc();
+				return basicGetSectionSrc();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -385,6 +449,9 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 			case ModelPackage.CONTENU__SECTION:
 				setSection((Section)newValue);
 				return;
+			case ModelPackage.CONTENU__SECTION_SRC:
+				setSectionSrc((Section)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -409,6 +476,9 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 			case ModelPackage.CONTENU__SECTION:
 				setSection((Section)null);
 				return;
+			case ModelPackage.CONTENU__SECTION_SRC:
+				setSectionSrc((Section)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -429,6 +499,8 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 				return position != POSITION_EDEFAULT;
 			case ModelPackage.CONTENU__SECTION:
 				return getSection() != null;
+			case ModelPackage.CONTENU__SECTION_SRC:
+				return sectionSrc != null;
 		}
 		return super.eIsSet(featureID);
 	}

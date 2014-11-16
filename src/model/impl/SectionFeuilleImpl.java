@@ -3,10 +3,12 @@
 package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import model.Contenu;
 import model.ModelPackage;
 import model.SectionBranche;
 import model.SectionFeuille;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -86,11 +88,12 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	protected SectionFeuilleImpl() {
 		super();
+		this.contenu = new ContenuImpl(this);
 	}
+	
 
 	/**
 	 * <!-- begin-user-doc -->

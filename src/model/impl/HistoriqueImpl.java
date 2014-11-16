@@ -12,8 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -32,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Historique {
 	/**
-	 * The cached value of the '{@link #getActionsDefaites() <em>Actions Defaites</em>}' reference list.
+	 * The cached value of the '{@link #getActionsDefaites() <em>Actions Defaites</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActionsDefaites()
@@ -41,7 +40,7 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 */
 	protected EList<Action> actionsDefaites;
 	/**
-	 * The cached value of the '{@link #getActionsRefaites() <em>Actions Refaites</em>}' reference list.
+	 * The cached value of the '{@link #getActionsRefaites() <em>Actions Refaites</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActionsRefaites()
@@ -75,7 +74,7 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 */
 	public EList<Action> getActionsDefaites() {
 		if (actionsDefaites == null) {
-			actionsDefaites = new EObjectWithInverseResolvingEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES, ModelPackage.ACTION__HISTORIQUE);
+			actionsDefaites = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES);
 		}
 		return actionsDefaites;
 	}
@@ -87,31 +86,9 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 */
 	public EList<Action> getActionsRefaites() {
 		if (actionsRefaites == null) {
-			actionsRefaites = new EObjectResolvingEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES);
+			actionsRefaites = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES);
 		}
 		return actionsRefaites;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void getActionRefaite() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void getActionDefaite() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -130,26 +107,13 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActionsDefaites()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				return ((InternalEList<?>)getActionsDefaites()).basicRemove(otherEnd, msgs);
+			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
+				return ((InternalEList<?>)getActionsRefaites()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -233,12 +197,6 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.HISTORIQUE___GET_ACTION_REFAITE:
-				getActionRefaite();
-				return null;
-			case ModelPackage.HISTORIQUE___GET_ACTION_DEFAITE:
-				getActionDefaite();
-				return null;
 			case ModelPackage.HISTORIQUE___VIDER:
 				vider();
 				return null;

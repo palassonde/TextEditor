@@ -25,25 +25,23 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Historique extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Actions Defaites</b></em>' reference list.
+	 * Returns the value of the '<em><b>Actions Defaites</b></em>' containment reference list.
 	 * The list contents are of type {@link model.Action}.
-	 * It is bidirectional and its opposite is '{@link model.Action#getHistorique <em>Historique</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Actions Defaites</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions Defaites</em>' reference list.
+	 * @return the value of the '<em>Actions Defaites</em>' containment reference list.
 	 * @see model.ModelPackage#getHistorique_ActionsDefaites()
-	 * @see model.Action#getHistorique
-	 * @model opposite="historique"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Action> getActionsDefaites();
 
 	/**
-	 * Returns the value of the '<em><b>Actions Refaites</b></em>' reference list.
+	 * Returns the value of the '<em><b>Actions Refaites</b></em>' containment reference list.
 	 * The list contents are of type {@link model.Action}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -51,28 +49,12 @@ public interface Historique extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions Refaites</em>' reference list.
+	 * @return the value of the '<em>Actions Refaites</em>' containment reference list.
 	 * @see model.ModelPackage#getHistorique_ActionsRefaites()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Action> getActionsRefaites();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	void getActionRefaite();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	void getActionDefaite();
 
 	/**
 	 * <!-- begin-user-doc -->

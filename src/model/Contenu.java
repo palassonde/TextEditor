@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link model.Contenu#getElements <em>Elements</em>}</li>
  *   <li>{@link model.Contenu#getPosition <em>Position</em>}</li>
  *   <li>{@link model.Contenu#getSection <em>Section</em>}</li>
+ *   <li>{@link model.Contenu#getSectionSrc <em>Section Src</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,6 +124,32 @@ public interface Contenu extends EObject {
 	 * @generated
 	 */
 	void setSection(Section value);
+
+	/**
+	 * Returns the value of the '<em><b>Section Src</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Section Src</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Section Src</em>' reference.
+	 * @see #setSectionSrc(Section)
+	 * @see model.ModelPackage#getContenu_SectionSrc()
+	 * @model
+	 * @generated
+	 */
+	Section getSectionSrc();
+
+	/**
+	 * Sets the value of the '{@link model.Contenu#getSectionSrc <em>Section Src</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Section Src</em>' reference.
+	 * @see #getSectionSrc()
+	 * @generated
+	 */
+	void setSectionSrc(Section value);
 
 	/**
 	 * <!-- begin-user-doc -->

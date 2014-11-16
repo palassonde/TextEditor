@@ -114,7 +114,7 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	protected SectionBrancheImpl(Document document) {
 		super();
-		this.contenu = new ContenuImpl();
+		this.contenu = new ContenuImpl(this);
 		this.setDocument(document);
 	}
 

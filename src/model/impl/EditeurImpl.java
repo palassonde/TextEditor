@@ -8,9 +8,12 @@ import java.util.Map;
 
 import model.Document;
 import model.Editeur;
+import model.Historique;
 import model.ModelPackage;
+import model.PressePapier;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -30,6 +33,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.EditeurImpl#getDocumentCourant <em>Document Courant</em>}</li>
+ *   <li>{@link model.impl.EditeurImpl#getPressePapier <em>Presse Papier</em>}</li>
+ *   <li>{@link model.impl.EditeurImpl#getHistorique <em>Historique</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,12 +52,32 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	protected Document documentCourant;
 
 	/**
+	 * The cached value of the '{@link #getPressePapier() <em>Presse Papier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getPressePapier()
 	 * @generated
+	 * @ordered
+	 */
+	protected PressePapier pressePapier;
+	/**
+	 * The cached value of the '{@link #getHistorique() <em>Historique</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHistorique()
+	 * @generated
+	 * @ordered
+	 */
+	protected Historique historique;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public EditeurImpl() {
 		super();
+		this.historique = new HistoriqueImpl();
+		this.pressePapier = new PressePapierImpl();
 	}
 
 	/**
@@ -106,6 +131,92 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PressePapier getPressePapier() {
+		return pressePapier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPressePapier(PressePapier newPressePapier, NotificationChain msgs) {
+		PressePapier oldPressePapier = pressePapier;
+		pressePapier = newPressePapier;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.EDITEUR__PRESSE_PAPIER, oldPressePapier, newPressePapier);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPressePapier(PressePapier newPressePapier) {
+		if (newPressePapier != pressePapier) {
+			NotificationChain msgs = null;
+			if (pressePapier != null)
+				msgs = ((InternalEObject)pressePapier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.EDITEUR__PRESSE_PAPIER, null, msgs);
+			if (newPressePapier != null)
+				msgs = ((InternalEObject)newPressePapier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.EDITEUR__PRESSE_PAPIER, null, msgs);
+			msgs = basicSetPressePapier(newPressePapier, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EDITEUR__PRESSE_PAPIER, newPressePapier, newPressePapier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Historique getHistorique() {
+		return historique;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetHistorique(Historique newHistorique, NotificationChain msgs) {
+		Historique oldHistorique = historique;
+		historique = newHistorique;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.EDITEUR__HISTORIQUE, oldHistorique, newHistorique);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHistorique(Historique newHistorique) {
+		if (newHistorique != historique) {
+			NotificationChain msgs = null;
+			if (historique != null)
+				msgs = ((InternalEObject)historique).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.EDITEUR__HISTORIQUE, null, msgs);
+			if (newHistorique != null)
+				msgs = ((InternalEObject)newHistorique).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.EDITEUR__HISTORIQUE, null, msgs);
+			msgs = basicSetHistorique(newHistorique, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EDITEUR__HISTORIQUE, newHistorique, newHistorique));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @throws IOException 
 	 */
 	public void sauvegarder(String nomFichier) throws IOException {
@@ -149,11 +260,31 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ModelPackage.EDITEUR__PRESSE_PAPIER:
+				return basicSetPressePapier(null, msgs);
+			case ModelPackage.EDITEUR__HISTORIQUE:
+				return basicSetHistorique(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.EDITEUR__DOCUMENT_COURANT:
 				if (resolve) return getDocumentCourant();
 				return basicGetDocumentCourant();
+			case ModelPackage.EDITEUR__PRESSE_PAPIER:
+				return getPressePapier();
+			case ModelPackage.EDITEUR__HISTORIQUE:
+				return getHistorique();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,6 +299,12 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		switch (featureID) {
 			case ModelPackage.EDITEUR__DOCUMENT_COURANT:
 				setDocumentCourant((Document)newValue);
+				return;
+			case ModelPackage.EDITEUR__PRESSE_PAPIER:
+				setPressePapier((PressePapier)newValue);
+				return;
+			case ModelPackage.EDITEUR__HISTORIQUE:
+				setHistorique((Historique)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -184,6 +321,12 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 			case ModelPackage.EDITEUR__DOCUMENT_COURANT:
 				setDocumentCourant((Document)null);
 				return;
+			case ModelPackage.EDITEUR__PRESSE_PAPIER:
+				setPressePapier((PressePapier)null);
+				return;
+			case ModelPackage.EDITEUR__HISTORIQUE:
+				setHistorique((Historique)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,6 +341,10 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		switch (featureID) {
 			case ModelPackage.EDITEUR__DOCUMENT_COURANT:
 				return documentCourant != null;
+			case ModelPackage.EDITEUR__PRESSE_PAPIER:
+				return pressePapier != null;
+			case ModelPackage.EDITEUR__HISTORIQUE:
+				return historique != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -205,7 +352,6 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {

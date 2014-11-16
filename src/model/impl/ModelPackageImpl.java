@@ -208,7 +208,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDocument_DebutSel() {
+	public EAttribute getDocument_Titre() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -217,7 +217,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDocument_Historique() {
+	public EReference getDocument_SectionRacine() {
 		return (EReference)documentEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -226,53 +226,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDocument_FinSel() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDocument_PositionCurseur() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDocument_Titre() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDocument_SectionRacine() {
-		return (EReference)documentEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDocument_PressePapier() {
-		return (EReference)documentEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getDocument_SectionCourante() {
-		return (EReference)documentEClass.getEStructuralFeatures().get(7);
+		return (EReference)documentEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -281,7 +236,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public EAttribute getDocument_Modifie() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -478,6 +433,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getContenu_SectionSrc() {
+		return (EReference)contenuEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getContenu__Deplacer__Contenu_int() {
 		return contenuEClass.getEOperations().get(0);
 	}
@@ -649,26 +613,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getHistorique__GetActionRefaite() {
-		return historiqueEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getHistorique__GetActionDefaite() {
-		return historiqueEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getHistorique__Vider() {
-		return historiqueEClass.getEOperations().get(2);
+		return historiqueEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -685,7 +631,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAction_Historique() {
+	public EReference getAction_Contenu() {
 		return (EReference)actionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -694,26 +640,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAction_StrategieInsertion() {
-		return (EReference)actionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAction_Contenu() {
-		return (EReference)actionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getAction_TypeAction() {
-		return (EAttribute)actionEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)actionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -768,6 +696,24 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EReference getEditeur_DocumentCourant() {
 		return (EReference)editeurEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEditeur_PressePapier() {
+		return (EReference)editeurEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEditeur_Historique() {
+		return (EReference)editeurEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -835,13 +781,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		// Create classes and their features
 		documentEClass = createEClass(DOCUMENT);
-		createEAttribute(documentEClass, DOCUMENT__DEBUT_SEL);
-		createEReference(documentEClass, DOCUMENT__HISTORIQUE);
-		createEAttribute(documentEClass, DOCUMENT__FIN_SEL);
-		createEAttribute(documentEClass, DOCUMENT__POSITION_CURSEUR);
 		createEAttribute(documentEClass, DOCUMENT__TITRE);
 		createEReference(documentEClass, DOCUMENT__SECTION_RACINE);
-		createEReference(documentEClass, DOCUMENT__PRESSE_PAPIER);
 		createEReference(documentEClass, DOCUMENT__SECTION_COURANTE);
 		createEAttribute(documentEClass, DOCUMENT__MODIFIE);
 
@@ -869,6 +810,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(contenuEClass, CONTENU__ELEMENTS);
 		createEAttribute(contenuEClass, CONTENU__POSITION);
 		createEReference(contenuEClass, CONTENU__SECTION);
+		createEReference(contenuEClass, CONTENU__SECTION_SRC);
 		createEOperation(contenuEClass, CONTENU___DEPLACER__CONTENU_INT);
 		createEOperation(contenuEClass, CONTENU___SUPPRIMER__INT_INT);
 		createEOperation(contenuEClass, CONTENU___COLLER__CONTENU_INT);
@@ -893,13 +835,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		historiqueEClass = createEClass(HISTORIQUE);
 		createEReference(historiqueEClass, HISTORIQUE__ACTIONS_DEFAITES);
 		createEReference(historiqueEClass, HISTORIQUE__ACTIONS_REFAITES);
-		createEOperation(historiqueEClass, HISTORIQUE___GET_ACTION_REFAITE);
-		createEOperation(historiqueEClass, HISTORIQUE___GET_ACTION_DEFAITE);
 		createEOperation(historiqueEClass, HISTORIQUE___VIDER);
 
 		actionEClass = createEClass(ACTION);
-		createEReference(actionEClass, ACTION__HISTORIQUE);
-		createEReference(actionEClass, ACTION__STRATEGIE_INSERTION);
 		createEReference(actionEClass, ACTION__CONTENU);
 		createEAttribute(actionEClass, ACTION__TYPE_ACTION);
 
@@ -910,6 +848,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		editeurEClass = createEClass(EDITEUR);
 		createEReference(editeurEClass, EDITEUR__DOCUMENT_COURANT);
+		createEReference(editeurEClass, EDITEUR__PRESSE_PAPIER);
+		createEReference(editeurEClass, EDITEUR__HISTORIQUE);
 		createEOperation(editeurEClass, EDITEUR___SAUVEGARDER__STRING);
 		createEOperation(editeurEClass, EDITEUR___OUVRIR__STRING);
 		createEOperation(editeurEClass, EDITEUR___CREER_NOUV_DOCUMENT);
@@ -953,13 +893,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDocument_DebutSel(), ecorePackage.getEInt(), "debutSel", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocument_Historique(), this.getHistorique(), null, "historique", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDocument_FinSel(), ecorePackage.getEInt(), "finSel", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDocument_PositionCurseur(), ecorePackage.getEInt(), "positionCurseur", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_SectionRacine(), this.getSectionBranche(), this.getSectionBranche_Document(), "sectionRacine", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocument_PressePapier(), this.getPressePapier(), null, "pressePapier", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_SectionCourante(), this.getSection(), null, "sectionCourante", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Modifie(), ecorePackage.getEBoolean(), "modifie", "false", 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -998,6 +933,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getContenu_Elements(), this.getElement(), null, "elements", null, 0, -1, Contenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContenu_Position(), ecorePackage.getEInt(), "position", null, 0, 1, Contenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContenu_Section(), this.getSection(), this.getSection_Contenu(), "section", null, 1, 1, Contenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContenu_SectionSrc(), this.getSection(), null, "sectionSrc", null, 0, 1, Contenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getContenu__Deplacer__Contenu_int(), null, "deplacer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1048,20 +984,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getCaractere_Caractere(), ecorePackage.getEChar(), "caractere", null, 0, 1, Caractere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(historiqueEClass, Historique.class, "Historique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHistorique_ActionsDefaites(), this.getAction(), this.getAction_Historique(), "actionsDefaites", null, 0, -1, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHistorique_ActionsRefaites(), this.getAction(), null, "actionsRefaites", null, 0, -1, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getHistorique__GetActionRefaite(), null, "getActionRefaite", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getHistorique__GetActionDefaite(), null, "getActionDefaite", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEReference(getHistorique_ActionsDefaites(), this.getAction(), null, "actionsDefaites", null, 0, -1, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHistorique_ActionsRefaites(), this.getAction(), null, "actionsRefaites", null, 0, -1, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHistorique__Vider(), null, "vider", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAction_Historique(), this.getHistorique(), this.getHistorique_ActionsDefaites(), "historique", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAction_StrategieInsertion(), this.getStrategieInsertion(), null, "strategieInsertion", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAction_Contenu(), this.getContenu(), null, "contenu", null, 1, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAction_TypeAction(), this.getTypeAction(), "typeAction", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAction_TypeAction(), this.getTypeAction(), "typeAction", null, 1, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pressePapierEClass, PressePapier.class, "PressePapier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPressePapier_Contenu(), this.getContenu(), null, "contenu", null, 0, 1, PressePapier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1073,6 +1003,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(editeurEClass, Editeur.class, "Editeur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEditeur_DocumentCourant(), this.getDocument(), null, "documentCourant", null, 0, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEditeur_PressePapier(), this.getPressePapier(), null, "pressePapier", null, 1, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEditeur_Historique(), this.getHistorique(), null, "historique", null, 1, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getEditeur__Sauvegarder__String(), null, "sauvegarder", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "nomFichier", 0, 1, IS_UNIQUE, IS_ORDERED);
