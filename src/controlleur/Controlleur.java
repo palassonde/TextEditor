@@ -215,6 +215,14 @@ public class Controlleur {
 			    }
 			}
 		}
+		else{
+			JFileChooser chooser = new JFileChooser();
+		    chooser.setCurrentDirectory(new File("/Desktop"));
+		    int retrival = chooser.showOpenDialog(null);
+		    if (retrival == JFileChooser.APPROVE_OPTION) {
+		    	editeur.ouvrir(chooser.getSelectedFile().toString());
+		    }
+		}
 	    updateView();
 		
 	}
