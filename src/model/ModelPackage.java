@@ -114,13 +114,31 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT_FEATURE_COUNT = 4;
 
 	/**
+	 * The operation id for the '<em>Refaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___REFAIRE__ACTION = 0;
+
+	/**
+	 * The operation id for the '<em>Defaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___DEFAIRE__ACTION = 1;
+
+	/**
 	 * The number of operations of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_OPERATION_COUNT = 0;
+	int DOCUMENT_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link model.Section <em>Section</em>}' class.
@@ -496,31 +514,13 @@ public interface ModelPackage extends EPackage {
 	int CONTENU___COPIER__INT_INT = 2;
 
 	/**
-	 * The operation id for the '<em>Defaire</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTENU___DEFAIRE__ACTION = 3;
-
-	/**
-	 * The operation id for the '<em>Refaire</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTENU___REFAIRE__ACTION = 4;
-
-	/**
 	 * The number of operations of the '<em>Contenu</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU_OPERATION_COUNT = 5;
+	int CONTENU_OPERATION_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
@@ -690,22 +690,22 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE = 9;
 
 	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HISTORIQUE__ACTIONS = 0;
+
+	/**
 	 * The feature id for the '<em><b>Actions Defaites</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HISTORIQUE__ACTIONS_DEFAITES = 0;
-
-	/**
-	 * The feature id for the '<em><b>Actions Refaites</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HISTORIQUE__ACTIONS_REFAITES = 1;
+	int HISTORIQUE__ACTIONS_DEFAITES = 1;
 
 	/**
 	 * The number of structural features of the '<em>Historique</em>' class.
@@ -974,6 +974,26 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDocument_Modifie();
 
 	/**
+	 * Returns the meta object for the '{@link model.Document#refaire(model.Action) <em>Refaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Refaire</em>' operation.
+	 * @see model.Document#refaire(model.Action)
+	 * @generated
+	 */
+	EOperation getDocument__Refaire__Action();
+
+	/**
+	 * Returns the meta object for the '{@link model.Document#defaire(model.Action) <em>Defaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Defaire</em>' operation.
+	 * @see model.Document#defaire(model.Action)
+	 * @generated
+	 */
+	EOperation getDocument__Defaire__Action();
+
+	/**
 	 * Returns the meta object for class '{@link model.Section <em>Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1235,26 +1255,6 @@ public interface ModelPackage extends EPackage {
 	EOperation getContenu__Copier__int_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#defaire(model.Action) <em>Defaire</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Defaire</em>' operation.
-	 * @see model.Contenu#defaire(model.Action)
-	 * @generated
-	 */
-	EOperation getContenu__Defaire__Action();
-
-	/**
-	 * Returns the meta object for the '{@link model.Contenu#refaire(model.Action) <em>Refaire</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Refaire</em>' operation.
-	 * @see model.Contenu#refaire(model.Action)
-	 * @generated
-	 */
-	EOperation getContenu__Refaire__Action();
-
-	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertion <em>Strategie Insertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1347,6 +1347,17 @@ public interface ModelPackage extends EPackage {
 	EClass getHistorique();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link model.Historique#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Actions</em>'.
+	 * @see model.Historique#getActions()
+	 * @see #getHistorique()
+	 * @generated
+	 */
+	EReference getHistorique_Actions();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link model.Historique#getActionsDefaites <em>Actions Defaites</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1356,17 +1367,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHistorique_ActionsDefaites();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link model.Historique#getActionsRefaites <em>Actions Refaites</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Actions Refaites</em>'.
-	 * @see model.Historique#getActionsRefaites()
-	 * @see #getHistorique()
-	 * @generated
-	 */
-	EReference getHistorique_ActionsRefaites();
 
 	/**
 	 * Returns the meta object for the '{@link model.Historique#vider() <em>Vider</em>}' operation.
@@ -1590,6 +1590,22 @@ public interface ModelPackage extends EPackage {
 		EAttribute DOCUMENT__MODIFIE = eINSTANCE.getDocument_Modifie();
 
 		/**
+		 * The meta object literal for the '<em><b>Refaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DOCUMENT___REFAIRE__ACTION = eINSTANCE.getDocument__Refaire__Action();
+
+		/**
+		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DOCUMENT___DEFAIRE__ACTION = eINSTANCE.getDocument__Defaire__Action();
+
+		/**
 		 * The meta object literal for the '{@link model.Section <em>Section</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1798,22 +1814,6 @@ public interface ModelPackage extends EPackage {
 		EOperation CONTENU___COPIER__INT_INT = eINSTANCE.getContenu__Copier__int_int();
 
 		/**
-		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTENU___DEFAIRE__ACTION = eINSTANCE.getContenu__Defaire__Action();
-
-		/**
-		 * The meta object literal for the '<em><b>Refaire</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTENU___REFAIRE__ACTION = eINSTANCE.getContenu__Refaire__Action();
-
-		/**
 		 * The meta object literal for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1896,20 +1896,20 @@ public interface ModelPackage extends EPackage {
 		EClass HISTORIQUE = eINSTANCE.getHistorique();
 
 		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HISTORIQUE__ACTIONS = eINSTANCE.getHistorique_Actions();
+
+		/**
 		 * The meta object literal for the '<em><b>Actions Defaites</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference HISTORIQUE__ACTIONS_DEFAITES = eINSTANCE.getHistorique_ActionsDefaites();
-
-		/**
-		 * The meta object literal for the '<em><b>Actions Refaites</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference HISTORIQUE__ACTIONS_REFAITES = eINSTANCE.getHistorique_ActionsRefaites();
 
 		/**
 		 * The meta object literal for the '<em><b>Vider</b></em>' operation.

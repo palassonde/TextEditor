@@ -22,14 +22,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link model.impl.HistoriqueImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link model.impl.HistoriqueImpl#getActionsDefaites <em>Actions Defaites</em>}</li>
- *   <li>{@link model.impl.HistoriqueImpl#getActionsRefaites <em>Actions Refaites</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Historique {
+	/**
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Action> actions;
 	/**
 	 * The cached value of the '{@link #getActionsDefaites() <em>Actions Defaites</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -39,15 +48,6 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 * @ordered
 	 */
 	protected EList<Action> actionsDefaites;
-	/**
-	 * The cached value of the '{@link #getActionsRefaites() <em>Actions Refaites</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActionsRefaites()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Action> actionsRefaites;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,11 +72,11 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Action> getActionsDefaites() {
-		if (actionsDefaites == null) {
-			actionsDefaites = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES);
+	public EList<Action> getActions() {
+		if (actions == null) {
+			actions = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS);
 		}
-		return actionsDefaites;
+		return actions;
 	}
 
 	/**
@@ -84,11 +84,11 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Action> getActionsRefaites() {
-		if (actionsRefaites == null) {
-			actionsRefaites = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_REFAITES);
+	public EList<Action> getActionsDefaites() {
+		if (actionsDefaites == null) {
+			actionsDefaites = new EObjectContainmentEList<Action>(Action.class, this, ModelPackage.HISTORIQUE__ACTIONS_DEFAITES);
 		}
-		return actionsRefaites;
+		return actionsDefaites;
 	}
 
 	/**
@@ -110,10 +110,10 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case ModelPackage.HISTORIQUE__ACTIONS:
+				return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				return ((InternalEList<?>)getActionsDefaites()).basicRemove(otherEnd, msgs);
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				return ((InternalEList<?>)getActionsRefaites()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -126,10 +126,10 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ModelPackage.HISTORIQUE__ACTIONS:
+				return getActions();
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				return getActionsDefaites();
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				return getActionsRefaites();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -143,13 +143,13 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ModelPackage.HISTORIQUE__ACTIONS:
+				getActions().clear();
+				getActions().addAll((Collection<? extends Action>)newValue);
+				return;
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				getActionsDefaites().clear();
 				getActionsDefaites().addAll((Collection<? extends Action>)newValue);
-				return;
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				getActionsRefaites().clear();
-				getActionsRefaites().addAll((Collection<? extends Action>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -163,11 +163,11 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ModelPackage.HISTORIQUE__ACTIONS:
+				getActions().clear();
+				return;
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				getActionsDefaites().clear();
-				return;
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				getActionsRefaites().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -181,10 +181,10 @@ public class HistoriqueImpl extends MinimalEObjectImpl.Container implements Hist
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ModelPackage.HISTORIQUE__ACTIONS:
+				return actions != null && !actions.isEmpty();
 			case ModelPackage.HISTORIQUE__ACTIONS_DEFAITES:
 				return actionsDefaites != null && !actionsDefaites.isEmpty();
-			case ModelPackage.HISTORIQUE__ACTIONS_REFAITES:
-				return actionsRefaites != null && !actionsRefaites.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

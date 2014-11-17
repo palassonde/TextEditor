@@ -5,14 +5,11 @@ package model.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.ListIterator;
-
-import model.Action;
 import model.Contenu;
 import model.Element;
 import model.ModelPackage;
 import model.Section;
 import model.StrategieInsertion;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -335,28 +332,6 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void defaire(Action action) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void refaire(Action action) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -521,12 +496,6 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 				return null;
 			case ModelPackage.CONTENU___COPIER__INT_INT:
 				return copier((Integer)arguments.get(0), (Integer)arguments.get(1));
-			case ModelPackage.CONTENU___DEFAIRE__ACTION:
-				defaire((Action)arguments.get(0));
-				return null;
-			case ModelPackage.CONTENU___REFAIRE__ACTION:
-				refaire((Action)arguments.get(0));
-				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}

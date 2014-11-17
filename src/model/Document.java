@@ -131,4 +131,20 @@ public interface Document extends EObject {
 	 */
 	void setModifie(boolean value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void refaire(Action action);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void defaire(Action action);
+
 } // Document

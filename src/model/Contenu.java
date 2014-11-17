@@ -175,20 +175,4 @@ public interface Contenu extends EObject {
 	 */
 	Contenu copier(int positionDebut, int positionFin);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void defaire(Action action);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void refaire(Action action);
-
 } // Contenu

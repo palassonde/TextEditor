@@ -2,6 +2,12 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://model/1.0" nsPrefix="model">
   <eClassifiers xsi:type="ecore:EClass" name="Document">
+    <eOperations name="refaire">
+      <eParameters name="action" eType="#//Action"/>
+    </eOperations>
+    <eOperations name="defaire">
+      <eParameters name="action" eType="#//Action"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionRacine" lowerBound="1"
         eType="#//SectionBranche" containment="true" eOpposite="#//SectionBranche/document"/>
@@ -55,12 +61,6 @@
       <eParameters name="positionDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="positionFin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="defaire">
-      <eParameters name="action" eType="#//Action"/>
-    </eOperations>
-    <eOperations name="refaire">
-      <eParameters name="action" eType="#//Action"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategie" lowerBound="1"
         eType="#//StrategieInsertion" containment="true" eOpposite="#//StrategieInsertion/contenu"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
@@ -91,9 +91,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Historique">
     <eOperations name="vider"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actionsDefaites" upperBound="5"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="5"
         eType="#//Action" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actionsRefaites" upperBound="5"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionsDefaites" upperBound="5"
         eType="#//Action" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action">

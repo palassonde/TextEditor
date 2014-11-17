@@ -244,6 +244,24 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDocument__Refaire__Action() {
+		return documentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDocument__Defaire__Action() {
+		return documentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSection() {
 		return sectionEClass;
 	}
@@ -469,24 +487,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Defaire__Action() {
-		return contenuEClass.getEOperations().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContenu__Refaire__Action() {
-		return contenuEClass.getEOperations().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStrategieInsertion() {
 		return strategieInsertionEClass;
 	}
@@ -568,7 +568,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHistorique_ActionsDefaites() {
+	public EReference getHistorique_Actions() {
 		return (EReference)historiqueEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -577,7 +577,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHistorique_ActionsRefaites() {
+	public EReference getHistorique_ActionsDefaites() {
 		return (EReference)historiqueEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -749,6 +749,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(documentEClass, DOCUMENT__SECTION_RACINE);
 		createEReference(documentEClass, DOCUMENT__SECTION_COURANTE);
 		createEAttribute(documentEClass, DOCUMENT__MODIFIE);
+		createEOperation(documentEClass, DOCUMENT___REFAIRE__ACTION);
+		createEOperation(documentEClass, DOCUMENT___DEFAIRE__ACTION);
 
 		sectionEClass = createEClass(SECTION);
 		createEAttribute(sectionEClass, SECTION__TITRE);
@@ -778,8 +780,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEOperation(contenuEClass, CONTENU___SUPPRIMER__INT_INT);
 		createEOperation(contenuEClass, CONTENU___COLLER__CONTENU_INT);
 		createEOperation(contenuEClass, CONTENU___COPIER__INT_INT);
-		createEOperation(contenuEClass, CONTENU___DEFAIRE__ACTION);
-		createEOperation(contenuEClass, CONTENU___REFAIRE__ACTION);
 
 		strategieInsertionEClass = createEClass(STRATEGIE_INSERTION);
 		createEReference(strategieInsertionEClass, STRATEGIE_INSERTION__CONTENU);
@@ -794,8 +794,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(caractereEClass, CARACTERE__CARACTERE);
 
 		historiqueEClass = createEClass(HISTORIQUE);
+		createEReference(historiqueEClass, HISTORIQUE__ACTIONS);
 		createEReference(historiqueEClass, HISTORIQUE__ACTIONS_DEFAITES);
-		createEReference(historiqueEClass, HISTORIQUE__ACTIONS_REFAITES);
 		createEOperation(historiqueEClass, HISTORIQUE___VIDER);
 
 		actionEClass = createEClass(ACTION);
@@ -858,13 +858,19 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getDocument_SectionCourante(), this.getSection(), null, "sectionCourante", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Modifie(), ecorePackage.getEBoolean(), "modifie", "false", 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getDocument__Refaire__Action(), null, "refaire", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAction(), "action", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDocument__Defaire__Action(), null, "defaire", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAction(), "action", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(sectionEClass, Section.class, "Section", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSection_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Parent(), this.getSectionBranche(), this.getSectionBranche_Enfant(), "parent", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Contenu(), this.getContenu(), this.getContenu_Section(), "contenu", null, 1, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSection_Niveau(), ecorePackage.getEInt(), "niveau", "0", 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getSection__AjouterSousSection__String(), null, "ajouterSousSection", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getSection__AjouterSousSection__String(), null, "ajouterSousSection", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "titre", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getSection__Supprimer(), null, "supprimer", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -907,12 +913,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEParameter(op, ecorePackage.getEInt(), "positionDebut", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "positionFin", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getContenu__Defaire__Action(), null, "defaire", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAction(), "action", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getContenu__Refaire__Action(), null, "refaire", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAction(), "action", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(strategieInsertionEClass, StrategieInsertion.class, "StrategieInsertion", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStrategieInsertion_Contenu(), this.getContenu(), this.getContenu_Strategie(), "contenu", null, 1, 1, StrategieInsertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -932,8 +932,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getCaractere_Caractere(), ecorePackage.getEChar(), "caractere", null, 0, 1, Caractere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(historiqueEClass, Historique.class, "Historique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHistorique_Actions(), this.getAction(), null, "actions", null, 0, 5, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHistorique_ActionsDefaites(), this.getAction(), null, "actionsDefaites", null, 0, 5, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHistorique_ActionsRefaites(), this.getAction(), null, "actionsRefaites", null, 0, 5, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHistorique__Vider(), null, "vider", 0, 1, IS_UNIQUE, IS_ORDERED);
 
