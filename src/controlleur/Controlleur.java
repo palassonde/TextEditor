@@ -10,7 +10,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+import javax.swing.filechooser.FileNameExtensionFilter;
 import vues.InterfaceEditeur;
 import model.Contenu;
 import model.Editeur;
@@ -206,22 +206,24 @@ public class Controlleur {
 
 	protected void ouvrir() {
 		
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Documents", "document");
+		chooser.setFileFilter(filter);
+	    chooser.setCurrentDirectory(new File("/Desktop"));
+	    
 		if(editeur.getDocumentCourant().isModifie()){
 			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
 			        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 		    
 			if (response == JOptionPane.YES_OPTION) {
 		    	sauvergarder();
-		    	JFileChooser chooser = new JFileChooser();
-			    chooser.setCurrentDirectory(new File("/Desktop"));
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
 			    	editeur.ouvrir(chooser.getSelectedFile().toString());
 			    }
 		    }
 			else if (response == JOptionPane.NO_OPTION){
-				JFileChooser chooser = new JFileChooser();
-			    chooser.setCurrentDirectory(new File("/Desktop"));
+				
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
 			    	editeur.ouvrir(chooser.getSelectedFile().toString());
@@ -229,8 +231,7 @@ public class Controlleur {
 			}
 		}
 		else{
-			JFileChooser chooser = new JFileChooser();
-		    chooser.setCurrentDirectory(new File("/Desktop"));
+
 		    int retrival = chooser.showOpenDialog(null);
 		    if (retrival == JFileChooser.APPROVE_OPTION) {
 		    	editeur.ouvrir(chooser.getSelectedFile().toString());
