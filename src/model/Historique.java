@@ -35,7 +35,7 @@ public interface Historique extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions Defaites</em>' containment reference list.
 	 * @see model.ModelPackage#getHistorique_ActionsDefaites()
-	 * @model containment="true"
+	 * @model containment="true" upper="5"
 	 * @generated
 	 */
 	EList<Action> getActionsDefaites();
@@ -51,7 +51,7 @@ public interface Historique extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions Refaites</em>' containment reference list.
 	 * @see model.ModelPackage#getHistorique_ActionsRefaites()
-	 * @model containment="true"
+	 * @model containment="true" upper="5"
 	 * @generated
 	 */
 	EList<Action> getActionsRefaites();

@@ -227,9 +227,6 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT:
 				inserer((Element)arguments.get(0), (Integer)arguments.get(1));
 				return null;
-			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__CONTENU_INT:
-				inserer((Contenu)arguments.get(0), (Integer)arguments.get(1));
-				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}

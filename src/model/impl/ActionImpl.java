@@ -2,15 +2,17 @@
  */
 package model.impl;
 
+import java.util.Collection;
 import model.Action;
 import model.Contenu;
 import model.ModelPackage;
 import model.TypeAction;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,14 +30,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	/**
-	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' reference.
+	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContenu()
 	 * @generated
 	 * @ordered
 	 */
-	protected Contenu contenu;
+	protected EList<Contenu> contenu;
 
 	/**
 	 * The default value of the '{@link #getTypeAction() <em>Type Action</em>}' attribute.
@@ -81,37 +83,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Contenu getContenu() {
-		if (contenu != null && contenu.eIsProxy()) {
-			InternalEObject oldContenu = (InternalEObject)contenu;
-			contenu = (Contenu)eResolveProxy(oldContenu);
-			if (contenu != oldContenu) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION__CONTENU, oldContenu, contenu));
-			}
+	public EList<Contenu> getContenu() {
+		if (contenu == null) {
+			contenu = new EObjectResolvingEList<Contenu>(Contenu.class, this, ModelPackage.ACTION__CONTENU);
 		}
 		return contenu;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu basicGetContenu() {
-		return contenu;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContenu(Contenu newContenu) {
-		Contenu oldContenu = contenu;
-		contenu = newContenu;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION__CONTENU, oldContenu, contenu));
 	}
 
 	/**
@@ -144,8 +120,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.ACTION__CONTENU:
-				if (resolve) return getContenu();
-				return basicGetContenu();
+				return getContenu();
 			case ModelPackage.ACTION__TYPE_ACTION:
 				return getTypeAction();
 		}
@@ -157,11 +132,13 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModelPackage.ACTION__CONTENU:
-				setContenu((Contenu)newValue);
+				getContenu().clear();
+				getContenu().addAll((Collection<? extends Contenu>)newValue);
 				return;
 			case ModelPackage.ACTION__TYPE_ACTION:
 				setTypeAction((TypeAction)newValue);
@@ -179,7 +156,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ModelPackage.ACTION__CONTENU:
-				setContenu((Contenu)null);
+				getContenu().clear();
 				return;
 			case ModelPackage.ACTION__TYPE_ACTION:
 				setTypeAction(TYPE_ACTION_EDEFAULT);
@@ -197,7 +174,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ModelPackage.ACTION__CONTENU:
-				return contenu != null;
+				return contenu != null && !contenu.isEmpty();
 			case ModelPackage.ACTION__TYPE_ACTION:
 				return typeAction != TYPE_ACTION_EDEFAULT;
 		}

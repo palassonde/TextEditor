@@ -97,17 +97,6 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void ajouter(Contenu contenu) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 */
 	public void vider() {
 		this.setContenu(null);
@@ -180,9 +169,6 @@ public class PressePapierImpl extends MinimalEObjectImpl.Container implements Pr
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.PRESSE_PAPIER___AJOUTER__CONTENU:
-				ajouter((Contenu)arguments.get(0));
-				return null;
 			case ModelPackage.PRESSE_PAPIER___VIDER:
 				vider();
 				return null;

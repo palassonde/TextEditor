@@ -157,14 +157,6 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void deplacer(Contenu contenu, int position);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	void supprimer(int positionDebut, int positionFin);
 
 	/**

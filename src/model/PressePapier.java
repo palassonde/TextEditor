@@ -32,7 +32,7 @@ public interface PressePapier extends EObject {
 	 * @return the value of the '<em>Contenu</em>' reference.
 	 * @see #setContenu(Contenu)
 	 * @see model.ModelPackage#getPressePapier_Contenu()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Contenu getContenu();
@@ -46,14 +46,6 @@ public interface PressePapier extends EObject {
 	 * @generated
 	 */
 	void setContenu(Contenu value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void ajouter(Contenu contenu);
 
 	/**
 	 * <!-- begin-user-doc -->

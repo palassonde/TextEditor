@@ -442,7 +442,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Deplacer__Contenu_int() {
+	public EOperation getContenu__Supprimer__int_int() {
 		return contenuEClass.getEOperations().get(0);
 	}
 
@@ -451,7 +451,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Supprimer__int_int() {
+	public EOperation getContenu__Coller__Contenu_int() {
 		return contenuEClass.getEOperations().get(1);
 	}
 
@@ -460,7 +460,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Coller__Contenu_int() {
+	public EOperation getContenu__Copier__int_int() {
 		return contenuEClass.getEOperations().get(2);
 	}
 
@@ -469,7 +469,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Copier__int_int() {
+	public EOperation getContenu__Defaire__Action() {
 		return contenuEClass.getEOperations().get(3);
 	}
 
@@ -478,17 +478,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Defaire__Action() {
-		return contenuEClass.getEOperations().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getContenu__Refaire__Action() {
-		return contenuEClass.getEOperations().get(5);
+		return contenuEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -523,15 +514,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getStrategieInsertion__Inserer__Contenu_int() {
-		return strategieInsertionEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStrategieInsertionTexte() {
 		return strategieInsertionTexteEClass;
 	}
@@ -543,15 +525,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EOperation getStrategieInsertionTexte__Inserer__Element_int() {
 		return strategieInsertionTexteEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStrategieInsertionTexte__Inserer__Contenu_int() {
-		return strategieInsertionTexteEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -667,17 +640,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getPressePapier__Ajouter__Contenu() {
-		return pressePapierEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getPressePapier__Vider() {
-		return pressePapierEClass.getEOperations().get(1);
+		return pressePapierEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -811,7 +775,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(contenuEClass, CONTENU__POSITION);
 		createEReference(contenuEClass, CONTENU__SECTION);
 		createEReference(contenuEClass, CONTENU__SECTION_SRC);
-		createEOperation(contenuEClass, CONTENU___DEPLACER__CONTENU_INT);
 		createEOperation(contenuEClass, CONTENU___SUPPRIMER__INT_INT);
 		createEOperation(contenuEClass, CONTENU___COLLER__CONTENU_INT);
 		createEOperation(contenuEClass, CONTENU___COPIER__INT_INT);
@@ -821,11 +784,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		strategieInsertionEClass = createEClass(STRATEGIE_INSERTION);
 		createEReference(strategieInsertionEClass, STRATEGIE_INSERTION__CONTENU);
 		createEOperation(strategieInsertionEClass, STRATEGIE_INSERTION___INSERER__ELEMENT_INT);
-		createEOperation(strategieInsertionEClass, STRATEGIE_INSERTION___INSERER__CONTENU_INT);
 
 		strategieInsertionTexteEClass = createEClass(STRATEGIE_INSERTION_TEXTE);
 		createEOperation(strategieInsertionTexteEClass, STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT);
-		createEOperation(strategieInsertionTexteEClass, STRATEGIE_INSERTION_TEXTE___INSERER__CONTENU_INT);
 
 		elementEClass = createEClass(ELEMENT);
 
@@ -843,7 +804,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		pressePapierEClass = createEClass(PRESSE_PAPIER);
 		createEReference(pressePapierEClass, PRESSE_PAPIER__CONTENU);
-		createEOperation(pressePapierEClass, PRESSE_PAPIER___AJOUTER__CONTENU);
 		createEOperation(pressePapierEClass, PRESSE_PAPIER___VIDER);
 
 		editeurEClass = createEClass(EDITEUR);
@@ -935,10 +895,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getContenu_Section(), this.getSection(), this.getSection_Contenu(), "section", null, 1, 1, Contenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContenu_SectionSrc(), this.getSection(), null, "sectionSrc", null, 0, 1, Contenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getContenu__Deplacer__Contenu_int(), null, "deplacer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = initEOperation(getContenu__Supprimer__int_int(), null, "supprimer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "positionDebut", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "positionFin", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -964,18 +920,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEParameter(op, this.getElement(), "element", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getStrategieInsertion__Inserer__Contenu_int(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(strategieInsertionTexteEClass, StrategieInsertionTexte.class, "StrategieInsertionTexte", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = initEOperation(getStrategieInsertionTexte__Inserer__Element_int(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getElement(), "element", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getStrategieInsertionTexte__Inserer__Contenu_int(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -984,20 +932,17 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getCaractere_Caractere(), ecorePackage.getEChar(), "caractere", null, 0, 1, Caractere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(historiqueEClass, Historique.class, "Historique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHistorique_ActionsDefaites(), this.getAction(), null, "actionsDefaites", null, 0, -1, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHistorique_ActionsRefaites(), this.getAction(), null, "actionsRefaites", null, 0, -1, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHistorique_ActionsDefaites(), this.getAction(), null, "actionsDefaites", null, 0, 5, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHistorique_ActionsRefaites(), this.getAction(), null, "actionsRefaites", null, 0, 5, Historique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHistorique__Vider(), null, "vider", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAction_Contenu(), this.getContenu(), null, "contenu", null, 1, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAction_Contenu(), this.getContenu(), null, "contenu", null, 1, 2, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAction_TypeAction(), this.getTypeAction(), "typeAction", null, 1, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pressePapierEClass, PressePapier.class, "PressePapier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPressePapier_Contenu(), this.getContenu(), null, "contenu", null, 0, 1, PressePapier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = initEOperation(getPressePapier__Ajouter__Contenu(), null, "ajouter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEReference(getPressePapier_Contenu(), this.getContenu(), null, "contenu", null, 1, 1, PressePapier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getPressePapier__Vider(), null, "vider", 0, 1, IS_UNIQUE, IS_ORDERED);
 

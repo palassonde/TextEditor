@@ -513,9 +513,6 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.CONTENU___DEPLACER__CONTENU_INT:
-				deplacer((Contenu)arguments.get(0), (Integer)arguments.get(1));
-				return null;
 			case ModelPackage.CONTENU___SUPPRIMER__INT_INT:
 				supprimer((Integer)arguments.get(0), (Integer)arguments.get(1));
 				return null;

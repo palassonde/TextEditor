@@ -3,9 +3,6 @@ package vues;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -146,16 +143,16 @@ public class InterfaceEditeur extends JFrame {
 
       	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
       
-      	addWindowListener(new WindowAdapter() {
-      		public void windowClosing(WindowEvent we) {
-      			System.exit(0);
-      		}
-      	});  	
+      	 	
 	}
 	
 	public void afficherVue(){
 		this.setSize(725, 460);
 		this.setVisible(true);	
+	}
+	
+	public void fermer(){
+		System.exit(0);
 	}
 
 	public void update(String contenu) {
@@ -218,6 +215,13 @@ public class InterfaceEditeur extends JFrame {
 	 */
 	public JMenuItem getColler() {
 		return coller;
+	}
+	
+	/**
+	 * @return the fermer
+	 */
+	public JMenuItem getFermer() {
+		return fermer;
 	}
 
 	/**

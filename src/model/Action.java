@@ -2,6 +2,7 @@
  */
 package model;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -23,30 +24,20 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Action extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Contenu</b></em>' reference.
+	 * Returns the value of the '<em><b>Contenu</b></em>' reference list.
+	 * The list contents are of type {@link model.Contenu}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contenu</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contenu</em>' reference.
-	 * @see #setContenu(Contenu)
+	 * @return the value of the '<em>Contenu</em>' reference list.
 	 * @see model.ModelPackage#getAction_Contenu()
-	 * @model required="true"
+	 * @model required="true" upper="2"
 	 * @generated
 	 */
-	Contenu getContenu();
-
-	/**
-	 * Sets the value of the '{@link model.Action#getContenu <em>Contenu</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contenu</em>' reference.
-	 * @see #getContenu()
-	 * @generated
-	 */
-	void setContenu(Contenu value);
+	EList<Contenu> getContenu();
 
 	/**
 	 * Returns the value of the '<em><b>Type Action</b></em>' attribute.
