@@ -352,18 +352,22 @@ public class Controlleur {
 		Contenu contenu = editeur.getPressePapier().getContenu();
 		int position = vue.getSurface().getCaretPosition();
 		int finSuppression = contenu.getPosition() + contenu.getElements().size();
-		contenu.getSectionSrc().getContenu().supprimer(contenu.getPosition(), finSuppression);
-		if (contenu.getSectionSrc() == editeur.getDocumentCourant().getSectionCourante() && position > contenu.getPosition())
-			position -= contenu.getElements().size();
-		editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
-		updateView();
-		setCaretPosition(position+contenu.getElements().size());
-		vue.getSurface().getCaret().setVisible(true);
-		vue.getColler().setEnabled(false);
-		vue.getDeplacer().setEnabled(false);
-		editeur.getPressePapier().vider();
-		editeur.getDocumentCourant().setModifie(true);
-		
+		if (position <= contenu.getPosition() || position >= finSuppression){
+			contenu.getSectionSrc().getContenu().supprimer(contenu.getPosition(), finSuppression);
+			if (contenu.getSectionSrc() == editeur.getDocumentCourant().getSectionCourante() && position > contenu.getPosition())
+				position -= contenu.getElements().size();
+			editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
+			updateView();
+			setCaretPosition(position+contenu.getElements().size());
+			vue.getSurface().getCaret().setVisible(true);
+			vue.getColler().setEnabled(false);
+			vue.getDeplacer().setEnabled(false);
+			editeur.getPressePapier().vider();
+			editeur.getDocumentCourant().setModifie(true);
+		}
+		else{
+			JOptionPane.showMessageDialog(vue, "Il est impossible de deplacer le contenu au milieu de lui-meme."); 
+		}
 	}
 
 	protected void coller() {
