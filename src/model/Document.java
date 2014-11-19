@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link model.Document#getTitre <em>Titre</em>}</li>
  *   <li>{@link model.Document#getSectionRacine <em>Section Racine</em>}</li>
- *   <li>{@link model.Document#getSectionCourante <em>Section Courante</em>}</li>
  *   <li>{@link model.Document#isModifie <em>Modifie</em>}</li>
  * </ul>
  * </p>
@@ -77,32 +76,6 @@ public interface Document extends EObject {
 	 * @generated
 	 */
 	void setSectionRacine(SectionBranche value);
-
-	/**
-	 * Returns the value of the '<em><b>Section Courante</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Section Courante</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Section Courante</em>' reference.
-	 * @see #setSectionCourante(Section)
-	 * @see model.ModelPackage#getDocument_SectionCourante()
-	 * @model required="true"
-	 * @generated
-	 */
-	Section getSectionCourante();
-
-	/**
-	 * Sets the value of the '{@link model.Document#getSectionCourante <em>Section Courante</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Section Courante</em>' reference.
-	 * @see #getSectionCourante()
-	 * @generated
-	 */
-	void setSectionCourante(Section value);
 
 	/**
 	 * Returns the value of the '<em><b>Modifie</b></em>' attribute.

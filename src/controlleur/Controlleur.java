@@ -10,13 +10,21 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.eclipse.emf.common.util.BasicEList;
 
 import vues.InterfaceEditeur;
 import model.Contenu;
 import model.Editeur;
+import model.Section;
+import model.SectionBranche;
 import model.impl.CaractereImpl;
 
 public class Controlleur {
@@ -24,6 +32,7 @@ public class Controlleur {
 	private Editeur editeur;
 	private InterfaceEditeur vue;
 	private ActionListener listener;
+	private MenuListener menuListener;
 	private KeyListener keyListener;
 	private MouseListener mouseListener;
 
@@ -32,36 +41,40 @@ public class Controlleur {
 		this.vue = vue;
 		this.listen();
 	}
-	
-	protected void displayInfo(KeyEvent e, String s){
-		String charString, keyCodeString, modString, tmpString;
 
-		char c = e.getKeyChar();
-		int keyCode = e.getKeyCode();
-		int modifiers = e.getModifiers();
-
-		if (Character.isISOControl(c)) {
-		    charString = "key character = (an unprintable control character)";
-		} else {
-		    charString = "key character = '" + c + "'";
-		}
-
-		keyCodeString = "key code = " + keyCode
-				+ " ("
-				+ KeyEvent.getKeyText(keyCode)
-				+ ")";
-
-		modString = "modifiers = " + modifiers;
-		tmpString = KeyEvent.getKeyModifiersText(modifiers);
-		if (tmpString.length() > 0) {
-		    modString += " (" + tmpString + ")";
-		} else {
-		    modString += " (no modifiers)";
-		}
-
-		System.out.println(s + "\n    " + charString + "\n    " + keyCodeString + "\n    " + modString + "\n");
-	}
 	public void listen() {
+		menuListener = new MenuListener(){
+
+			@Override
+			public void menuSelected(MenuEvent e) {
+				vue.getSections().removeAll();//remove previous opened window jmenuitems
+                for (Section section : editeur.getDocumentCourant().getSectionRacine().getSections(new BasicEList<Section>())) {
+                    JMenuItem menuItem = new JMenuItem(new SelectSection(section));
+                    String str = "|";
+                    for (int i = 1; i < section.getNiveau(); i++){
+                    	str += "--";
+                    }
+                    str += "> ";
+                    menuItem.setText(str + section.getTitre());
+                    vue.getSections().add(menuItem);
+                }
+
+                vue.getSections().revalidate();
+                vue.getSections().repaint();
+                vue.getSections().doClick();
+				
+			}
+
+			@Override
+			public void menuDeselected(MenuEvent e) {
+				
+			}
+
+			@Override
+			public void menuCanceled(MenuEvent e) {
+				
+			}
+		};
 		listener = new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				
@@ -85,6 +98,18 @@ public class Controlleur {
 				}
 				else if (actionEvent.getSource() == vue.getFermer()){
 					fermer();
+				}
+				else if (actionEvent.getSource() == vue.getAjouterSection()){
+					ajouterSection();
+				}
+				else if (actionEvent.getSource() == vue.getRenommerSection()){
+					renommerSection();
+				} 
+				else if (actionEvent.getSource() == vue.getSupprimerSection()){
+					supprimerSection();
+				}
+				else if (actionEvent.getSource() == vue.getSelectionnerTout()){
+					selectionnerTout();
 				}
 
 			}
@@ -167,8 +192,11 @@ public class Controlleur {
 		vue.getNouveau().addActionListener(listener);
 		vue.getRetablir().addActionListener(listener);
 		vue.getSelectionnerTout().addActionListener(listener);
+		vue.getRenommerSection().addActionListener(listener);
+		vue.getSupprimerSection().addActionListener(listener);
 		vue.getSurface().addKeyListener(keyListener);
 		vue.getSurface().addMouseListener(mouseListener);
+		vue.getSections().addMenuListener(menuListener);
 		vue.addWindowListener(new WindowAdapter() {
       		public void windowClosing(WindowEvent we) {
       			fermer();
@@ -177,6 +205,54 @@ public class Controlleur {
 		
 	}
 	
+	protected void supprimerSection() {
+		Section parent = editeur.getSectionCourante().getParent();
+		editeur.getSectionCourante().supprimer();
+		editeur.setSectionCourante(parent);
+		vue.setTitle(editeur.getSectionCourante().getTitre());
+		if(editeur.getSectionCourante() == editeur.getDocumentCourant().getSectionRacine())
+			vue.getSupprimerSection().setEnabled(false);
+		else
+			vue.getSupprimerSection().setEnabled(true);		
+		updateView();
+		
+	}
+
+	protected void selectionnerTout() {
+		vue.getSurface().setSelectionStart(0);
+		vue.getSurface().setSelectionEnd(editeur.getSectionCourante().getContenu().getElements().size());
+		
+	}
+
+	protected void renommerSection() {
+		String titre = JOptionPane.showInputDialog("Veuillez entrer le nouveau titre de la section.");
+		if (titre == null || titre.isEmpty())
+			JOptionPane.showMessageDialog(vue, "Le titre ne peut pas être vide. Le titre n'a pas été modifié."); 
+		else{
+			editeur.getSectionCourante().setTitre(titre);
+			vue.setTitle(editeur.getSectionCourante().getTitre());
+		}
+		
+		
+	}
+
+	protected void ajouterSection() {
+		String titre = JOptionPane.showInputDialog("Veuillez entrer le titre de la section.");
+		if (titre == null || titre.isEmpty())
+			JOptionPane.showMessageDialog(vue, "Le titre ne peut pas être null. La section n'a pas été ajoutée."); 
+		else{	
+			editeur.setSectionCourante(((SectionBranche) editeur.getSectionCourante()).ajouterSousSection(titre));
+			vue.setTitle(editeur.getSectionCourante().getTitre());
+			if(editeur.getSectionCourante().getNiveau() == 4)
+				vue.getAjouterSection().setEnabled(false);
+			else
+				vue.getAjouterSection().setEnabled(true);
+			vue.getSupprimerSection().setEnabled(true);
+			updateView();
+		}
+		
+	}
+
 	protected void fermer() {
 		if(editeur.getDocumentCourant().isModifie()){
 			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
@@ -200,13 +276,13 @@ public class Controlleur {
 		if (vue.getSurface().getSelectedText() != null)
 			supprimer();
 		int pos = vue.getSurface().getCaretPosition();
-		editeur.getDocumentCourant().getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(keyChar), pos);
+		editeur.getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(keyChar), pos);
 		updateView();
 		setCaretPosition(pos+1);
 		editeur.getDocumentCourant().setModifie(true);
 		Contenu contenuPP = editeur.getPressePapier().getContenu();
 		if (contenuPP != null){
-			if (editeur.getDocumentCourant().getSectionCourante() == contenuPP.getSectionSrc()){
+			if (editeur.getSectionCourante() == contenuPP.getSectionSrc()){
 				if (pos <= contenuPP.getPosition()){
 					contenuPP.setPosition(contenuPP.getPosition() + 1);
 				}
@@ -235,6 +311,7 @@ public class Controlleur {
 		else{
 			this.editeur.creerNouvDocument();
 		}
+		vue.setTitle(editeur.getSectionCourante().getTitre());
 	    updateView();
 
 	}
@@ -272,6 +349,7 @@ public class Controlleur {
 		    	editeur.ouvrir(chooser.getSelectedFile().toString());
 		    }
 		}
+		vue.setTitle(editeur.getSectionCourante().getTitre());
 	    updateView();
 		
 	}
@@ -304,14 +382,14 @@ public class Controlleur {
 		
 		if(vue.getSurface().getSelectedText() == null){
 			if(pos != 0){
-			 	editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(pos-1, pos);
+			 	editeur.getSectionCourante().getContenu().supprimer(pos-1, pos);
 			 	updateView();
 				setCaretPosition(pos-1);
 				taille = 1;
 				if (contenuPP != null){
 					int debutPP = contenuPP.getPosition();
 					int finPP = contenuPP.getPosition() + contenuPP.getElements().size();
-					if (editeur.getDocumentCourant().getSectionCourante() == contenuPP.getSectionSrc()){
+					if (editeur.getSectionCourante() == contenuPP.getSectionSrc()){
 						if (pos <= debutPP){
 							contenuPP.setPosition(debutPP - taille);
 						}
@@ -330,7 +408,7 @@ public class Controlleur {
 			if (contenuPP != null){
 				int debutPP = contenuPP.getPosition();
 				int finPP = contenuPP.getPosition() + contenuPP.getElements().size();
-				if (editeur.getDocumentCourant().getSectionCourante() == contenuPP.getSectionSrc()){
+				if (editeur.getSectionCourante() == contenuPP.getSectionSrc()){
 					if (debut <= debutPP && fin <= debutPP){
 						contenuPP.setPosition(contenuPP.getPosition() - taille);
 					}
@@ -339,7 +417,7 @@ public class Controlleur {
 					}	
 				}
 			}
-			editeur.getDocumentCourant().getSectionCourante().getContenu().supprimer(debut, fin);
+			editeur.getSectionCourante().getContenu().supprimer(debut, fin);
 			updateView();
 			setCaretPosition(debut);
 		}
@@ -354,9 +432,9 @@ public class Controlleur {
 		int finSuppression = contenu.getPosition() + contenu.getElements().size();
 		if (position <= contenu.getPosition() || position >= finSuppression){
 			contenu.getSectionSrc().getContenu().supprimer(contenu.getPosition(), finSuppression);
-			if (contenu.getSectionSrc() == editeur.getDocumentCourant().getSectionCourante() && position > contenu.getPosition())
+			if (contenu.getSectionSrc() == editeur.getSectionCourante() && position > contenu.getPosition())
 				position -= contenu.getElements().size();
-			editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
+			editeur.getSectionCourante().getContenu().coller(contenu, position);
 			updateView();
 			setCaretPosition(position+contenu.getElements().size());
 			vue.getSurface().getCaret().setVisible(true);
@@ -373,11 +451,11 @@ public class Controlleur {
 	protected void coller() {
 		Contenu contenu = editeur.getPressePapier().getContenu();
 		int position = vue.getSurface().getCaretPosition();
-		editeur.getDocumentCourant().getSectionCourante().getContenu().coller(contenu, position);
+		editeur.getSectionCourante().getContenu().coller(contenu, position);
 		updateView();
 		setCaretPosition(position+contenu.getElements().size());
 		editeur.getDocumentCourant().setModifie(true);
-		if (editeur.getDocumentCourant().getSectionCourante() == contenu.getSectionSrc()){
+		if (editeur.getSectionCourante() == contenu.getSectionSrc()){
 			if (position <= contenu.getPosition()){
 				contenu.setPosition(contenu.getPosition() + contenu.getElements().size());
 			}
@@ -390,8 +468,8 @@ public class Controlleur {
 	protected void copier() {
 		int positionDebut = vue.getSurface().getSelectionStart();
 		int positionFin = vue.getSurface().getSelectionEnd();
-		Contenu contenu = editeur.getDocumentCourant().getSectionCourante().getContenu().copier(positionDebut, positionFin);
-		contenu.setSectionSrc(editeur.getDocumentCourant().getSectionCourante());
+		Contenu contenu = editeur.getSectionCourante().getContenu().copier(positionDebut, positionFin);
+		contenu.setSectionSrc(editeur.getSectionCourante());
 		editeur.getPressePapier().setContenu(contenu);
 		vue.getColler().setEnabled(true);
 		vue.getDeplacer().setEnabled(true);
@@ -402,11 +480,11 @@ public class Controlleur {
 	}
 
 	public void setTitreSection(String titre) {
-		editeur.getDocumentCourant().getSectionCourante().setTitre(titre);
+		editeur.getSectionCourante().setTitre(titre);
 	}
 
 	public void updateView() {
-		vue.update(editeur.getDocumentCourant().getSectionCourante().getContenu().toString());
+		vue.update(editeur.getSectionCourante().getContenu().toString());
 	}
 
 	public void afficherVue() {
@@ -427,5 +505,31 @@ public class Controlleur {
 	public void setListener(ActionListener listener) {
 		this.listener = listener;
 	}
+	
+	@SuppressWarnings("serial")
+	class SelectSection extends AbstractAction  
+	{  
+		private Section section;
+	    public SelectSection( Section section )  
+	    {  
+	        super(); 
+	        this.section = section;
+	    }  
+	      
+	    public void actionPerformed( ActionEvent e )  
+	    {  
+	        editeur.setSectionCourante(section);
+	        if (section.getNiveau() == 4)
+	        	vue.getAjouterSection().setEnabled(false);
+	        else
+	        	vue.getAjouterSection().setEnabled(true);
+	        vue.setTitle(editeur.getSectionCourante().getTitre());
+	        if (section == editeur.getDocumentCourant().getSectionRacine())
+	        	vue.getSupprimerSection().setEnabled(false);
+	        else
+	        	vue.getSupprimerSection().setEnabled(true);
+	        updateView();
+	    }  
+	} 
 
 }

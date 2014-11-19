@@ -12,6 +12,7 @@ import model.Historique;
 import model.ModelPackage;
 import model.PressePapier;
 
+import model.Section;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  *   <li>{@link model.impl.EditeurImpl#getDocumentCourant <em>Document Courant</em>}</li>
  *   <li>{@link model.impl.EditeurImpl#getPressePapier <em>Presse Papier</em>}</li>
  *   <li>{@link model.impl.EditeurImpl#getHistorique <em>Historique</em>}</li>
+ *   <li>{@link model.impl.EditeurImpl#getSectionCourante <em>Section Courante</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +71,16 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	 * @ordered
 	 */
 	protected Historique historique;
+
+	/**
+	 * The cached value of the '{@link #getSectionCourante() <em>Section Courante</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionCourante()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section sectionCourante;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,6 +229,44 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section getSectionCourante() {
+		if (sectionCourante != null && sectionCourante.eIsProxy()) {
+			InternalEObject oldSectionCourante = (InternalEObject)sectionCourante;
+			sectionCourante = (Section)eResolveProxy(oldSectionCourante);
+			if (sectionCourante != oldSectionCourante) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.EDITEUR__SECTION_COURANTE, oldSectionCourante, sectionCourante));
+			}
+		}
+		return sectionCourante;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSectionCourante() {
+		return sectionCourante;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSectionCourante(Section newSectionCourante) {
+		Section oldSectionCourante = sectionCourante;
+		sectionCourante = newSectionCourante;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EDITEUR__SECTION_COURANTE, oldSectionCourante, sectionCourante));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @throws IOException 
 	 */
 	public void sauvegarder(String nomFichier) throws IOException {
@@ -243,6 +293,7 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		Resource documentResource = resSet.getResource(fileURI,true);
 		Document document = (Document)documentResource.getContents().get(0);
 		this.documentCourant = document;
+		this.sectionCourante = this.documentCourant.getSectionRacine();
 	}
 
 	/**
@@ -252,6 +303,7 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	public void creerNouvDocument() {
 		Document document= new DocumentImpl("untitled");
 		this.documentCourant = document;
+		this.sectionCourante = documentCourant.getSectionRacine();
 	}
 
 	/**
@@ -285,6 +337,9 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 				return getPressePapier();
 			case ModelPackage.EDITEUR__HISTORIQUE:
 				return getHistorique();
+			case ModelPackage.EDITEUR__SECTION_COURANTE:
+				if (resolve) return getSectionCourante();
+				return basicGetSectionCourante();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -305,6 +360,9 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 				return;
 			case ModelPackage.EDITEUR__HISTORIQUE:
 				setHistorique((Historique)newValue);
+				return;
+			case ModelPackage.EDITEUR__SECTION_COURANTE:
+				setSectionCourante((Section)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,6 +385,9 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 			case ModelPackage.EDITEUR__HISTORIQUE:
 				setHistorique((Historique)null);
 				return;
+			case ModelPackage.EDITEUR__SECTION_COURANTE:
+				setSectionCourante((Section)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -345,6 +406,8 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 				return pressePapier != null;
 			case ModelPackage.EDITEUR__HISTORIQUE:
 				return historique != null;
+			case ModelPackage.EDITEUR__SECTION_COURANTE:
+				return sectionCourante != null;
 		}
 		return super.eIsSet(featureID);
 	}

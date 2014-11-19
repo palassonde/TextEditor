@@ -11,16 +11,21 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionRacine" lowerBound="1"
         eType="#//SectionBranche" containment="true" eOpposite="#//SectionBranche/document"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sectionCourante" lowerBound="1"
-        eType="#//Section"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Section" abstract="true" interface="true">
-    <eOperations name="ajouterSousSection">
-      <eParameters name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="supprimer"/>
+    <eOperations name="getSections">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="liste">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//SectionBranche"
         eOpposite="#//SectionBranche/enfant"/>
@@ -30,19 +35,33 @@
         defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SectionFeuille" eSuperTypes="#//Section">
-    <eOperations name="renommer">
-      <eParameters name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="supprimer"/>
+    <eOperations name="getSections">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="liste">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SectionBranche" eSuperTypes="#//Section">
-    <eOperations name="renommer">
-      <eParameters name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="ajouterSousSection">
+    <eOperations name="ajouterSousSection" eType="#//Section">
       <eParameters name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="supprimer"/>
+    <eOperations name="getSections">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="liste">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enfant" upperBound="-1"
         eType="#//Section" containment="true" eOpposite="#//Section/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="document" lowerBound="1"
@@ -129,5 +148,7 @@
         eType="#//PressePapier" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="historique" lowerBound="1"
         eType="#//Historique" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sectionCourante" lowerBound="1"
+        eType="#//Section"/>
   </eClassifiers>
 </ecore:EPackage>

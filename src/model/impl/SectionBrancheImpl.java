@@ -4,11 +4,14 @@ package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
+
 import model.Contenu;
 import model.Document;
 import model.ModelPackage;
 import model.Section;
 import model.SectionBranche;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -116,6 +119,16 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 		super();
 		this.contenu = new ContenuImpl(this);
 		this.setDocument(document);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	protected SectionBrancheImpl(String titre) {
+		super();
+		this.contenu = new ContenuImpl(this);
+		this.titre = titre;
 	}
 
 	/**
@@ -310,34 +323,44 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
-	public void renommer(String titre) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public Section ajouterSousSection(String titre) {
+		Section nouvSection;
+		if(this.getNiveau() == 3)
+			nouvSection = new SectionFeuilleImpl(titre);
+		else
+			nouvSection = new SectionBrancheImpl(titre);
+		nouvSection.setParent(this);
+		nouvSection.setNiveau(this.getNiveau()+1);
+		this.enfant.add(nouvSection);
+		return nouvSection;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void ajouterSousSection(String titre) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void supprimer() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Section> enfants = this.getEnfant();
+		Iterator<Section> iter = enfants.iterator();
+		while(iter.hasNext()){
+			iter.next().supprimer();
+		}
+		this.getParent().getEnfant().remove(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Section> getSections(EList<Section> liste) {
+		EList<Section> enfants = this.getEnfant();
+		Iterator<Section> iter = enfants.iterator();
+		liste.add(this);
+		while(iter.hasNext()){
+			iter.next().getSections(liste);
+		}
+		return liste;
 	}
 
 	/**
@@ -518,18 +541,17 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.SECTION_BRANCHE___RENOMMER__STRING:
-				renommer((String)arguments.get(0));
-				return null;
 			case ModelPackage.SECTION_BRANCHE___AJOUTER_SOUS_SECTION__STRING:
-				ajouterSousSection((String)arguments.get(0));
-				return null;
+				return ajouterSousSection((String)arguments.get(0));
 			case ModelPackage.SECTION_BRANCHE___SUPPRIMER:
 				supprimer();
 				return null;
+			case ModelPackage.SECTION_BRANCHE___GET_SECTIONS__ELIST:
+				return getSections((EList<Section>)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

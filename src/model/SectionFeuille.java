@@ -2,6 +2,8 @@
  */
 package model;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -20,14 +22,13 @@ public interface SectionFeuille extends Section {
 	 * @model
 	 * @generated
 	 */
-	void renommer(String titre);
+	void supprimer();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
+	 * @model many="false" listeMany="false"
 	 */
-	void supprimer();
+	EList<Section> getSections(EList<Section> liste);
 
 } // SectionFeuille

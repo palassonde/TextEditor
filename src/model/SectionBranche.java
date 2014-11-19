@@ -72,17 +72,8 @@ public interface SectionBranche extends Section {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
-	 * @generated
 	 */
-	void renommer(String titre);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void ajouterSousSection(String titre);
+	Section ajouterSousSection(String titre);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,5 +82,12 @@ public interface SectionBranche extends Section {
 	 * @generated
 	 */
 	void supprimer();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model many="false" listeMany="false"
+	 */
+	EList<Section> getSections(EList<Section> liste);
 
 } // SectionBranche

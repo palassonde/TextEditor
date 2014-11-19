@@ -34,6 +34,8 @@ public class InterfaceEditeur extends JFrame {
 	JMenuItem coller;
 	JMenuItem selectionnerTout;
 	JMenuItem ajouterSection;
+	JMenuItem renommerSection;
+	JMenuItem supprimerSection;
 	JMenuItem aPropos;
 	JMenuItem nouveau;
 
@@ -48,7 +50,7 @@ public class InterfaceEditeur extends JFrame {
 		
 		menu = new JMenuBar();
 		setJMenuBar(menu);
-		setTitle("\u00c9diteur");
+		setTitle("Éditeur");
 		
 		fichier = new JMenu("Fichier");
 		menu.add(fichier);
@@ -111,8 +113,15 @@ public class InterfaceEditeur extends JFrame {
       	editer.add(selectionnerTout);
       	selectionnerTout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK)); // Ctrl+A
       	/* Outils->Ajouter section */
-      	ajouterSection = new JMenuItem("Ajouter une section");
+      	ajouterSection = new JMenuItem("Ajouter une sous-section");
       	outils.add(ajouterSection);
+      	/* Outils->Renommer Section */
+      	renommerSection = new JMenuItem("Renommer la section");
+      	outils.add(renommerSection);
+      	/* Outils->Supprimer Section */
+      	supprimerSection = new JMenuItem("Supprimer la section");
+      	outils.add(supprimerSection);
+      	supprimerSection.setEnabled(false);
       	/* Aide->A propos */
       	aPropos = new JMenuItem("\u00c0 propos");
       	aide.add(aPropos);
@@ -223,6 +232,13 @@ public class InterfaceEditeur extends JFrame {
 	public JMenuItem getFermer() {
 		return fermer;
 	}
+	
+	/**
+	 * @return the sections
+	 */
+	public JMenu getSections() {
+		return sections;
+	}
 
 	/**
 	 * @return the selectionnerTout
@@ -236,6 +252,20 @@ public class InterfaceEditeur extends JFrame {
 	 */
 	public JMenuItem getAjouterSection() {
 		return ajouterSection;
+	}
+	
+	/**
+	 * @return the renommerSection
+	 */
+	public JMenuItem getRenommerSection() {
+		return renommerSection;
+	}
+	
+	/**
+	 * @return the supprimerSection
+	 */
+	public JMenuItem getSupprimerSection() {
+		return supprimerSection;
 	}
 
 	/**

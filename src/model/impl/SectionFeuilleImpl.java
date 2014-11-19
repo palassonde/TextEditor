@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import model.Contenu;
 import model.ModelPackage;
+import model.Section;
 import model.SectionBranche;
 import model.SectionFeuille;
 
@@ -92,6 +93,16 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	protected SectionFeuilleImpl() {
 		super();
 		this.contenu = new ContenuImpl(this);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	protected SectionFeuilleImpl(String titre) {
+		super();
+		this.contenu = new ContenuImpl(this);
+		this.titre = titre;
 	}
 	
 
@@ -234,35 +245,20 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void renommer(String titre) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void supprimer() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.getParent().getEnfant().remove(this);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
-	public void ajouterSousSection(String titre) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<Section> getSections(EList<Section> liste) {
+		liste.add(this);
+		return liste;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -408,17 +404,14 @@ public class SectionFeuilleImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.SECTION_FEUILLE___RENOMMER__STRING:
-				renommer((String)arguments.get(0));
-				return null;
 			case ModelPackage.SECTION_FEUILLE___SUPPRIMER:
 				supprimer();
 				return null;
-			case ModelPackage.SECTION_FEUILLE___AJOUTER_SOUS_SECTION__STRING:
-				ajouterSousSection((String)arguments.get(0));
-				return null;
+			case ModelPackage.SECTION_FEUILLE___GET_SECTIONS__ELIST:
+				return getSections((EList<Section>)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

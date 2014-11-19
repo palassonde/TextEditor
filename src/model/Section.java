@@ -2,6 +2,7 @@
  */
 package model;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -139,14 +140,13 @@ public interface Section extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void ajouterSousSection(String titre);
+	void supprimer();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
+	 * @model many="false" listeMany="false"
 	 */
-	void supprimer();
+	EList<Section> getSections(EList<Section> liste);
 
 } // Section

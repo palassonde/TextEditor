@@ -8,7 +8,6 @@ import java.util.Map;
 import model.Action;
 import model.Document;
 import model.ModelPackage;
-import model.Section;
 import model.SectionBranche;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,7 +31,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  * <ul>
  *   <li>{@link model.impl.DocumentImpl#getTitre <em>Titre</em>}</li>
  *   <li>{@link model.impl.DocumentImpl#getSectionRacine <em>Section Racine</em>}</li>
- *   <li>{@link model.impl.DocumentImpl#getSectionCourante <em>Section Courante</em>}</li>
  *   <li>{@link model.impl.DocumentImpl#isModifie <em>Modifie</em>}</li>
  * </ul>
  * </p>
@@ -71,16 +69,6 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	protected SectionBranche sectionRacine;
 
 	/**
-	 * The cached value of the '{@link #getSectionCourante() <em>Section Courante</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSectionCourante()
-	 * @generated
-	 * @ordered
-	 */
-	protected Section sectionCourante;
-
-	/**
 	 * The default value of the '{@link #isModifie() <em>Modifie</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,7 +101,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 		super();
 		this.titre = titre;
 		this.sectionRacine = new SectionBrancheImpl(this);
-		this.sectionCourante = this.sectionRacine;
+		this.sectionRacine.setTitre(this.titre);
+		this.sectionRacine.setNiveau(1);
 		
 	}
 
@@ -189,44 +178,6 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_RACINE, newSectionRacine, newSectionRacine));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Section getSectionCourante() {
-		if (sectionCourante != null && sectionCourante.eIsProxy()) {
-			InternalEObject oldSectionCourante = (InternalEObject)sectionCourante;
-			sectionCourante = (Section)eResolveProxy(oldSectionCourante);
-			if (sectionCourante != oldSectionCourante) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.DOCUMENT__SECTION_COURANTE, oldSectionCourante, sectionCourante));
-			}
-		}
-		return sectionCourante;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Section basicGetSectionCourante() {
-		return sectionCourante;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSectionCourante(Section newSectionCourante) {
-		Section oldSectionCourante = sectionCourante;
-		sectionCourante = newSectionCourante;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DOCUMENT__SECTION_COURANTE, oldSectionCourante, sectionCourante));
 	}
 
 	/**
@@ -340,9 +291,6 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return getTitre();
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
 				return getSectionRacine();
-			case ModelPackage.DOCUMENT__SECTION_COURANTE:
-				if (resolve) return getSectionCourante();
-				return basicGetSectionCourante();
 			case ModelPackage.DOCUMENT__MODIFIE:
 				return isModifie();
 		}
@@ -362,9 +310,6 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return;
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
 				setSectionRacine((SectionBranche)newValue);
-				return;
-			case ModelPackage.DOCUMENT__SECTION_COURANTE:
-				setSectionCourante((Section)newValue);
 				return;
 			case ModelPackage.DOCUMENT__MODIFIE:
 				setModifie((Boolean)newValue);
@@ -387,9 +332,6 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
 				setSectionRacine((SectionBranche)null);
 				return;
-			case ModelPackage.DOCUMENT__SECTION_COURANTE:
-				setSectionCourante((Section)null);
-				return;
 			case ModelPackage.DOCUMENT__MODIFIE:
 				setModifie(MODIFIE_EDEFAULT);
 				return;
@@ -409,8 +351,6 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 				return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
 			case ModelPackage.DOCUMENT__SECTION_RACINE:
 				return sectionRacine != null;
-			case ModelPackage.DOCUMENT__SECTION_COURANTE:
-				return sectionCourante != null;
 			case ModelPackage.DOCUMENT__MODIFIE:
 				return modifie != MODIFIE_EDEFAULT;
 		}

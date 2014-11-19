@@ -87,22 +87,13 @@ public interface ModelPackage extends EPackage {
 	int DOCUMENT__SECTION_RACINE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Section Courante</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__SECTION_COURANTE = 2;
-
-	/**
 	 * The feature id for the '<em><b>Modifie</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MODIFIE = 3;
+	int DOCUMENT__MODIFIE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -111,7 +102,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 4;
+	int DOCUMENT_FEATURE_COUNT = 3;
 
 	/**
 	 * The operation id for the '<em>Refaire</em>' operation.
@@ -196,22 +187,22 @@ public interface ModelPackage extends EPackage {
 	int SECTION_FEATURE_COUNT = 4;
 
 	/**
-	 * The operation id for the '<em>Ajouter Sous Section</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION___AJOUTER_SOUS_SECTION__STRING = 0;
-
-	/**
 	 * The operation id for the '<em>Supprimer</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION___SUPPRIMER = 1;
+	int SECTION___SUPPRIMER = 0;
+
+	/**
+	 * The operation id for the '<em>Get Sections</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION___GET_SECTIONS__ELIST = 1;
 
 	/**
 	 * The number of operations of the '<em>Section</em>' class.
@@ -278,31 +269,22 @@ public interface ModelPackage extends EPackage {
 	int SECTION_FEUILLE_FEATURE_COUNT = SECTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Ajouter Sous Section</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION_FEUILLE___AJOUTER_SOUS_SECTION__STRING = SECTION___AJOUTER_SOUS_SECTION__STRING;
-
-	/**
-	 * The operation id for the '<em>Renommer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION_FEUILLE___RENOMMER__STRING = SECTION_OPERATION_COUNT + 0;
-
-	/**
 	 * The operation id for the '<em>Supprimer</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_FEUILLE___SUPPRIMER = SECTION_OPERATION_COUNT + 1;
+	int SECTION_FEUILLE___SUPPRIMER = SECTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Sections</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION_FEUILLE___GET_SECTIONS__ELIST = SECTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Section Feuille</em>' class.
@@ -387,22 +369,13 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE_FEATURE_COUNT = SECTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Renommer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION_BRANCHE___RENOMMER__STRING = SECTION_OPERATION_COUNT + 0;
-
-	/**
 	 * The operation id for the '<em>Ajouter Sous Section</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_BRANCHE___AJOUTER_SOUS_SECTION__STRING = SECTION_OPERATION_COUNT + 1;
+	int SECTION_BRANCHE___AJOUTER_SOUS_SECTION__STRING = SECTION_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Supprimer</em>' operation.
@@ -411,7 +384,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION_BRANCHE___SUPPRIMER = SECTION_OPERATION_COUNT + 2;
+	int SECTION_BRANCHE___SUPPRIMER = SECTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Sections</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION_BRANCHE___GET_SECTIONS__ELIST = SECTION_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Section Branche</em>' class.
@@ -864,13 +846,22 @@ public interface ModelPackage extends EPackage {
 	int EDITEUR__HISTORIQUE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Section Courante</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR__SECTION_COURANTE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Editeur</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDITEUR_FEATURE_COUNT = 3;
+	int EDITEUR_FEATURE_COUNT = 4;
 
 	/**
 	 * The operation id for the '<em>Sauvegarder</em>' operation.
@@ -950,17 +941,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDocument_SectionRacine();
-
-	/**
-	 * Returns the meta object for the reference '{@link model.Document#getSectionCourante <em>Section Courante</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Section Courante</em>'.
-	 * @see model.Document#getSectionCourante()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EReference getDocument_SectionCourante();
 
 	/**
 	 * Returns the meta object for the attribute '{@link model.Document#isModifie <em>Modifie</em>}'.
@@ -1048,16 +1028,6 @@ public interface ModelPackage extends EPackage {
 	EAttribute getSection_Niveau();
 
 	/**
-	 * Returns the meta object for the '{@link model.Section#ajouterSousSection(java.lang.String) <em>Ajouter Sous Section</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Ajouter Sous Section</em>' operation.
-	 * @see model.Section#ajouterSousSection(java.lang.String)
-	 * @generated
-	 */
-	EOperation getSection__AjouterSousSection__String();
-
-	/**
 	 * Returns the meta object for the '{@link model.Section#supprimer() <em>Supprimer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1066,6 +1036,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSection__Supprimer();
+
+	/**
+	 * Returns the meta object for the '{@link model.Section#getSections(org.eclipse.emf.common.util.EList) <em>Get Sections</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Sections</em>' operation.
+	 * @see model.Section#getSections(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getSection__GetSections__EList();
 
 	/**
 	 * Returns the meta object for class '{@link model.SectionFeuille <em>Section Feuille</em>}'.
@@ -1078,16 +1058,6 @@ public interface ModelPackage extends EPackage {
 	EClass getSectionFeuille();
 
 	/**
-	 * Returns the meta object for the '{@link model.SectionFeuille#renommer(java.lang.String) <em>Renommer</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Renommer</em>' operation.
-	 * @see model.SectionFeuille#renommer(java.lang.String)
-	 * @generated
-	 */
-	EOperation getSectionFeuille__Renommer__String();
-
-	/**
 	 * Returns the meta object for the '{@link model.SectionFeuille#supprimer() <em>Supprimer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1096,6 +1066,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSectionFeuille__Supprimer();
+
+	/**
+	 * Returns the meta object for the '{@link model.SectionFeuille#getSections(org.eclipse.emf.common.util.EList) <em>Get Sections</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Sections</em>' operation.
+	 * @see model.SectionFeuille#getSections(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getSectionFeuille__GetSections__EList();
 
 	/**
 	 * Returns the meta object for class '{@link model.SectionBranche <em>Section Branche</em>}'.
@@ -1130,16 +1110,6 @@ public interface ModelPackage extends EPackage {
 	EReference getSectionBranche_Document();
 
 	/**
-	 * Returns the meta object for the '{@link model.SectionBranche#renommer(java.lang.String) <em>Renommer</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Renommer</em>' operation.
-	 * @see model.SectionBranche#renommer(java.lang.String)
-	 * @generated
-	 */
-	EOperation getSectionBranche__Renommer__String();
-
-	/**
 	 * Returns the meta object for the '{@link model.SectionBranche#ajouterSousSection(java.lang.String) <em>Ajouter Sous Section</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1158,6 +1128,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSectionBranche__Supprimer();
+
+	/**
+	 * Returns the meta object for the '{@link model.SectionBranche#getSections(org.eclipse.emf.common.util.EList) <em>Get Sections</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Sections</em>' operation.
+	 * @see model.SectionBranche#getSections(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getSectionBranche__GetSections__EList();
 
 	/**
 	 * Returns the meta object for class '{@link model.Contenu <em>Contenu</em>}'.
@@ -1485,6 +1465,17 @@ public interface ModelPackage extends EPackage {
 	EReference getEditeur_Historique();
 
 	/**
+	 * Returns the meta object for the reference '{@link model.Editeur#getSectionCourante <em>Section Courante</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Section Courante</em>'.
+	 * @see model.Editeur#getSectionCourante()
+	 * @see #getEditeur()
+	 * @generated
+	 */
+	EReference getEditeur_SectionCourante();
+
+	/**
 	 * Returns the meta object for the '{@link model.Editeur#sauvegarder(java.lang.String) <em>Sauvegarder</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1574,14 +1565,6 @@ public interface ModelPackage extends EPackage {
 		EReference DOCUMENT__SECTION_RACINE = eINSTANCE.getDocument_SectionRacine();
 
 		/**
-		 * The meta object literal for the '<em><b>Section Courante</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCUMENT__SECTION_COURANTE = eINSTANCE.getDocument_SectionCourante();
-
-		/**
 		 * The meta object literal for the '<em><b>Modifie</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1648,20 +1631,20 @@ public interface ModelPackage extends EPackage {
 		EAttribute SECTION__NIVEAU = eINSTANCE.getSection_Niveau();
 
 		/**
-		 * The meta object literal for the '<em><b>Ajouter Sous Section</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SECTION___AJOUTER_SOUS_SECTION__STRING = eINSTANCE.getSection__AjouterSousSection__String();
-
-		/**
 		 * The meta object literal for the '<em><b>Supprimer</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation SECTION___SUPPRIMER = eINSTANCE.getSection__Supprimer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Sections</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SECTION___GET_SECTIONS__ELIST = eINSTANCE.getSection__GetSections__EList();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.SectionFeuilleImpl <em>Section Feuille</em>}' class.
@@ -1674,20 +1657,20 @@ public interface ModelPackage extends EPackage {
 		EClass SECTION_FEUILLE = eINSTANCE.getSectionFeuille();
 
 		/**
-		 * The meta object literal for the '<em><b>Renommer</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SECTION_FEUILLE___RENOMMER__STRING = eINSTANCE.getSectionFeuille__Renommer__String();
-
-		/**
 		 * The meta object literal for the '<em><b>Supprimer</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation SECTION_FEUILLE___SUPPRIMER = eINSTANCE.getSectionFeuille__Supprimer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Sections</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SECTION_FEUILLE___GET_SECTIONS__ELIST = eINSTANCE.getSectionFeuille__GetSections__EList();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.SectionBrancheImpl <em>Section Branche</em>}' class.
@@ -1716,14 +1699,6 @@ public interface ModelPackage extends EPackage {
 		EReference SECTION_BRANCHE__DOCUMENT = eINSTANCE.getSectionBranche_Document();
 
 		/**
-		 * The meta object literal for the '<em><b>Renommer</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SECTION_BRANCHE___RENOMMER__STRING = eINSTANCE.getSectionBranche__Renommer__String();
-
-		/**
 		 * The meta object literal for the '<em><b>Ajouter Sous Section</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1738,6 +1713,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SECTION_BRANCHE___SUPPRIMER = eINSTANCE.getSectionBranche__Supprimer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Sections</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SECTION_BRANCHE___GET_SECTIONS__ELIST = eINSTANCE.getSectionBranche__GetSections__EList();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.ContenuImpl <em>Contenu</em>}' class.
@@ -2004,6 +1987,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EDITEUR__HISTORIQUE = eINSTANCE.getEditeur_Historique();
+
+		/**
+		 * The meta object literal for the '<em><b>Section Courante</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDITEUR__SECTION_COURANTE = eINSTANCE.getEditeur_SectionCourante();
 
 		/**
 		 * The meta object literal for the '<em><b>Sauvegarder</b></em>' operation.
