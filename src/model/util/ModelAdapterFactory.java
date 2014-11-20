@@ -112,12 +112,36 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createActionAdapter();
 			}
 			@Override
+			public Adapter caseActionDeplacer(ActionDeplacer object) {
+				return createActionDeplacerAdapter();
+			}
+			@Override
+			public Adapter caseActionColler(ActionColler object) {
+				return createActionCollerAdapter();
+			}
+			@Override
+			public Adapter caseActionSupprimer(ActionSupprimer object) {
+				return createActionSupprimerAdapter();
+			}
+			@Override
+			public Adapter caseActionInserer(ActionInserer object) {
+				return createActionInsererAdapter();
+			}
+			@Override
 			public Adapter casePressePapier(PressePapier object) {
 				return createPressePapierAdapter();
 			}
 			@Override
 			public Adapter caseEditeur(Editeur object) {
 				return createEditeurAdapter();
+			}
+			@Override
+			public Adapter caseSujet(Sujet object) {
+				return createSujetAdapter();
+			}
+			@Override
+			public Adapter caseObservateur(Observateur object) {
+				return createObservateurAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -294,6 +318,62 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link model.ActionDeplacer <em>Action Deplacer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.ActionDeplacer
+	 * @generated
+	 */
+	public Adapter createActionDeplacerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.ActionColler <em>Action Coller</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.ActionColler
+	 * @generated
+	 */
+	public Adapter createActionCollerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.ActionSupprimer <em>Action Supprimer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.ActionSupprimer
+	 * @generated
+	 */
+	public Adapter createActionSupprimerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.ActionInserer <em>Action Inserer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.ActionInserer
+	 * @generated
+	 */
+	public Adapter createActionInsererAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link model.PressePapier <em>Presse Papier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -318,6 +398,34 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEditeurAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.Sujet <em>Sujet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.Sujet
+	 * @generated
+	 */
+	public Adapter createSujetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.Observateur <em>Observateur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.Observateur
+	 * @generated
+	 */
+	public Adapter createObservateurAdapter() {
 		return null;
 	}
 

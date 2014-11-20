@@ -3,6 +3,8 @@ package vues;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.lang.reflect.InvocationTargetException;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -12,9 +14,23 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+
+import model.Contenu;
+import model.Observateur;
+
 
 @SuppressWarnings("serial")
-public class InterfaceEditeur extends JFrame {
+public class InterfaceEditeur extends JFrame implements Observateur {
    
 	JMenuBar menu;
 
@@ -27,8 +43,8 @@ public class InterfaceEditeur extends JFrame {
 	JMenuItem ouvrir;
 	JMenuItem enregistrer;
 	JMenuItem fermer;
-	JMenuItem annuler;
-	JMenuItem retablir;
+	JMenuItem defaire;
+	JMenuItem refaire;
 	JMenuItem deplacer;
 	JMenuItem copier;
 	JMenuItem coller;
@@ -44,6 +60,8 @@ public class InterfaceEditeur extends JFrame {
 	JPanel panneau;
 
 	JScrollPane panneauDefilement;
+	
+	Contenu contenu;
 	
 	public InterfaceEditeur()
 	{
@@ -85,16 +103,18 @@ public class InterfaceEditeur extends JFrame {
 		fermer = new JMenuItem("Fermer");
       	fermer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK)); // Alt+F4
       	fichier.add(fermer);
-      	/* Editer->Annuler */
-      	annuler = new JMenuItem("Annuler");
-      	annuler.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK)); // Ctrl+Z
-      	editer.add(annuler);
-      	/* Editer->Retablir */
-      	retablir = new JMenuItem("R\u00e9tablir");
-      	retablir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.SHIFT_MASK)); // Maj+Z
-      	editer.add(retablir);
+      	/* Editer->Defaire */
+      	defaire = new JMenuItem("Défaire");
+      	defaire.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK)); // Ctrl+Z
+      	defaire.setEnabled(false);
+      	editer.add(defaire);
+      	/* Editer->Refaire */
+      	refaire = new JMenuItem("Refaire");
+      	refaire.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.ALT_MASK)); // Maj+Z
+      	refaire.setEnabled(false);
+      	editer.add(refaire);
       	/* Editer->Couper */
-      	deplacer = new JMenuItem("D\u00e9placer");
+      	deplacer = new JMenuItem("Déplacer");
       	editer.add(deplacer);
       	deplacer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK)); // Ctrl+X
       	deplacer.setEnabled(false);
@@ -115,13 +135,16 @@ public class InterfaceEditeur extends JFrame {
       	/* Outils->Ajouter section */
       	ajouterSection = new JMenuItem("Ajouter une sous-section");
       	outils.add(ajouterSection);
+      	ajouterSection.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
       	/* Outils->Renommer Section */
       	renommerSection = new JMenuItem("Renommer la section");
       	outils.add(renommerSection);
+      	renommerSection.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.ALT_MASK));
       	/* Outils->Supprimer Section */
       	supprimerSection = new JMenuItem("Supprimer la section");
       	outils.add(supprimerSection);
       	supprimerSection.setEnabled(false);
+      	supprimerSection.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
       	/* Aide->A propos */
       	aPropos = new JMenuItem("\u00c0 propos");
       	aide.add(aPropos);
@@ -164,11 +187,6 @@ public class InterfaceEditeur extends JFrame {
 		System.exit(0);
 	}
 
-	public void update(String contenu) {
-
-		this.surface.setText(contenu);
-		
-	}
 	
 	/**
 	 * @return the ouvrir
@@ -192,17 +210,17 @@ public class InterfaceEditeur extends JFrame {
 	}
 	
 	/**
-	 * @return the annuler
+	 * @return the defaire
 	 */
-	public JMenuItem getAnnuler() {
-		return annuler;
+	public JMenuItem getDefaire() {
+		return defaire;
 	}
 
 	/**
-	 * @return the retablir
+	 * @return the refaire
 	 */
-	public JMenuItem getRetablir() {
-		return retablir;
+	public JMenuItem getRefaire() {
+		return refaire;
 	}
 
 	/**
@@ -281,5 +299,144 @@ public class InterfaceEditeur extends JFrame {
 	public JTextPane getSurface() {
 		return surface;
 	}
+	
+	public void setContenu(Contenu contenu){
+		this.contenu = contenu;
+	}
+	
+
+	@Override
+	public void update() {
+		this.surface.setText(this.contenu.toString());
+		
+	}
+
+	@Override
+	public EClass eClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Resource eResource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EObject eContainer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EStructuralFeature eContainingFeature() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EReference eContainmentFeature() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EList<EObject> eContents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TreeIterator<EObject> eAllContents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean eIsProxy() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public EList<EObject> eCrossReferences() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object eGet(EStructuralFeature feature) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object eGet(EStructuralFeature feature, boolean resolve) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void eSet(EStructuralFeature feature, Object newValue) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean eIsSet(EStructuralFeature feature) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void eUnset(EStructuralFeature feature) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Object eInvoke(EOperation operation, EList<?> arguments)
+			throws InvocationTargetException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EList<Adapter> eAdapters() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean eDeliver() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void eSetDeliver(boolean deliver) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eNotify(Notification notification) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDeplacer(boolean etat) {
+		this.deplacer.setEnabled(etat);
+		
+	}
+
+	@Override
+	public void setColler(boolean etat) {
+		this.coller.setEnabled(etat);
+		
+	}
+
    
 }

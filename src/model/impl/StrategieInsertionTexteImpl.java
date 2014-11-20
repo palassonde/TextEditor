@@ -100,19 +100,34 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public void inserer(Element element, int position) {
+	public void inserer(Element element, int position, Contenu contenuPP) {
+		
 		this.getContenu().getElements().add(position, element);
+		if (contenuPP != null){
+			if (this.getContenu().getSection() == contenuPP.getSectionSrc()){
+				if (position <= contenuPP.getPosition()){
+					contenuPP.setPosition(contenuPP.getPosition() + 1);
+				}
+				if (position > contenuPP.getPosition() && position < contenuPP.getPosition()+contenuPP.getElements().size()){
+					this.getContenu().getObservateur().setDeplacer(false);
+				}		
+			}
+			
+		}	
+		if(this.getContenu().getObservateur() != null)
+			this.getContenu().informer();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public void inserer(Contenu contenu, int position) {
-		EList<Element> liste = contenu.getElements();
-		this.getContenu().getElements().addAll(position, liste);
-		
+	public void inserer(Element element, int position) {
+		this.getContenu().getElements().add(position, element);
+		if(this.getContenu().getObservateur() != null)
+			this.getContenu().informer();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,6 +239,9 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU:
+				inserer((Element)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
+				return null;
 			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT:
 				inserer((Element)arguments.get(0), (Integer)arguments.get(1));
 				return null;

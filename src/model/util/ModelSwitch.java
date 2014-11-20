@@ -95,6 +95,7 @@ public class ModelSwitch<T> extends Switch<T> {
 			case ModelPackage.CONTENU: {
 				Contenu contenu = (Contenu)theEObject;
 				T result = caseContenu(contenu);
+				if (result == null) result = caseSujet(contenu);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -136,6 +137,34 @@ public class ModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ModelPackage.ACTION_DEPLACER: {
+				ActionDeplacer actionDeplacer = (ActionDeplacer)theEObject;
+				T result = caseActionDeplacer(actionDeplacer);
+				if (result == null) result = caseAction(actionDeplacer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.ACTION_COLLER: {
+				ActionColler actionColler = (ActionColler)theEObject;
+				T result = caseActionColler(actionColler);
+				if (result == null) result = caseAction(actionColler);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.ACTION_SUPPRIMER: {
+				ActionSupprimer actionSupprimer = (ActionSupprimer)theEObject;
+				T result = caseActionSupprimer(actionSupprimer);
+				if (result == null) result = caseAction(actionSupprimer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.ACTION_INSERER: {
+				ActionInserer actionInserer = (ActionInserer)theEObject;
+				T result = caseActionInserer(actionInserer);
+				if (result == null) result = caseAction(actionInserer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ModelPackage.PRESSE_PAPIER: {
 				PressePapier pressePapier = (PressePapier)theEObject;
 				T result = casePressePapier(pressePapier);
@@ -145,6 +174,18 @@ public class ModelSwitch<T> extends Switch<T> {
 			case ModelPackage.EDITEUR: {
 				Editeur editeur = (Editeur)theEObject;
 				T result = caseEditeur(editeur);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.SUJET: {
+				Sujet sujet = (Sujet)theEObject;
+				T result = caseSujet(sujet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.OBSERVATEUR: {
+				Observateur observateur = (Observateur)theEObject;
+				T result = caseObservateur(observateur);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -318,6 +359,66 @@ public class ModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action Deplacer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action Deplacer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActionDeplacer(ActionDeplacer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action Coller</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action Coller</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActionColler(ActionColler object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action Supprimer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action Supprimer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActionSupprimer(ActionSupprimer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action Inserer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action Inserer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActionInserer(ActionInserer object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Presse Papier</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -344,6 +445,36 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEditeur(Editeur object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sujet</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sujet</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSujet(Sujet object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Observateur</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Observateur</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObservateur(Observateur object) {
 		return null;
 	}
 

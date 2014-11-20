@@ -144,7 +144,7 @@ public interface Editeur extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void ouvrir(String nomFichier);
+	Document ouvrir(String nomFichier);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +152,6 @@ public interface Editeur extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void creerNouvDocument();
+	Document creerNouvDocument();
 
 } // Editeur

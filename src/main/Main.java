@@ -21,8 +21,11 @@ public class Main {
 		ModelPackage.eINSTANCE.eClass();
 		//Chargement du fichier depuis la racine du projet
 		Editeur editeur = new EditeurImpl();
-		editeur.creerNouvDocument();
+		editeur.setDocumentCourant(editeur.creerNouvDocument());
+		editeur.setSectionCourante(editeur.getDocumentCourant().getSectionRacine());
 		InterfaceEditeur ie = new InterfaceEditeur();
+		editeur.getSectionCourante().getContenu().attacher(ie);
+		ie.setContenu(editeur.getSectionCourante().getContenu());
 		Controlleur controlleur = new Controlleur(editeur, ie);
 		controlleur.afficherVue();
 	}	

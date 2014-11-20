@@ -4,8 +4,6 @@ package model;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Contenu</b></em>'.
@@ -26,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Contenu extends EObject {
+public interface Contenu extends Sujet {
 	/**
 	 * Returns the value of the '<em><b>Strategie</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link model.StrategieInsertion#getContenu <em>Contenu</em>}'.
@@ -157,7 +155,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void supprimer(int positionDebut, int positionFin);
+	void supprimer(int positionDebut, int positionFin, Contenu contenuPP);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,7 +163,7 @@ public interface Contenu extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void coller(Contenu contenu, int position);
+	void coller(Contenu contenu, int position, Contenu contenuPP);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,5 +172,13 @@ public interface Contenu extends EObject {
 	 * @generated
 	 */
 	Contenu copier(int positionDebut, int positionFin);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void deplacer(Contenu contenu, int position, Contenu contenuPP);
 
 } // Contenu

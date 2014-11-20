@@ -48,9 +48,8 @@ public class CaractereImpl extends ElementImpl implements Caractere {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
-	protected CaractereImpl() {
+	public CaractereImpl() {
 		super();
 	}
 	
@@ -58,7 +57,7 @@ public class CaractereImpl extends ElementImpl implements Caractere {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	protected CaractereImpl(Element element) {
+	public CaractereImpl(Element element) {
 		super();
 		this.caractere = ((Caractere) element).getCaractere();
 	}

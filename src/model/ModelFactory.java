@@ -85,13 +85,40 @@ public interface ModelFactory extends EFactory {
 	Historique createHistorique();
 
 	/**
-	 * Returns a new object of class '<em>Action</em>'.
+	 * Returns a new object of class '<em>Action Deplacer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Action</em>'.
+	 * @return a new object of class '<em>Action Deplacer</em>'.
 	 * @generated
 	 */
-	Action createAction();
+	ActionDeplacer createActionDeplacer();
+
+	/**
+	 * Returns a new object of class '<em>Action Coller</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Action Coller</em>'.
+	 * @generated
+	 */
+	ActionColler createActionColler();
+
+	/**
+	 * Returns a new object of class '<em>Action Supprimer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Action Supprimer</em>'.
+	 * @generated
+	 */
+	ActionSupprimer createActionSupprimer();
+
+	/**
+	 * Returns a new object of class '<em>Action Inserer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Action Inserer</em>'.
+	 * @generated
+	 */
+	ActionInserer createActionInserer();
 
 	/**
 	 * Returns a new object of class '<em>Presse Papier</em>'.

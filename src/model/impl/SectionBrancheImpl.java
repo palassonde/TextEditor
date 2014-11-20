@@ -5,7 +5,6 @@ package model.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Iterator;
-
 import model.Contenu;
 import model.Document;
 import model.ModelPackage;
@@ -342,9 +341,8 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public void supprimer() {
 		EList<Section> enfants = this.getEnfant();
-		Iterator<Section> iter = enfants.iterator();
-		while(iter.hasNext()){
-			iter.next().supprimer();
+		for (int i = 0; i < enfants.size(); i++){
+			enfants.get(i).supprimer();
 		}
 		this.getParent().getEnfant().remove(this);
 	}
@@ -353,14 +351,14 @@ public class SectionBrancheImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public EList<Section> getSections(EList<Section> liste) {
+	public EList<Section> getSections(EList<Section> eList) {
 		EList<Section> enfants = this.getEnfant();
 		Iterator<Section> iter = enfants.iterator();
-		liste.add(this);
+		eList.add(this);
 		while(iter.hasNext()){
-			iter.next().getSections(liste);
+			iter.next().getSections(eList);
 		}
-		return liste;
+		return eList;
 	}
 
 	/**

@@ -4,7 +4,6 @@ package model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -405,6 +404,70 @@ public interface ModelPackage extends EPackage {
 	int SECTION_BRANCHE_OPERATION_COUNT = SECTION_OPERATION_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link model.Sujet <em>Sujet</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.Sujet
+	 * @see model.impl.ModelPackageImpl#getSujet()
+	 * @generated
+	 */
+	int SUJET = 17;
+
+	/**
+	 * The feature id for the '<em><b>Observateur</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUJET__OBSERVATEUR = 0;
+
+	/**
+	 * The number of structural features of the '<em>Sujet</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUJET_FEATURE_COUNT = 1;
+
+	/**
+	 * The operation id for the '<em>Attacher</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUJET___ATTACHER__OBSERVATEUR = 0;
+
+	/**
+	 * The operation id for the '<em>Detacher</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUJET___DETACHER__OBSERVATEUR = 1;
+
+	/**
+	 * The operation id for the '<em>Informer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUJET___INFORMER = 2;
+
+	/**
+	 * The number of operations of the '<em>Sujet</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUJET_OPERATION_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link model.impl.ContenuImpl <em>Contenu</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -415,13 +478,22 @@ public interface ModelPackage extends EPackage {
 	int CONTENU = 4;
 
 	/**
+	 * The feature id for the '<em><b>Observateur</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENU__OBSERVATEUR = SUJET__OBSERVATEUR;
+
+	/**
 	 * The feature id for the '<em><b>Strategie</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU__STRATEGIE = 0;
+	int CONTENU__STRATEGIE = SUJET_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -430,7 +502,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU__ELEMENTS = 1;
+	int CONTENU__ELEMENTS = SUJET_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -439,7 +511,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU__POSITION = 2;
+	int CONTENU__POSITION = SUJET_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Section</b></em>' container reference.
@@ -448,7 +520,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU__SECTION = 3;
+	int CONTENU__SECTION = SUJET_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Section Src</b></em>' reference.
@@ -457,7 +529,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU__SECTION_SRC = 4;
+	int CONTENU__SECTION_SRC = SUJET_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Contenu</em>' class.
@@ -466,7 +538,34 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU_FEATURE_COUNT = 5;
+	int CONTENU_FEATURE_COUNT = SUJET_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Attacher</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENU___ATTACHER__OBSERVATEUR = SUJET___ATTACHER__OBSERVATEUR;
+
+	/**
+	 * The operation id for the '<em>Detacher</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENU___DETACHER__OBSERVATEUR = SUJET___DETACHER__OBSERVATEUR;
+
+	/**
+	 * The operation id for the '<em>Informer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENU___INFORMER = SUJET___INFORMER;
 
 	/**
 	 * The operation id for the '<em>Supprimer</em>' operation.
@@ -475,7 +574,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___SUPPRIMER__INT_INT = 0;
+	int CONTENU___SUPPRIMER__INT_INT_CONTENU = SUJET_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Coller</em>' operation.
@@ -484,7 +583,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___COLLER__CONTENU_INT = 1;
+	int CONTENU___COLLER__CONTENU_INT_CONTENU = SUJET_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Copier</em>' operation.
@@ -493,7 +592,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___COPIER__INT_INT = 2;
+	int CONTENU___COPIER__INT_INT = SUJET_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Deplacer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENU___DEPLACER__CONTENU_INT_CONTENU = SUJET_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Contenu</em>' class.
@@ -502,7 +610,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU_OPERATION_COUNT = 3;
+	int CONTENU_OPERATION_COUNT = SUJET_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
@@ -539,7 +647,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT = 0;
+	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU = 0;
+
+	/**
+	 * The operation id for the '<em>Inserer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT = 1;
 
 	/**
 	 * The number of operations of the '<em>Strategie Insertion</em>' class.
@@ -548,7 +665,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_OPERATION_COUNT = 1;
+	int STRATEGIE_INSERTION_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link model.impl.StrategieInsertionTexteImpl <em>Strategie Insertion Texte</em>}' class.
@@ -585,7 +702,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = STRATEGIE_INSERTION_OPERATION_COUNT + 0;
+	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU = STRATEGIE_INSERTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Inserer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = STRATEGIE_INSERTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Strategie Insertion Texte</em>' class.
@@ -594,7 +720,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_TEXTE_OPERATION_COUNT = STRATEGIE_INSERTION_OPERATION_COUNT + 1;
+	int STRATEGIE_INSERTION_TEXTE_OPERATION_COUNT = STRATEGIE_INSERTION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
@@ -717,32 +843,32 @@ public interface ModelPackage extends EPackage {
 	int HISTORIQUE_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link model.impl.ActionImpl <em>Action</em>}' class.
+	 * The meta object id for the '{@link model.Action <em>Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see model.impl.ActionImpl
+	 * @see model.Action
 	 * @see model.impl.ModelPackageImpl#getAction()
 	 * @generated
 	 */
 	int ACTION = 10;
 
 	/**
-	 * The feature id for the '<em><b>Contenu</b></em>' reference list.
+	 * The feature id for the '<em><b>Receveur</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION__CONTENU = 0;
+	int ACTION__RECEVEUR = 0;
 
 	/**
-	 * The feature id for the '<em><b>Type Action</b></em>' attribute.
+	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION__TYPE_ACTION = 1;
+	int ACTION__CONTENU_PP = 1;
 
 	/**
 	 * The number of structural features of the '<em>Action</em>' class.
@@ -754,13 +880,350 @@ public interface ModelPackage extends EPackage {
 	int ACTION_FEATURE_COUNT = 2;
 
 	/**
+	 * The operation id for the '<em>Faire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___FAIRE = 0;
+
+	/**
+	 * The operation id for the '<em>Defaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___DEFAIRE = 1;
+
+	/**
 	 * The number of operations of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_OPERATION_COUNT = 0;
+	int ACTION_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link model.impl.ActionDeplacerImpl <em>Action Deplacer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.ActionDeplacerImpl
+	 * @see model.impl.ModelPackageImpl#getActionDeplacer()
+	 * @generated
+	 */
+	int ACTION_DEPLACER = 11;
+
+	/**
+	 * The feature id for the '<em><b>Receveur</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER__RECEVEUR = ACTION__RECEVEUR;
+
+	/**
+	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER__CONTENU_PP = ACTION__CONTENU_PP;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER__POSITION = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contenu</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER__CONTENU = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Action Deplacer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Faire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER___FAIRE = ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Defaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER___DEFAIRE = ACTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Action Deplacer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER_OPERATION_COUNT = ACTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link model.impl.ActionCollerImpl <em>Action Coller</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.ActionCollerImpl
+	 * @see model.impl.ModelPackageImpl#getActionColler()
+	 * @generated
+	 */
+	int ACTION_COLLER = 12;
+
+	/**
+	 * The feature id for the '<em><b>Receveur</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER__RECEVEUR = ACTION__RECEVEUR;
+
+	/**
+	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER__CONTENU_PP = ACTION__CONTENU_PP;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER__POSITION = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contenu</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER__CONTENU = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Action Coller</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Faire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER___FAIRE = ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Defaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER___DEFAIRE = ACTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Action Coller</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_COLLER_OPERATION_COUNT = ACTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link model.impl.ActionSupprimerImpl <em>Action Supprimer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.ActionSupprimerImpl
+	 * @see model.impl.ModelPackageImpl#getActionSupprimer()
+	 * @generated
+	 */
+	int ACTION_SUPPRIMER = 13;
+
+	/**
+	 * The feature id for the '<em><b>Receveur</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER__RECEVEUR = ACTION__RECEVEUR;
+
+	/**
+	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER__CONTENU_PP = ACTION__CONTENU_PP;
+
+	/**
+	 * The feature id for the '<em><b>Contenu</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER__CONTENU = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Action Supprimer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Faire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER___FAIRE = ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Defaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER___DEFAIRE = ACTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Action Supprimer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_SUPPRIMER_OPERATION_COUNT = ACTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link model.impl.ActionInsererImpl <em>Action Inserer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.ActionInsererImpl
+	 * @see model.impl.ModelPackageImpl#getActionInserer()
+	 * @generated
+	 */
+	int ACTION_INSERER = 14;
+
+	/**
+	 * The feature id for the '<em><b>Receveur</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER__RECEVEUR = ACTION__RECEVEUR;
+
+	/**
+	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER__CONTENU_PP = ACTION__CONTENU_PP;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER__POSITION = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Caractere</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER__CARACTERE = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Action Inserer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Faire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER___FAIRE = ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Defaire</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER___DEFAIRE = ACTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Action Inserer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INSERER_OPERATION_COUNT = ACTION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link model.impl.PressePapierImpl <em>Presse Papier</em>}' class.
@@ -770,7 +1233,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.impl.ModelPackageImpl#getPressePapier()
 	 * @generated
 	 */
-	int PRESSE_PAPIER = 11;
+	int PRESSE_PAPIER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Contenu</b></em>' reference.
@@ -816,7 +1279,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.impl.ModelPackageImpl#getEditeur()
 	 * @generated
 	 */
-	int EDITEUR = 12;
+	int EDITEUR = 16;
 
 	/**
 	 * The feature id for the '<em><b>Document Courant</b></em>' reference.
@@ -900,15 +1363,59 @@ public interface ModelPackage extends EPackage {
 	int EDITEUR_OPERATION_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link model.TypeAction <em>Type Action</em>}' enum.
+	 * The meta object id for the '{@link model.Observateur <em>Observateur</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see model.TypeAction
-	 * @see model.impl.ModelPackageImpl#getTypeAction()
+	 * @see model.Observateur
+	 * @see model.impl.ModelPackageImpl#getObservateur()
 	 * @generated
 	 */
-	int TYPE_ACTION = 13;
+	int OBSERVATEUR = 18;
 
+	/**
+	 * The number of structural features of the '<em>Observateur</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATEUR_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATEUR___UPDATE = 0;
+
+	/**
+	 * The operation id for the '<em>Set Deplacer</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATEUR___SET_DEPLACER__BOOLEAN = 1;
+
+	/**
+	 * The operation id for the '<em>Set Coller</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATEUR___SET_COLLER__BOOLEAN = 2;
+
+	/**
+	 * The number of operations of the '<em>Observateur</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATEUR_OPERATION_COUNT = 3;
 
 	/**
 	 * Returns the meta object for class '{@link model.Document <em>Document</em>}'.
@@ -1205,24 +1712,24 @@ public interface ModelPackage extends EPackage {
 	EReference getContenu_SectionSrc();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#supprimer(int, int) <em>Supprimer</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#supprimer(int, int, model.Contenu) <em>Supprimer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Supprimer</em>' operation.
-	 * @see model.Contenu#supprimer(int, int)
+	 * @see model.Contenu#supprimer(int, int, model.Contenu)
 	 * @generated
 	 */
-	EOperation getContenu__Supprimer__int_int();
+	EOperation getContenu__Supprimer__int_int_Contenu();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#coller(model.Contenu, int) <em>Coller</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#coller(model.Contenu, int, model.Contenu) <em>Coller</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Coller</em>' operation.
-	 * @see model.Contenu#coller(model.Contenu, int)
+	 * @see model.Contenu#coller(model.Contenu, int, model.Contenu)
 	 * @generated
 	 */
-	EOperation getContenu__Coller__Contenu_int();
+	EOperation getContenu__Coller__Contenu_int_Contenu();
 
 	/**
 	 * Returns the meta object for the '{@link model.Contenu#copier(int, int) <em>Copier</em>}' operation.
@@ -1233,6 +1740,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getContenu__Copier__int_int();
+
+	/**
+	 * Returns the meta object for the '{@link model.Contenu#deplacer(model.Contenu, int, model.Contenu) <em>Deplacer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Deplacer</em>' operation.
+	 * @see model.Contenu#deplacer(model.Contenu, int, model.Contenu)
+	 * @generated
+	 */
+	EOperation getContenu__Deplacer__Contenu_int_Contenu();
 
 	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertion <em>Strategie Insertion</em>}'.
@@ -1256,6 +1773,16 @@ public interface ModelPackage extends EPackage {
 	EReference getStrategieInsertion_Contenu();
 
 	/**
+	 * Returns the meta object for the '{@link model.StrategieInsertion#inserer(model.Element, int, model.Contenu) <em>Inserer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Inserer</em>' operation.
+	 * @see model.StrategieInsertion#inserer(model.Element, int, model.Contenu)
+	 * @generated
+	 */
+	EOperation getStrategieInsertion__Inserer__Element_int_Contenu();
+
+	/**
 	 * Returns the meta object for the '{@link model.StrategieInsertion#inserer(model.Element, int) <em>Inserer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1274,6 +1801,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStrategieInsertionTexte();
+
+	/**
+	 * Returns the meta object for the '{@link model.StrategieInsertionTexte#inserer(model.Element, int, model.Contenu) <em>Inserer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Inserer</em>' operation.
+	 * @see model.StrategieInsertionTexte#inserer(model.Element, int, model.Contenu)
+	 * @generated
+	 */
+	EOperation getStrategieInsertionTexte__Inserer__Element_int_Contenu();
 
 	/**
 	 * Returns the meta object for the '{@link model.StrategieInsertionTexte#inserer(model.Element, int) <em>Inserer</em>}' operation.
@@ -1369,26 +1906,243 @@ public interface ModelPackage extends EPackage {
 	EClass getAction();
 
 	/**
-	 * Returns the meta object for the reference list '{@link model.Action#getContenu <em>Contenu</em>}'.
+	 * Returns the meta object for the reference '{@link model.Action#getReceveur <em>Receveur</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Contenu</em>'.
-	 * @see model.Action#getContenu()
+	 * @return the meta object for the reference '<em>Receveur</em>'.
+	 * @see model.Action#getReceveur()
 	 * @see #getAction()
 	 * @generated
 	 */
-	EReference getAction_Contenu();
+	EReference getAction_Receveur();
 
 	/**
-	 * Returns the meta object for the attribute '{@link model.Action#getTypeAction <em>Type Action</em>}'.
+	 * Returns the meta object for the reference '{@link model.Action#getContenuPP <em>Contenu PP</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type Action</em>'.
-	 * @see model.Action#getTypeAction()
+	 * @return the meta object for the reference '<em>Contenu PP</em>'.
+	 * @see model.Action#getContenuPP()
 	 * @see #getAction()
 	 * @generated
 	 */
-	EAttribute getAction_TypeAction();
+	EReference getAction_ContenuPP();
+
+	/**
+	 * Returns the meta object for the '{@link model.Action#faire() <em>Faire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Faire</em>' operation.
+	 * @see model.Action#faire()
+	 * @generated
+	 */
+	EOperation getAction__Faire();
+
+	/**
+	 * Returns the meta object for the '{@link model.Action#defaire() <em>Defaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Defaire</em>' operation.
+	 * @see model.Action#defaire()
+	 * @generated
+	 */
+	EOperation getAction__Defaire();
+
+	/**
+	 * Returns the meta object for class '{@link model.ActionDeplacer <em>Action Deplacer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Action Deplacer</em>'.
+	 * @see model.ActionDeplacer
+	 * @generated
+	 */
+	EClass getActionDeplacer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.ActionDeplacer#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position</em>'.
+	 * @see model.ActionDeplacer#getPosition()
+	 * @see #getActionDeplacer()
+	 * @generated
+	 */
+	EAttribute getActionDeplacer_Position();
+
+	/**
+	 * Returns the meta object for the reference '{@link model.ActionDeplacer#getContenu <em>Contenu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Contenu</em>'.
+	 * @see model.ActionDeplacer#getContenu()
+	 * @see #getActionDeplacer()
+	 * @generated
+	 */
+	EReference getActionDeplacer_Contenu();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionDeplacer#faire() <em>Faire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Faire</em>' operation.
+	 * @see model.ActionDeplacer#faire()
+	 * @generated
+	 */
+	EOperation getActionDeplacer__Faire();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionDeplacer#defaire() <em>Defaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Defaire</em>' operation.
+	 * @see model.ActionDeplacer#defaire()
+	 * @generated
+	 */
+	EOperation getActionDeplacer__Defaire();
+
+	/**
+	 * Returns the meta object for class '{@link model.ActionColler <em>Action Coller</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Action Coller</em>'.
+	 * @see model.ActionColler
+	 * @generated
+	 */
+	EClass getActionColler();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.ActionColler#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position</em>'.
+	 * @see model.ActionColler#getPosition()
+	 * @see #getActionColler()
+	 * @generated
+	 */
+	EAttribute getActionColler_Position();
+
+	/**
+	 * Returns the meta object for the reference '{@link model.ActionColler#getContenu <em>Contenu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Contenu</em>'.
+	 * @see model.ActionColler#getContenu()
+	 * @see #getActionColler()
+	 * @generated
+	 */
+	EReference getActionColler_Contenu();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionColler#faire() <em>Faire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Faire</em>' operation.
+	 * @see model.ActionColler#faire()
+	 * @generated
+	 */
+	EOperation getActionColler__Faire();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionColler#defaire() <em>Defaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Defaire</em>' operation.
+	 * @see model.ActionColler#defaire()
+	 * @generated
+	 */
+	EOperation getActionColler__Defaire();
+
+	/**
+	 * Returns the meta object for class '{@link model.ActionSupprimer <em>Action Supprimer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Action Supprimer</em>'.
+	 * @see model.ActionSupprimer
+	 * @generated
+	 */
+	EClass getActionSupprimer();
+
+	/**
+	 * Returns the meta object for the reference '{@link model.ActionSupprimer#getContenu <em>Contenu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Contenu</em>'.
+	 * @see model.ActionSupprimer#getContenu()
+	 * @see #getActionSupprimer()
+	 * @generated
+	 */
+	EReference getActionSupprimer_Contenu();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionSupprimer#faire() <em>Faire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Faire</em>' operation.
+	 * @see model.ActionSupprimer#faire()
+	 * @generated
+	 */
+	EOperation getActionSupprimer__Faire();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionSupprimer#defaire() <em>Defaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Defaire</em>' operation.
+	 * @see model.ActionSupprimer#defaire()
+	 * @generated
+	 */
+	EOperation getActionSupprimer__Defaire();
+
+	/**
+	 * Returns the meta object for class '{@link model.ActionInserer <em>Action Inserer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Action Inserer</em>'.
+	 * @see model.ActionInserer
+	 * @generated
+	 */
+	EClass getActionInserer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.ActionInserer#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position</em>'.
+	 * @see model.ActionInserer#getPosition()
+	 * @see #getActionInserer()
+	 * @generated
+	 */
+	EAttribute getActionInserer_Position();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.ActionInserer#getCaractere <em>Caractere</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Caractere</em>'.
+	 * @see model.ActionInserer#getCaractere()
+	 * @see #getActionInserer()
+	 * @generated
+	 */
+	EAttribute getActionInserer_Caractere();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionInserer#faire() <em>Faire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Faire</em>' operation.
+	 * @see model.ActionInserer#faire()
+	 * @generated
+	 */
+	EOperation getActionInserer__Faire();
+
+	/**
+	 * Returns the meta object for the '{@link model.ActionInserer#defaire() <em>Defaire</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Defaire</em>' operation.
+	 * @see model.ActionInserer#defaire()
+	 * @generated
+	 */
+	EOperation getActionInserer__Defaire();
 
 	/**
 	 * Returns the meta object for class '{@link model.PressePapier <em>Presse Papier</em>}'.
@@ -1506,14 +2260,95 @@ public interface ModelPackage extends EPackage {
 	EOperation getEditeur__CreerNouvDocument();
 
 	/**
-	 * Returns the meta object for enum '{@link model.TypeAction <em>Type Action</em>}'.
+	 * Returns the meta object for class '{@link model.Sujet <em>Sujet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Type Action</em>'.
-	 * @see model.TypeAction
+	 * @return the meta object for class '<em>Sujet</em>'.
+	 * @see model.Sujet
 	 * @generated
 	 */
-	EEnum getTypeAction();
+	EClass getSujet();
+
+	/**
+	 * Returns the meta object for the reference '{@link model.Sujet#getObservateur <em>Observateur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Observateur</em>'.
+	 * @see model.Sujet#getObservateur()
+	 * @see #getSujet()
+	 * @generated
+	 */
+	EReference getSujet_Observateur();
+
+	/**
+	 * Returns the meta object for the '{@link model.Sujet#attacher(model.Observateur) <em>Attacher</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Attacher</em>' operation.
+	 * @see model.Sujet#attacher(model.Observateur)
+	 * @generated
+	 */
+	EOperation getSujet__Attacher__Observateur();
+
+	/**
+	 * Returns the meta object for the '{@link model.Sujet#detacher(model.Observateur) <em>Detacher</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Detacher</em>' operation.
+	 * @see model.Sujet#detacher(model.Observateur)
+	 * @generated
+	 */
+	EOperation getSujet__Detacher__Observateur();
+
+	/**
+	 * Returns the meta object for the '{@link model.Sujet#informer() <em>Informer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Informer</em>' operation.
+	 * @see model.Sujet#informer()
+	 * @generated
+	 */
+	EOperation getSujet__Informer();
+
+	/**
+	 * Returns the meta object for class '{@link model.Observateur <em>Observateur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Observateur</em>'.
+	 * @see model.Observateur
+	 * @generated
+	 */
+	EClass getObservateur();
+
+	/**
+	 * Returns the meta object for the '{@link model.Observateur#update() <em>Update</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Update</em>' operation.
+	 * @see model.Observateur#update()
+	 * @generated
+	 */
+	EOperation getObservateur__Update();
+
+	/**
+	 * Returns the meta object for the '{@link model.Observateur#setDeplacer(boolean) <em>Set Deplacer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Deplacer</em>' operation.
+	 * @see model.Observateur#setDeplacer(boolean)
+	 * @generated
+	 */
+	EOperation getObservateur__SetDeplacer__boolean();
+
+	/**
+	 * Returns the meta object for the '{@link model.Observateur#setColler(boolean) <em>Set Coller</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Coller</em>' operation.
+	 * @see model.Observateur#setColler(boolean)
+	 * @generated
+	 */
+	EOperation getObservateur__SetColler__boolean();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1778,7 +2613,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___SUPPRIMER__INT_INT = eINSTANCE.getContenu__Supprimer__int_int();
+		EOperation CONTENU___SUPPRIMER__INT_INT_CONTENU = eINSTANCE.getContenu__Supprimer__int_int_Contenu();
 
 		/**
 		 * The meta object literal for the '<em><b>Coller</b></em>' operation.
@@ -1786,7 +2621,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___COLLER__CONTENU_INT = eINSTANCE.getContenu__Coller__Contenu_int();
+		EOperation CONTENU___COLLER__CONTENU_INT_CONTENU = eINSTANCE.getContenu__Coller__Contenu_int_Contenu();
 
 		/**
 		 * The meta object literal for the '<em><b>Copier</b></em>' operation.
@@ -1795,6 +2630,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CONTENU___COPIER__INT_INT = eINSTANCE.getContenu__Copier__int_int();
+
+		/**
+		 * The meta object literal for the '<em><b>Deplacer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENU___DEPLACER__CONTENU_INT_CONTENU = eINSTANCE.getContenu__Deplacer__Contenu_int_Contenu();
 
 		/**
 		 * The meta object literal for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
@@ -1820,6 +2663,14 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU = eINSTANCE.getStrategieInsertion__Inserer__Element_int_Contenu();
+
+		/**
+		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
 		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertion__Inserer__Element_int();
 
 		/**
@@ -1831,6 +2682,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STRATEGIE_INSERTION_TEXTE = eINSTANCE.getStrategieInsertionTexte();
+
+		/**
+		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU = eINSTANCE.getStrategieInsertionTexte__Inserer__Element_int_Contenu();
 
 		/**
 		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
@@ -1903,30 +2762,206 @@ public interface ModelPackage extends EPackage {
 		EOperation HISTORIQUE___VIDER = eINSTANCE.getHistorique__Vider();
 
 		/**
-		 * The meta object literal for the '{@link model.impl.ActionImpl <em>Action</em>}' class.
+		 * The meta object literal for the '{@link model.Action <em>Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see model.impl.ActionImpl
+		 * @see model.Action
 		 * @see model.impl.ModelPackageImpl#getAction()
 		 * @generated
 		 */
 		EClass ACTION = eINSTANCE.getAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Contenu</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Receveur</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION__CONTENU = eINSTANCE.getAction_Contenu();
+		EReference ACTION__RECEVEUR = eINSTANCE.getAction_Receveur();
 
 		/**
-		 * The meta object literal for the '<em><b>Type Action</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Contenu PP</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ACTION__TYPE_ACTION = eINSTANCE.getAction_TypeAction();
+		EReference ACTION__CONTENU_PP = eINSTANCE.getAction_ContenuPP();
+
+		/**
+		 * The meta object literal for the '<em><b>Faire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION___FAIRE = eINSTANCE.getAction__Faire();
+
+		/**
+		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION___DEFAIRE = eINSTANCE.getAction__Defaire();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.ActionDeplacerImpl <em>Action Deplacer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.ActionDeplacerImpl
+		 * @see model.impl.ModelPackageImpl#getActionDeplacer()
+		 * @generated
+		 */
+		EClass ACTION_DEPLACER = eINSTANCE.getActionDeplacer();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION_DEPLACER__POSITION = eINSTANCE.getActionDeplacer_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION_DEPLACER__CONTENU = eINSTANCE.getActionDeplacer_Contenu();
+
+		/**
+		 * The meta object literal for the '<em><b>Faire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_DEPLACER___FAIRE = eINSTANCE.getActionDeplacer__Faire();
+
+		/**
+		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_DEPLACER___DEFAIRE = eINSTANCE.getActionDeplacer__Defaire();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.ActionCollerImpl <em>Action Coller</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.ActionCollerImpl
+		 * @see model.impl.ModelPackageImpl#getActionColler()
+		 * @generated
+		 */
+		EClass ACTION_COLLER = eINSTANCE.getActionColler();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION_COLLER__POSITION = eINSTANCE.getActionColler_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION_COLLER__CONTENU = eINSTANCE.getActionColler_Contenu();
+
+		/**
+		 * The meta object literal for the '<em><b>Faire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_COLLER___FAIRE = eINSTANCE.getActionColler__Faire();
+
+		/**
+		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_COLLER___DEFAIRE = eINSTANCE.getActionColler__Defaire();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.ActionSupprimerImpl <em>Action Supprimer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.ActionSupprimerImpl
+		 * @see model.impl.ModelPackageImpl#getActionSupprimer()
+		 * @generated
+		 */
+		EClass ACTION_SUPPRIMER = eINSTANCE.getActionSupprimer();
+
+		/**
+		 * The meta object literal for the '<em><b>Contenu</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION_SUPPRIMER__CONTENU = eINSTANCE.getActionSupprimer_Contenu();
+
+		/**
+		 * The meta object literal for the '<em><b>Faire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_SUPPRIMER___FAIRE = eINSTANCE.getActionSupprimer__Faire();
+
+		/**
+		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_SUPPRIMER___DEFAIRE = eINSTANCE.getActionSupprimer__Defaire();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.ActionInsererImpl <em>Action Inserer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.ActionInsererImpl
+		 * @see model.impl.ModelPackageImpl#getActionInserer()
+		 * @generated
+		 */
+		EClass ACTION_INSERER = eINSTANCE.getActionInserer();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION_INSERER__POSITION = eINSTANCE.getActionInserer_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Caractere</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION_INSERER__CARACTERE = eINSTANCE.getActionInserer_Caractere();
+
+		/**
+		 * The meta object literal for the '<em><b>Faire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_INSERER___FAIRE = eINSTANCE.getActionInserer__Faire();
+
+		/**
+		 * The meta object literal for the '<em><b>Defaire</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION_INSERER___DEFAIRE = eINSTANCE.getActionInserer__Defaire();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.PressePapierImpl <em>Presse Papier</em>}' class.
@@ -2021,14 +3056,80 @@ public interface ModelPackage extends EPackage {
 		EOperation EDITEUR___CREER_NOUV_DOCUMENT = eINSTANCE.getEditeur__CreerNouvDocument();
 
 		/**
-		 * The meta object literal for the '{@link model.TypeAction <em>Type Action</em>}' enum.
+		 * The meta object literal for the '{@link model.Sujet <em>Sujet</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see model.TypeAction
-		 * @see model.impl.ModelPackageImpl#getTypeAction()
+		 * @see model.Sujet
+		 * @see model.impl.ModelPackageImpl#getSujet()
 		 * @generated
 		 */
-		EEnum TYPE_ACTION = eINSTANCE.getTypeAction();
+		EClass SUJET = eINSTANCE.getSujet();
+
+		/**
+		 * The meta object literal for the '<em><b>Observateur</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUJET__OBSERVATEUR = eINSTANCE.getSujet_Observateur();
+
+		/**
+		 * The meta object literal for the '<em><b>Attacher</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUJET___ATTACHER__OBSERVATEUR = eINSTANCE.getSujet__Attacher__Observateur();
+
+		/**
+		 * The meta object literal for the '<em><b>Detacher</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUJET___DETACHER__OBSERVATEUR = eINSTANCE.getSujet__Detacher__Observateur();
+
+		/**
+		 * The meta object literal for the '<em><b>Informer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUJET___INFORMER = eINSTANCE.getSujet__Informer();
+
+		/**
+		 * The meta object literal for the '{@link model.Observateur <em>Observateur</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.Observateur
+		 * @see model.impl.ModelPackageImpl#getObservateur()
+		 * @generated
+		 */
+		EClass OBSERVATEUR = eINSTANCE.getObservateur();
+
+		/**
+		 * The meta object literal for the '<em><b>Update</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation OBSERVATEUR___UPDATE = eINSTANCE.getObservateur__Update();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Deplacer</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation OBSERVATEUR___SET_DEPLACER__BOOLEAN = eINSTANCE.getObservateur__SetDeplacer__boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Coller</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation OBSERVATEUR___SET_COLLER__BOOLEAN = eINSTANCE.getObservateur__SetColler__boolean();
 
 	}
 

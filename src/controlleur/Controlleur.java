@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.ListIterator;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
@@ -21,11 +22,20 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.eclipse.emf.common.util.BasicEList;
 
 import vues.InterfaceEditeur;
+import model.ActionColler;
+import model.ActionInserer;
+import model.ActionSupprimer;
 import model.Contenu;
+import model.Document;
 import model.Editeur;
+import model.Element;
 import model.Section;
 import model.SectionBranche;
+import model.impl.ActionCollerImpl;
+import model.impl.ActionInsererImpl;
+import model.impl.ActionSupprimerImpl;
 import model.impl.CaractereImpl;
+import model.impl.ContenuImpl;
 
 public class Controlleur {
 
@@ -41,8 +51,38 @@ public class Controlleur {
 		this.vue = vue;
 		this.listen();
 	}
+	
+	protected void displayInfo(KeyEvent e, String s){
+		String charString, keyCodeString, modString, tmpString;
+
+		char c = e.getKeyChar();
+		int keyCode = e.getKeyCode();
+		int modifiers = e.getModifiers();
+
+		if (Character.isISOControl(c)) {
+		    charString = "key character = (an unprintable control character)";
+		} else {
+		    charString = "key character = '" + c + "'";
+		}
+
+		keyCodeString = "key code = " + keyCode
+				+ " ("
+				+ KeyEvent.getKeyText(keyCode)
+				+ ")";
+
+		modString = "modifiers = " + modifiers;
+		tmpString = KeyEvent.getKeyModifiersText(modifiers);
+		if (tmpString.length() > 0) {
+		    modString += " (" + tmpString + ")";
+		} else {
+		    modString += " (no modifiers)";
+		}
+
+		System.out.println(s + "\n    " + charString + "\n    " + keyCodeString + "\n    " + modString + "\n");
+	}
 
 	public void listen() {
+		
 		menuListener = new MenuListener(){
 
 			@Override
@@ -111,6 +151,9 @@ public class Controlleur {
 				else if (actionEvent.getSource() == vue.getSelectionnerTout()){
 					selectionnerTout();
 				}
+				else if (actionEvent.getSource() == vue.getDefaire()){
+					defaire();
+				}
 
 			}
 		};
@@ -125,26 +168,22 @@ public class Controlleur {
 			public void keyTyped(KeyEvent e) {
 				
 			}
+			
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				//displayInfo(e,"Key Pressed");
+				displayInfo(e,"Key Pressed");
 				if(e.getKeyCode() == 8){
 					supprimer();
 				}
-				else if(e.getKeyCode() == 67 && e.getModifiers() == 2 && vue.getCopier().isEnabled())
-					copier();
-				else if(e.getKeyCode() == 86 && e.getModifiers() == 2 && vue.getColler().isEnabled())
-					coller();
-				else if(e.getKeyCode() == 88 && e.getModifiers() == 2 && vue.getDeplacer().isEnabled())
-					deplacer();
-				
+				else if(e.getKeyCode() == 39){
+					setCaretPosition(vue.getSurface().getCaretPosition());
+				}
 				else if((e.getKeyCode()>=10 && e.getKeyCode()<=90) || e.getKeyCode() == 192){
-					if ((e.getKeyCode() < 16 || e.getKeyCode() > 20) && (e.getKeyCode()< 37 || e.getKeyCode() > 40)){
+					if ((e.getKeyCode() < 16 || e.getKeyCode() > 20) && (e.getKeyCode()< 37 || e.getKeyCode() > 40) && (e.getModifiers() != 2 && e.getModifiers() != 4 && e.getModifiers() != 8 && e.getModifiers() != 10)){
 						inserer(e.getKeyChar());
 					}		
 				}
-				vue.getSurface().getCaret().setVisible(true);
 				
 			}
 		};
@@ -181,7 +220,7 @@ public class Controlleur {
 			}
 		};
 		vue.getAjouterSection().addActionListener(listener);
-		vue.getAnnuler().addActionListener(listener);
+		vue.getDefaire().addActionListener(listener);
 		vue.getFermer().addActionListener(listener);
 		vue.getaPropos().addActionListener(listener);
 		vue.getColler().addActionListener(listener);
@@ -190,7 +229,7 @@ public class Controlleur {
 		vue.getEnregistrer().addActionListener(listener);
 		vue.getOuvrir().addActionListener(listener);
 		vue.getNouveau().addActionListener(listener);
-		vue.getRetablir().addActionListener(listener);
+		vue.getRefaire().addActionListener(listener);
 		vue.getSelectionnerTout().addActionListener(listener);
 		vue.getRenommerSection().addActionListener(listener);
 		vue.getSupprimerSection().addActionListener(listener);
@@ -205,50 +244,60 @@ public class Controlleur {
 		
 	}
 	
+	protected void refaire() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void defaire() {
+		this.editeur.getHistorique().getActions().get(0).defaire();
+		
+	}
+
 	protected void supprimerSection() {
 		Section parent = editeur.getSectionCourante().getParent();
 		editeur.getSectionCourante().supprimer();
-		editeur.setSectionCourante(parent);
+		changerSection(parent);
 		vue.setTitle(editeur.getSectionCourante().getTitre());
 		if(editeur.getSectionCourante() == editeur.getDocumentCourant().getSectionRacine())
 			vue.getSupprimerSection().setEnabled(false);
 		else
 			vue.getSupprimerSection().setEnabled(true);		
-		updateView();
 		
 	}
 
 	protected void selectionnerTout() {
 		vue.getSurface().setSelectionStart(0);
 		vue.getSurface().setSelectionEnd(editeur.getSectionCourante().getContenu().getElements().size());
-		
+		vue.getCopier().setEnabled(true);
 	}
 
 	protected void renommerSection() {
 		String titre = JOptionPane.showInputDialog("Veuillez entrer le nouveau titre de la section.");
-		if (titre == null || titre.isEmpty())
-			JOptionPane.showMessageDialog(vue, "Le titre ne peut pas être vide. Le titre n'a pas été modifié."); 
-		else{
-			editeur.getSectionCourante().setTitre(titre);
-			vue.setTitle(editeur.getSectionCourante().getTitre());
-		}
-		
-		
+		if (titre != null){
+			if (titre.isEmpty())
+				JOptionPane.showMessageDialog(vue, "Le titre ne peut pas être vide. Le titre n'a pas été modifié."); 
+			else{
+				editeur.getSectionCourante().setTitre(titre);
+				vue.setTitle(editeur.getSectionCourante().getTitre());
+			}
+		}	
 	}
 
 	protected void ajouterSection() {
 		String titre = JOptionPane.showInputDialog("Veuillez entrer le titre de la section.");
-		if (titre == null || titre.isEmpty())
-			JOptionPane.showMessageDialog(vue, "Le titre ne peut pas être null. La section n'a pas été ajoutée."); 
-		else{	
-			editeur.setSectionCourante(((SectionBranche) editeur.getSectionCourante()).ajouterSousSection(titre));
-			vue.setTitle(editeur.getSectionCourante().getTitre());
-			if(editeur.getSectionCourante().getNiveau() == 4)
-				vue.getAjouterSection().setEnabled(false);
-			else
-				vue.getAjouterSection().setEnabled(true);
-			vue.getSupprimerSection().setEnabled(true);
-			updateView();
+		if (titre != null){
+			if (titre.isEmpty())
+				JOptionPane.showMessageDialog(vue, "Le titre ne peut pas être null. La section n'a pas été ajoutée."); 
+			else{	
+				changerSection(((SectionBranche) editeur.getSectionCourante()).ajouterSousSection(titre));
+				vue.setTitle(editeur.getSectionCourante().getTitre());
+				if(editeur.getSectionCourante().getNiveau() == 4)
+					vue.getAjouterSection().setEnabled(false);
+				else
+					vue.getAjouterSection().setEnabled(true);
+				vue.getSupprimerSection().setEnabled(true);
+			}
 		}
 		
 	}
@@ -272,47 +321,38 @@ public class Controlleur {
 		
 	}
 
-	protected void inserer(char keyChar) {
+	protected void inserer(char keyChar) {		
 		if (vue.getSurface().getSelectedText() != null)
 			supprimer();
-		int pos = vue.getSurface().getCaretPosition();
-		editeur.getSectionCourante().getContenu().getStrategie().inserer(new CaractereImpl(keyChar), pos);
-		updateView();
-		setCaretPosition(pos+1);
-		editeur.getDocumentCourant().setModifie(true);
-		Contenu contenuPP = editeur.getPressePapier().getContenu();
-		if (contenuPP != null){
-			if (editeur.getSectionCourante() == contenuPP.getSectionSrc()){
-				if (pos <= contenuPP.getPosition()){
-					contenuPP.setPosition(contenuPP.getPosition() + 1);
-				}
-				if (pos > contenuPP.getPosition() && pos < contenuPP.getPosition()+contenuPP.getElements().size()){
-					vue.getDeplacer().setEnabled(false);
-				}		
-			}
-			
-		}
+		ActionInserer action = new ActionInsererImpl();
+		action.setContenuPP(editeur.getPressePapier().getContenu());
+		action.setReceveur(editeur.getSectionCourante().getContenu());
+		action.setPosition(vue.getSurface().getCaretPosition());
+		action.setCaractere(keyChar);
+		action.faire();
 		
 	}
 
 	public void creerNouveauDocument() {
-		if(editeur.getDocumentCourant().isModifie()){
+		Document nouvDoc = null;
+		if(editeur.getDocumentCourant() != null && editeur.getDocumentCourant().isModifie()){
 			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
 			        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 		    
 			if (response == JOptionPane.YES_OPTION) {
 		    	sauvergarder();
-		    	this.editeur.creerNouvDocument();
+		    	nouvDoc = this.editeur.creerNouvDocument();
 		    }
 			else if (response == JOptionPane.NO_OPTION){
-				this.editeur.creerNouvDocument();
+				nouvDoc = this.editeur.creerNouvDocument();
 			}
 		}
 		else{
-			this.editeur.creerNouvDocument();
+			nouvDoc = this.editeur.creerNouvDocument();
 		}
+		editeur.setDocumentCourant(nouvDoc);
+		changerSection(editeur.getDocumentCourant().getSectionRacine());
 		vue.setTitle(editeur.getSectionCourante().getTitre());
-	    updateView();
 
 	}
 
@@ -322,7 +362,7 @@ public class Controlleur {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Documents", "document");
 		chooser.setFileFilter(filter);
 	    chooser.setCurrentDirectory(new File("/Desktop"));
-	    
+	    Document nouvDoc = null;
 		if(editeur.getDocumentCourant().isModifie()){
 			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
 			        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -331,14 +371,14 @@ public class Controlleur {
 		    	sauvergarder();
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
-			    	editeur.ouvrir(chooser.getSelectedFile().toString());
+			    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
 			    }
 		    }
 			else if (response == JOptionPane.NO_OPTION){
 				
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
-			    	editeur.ouvrir(chooser.getSelectedFile().toString());
+			    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
 			    }
 			}
 		}
@@ -346,11 +386,12 @@ public class Controlleur {
 
 		    int retrival = chooser.showOpenDialog(null);
 		    if (retrival == JFileChooser.APPROVE_OPTION) {
-		    	editeur.ouvrir(chooser.getSelectedFile().toString());
+		    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
 		    }
 		}
+		editeur.setDocumentCourant(nouvDoc);
+		changerSection(editeur.getDocumentCourant().getSectionRacine());
 		vue.setTitle(editeur.getSectionCourante().getTitre());
-	    updateView();
 		
 	}
 
@@ -367,75 +408,60 @@ public class Controlleur {
 	            ex.printStackTrace();
 	        }
 	    }
-	    updateView();	
 	}
 
 	protected void setCaretPosition(int i) {
 		vue.getSurface().setCaretPosition(i);
+		vue.getSurface().getCaret().setVisible(true);
 		
 	}
 
 	protected void supprimer() {
-		int pos = vue.getSurface().getCaretPosition();
-		int taille = 0;
-		Contenu contenuPP = editeur.getPressePapier().getContenu();
+		int positionDebut = 0;
+		int positionFin = 0;
 		
 		if(vue.getSurface().getSelectedText() == null){
-			if(pos != 0){
-			 	editeur.getSectionCourante().getContenu().supprimer(pos-1, pos);
-			 	updateView();
-				setCaretPosition(pos-1);
-				taille = 1;
-				if (contenuPP != null){
-					int debutPP = contenuPP.getPosition();
-					int finPP = contenuPP.getPosition() + contenuPP.getElements().size();
-					if (editeur.getSectionCourante() == contenuPP.getSectionSrc()){
-						if (pos <= debutPP){
-							contenuPP.setPosition(debutPP - taille);
-						}
-						if (pos > debutPP && pos <= finPP){
-							vue.getDeplacer().setEnabled(false);
-						}	
-					}
-				}
-				
-			}
-		}	
-		else{
-			taille = vue.getSurface().getSelectedText().length();
-			int debut = vue.getSurface().getSelectionStart();
-			int fin = vue.getSurface().getSelectionEnd();
-			if (contenuPP != null){
-				int debutPP = contenuPP.getPosition();
-				int finPP = contenuPP.getPosition() + contenuPP.getElements().size();
-				if (editeur.getSectionCourante() == contenuPP.getSectionSrc()){
-					if (debut <= debutPP && fin <= debutPP){
-						contenuPP.setPosition(contenuPP.getPosition() - taille);
-					}
-					else if ((debut > debutPP && debut <= finPP) || (fin > debutPP && fin <= finPP) ){
-						vue.getDeplacer().setEnabled(false);
-					}	
-				}
-			}
-			editeur.getSectionCourante().getContenu().supprimer(debut, fin);
-			updateView();
-			setCaretPosition(debut);
+			positionDebut = vue.getSurface().getCaretPosition() - 1;
+			positionFin = positionDebut + 1;
 		}
-		
-		
-		
+		else{
+			positionDebut = vue.getSurface().getSelectionStart();
+			positionFin = vue.getSurface().getSelectionEnd();
+		}
+		if(positionDebut >=0 || vue.getSurface().getSelectedText() != null){
+			ActionSupprimer action = new ActionSupprimerImpl();
+			action.setReceveur(this.editeur.getSectionCourante().getContenu());
+			action.setContenuPP(editeur.getPressePapier().getContenu());
+			Contenu contenu = new ContenuImpl();
+			contenu.setPosition(positionDebut);
+			contenu.setSectionSrc(this.editeur.getSectionCourante());
+			ListIterator<Element> iter = this.editeur.getSectionCourante().getContenu().getElements().listIterator(positionDebut);
+			int j = 0;
+			int i = positionDebut;
+			
+			while(iter.hasNext() && i != positionFin){
+				Element c = new CaractereImpl(iter.next());
+				contenu.getStrategie().inserer(c, j);
+				j++;
+				i++;
+			}
+			action.setContenu(contenu);
+			action.faire();
+			editeur.getHistorique().getActions().add(0, action);
+			vue.getDefaire().setEnabled(true);
+		}
+
 	}
 
 	protected void deplacer() {
 		Contenu contenu = editeur.getPressePapier().getContenu();
 		int position = vue.getSurface().getCaretPosition();
 		int finSuppression = contenu.getPosition() + contenu.getElements().size();
-		if (position <= contenu.getPosition() || position >= finSuppression){
-			contenu.getSectionSrc().getContenu().supprimer(contenu.getPosition(), finSuppression);
+		if (contenu.getSectionSrc() != editeur.getSectionCourante() || position <= contenu.getPosition() || position >= finSuppression){
+			//contenu.getSectionSrc().getContenu().supprimer(contenu.getPosition(), finSuppression);
 			if (contenu.getSectionSrc() == editeur.getSectionCourante() && position > contenu.getPosition())
 				position -= contenu.getElements().size();
-			editeur.getSectionCourante().getContenu().coller(contenu, position);
-			updateView();
+			//editeur.getSectionCourante().getContenu().coller(contenu, position);
 			setCaretPosition(position+contenu.getElements().size());
 			vue.getSurface().getCaret().setVisible(true);
 			vue.getColler().setEnabled(false);
@@ -449,20 +475,15 @@ public class Controlleur {
 	}
 
 	protected void coller() {
-		Contenu contenu = editeur.getPressePapier().getContenu();
-		int position = vue.getSurface().getCaretPosition();
-		editeur.getSectionCourante().getContenu().coller(contenu, position);
-		updateView();
-		setCaretPosition(position+contenu.getElements().size());
+		ActionColler action = new ActionCollerImpl();
+		action.setContenuPP(editeur.getPressePapier().getContenu());
+		action.setPosition(vue.getSurface().getCaretPosition());
+		action.setContenu(editeur.getPressePapier().getContenu());
+		action.faire();
+		//editeur.getSectionCourante().getContenu().coller(contenu, position);
+		//setCaretPosition(position+contenu.getElements().size());
 		editeur.getDocumentCourant().setModifie(true);
-		if (editeur.getSectionCourante() == contenu.getSectionSrc()){
-			if (position <= contenu.getPosition()){
-				contenu.setPosition(contenu.getPosition() + contenu.getElements().size());
-			}
-			if (position > contenu.getPosition() && position < contenu.getPosition()+contenu.getElements().size()){
-				vue.getDeplacer().setEnabled(false);
-			}	
-		}
+		
 	}
 
 	protected void copier() {
@@ -481,14 +502,6 @@ public class Controlleur {
 
 	public void setTitreSection(String titre) {
 		editeur.getSectionCourante().setTitre(titre);
-	}
-
-	public void updateView() {
-		vue.update(editeur.getSectionCourante().getContenu().toString());
-	}
-
-	public void afficherVue() {
-		vue.afficherVue();
 	}
 
 	/**
@@ -518,7 +531,7 @@ public class Controlleur {
 	      
 	    public void actionPerformed( ActionEvent e )  
 	    {  
-	        editeur.setSectionCourante(section);
+	        changerSection(section);
 	        if (section.getNiveau() == 4)
 	        	vue.getAjouterSection().setEnabled(false);
 	        else
@@ -528,8 +541,21 @@ public class Controlleur {
 	        	vue.getSupprimerSection().setEnabled(false);
 	        else
 	        	vue.getSupprimerSection().setEnabled(true);
-	        updateView();
 	    }  
+	}
+
+	public void changerSection(Section section) {
+		editeur.getSectionCourante().getContenu().detacher(vue);
+		editeur.setSectionCourante(section);
+		editeur.getSectionCourante().getContenu().attacher(vue);
+		vue.setContenu(editeur.getSectionCourante().getContenu());
+		vue.update();
+	}
+
+	public void afficherVue() {
+		vue.setVisible(true);
+		vue.setSize(640,480);
+		
 	} 
 
 }

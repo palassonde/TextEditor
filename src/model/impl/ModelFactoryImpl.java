@@ -3,14 +3,10 @@
 package model.impl;
 
 import model.*;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -64,41 +60,14 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.STRATEGIE_INSERTION_TEXTE: return createStrategieInsertionTexte();
 			case ModelPackage.CARACTERE: return createCaractere();
 			case ModelPackage.HISTORIQUE: return createHistorique();
-			case ModelPackage.ACTION: return createAction();
+			case ModelPackage.ACTION_DEPLACER: return createActionDeplacer();
+			case ModelPackage.ACTION_COLLER: return createActionColler();
+			case ModelPackage.ACTION_SUPPRIMER: return createActionSupprimer();
+			case ModelPackage.ACTION_INSERER: return createActionInserer();
 			case ModelPackage.PRESSE_PAPIER: return createPressePapier();
 			case ModelPackage.EDITEUR: return createEditeur();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case ModelPackage.TYPE_ACTION:
-				return createTypeActionFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case ModelPackage.TYPE_ACTION:
-				return convertTypeActionToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -177,9 +146,39 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Action createAction() {
-		ActionImpl action = new ActionImpl();
-		return action;
+	public ActionDeplacer createActionDeplacer() {
+		ActionDeplacerImpl actionDeplacer = new ActionDeplacerImpl();
+		return actionDeplacer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActionColler createActionColler() {
+		ActionCollerImpl actionColler = new ActionCollerImpl();
+		return actionColler;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActionSupprimer createActionSupprimer() {
+		ActionSupprimerImpl actionSupprimer = new ActionSupprimerImpl();
+		return actionSupprimer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActionInserer createActionInserer() {
+		ActionInsererImpl actionInserer = new ActionInsererImpl();
+		return actionInserer;
 	}
 
 	/**
@@ -200,26 +199,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public Editeur createEditeur() {
 		EditeurImpl editeur = new EditeurImpl();
 		return editeur;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypeAction createTypeActionFromString(EDataType eDataType, String initialValue) {
-		TypeAction result = TypeAction.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertTypeActionToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

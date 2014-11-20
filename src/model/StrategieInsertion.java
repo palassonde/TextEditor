@@ -55,6 +55,14 @@ public interface StrategieInsertion extends EObject {
 	 * @model
 	 * @generated
 	 */
+	void inserer(Element element, int position, Contenu contenuPP);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	void inserer(Element element, int position);
 
 } // StrategieInsertion

@@ -8,6 +8,7 @@ import java.util.ListIterator;
 import model.Contenu;
 import model.Element;
 import model.ModelPackage;
+import model.Observateur;
 import model.Section;
 import model.StrategieInsertion;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link model.impl.ContenuImpl#getObservateur <em>Observateur</em>}</li>
  *   <li>{@link model.impl.ContenuImpl#getStrategie <em>Strategie</em>}</li>
  *   <li>{@link model.impl.ContenuImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link model.impl.ContenuImpl#getPosition <em>Position</em>}</li>
@@ -39,6 +41,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu {
+	/**
+	 * The cached value of the '{@link #getObservateur() <em>Observateur</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObservateur()
+	 * @generated
+	 * @ordered
+	 */
+	protected Observateur observateur;
+
 	/**
 	 * The cached value of the '{@link #getStrategie() <em>Strategie</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -93,7 +105,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	protected ContenuImpl() {
+	public ContenuImpl() {
 		super();
 		this.strategie = new StrategieInsertionTexteImpl();
 		this.strategie.setContenu(this);
@@ -120,6 +132,44 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	protected EClass eStaticClass() {
 		return ModelPackage.Literals.CONTENU;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Observateur getObservateur() {
+		if (observateur != null && observateur.eIsProxy()) {
+			InternalEObject oldObservateur = (InternalEObject)observateur;
+			observateur = (Observateur)eResolveProxy(oldObservateur);
+			if (observateur != oldObservateur) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.CONTENU__OBSERVATEUR, oldObservateur, observateur));
+			}
+		}
+		return observateur;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Observateur basicGetObservateur() {
+		return observateur;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setObservateur(Observateur newObservateur) {
+		Observateur oldObservateur = observateur;
+		observateur = newObservateur;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTENU__OBSERVATEUR, oldObservateur, observateur));
 	}
 
 	/**
@@ -281,9 +331,59 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
+	public void supprimer(int positionDebut, int positionFin, Contenu contenuPP) {
+		
+		int taille = 0;
+		for (int i = positionFin-1; i >= positionDebut; i--){
+			this.elements.remove(i);
+			taille++;
+		}
+		if (contenuPP != null){
+			int debutPP = contenuPP.getPosition();
+			int finPP = contenuPP.getPosition() + contenuPP.getElements().size();
+			if (this.getSection() == contenuPP.getSectionSrc()){
+				if (positionDebut <= debutPP && positionFin <= debutPP){
+					contenuPP.setPosition(contenuPP.getPosition() - taille);
+				}
+				if ((positionDebut > debutPP && positionDebut <= finPP) || (positionFin > debutPP && positionFin <= finPP) ){
+					this.getObservateur().setDeplacer(false);
+				}
+			}
+		}
+		this.informer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void coller(Contenu contenu, int position, Contenu contenuPP) {
+		ListIterator<Element> iter = contenu.getElements().listIterator();
+		while(iter.hasNext()){
+			Element c = new CaractereImpl(iter.next());
+			this.strategie.inserer(c, position);
+			position++;
+		}
+		if (this.getSection() == contenu.getSectionSrc()){
+			if (position <= contenu.getPosition()){
+				contenu.setPosition(contenu.getPosition() + contenu.getElements().size());
+			}
+			if (position > contenu.getPosition() && position < contenu.getPosition()+contenu.getElements().size()){
+				this.observateur.setDeplacer(false);
+			}	
+		}
+		this.informer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
 	public void deplacer(Contenu contenu, int position) {
 		this.supprimer(contenu.getPosition(), contenu.getPosition()+contenu.getElements().size());
-		this.coller(contenu, position);
+		//this.coller(contenu, position);
+		informer();
 	}
 
 	/**
@@ -293,20 +393,10 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	public void supprimer(int positionDebut, int positionFin) {
 		for(int i=positionFin-1; i >= positionDebut; i--)
 			this.elements.remove(i);
+		if(this.getObservateur() != null)
+			informer();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public void coller(Contenu contenu, int position) {
-		ListIterator<Element> iter = contenu.getElements().listIterator();
-		while(iter.hasNext()){
-			Element c = new CaractereImpl(iter.next());
-			this.strategie.inserer(c, position);
-			position++;
-		}
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -325,6 +415,41 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 		}
 		contenu.setPosition(positionDebut);
 		return contenu;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void deplacer(Contenu contenu, int position, Contenu contenuPP) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void attacher(Observateur observateur) {
+		this.observateur = observateur;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void detacher(Observateur observateur) {
+		this.observateur = null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void informer() {
+		this.getObservateur().update();
 	}
 
 	/**
@@ -387,6 +512,9 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ModelPackage.CONTENU__OBSERVATEUR:
+				if (resolve) return getObservateur();
+				return basicGetObservateur();
 			case ModelPackage.CONTENU__STRATEGIE:
 				return getStrategie();
 			case ModelPackage.CONTENU__ELEMENTS:
@@ -411,6 +539,9 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ModelPackage.CONTENU__OBSERVATEUR:
+				setObservateur((Observateur)newValue);
+				return;
 			case ModelPackage.CONTENU__STRATEGIE:
 				setStrategie((StrategieInsertion)newValue);
 				return;
@@ -439,6 +570,9 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ModelPackage.CONTENU__OBSERVATEUR:
+				setObservateur((Observateur)null);
+				return;
 			case ModelPackage.CONTENU__STRATEGIE:
 				setStrategie((StrategieInsertion)null);
 				return;
@@ -466,6 +600,8 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ModelPackage.CONTENU__OBSERVATEUR:
+				return observateur != null;
 			case ModelPackage.CONTENU__STRATEGIE:
 				return strategie != null;
 			case ModelPackage.CONTENU__ELEMENTS:
@@ -488,14 +624,26 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.CONTENU___SUPPRIMER__INT_INT:
-				supprimer((Integer)arguments.get(0), (Integer)arguments.get(1));
+			case ModelPackage.CONTENU___SUPPRIMER__INT_INT_CONTENU:
+				supprimer((Integer)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
 				return null;
-			case ModelPackage.CONTENU___COLLER__CONTENU_INT:
-				coller((Contenu)arguments.get(0), (Integer)arguments.get(1));
+			case ModelPackage.CONTENU___COLLER__CONTENU_INT_CONTENU:
+				coller((Contenu)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
 				return null;
 			case ModelPackage.CONTENU___COPIER__INT_INT:
 				return copier((Integer)arguments.get(0), (Integer)arguments.get(1));
+			case ModelPackage.CONTENU___DEPLACER__CONTENU_INT_CONTENU:
+				deplacer((Contenu)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
+				return null;
+			case ModelPackage.CONTENU___ATTACHER__OBSERVATEUR:
+				attacher((Observateur)arguments.get(0));
+				return null;
+			case ModelPackage.CONTENU___DETACHER__OBSERVATEUR:
+				detacher((Observateur)arguments.get(0));
+				return null;
+			case ModelPackage.CONTENU___INFORMER:
+				informer();
+				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -284,7 +284,7 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public void ouvrir(String nomFichier) {
+	public Document ouvrir(String nomFichier) {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String,Object> m = reg.getExtensionToFactoryMap();
 		m.put("document", new XMIResourceFactoryImpl());
@@ -292,18 +292,16 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		URI fileURI = URI.createFileURI(nomFichier);
 		Resource documentResource = resSet.getResource(fileURI,true);
 		Document document = (Document)documentResource.getContents().get(0);
-		this.documentCourant = document;
-		this.sectionCourante = this.documentCourant.getSectionRacine();
+		return document;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public void creerNouvDocument() {
+	public Document creerNouvDocument() {
 		Document document= new DocumentImpl("untitled");
-		this.documentCourant = document;
-		this.sectionCourante = documentCourant.getSectionRacine();
+		return document;
 	}
 
 	/**
@@ -423,7 +421,6 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 				try {
 					sauvegarder((String)arguments.get(0));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return null;
