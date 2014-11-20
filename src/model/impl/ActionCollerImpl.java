@@ -241,23 +241,17 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void faire() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.receveur.coller(this.contenu, this.position, this.contenuPP);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void defaire() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.receveur.supprimer(this.position, this.position + this.contenu.getElements().size(), this.contenuPP);
 	}
 
 	/**

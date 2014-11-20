@@ -109,7 +109,8 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 					contenuPP.setPosition(contenuPP.getPosition() + 1);
 				}
 				if (position > contenuPP.getPosition() && position < contenuPP.getPosition()+contenuPP.getElements().size()){
-					this.getContenu().getObservateur().setDeplacer(false);
+					if(this.getContenu().getObservateur() != null)
+						this.getContenu().getObservateur().setDeplacer(false);
 				}		
 			}
 			
@@ -118,15 +119,7 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 			this.getContenu().informer();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public void inserer(Element element, int position) {
-		this.getContenu().getElements().add(position, element);
-		if(this.getContenu().getObservateur() != null)
-			this.getContenu().informer();
-	}
+
 
 
 	/**
@@ -247,6 +240,12 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	@Override
+	public void inserer(Element element, int position) {
+		// TODO Auto-generated method stub
+		
 	}
 
 } //StrategieInsertionTexteImpl

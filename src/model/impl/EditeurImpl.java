@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
+import model.Caretaker;
 import model.Document;
 import model.Editeur;
 import model.Historique;
@@ -37,6 +38,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  *   <li>{@link model.impl.EditeurImpl#getPressePapier <em>Presse Papier</em>}</li>
  *   <li>{@link model.impl.EditeurImpl#getHistorique <em>Historique</em>}</li>
  *   <li>{@link model.impl.EditeurImpl#getSectionCourante <em>Section Courante</em>}</li>
+ *   <li>{@link model.impl.EditeurImpl#getCaretaker <em>Caretaker</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,6 +85,16 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	protected Section sectionCourante;
 
 	/**
+	 * The cached value of the '{@link #getCaretaker() <em>Caretaker</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCaretaker()
+	 * @generated
+	 * @ordered
+	 */
+	protected Caretaker caretaker;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
@@ -90,6 +102,7 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 		super();
 		this.historique = new HistoriqueImpl();
 		this.pressePapier = new PressePapierImpl();
+		this.caretaker = new CaretakerImpl();
 	}
 
 	/**
@@ -267,6 +280,44 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Caretaker getCaretaker() {
+		if (caretaker != null && caretaker.eIsProxy()) {
+			InternalEObject oldCaretaker = (InternalEObject)caretaker;
+			caretaker = (Caretaker)eResolveProxy(oldCaretaker);
+			if (caretaker != oldCaretaker) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.EDITEUR__CARETAKER, oldCaretaker, caretaker));
+			}
+		}
+		return caretaker;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Caretaker basicGetCaretaker() {
+		return caretaker;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCaretaker(Caretaker newCaretaker) {
+		Caretaker oldCaretaker = caretaker;
+		caretaker = newCaretaker;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EDITEUR__CARETAKER, oldCaretaker, caretaker));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @throws IOException 
 	 */
 	public void sauvegarder(String nomFichier) throws IOException {
@@ -338,6 +389,9 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 			case ModelPackage.EDITEUR__SECTION_COURANTE:
 				if (resolve) return getSectionCourante();
 				return basicGetSectionCourante();
+			case ModelPackage.EDITEUR__CARETAKER:
+				if (resolve) return getCaretaker();
+				return basicGetCaretaker();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -361,6 +415,9 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 				return;
 			case ModelPackage.EDITEUR__SECTION_COURANTE:
 				setSectionCourante((Section)newValue);
+				return;
+			case ModelPackage.EDITEUR__CARETAKER:
+				setCaretaker((Caretaker)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -386,6 +443,9 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 			case ModelPackage.EDITEUR__SECTION_COURANTE:
 				setSectionCourante((Section)null);
 				return;
+			case ModelPackage.EDITEUR__CARETAKER:
+				setCaretaker((Caretaker)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -406,6 +466,8 @@ public class EditeurImpl extends MinimalEObjectImpl.Container implements Editeur
 				return historique != null;
 			case ModelPackage.EDITEUR__SECTION_COURANTE:
 				return sectionCourante != null;
+			case ModelPackage.EDITEUR__CARETAKER:
+				return caretaker != null;
 		}
 		return super.eIsSet(featureID);
 	}

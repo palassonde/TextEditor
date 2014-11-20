@@ -82,11 +82,6 @@
       <eParameters name="positionDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="positionFin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="deplacer">
-      <eParameters name="contenu" eType="#//Contenu"/>
-      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="contenuPP" eType="#//Contenu"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategie" lowerBound="1"
         eType="#//StrategieInsertion" containment="true" eOpposite="#//StrategieInsertion/contenu"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
@@ -146,6 +141,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" lowerBound="2"
+        upperBound="2" eType="#//Action"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionColler" eSuperTypes="#//Action">
     <eOperations name="faire"/>
@@ -186,6 +183,8 @@
         eType="#//Historique" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sectionCourante" lowerBound="1"
         eType="#//Section"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caretaker" lowerBound="1"
+        eType="#//Caretaker"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sujet" abstract="true" interface="true">
     <eOperations name="attacher">
@@ -205,5 +204,19 @@
     <eOperations name="setColler">
       <eParameters name="etat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Caretaker">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="memento" upperBound="5"
+        eType="#//Memento"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mementoDefaits" upperBound="5"
+        eType="#//Memento"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Memento">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etatDeplacer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurseur" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etatCopier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etatColler" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etatDefaire" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etatRefaire" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>

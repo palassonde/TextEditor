@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link model.Editeur#getPressePapier <em>Presse Papier</em>}</li>
  *   <li>{@link model.Editeur#getHistorique <em>Historique</em>}</li>
  *   <li>{@link model.Editeur#getSectionCourante <em>Section Courante</em>}</li>
+ *   <li>{@link model.Editeur#getCaretaker <em>Caretaker</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +130,32 @@ public interface Editeur extends EObject {
 	 * @generated
 	 */
 	void setSectionCourante(Section value);
+
+	/**
+	 * Returns the value of the '<em><b>Caretaker</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Caretaker</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Caretaker</em>' reference.
+	 * @see #setCaretaker(Caretaker)
+	 * @see model.ModelPackage#getEditeur_Caretaker()
+	 * @model required="true"
+	 * @generated
+	 */
+	Caretaker getCaretaker();
+
+	/**
+	 * Sets the value of the '{@link model.Editeur#getCaretaker <em>Caretaker</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Caretaker</em>' reference.
+	 * @see #getCaretaker()
+	 * @generated
+	 */
+	void setCaretaker(Caretaker value);
 
 	/**
 	 * <!-- begin-user-doc -->

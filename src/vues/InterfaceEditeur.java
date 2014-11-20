@@ -26,7 +26,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import model.Contenu;
+import model.Memento;
 import model.Observateur;
+import model.impl.MementoImpl;
 
 
 @SuppressWarnings("serial")
@@ -181,12 +183,32 @@ public class InterfaceEditeur extends JFrame implements Observateur {
 	public void afficherVue(){
 		this.setSize(725, 460);
 		this.setVisible(true);	
+		this.surface.getCaret().setVisible(true);
 	}
 	
 	public void fermer(){
 		System.exit(0);
 	}
 
+	public Memento createMemento(){	
+		Memento memento = new MementoImpl();
+		memento.setEtatColler(this.getColler().isEnabled());
+		memento.setEtatCopier(this.getCopier().isEnabled());
+		memento.setEtatDefaire(this.getDefaire().isEnabled());
+		memento.setEtatDeplacer(this.getDeplacer().isEnabled());
+		memento.setEtatRefaire(this.getRefaire().isEnabled());
+		memento.setPositionCurseur(this.getSurface().getCaretPosition());
+		return memento;
+	}
+	
+	public void setMemento(Memento memento){
+		this.coller.setEnabled(memento.isEtatColler());
+		this.copier.setEnabled(memento.isEtatCopier());
+		this.defaire.setEnabled(memento.isEtatDefaire());
+		this.deplacer.setEnabled(memento.isEtatDeplacer());
+		this.refaire.setEnabled(memento.isEtatRefaire());
+		this.surface.setCaretPosition(memento.getPositionCurseur());
+	}
 	
 	/**
 	 * @return the ouvrir
@@ -308,6 +330,7 @@ public class InterfaceEditeur extends JFrame implements Observateur {
 	@Override
 	public void update() {
 		this.surface.setText(this.contenu.toString());
+		this.surface.getCaret().setVisible(true);
 		
 	}
 

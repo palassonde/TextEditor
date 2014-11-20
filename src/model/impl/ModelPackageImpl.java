@@ -8,11 +8,13 @@ import model.ActionDeplacer;
 import model.ActionInserer;
 import model.ActionSupprimer;
 import model.Caractere;
+import model.Caretaker;
 import model.Contenu;
 import model.Document;
 import model.Editeur;
 import model.Element;
 import model.Historique;
+import model.Memento;
 import model.ModelFactory;
 import model.ModelPackage;
 import model.Observateur;
@@ -170,6 +172,20 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass observateurEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass caretakerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mementoEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -516,15 +532,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContenu__Deplacer__Contenu_int_Contenu() {
-		return contenuEClass.getEOperations().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStrategieInsertion() {
 		return strategieInsertionEClass;
 	}
@@ -716,6 +723,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EReference getActionDeplacer_Contenu() {
 		return (EReference)actionDeplacerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActionDeplacer_Actions() {
+		return (EReference)actionDeplacerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -939,6 +955,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEditeur_Caretaker() {
+		return (EReference)editeurEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getEditeur__Sauvegarder__String() {
 		return editeurEClass.getEOperations().get(0);
 	}
@@ -1047,6 +1072,96 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCaretaker() {
+		return caretakerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCaretaker_Memento() {
+		return (EReference)caretakerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCaretaker_MementoDefaits() {
+		return (EReference)caretakerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMemento() {
+		return mementoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_EtatDeplacer() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_PositionCurseur() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_EtatCopier() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_EtatColler() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_EtatDefaire() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_EtatRefaire() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModelFactory getModelFactory() {
 		return (ModelFactory)getEFactoryInstance();
 	}
@@ -1105,7 +1220,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEOperation(contenuEClass, CONTENU___SUPPRIMER__INT_INT_CONTENU);
 		createEOperation(contenuEClass, CONTENU___COLLER__CONTENU_INT_CONTENU);
 		createEOperation(contenuEClass, CONTENU___COPIER__INT_INT);
-		createEOperation(contenuEClass, CONTENU___DEPLACER__CONTENU_INT_CONTENU);
 
 		strategieInsertionEClass = createEClass(STRATEGIE_INSERTION);
 		createEReference(strategieInsertionEClass, STRATEGIE_INSERTION__CONTENU);
@@ -1135,6 +1249,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		actionDeplacerEClass = createEClass(ACTION_DEPLACER);
 		createEAttribute(actionDeplacerEClass, ACTION_DEPLACER__POSITION);
 		createEReference(actionDeplacerEClass, ACTION_DEPLACER__CONTENU);
+		createEReference(actionDeplacerEClass, ACTION_DEPLACER__ACTIONS);
 		createEOperation(actionDeplacerEClass, ACTION_DEPLACER___FAIRE);
 		createEOperation(actionDeplacerEClass, ACTION_DEPLACER___DEFAIRE);
 
@@ -1164,6 +1279,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(editeurEClass, EDITEUR__PRESSE_PAPIER);
 		createEReference(editeurEClass, EDITEUR__HISTORIQUE);
 		createEReference(editeurEClass, EDITEUR__SECTION_COURANTE);
+		createEReference(editeurEClass, EDITEUR__CARETAKER);
 		createEOperation(editeurEClass, EDITEUR___SAUVEGARDER__STRING);
 		createEOperation(editeurEClass, EDITEUR___OUVRIR__STRING);
 		createEOperation(editeurEClass, EDITEUR___CREER_NOUV_DOCUMENT);
@@ -1178,6 +1294,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEOperation(observateurEClass, OBSERVATEUR___UPDATE);
 		createEOperation(observateurEClass, OBSERVATEUR___SET_DEPLACER__BOOLEAN);
 		createEOperation(observateurEClass, OBSERVATEUR___SET_COLLER__BOOLEAN);
+
+		caretakerEClass = createEClass(CARETAKER);
+		createEReference(caretakerEClass, CARETAKER__MEMENTO);
+		createEReference(caretakerEClass, CARETAKER__MEMENTO_DEFAITS);
+
+		mementoEClass = createEClass(MEMENTO);
+		createEAttribute(mementoEClass, MEMENTO__ETAT_DEPLACER);
+		createEAttribute(mementoEClass, MEMENTO__POSITION_CURSEUR);
+		createEAttribute(mementoEClass, MEMENTO__ETAT_COPIER);
+		createEAttribute(mementoEClass, MEMENTO__ETAT_COLLER);
+		createEAttribute(mementoEClass, MEMENTO__ETAT_DEFAIRE);
+		createEAttribute(mementoEClass, MEMENTO__ETAT_REFAIRE);
 	}
 
 	/**
@@ -1302,11 +1430,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEParameter(op, ecorePackage.getEInt(), "positionDebut", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "positionFin", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getContenu__Deplacer__Contenu_int_Contenu(), null, "deplacer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContenu(), "contenu", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContenu(), "contenuPP", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(strategieInsertionEClass, StrategieInsertion.class, "StrategieInsertion", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStrategieInsertion_Contenu(), this.getContenu(), this.getContenu_Strategie(), "contenu", null, 1, 1, StrategieInsertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1352,6 +1475,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(actionDeplacerEClass, ActionDeplacer.class, "ActionDeplacer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getActionDeplacer_Position(), ecorePackage.getEInt(), "position", null, 0, 1, ActionDeplacer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActionDeplacer_Contenu(), this.getContenu(), null, "contenu", null, 1, 1, ActionDeplacer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActionDeplacer_Actions(), this.getAction(), null, "actions", null, 2, 2, ActionDeplacer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getActionDeplacer__Faire(), null, "faire", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1390,6 +1514,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getEditeur_PressePapier(), this.getPressePapier(), null, "pressePapier", null, 1, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEditeur_Historique(), this.getHistorique(), null, "historique", null, 1, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEditeur_SectionCourante(), this.getSection(), null, "sectionCourante", null, 1, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEditeur_Caretaker(), this.getCaretaker(), null, "caretaker", null, 1, 1, Editeur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getEditeur__Sauvegarder__String(), null, "sauvegarder", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "nomFichier", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1419,6 +1544,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		op = initEOperation(getObservateur__SetColler__boolean(), null, "setColler", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "etat", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(caretakerEClass, Caretaker.class, "Caretaker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCaretaker_Memento(), this.getMemento(), null, "memento", null, 0, 5, Caretaker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCaretaker_MementoDefaits(), this.getMemento(), null, "mementoDefaits", null, 0, 5, Caretaker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mementoEClass, Memento.class, "Memento", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMemento_EtatDeplacer(), ecorePackage.getEBoolean(), "etatDeplacer", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_PositionCurseur(), ecorePackage.getEInt(), "positionCurseur", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_EtatCopier(), ecorePackage.getEBoolean(), "etatCopier", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_EtatColler(), ecorePackage.getEBoolean(), "etatColler", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_EtatDefaire(), ecorePackage.getEBoolean(), "etatDefaire", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_EtatRefaire(), ecorePackage.getEBoolean(), "etatRefaire", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

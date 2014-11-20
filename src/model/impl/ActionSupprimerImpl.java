@@ -199,7 +199,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void faire() {
 		this.receveur.supprimer(this.getContenu().getPosition(), this.getContenu().getPosition()+this.getContenu().getElements().size(), this.contenuPP);
@@ -208,10 +207,10 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void defaire() {
 		this.receveur.coller(this.getContenu(), this.getContenu().getPosition(), this.contenuPP);
+		
 	}
 
 	/**

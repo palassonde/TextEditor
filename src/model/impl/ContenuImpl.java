@@ -333,68 +333,27 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 */
 	public void supprimer(int positionDebut, int positionFin, Contenu contenuPP) {
 		
-		int taille = 0;
 		for (int i = positionFin-1; i >= positionDebut; i--){
 			this.elements.remove(i);
-			taille++;
 		}
-		if (contenuPP != null){
-			int debutPP = contenuPP.getPosition();
-			int finPP = contenuPP.getPosition() + contenuPP.getElements().size();
-			if (this.getSection() == contenuPP.getSectionSrc()){
-				if (positionDebut <= debutPP && positionFin <= debutPP){
-					contenuPP.setPosition(contenuPP.getPosition() - taille);
-				}
-				if ((positionDebut > debutPP && positionDebut <= finPP) || (positionFin > debutPP && positionFin <= finPP) ){
-					this.getObservateur().setDeplacer(false);
-				}
-			}
-		}
-		this.informer();
+		if (this.observateur != null)
+			this.informer();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void coller(Contenu contenu, int position, Contenu contenuPP) {
 		ListIterator<Element> iter = contenu.getElements().listIterator();
+		int i = position;
 		while(iter.hasNext()){
 			Element c = new CaractereImpl(iter.next());
-			this.strategie.inserer(c, position);
-			position++;
+			this.strategie.inserer(c, i,null);
+			i++;
 		}
-		if (this.getSection() == contenu.getSectionSrc()){
-			if (position <= contenu.getPosition()){
-				contenu.setPosition(contenu.getPosition() + contenu.getElements().size());
-			}
-			if (position > contenu.getPosition() && position < contenu.getPosition()+contenu.getElements().size()){
-				this.observateur.setDeplacer(false);
-			}	
-		}
-		this.informer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public void deplacer(Contenu contenu, int position) {
-		this.supprimer(contenu.getPosition(), contenu.getPosition()+contenu.getElements().size());
-		//this.coller(contenu, position);
-		informer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public void supprimer(int positionDebut, int positionFin) {
-		for(int i=positionFin-1; i >= positionDebut; i--)
-			this.elements.remove(i);
-		if(this.getObservateur() != null)
-			informer();
+		if (this.observateur != null)
+			this.informer();
 	}
 
 
@@ -409,23 +368,12 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 		ListIterator<Element> iter = this.getElements().listIterator(positionDebut);
 		while(i != positionFin){
 			Element c = new CaractereImpl(iter.next());
-			contenu.getStrategie().inserer(c, j);
+			contenu.getStrategie().inserer(c, j, null);
 			i++;
 			j++;
 		}
 		contenu.setPosition(positionDebut);
 		return contenu;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void deplacer(Contenu contenu, int position, Contenu contenuPP) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -632,9 +580,6 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 				return null;
 			case ModelPackage.CONTENU___COPIER__INT_INT:
 				return copier((Integer)arguments.get(0), (Integer)arguments.get(1));
-			case ModelPackage.CONTENU___DEPLACER__CONTENU_INT_CONTENU:
-				deplacer((Contenu)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
-				return null;
 			case ModelPackage.CONTENU___ATTACHER__OBSERVATEUR:
 				attacher((Observateur)arguments.get(0));
 				return null;

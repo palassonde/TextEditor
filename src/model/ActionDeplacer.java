@@ -2,6 +2,8 @@
  */
 package model;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +15,7 @@ package model;
  * <ul>
  *   <li>{@link model.ActionDeplacer#getPosition <em>Position</em>}</li>
  *   <li>{@link model.ActionDeplacer#getContenu <em>Contenu</em>}</li>
+ *   <li>{@link model.ActionDeplacer#getActions <em>Actions</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +75,22 @@ public interface ActionDeplacer extends Action {
 	 * @generated
 	 */
 	void setContenu(Contenu value);
+
+	/**
+	 * Returns the value of the '<em><b>Actions</b></em>' reference list.
+	 * The list contents are of type {@link model.Action}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Actions</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actions</em>' reference list.
+	 * @see model.ModelPackage#getActionDeplacer_Actions()
+	 * @model lower="2" upper="2"
+	 * @generated
+	 */
+	EList<Action> getActions();
 
 	/**
 	 * <!-- begin-user-doc -->

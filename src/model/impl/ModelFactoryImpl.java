@@ -66,6 +66,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.ACTION_INSERER: return createActionInserer();
 			case ModelPackage.PRESSE_PAPIER: return createPressePapier();
 			case ModelPackage.EDITEUR: return createEditeur();
+			case ModelPackage.CARETAKER: return createCaretaker();
+			case ModelPackage.MEMENTO: return createMemento();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -199,6 +201,26 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public Editeur createEditeur() {
 		EditeurImpl editeur = new EditeurImpl();
 		return editeur;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Caretaker createCaretaker() {
+		CaretakerImpl caretaker = new CaretakerImpl();
+		return caretaker;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Memento createMemento() {
+		MementoImpl memento = new MementoImpl();
+		return memento;
 	}
 
 	/**

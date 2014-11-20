@@ -139,6 +139,24 @@ public interface ModelFactory extends EFactory {
 	Editeur createEditeur();
 
 	/**
+	 * Returns a new object of class '<em>Caretaker</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Caretaker</em>'.
+	 * @generated
+	 */
+	Caretaker createCaretaker();
+
+	/**
+	 * Returns a new object of class '<em>Memento</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Memento</em>'.
+	 * @generated
+	 */
+	Memento createMemento();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -23,15 +23,18 @@ import org.eclipse.emf.common.util.BasicEList;
 
 import vues.InterfaceEditeur;
 import model.ActionColler;
+import model.ActionDeplacer;
 import model.ActionInserer;
 import model.ActionSupprimer;
 import model.Contenu;
 import model.Document;
 import model.Editeur;
 import model.Element;
+import model.Memento;
 import model.Section;
 import model.SectionBranche;
 import model.impl.ActionCollerImpl;
+import model.impl.ActionDeplacerImpl;
 import model.impl.ActionInsererImpl;
 import model.impl.ActionSupprimerImpl;
 import model.impl.CaractereImpl;
@@ -245,12 +248,19 @@ public class Controlleur {
 	}
 	
 	protected void refaire() {
-		// TODO Auto-generated method stub
+		editeur.getHistorique().getActionsDefaites().get(0).faire();
+		editeur.getHistorique().getActions().add(0, editeur.getHistorique().getActionsDefaites().get(0));
+		vue.setMemento(editeur.getCaretaker().getMementoDefaits().get(0));
+		editeur.getCaretaker().getMemento().add(0, editeur.getCaretaker().getMementoDefaits().get(0));
 		
 	}
 
 	protected void defaire() {
-		this.editeur.getHistorique().getActions().get(0).defaire();
+		editeur.getHistorique().getActions().get(0).defaire();
+		editeur.getHistorique().getActionsDefaites().add(0, editeur.getHistorique().getActions().get(0));
+		vue.setMemento(editeur.getCaretaker().getMemento().get(0));
+		editeur.getCaretaker().getMementoDefaits().add(0, editeur.getCaretaker().getMemento().get(0));
+		vue.getRefaire().setEnabled(true);
 		
 	}
 
@@ -318,18 +328,6 @@ public class Controlleur {
 		else{
 			System.exit(0);
 		}
-		
-	}
-
-	protected void inserer(char keyChar) {		
-		if (vue.getSurface().getSelectedText() != null)
-			supprimer();
-		ActionInserer action = new ActionInsererImpl();
-		action.setContenuPP(editeur.getPressePapier().getContenu());
-		action.setReceveur(editeur.getSectionCourante().getContenu());
-		action.setPosition(vue.getSurface().getCaretPosition());
-		action.setCaractere(keyChar);
-		action.faire();
 		
 	}
 
@@ -416,10 +414,29 @@ public class Controlleur {
 		
 	}
 
+	protected void inserer(char keyChar) {		
+		
+		Memento memento = vue.createMemento();
+		if (vue.getSurface().getSelectedText() != null)
+			supprimer();
+		ActionInserer action = new ActionInsererImpl();
+		action.setContenuPP(editeur.getPressePapier().getContenu());
+		action.setReceveur(editeur.getSectionCourante().getContenu());
+		int position = vue.getSurface().getCaretPosition();
+		action.setPosition(position);
+		action.setCaractere(keyChar);
+		action.faire();
+		editeur.getHistorique().getActions().add(0, action);
+		editeur.getCaretaker().getMemento().add(0, memento);
+		vue.getSurface().setCaretPosition(position+1);
+		vue.getDefaire().setEnabled(true);
+		vue.getRefaire().setEnabled(false);
+	}
+	
 	protected void supprimer() {
 		int positionDebut = 0;
 		int positionFin = 0;
-		
+		Memento memento = vue.createMemento();
 		if(vue.getSurface().getSelectedText() == null){
 			positionDebut = vue.getSurface().getCaretPosition() - 1;
 			positionFin = positionDebut + 1;
@@ -428,46 +445,81 @@ public class Controlleur {
 			positionDebut = vue.getSurface().getSelectionStart();
 			positionFin = vue.getSurface().getSelectionEnd();
 		}
-		if(positionDebut >=0 || vue.getSurface().getSelectedText() != null){
+		if(positionDebut >=0){
 			ActionSupprimer action = new ActionSupprimerImpl();
-			action.setReceveur(this.editeur.getSectionCourante().getContenu());
+			action.setReceveur(editeur.getSectionCourante().getContenu());
 			action.setContenuPP(editeur.getPressePapier().getContenu());
 			Contenu contenu = new ContenuImpl();
 			contenu.setPosition(positionDebut);
-			contenu.setSectionSrc(this.editeur.getSectionCourante());
-			ListIterator<Element> iter = this.editeur.getSectionCourante().getContenu().getElements().listIterator(positionDebut);
+			contenu.setSectionSrc(editeur.getSectionCourante());
+			ListIterator<Element> iter = editeur.getSectionCourante().getContenu().getElements().listIterator(positionDebut);
 			int j = 0;
 			int i = positionDebut;
 			
 			while(iter.hasNext() && i != positionFin){
 				Element c = new CaractereImpl(iter.next());
-				contenu.getStrategie().inserer(c, j);
+				contenu.getStrategie().inserer(c, j, null);
 				j++;
 				i++;
 			}
 			action.setContenu(contenu);
 			action.faire();
+			if (editeur.getPressePapier().getContenu() != null){
+				int debutPP = editeur.getPressePapier().getContenu().getPosition();
+				int finPP = editeur.getPressePapier().getContenu().getPosition() + editeur.getPressePapier().getContenu().getElements().size();
+				if (editeur.getSectionCourante() == editeur.getPressePapier().getContenu().getSectionSrc()){
+					if (positionDebut <= debutPP && positionFin <= debutPP){		
+						editeur.getPressePapier().getContenu().setPosition(editeur.getPressePapier().getContenu().getPosition() - contenu.getElements().size());
+					}
+					if ((positionDebut > debutPP && positionDebut <= finPP) || (positionFin > debutPP && positionFin <= finPP) ){
+						vue.getDeplacer().setEnabled(false);
+					}
+				}
+			}
 			editeur.getHistorique().getActions().add(0, action);
+			editeur.getCaretaker().getMemento().add(0, memento);
+			vue.getSurface().setCaretPosition(positionDebut);
 			vue.getDefaire().setEnabled(true);
+			vue.getRefaire().setEnabled(false);
 		}
 
 	}
 
 	protected void deplacer() {
+		Memento memento = vue.createMemento();
+		ActionDeplacer action = new ActionDeplacerImpl();
+		ActionSupprimer actionSup = new ActionSupprimerImpl();
+		actionSup.setContenuPP(editeur.getPressePapier().getContenu());
+		actionSup.setContenu(editeur.getPressePapier().getContenu());
+		actionSup.setReceveur(editeur.getPressePapier().getContenu().getSectionSrc().getContenu());
+		ActionColler actionColler = new ActionCollerImpl();
+		actionColler.setContenu(editeur.getPressePapier().getContenu());
+		actionColler.setPosition(this.vue.getSurface().getCaretPosition());
+		actionColler.setContenuPP(editeur.getPressePapier().getContenu());
+		actionColler.setReceveur(editeur.getSectionCourante().getContenu());
+		action.getActions().add(actionSup);
+		action.getActions().add(actionColler);
+		//actionSup.
 		Contenu contenu = editeur.getPressePapier().getContenu();
 		int position = vue.getSurface().getCaretPosition();
 		int finSuppression = contenu.getPosition() + contenu.getElements().size();
 		if (contenu.getSectionSrc() != editeur.getSectionCourante() || position <= contenu.getPosition() || position >= finSuppression){
-			//contenu.getSectionSrc().getContenu().supprimer(contenu.getPosition(), finSuppression);
-			if (contenu.getSectionSrc() == editeur.getSectionCourante() && position > contenu.getPosition())
-				position -= contenu.getElements().size();
-			//editeur.getSectionCourante().getContenu().coller(contenu, position);
-			setCaretPosition(position+contenu.getElements().size());
-			vue.getSurface().getCaret().setVisible(true);
-			vue.getColler().setEnabled(false);
+			if (contenu.getSectionSrc() == editeur.getSectionCourante() && position > contenu.getPosition()){
+				 actionColler.setPosition(actionColler.getPosition() - contenu.getElements().size());
+				 position -= contenu.getElements().size();
+			}
+			action.faire();
+			memento.setEtatDefaire(false);
+			memento.setEtatColler(false);
+			editeur.getHistorique().getActions().add(0, action);
+			editeur.getCaretaker().getMemento().add(0, memento);
+			setCaretPosition(position+contenu.getElements().size()-1);
 			vue.getDeplacer().setEnabled(false);
+			vue.getDefaire().setEnabled(true);
+			vue.getRefaire().setEnabled(false);
 			editeur.getPressePapier().vider();
 			editeur.getDocumentCourant().setModifie(true);
+			
 		}
 		else{
 			JOptionPane.showMessageDialog(vue, "Il est impossible de deplacer le contenu au milieu de lui-meme."); 
@@ -475,11 +527,27 @@ public class Controlleur {
 	}
 
 	protected void coller() {
+		Memento memento = vue.createMemento();
 		ActionColler action = new ActionCollerImpl();
 		action.setContenuPP(editeur.getPressePapier().getContenu());
 		action.setPosition(vue.getSurface().getCaretPosition());
 		action.setContenu(editeur.getPressePapier().getContenu());
+		action.setReceveur(this.editeur.getSectionCourante().getContenu());
 		action.faire();
+		Contenu contenu = editeur.getPressePapier().getContenu();
+		int position = vue.getSurface().getCaretPosition();
+		if (editeur.getSectionCourante() == contenu.getSectionSrc()){
+			if (position <= contenu.getPosition()){
+				contenu.setPosition(contenu.getPosition() + contenu.getElements().size());
+			}
+			if (position > contenu.getPosition() && position < contenu.getPosition()+contenu.getElements().size()){
+				vue.getDeplacer().setEnabled(false);
+			}	
+		}
+		editeur.getHistorique().getActions().add(0, action);
+		editeur.getCaretaker().getMemento().add(0, memento);
+		vue.getDefaire().setEnabled(true);
+		vue.getRefaire().setEnabled(false);
 		//editeur.getSectionCourante().getContenu().coller(contenu, position);
 		//setCaretPosition(position+contenu.getElements().size());
 		editeur.getDocumentCourant().setModifie(true);

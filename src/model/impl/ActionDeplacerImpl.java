@@ -3,20 +3,21 @@
 package model.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.ListIterator;
 
+import model.Action;
 import model.ActionDeplacer;
 import model.Contenu;
 import model.ModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link model.impl.ActionDeplacerImpl#getContenuPP <em>Contenu PP</em>}</li>
  *   <li>{@link model.impl.ActionDeplacerImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link model.impl.ActionDeplacerImpl#getContenu <em>Contenu</em>}</li>
+ *   <li>{@link model.impl.ActionDeplacerImpl#getActions <em>Actions</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,11 +88,20 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 	protected Contenu contenu;
 
 	/**
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getActions()
 	 * @generated
+	 * @ordered
 	 */
-	protected ActionDeplacerImpl() {
+	protected EList<Action> actions;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public ActionDeplacerImpl() {
 		super();
 	}
 
@@ -244,21 +255,33 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void faire() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<Action> getActions() {
+		if (actions == null) {
+			actions = new EObjectResolvingEList<Action>(Action.class, this, ModelPackage.ACTION_DEPLACER__ACTIONS);
+		}
+		return actions;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 */
+	public void faire() {
+		ListIterator<Action> iter = this.actions.listIterator();
+		while(iter.hasNext())
+			iter.next().faire();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public void defaire() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ListIterator<Action> iter = this.actions.listIterator();
+		iter.next();
+		iter.next().defaire();
+		iter.previous();
+		iter.previous().defaire();
 	}
 
 	/**
@@ -280,6 +303,8 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.ACTION_DEPLACER__CONTENU:
 				if (resolve) return getContenu();
 				return basicGetContenu();
+			case ModelPackage.ACTION_DEPLACER__ACTIONS:
+				return getActions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -289,6 +314,7 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -303,6 +329,10 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ModelPackage.ACTION_DEPLACER__CONTENU:
 				setContenu((Contenu)newValue);
+				return;
+			case ModelPackage.ACTION_DEPLACER__ACTIONS:
+				getActions().clear();
+				getActions().addAll((Collection<? extends Action>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -328,6 +358,9 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.ACTION_DEPLACER__CONTENU:
 				setContenu((Contenu)null);
 				return;
+			case ModelPackage.ACTION_DEPLACER__ACTIONS:
+				getActions().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -348,6 +381,8 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 				return position != POSITION_EDEFAULT;
 			case ModelPackage.ACTION_DEPLACER__CONTENU:
 				return contenu != null;
+			case ModelPackage.ACTION_DEPLACER__ACTIONS:
+				return actions != null && !actions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

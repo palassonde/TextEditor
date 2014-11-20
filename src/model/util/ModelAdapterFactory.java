@@ -144,6 +144,14 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createObservateurAdapter();
 			}
 			@Override
+			public Adapter caseCaretaker(Caretaker object) {
+				return createCaretakerAdapter();
+			}
+			@Override
+			public Adapter caseMemento(Memento object) {
+				return createMementoAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -426,6 +434,34 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createObservateurAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.Caretaker <em>Caretaker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.Caretaker
+	 * @generated
+	 */
+	public Adapter createCaretakerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link model.Memento <em>Memento</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see model.Memento
+	 * @generated
+	 */
+	public Adapter createMementoAdapter() {
 		return null;
 	}
 

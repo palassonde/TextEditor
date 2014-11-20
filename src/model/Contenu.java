@@ -173,12 +173,4 @@ public interface Contenu extends Sujet {
 	 */
 	Contenu copier(int positionDebut, int positionFin);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void deplacer(Contenu contenu, int position, Contenu contenuPP);
-
 } // Contenu

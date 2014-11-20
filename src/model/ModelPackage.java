@@ -595,22 +595,13 @@ public interface ModelPackage extends EPackage {
 	int CONTENU___COPIER__INT_INT = SUJET_OPERATION_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Deplacer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTENU___DEPLACER__CONTENU_INT_CONTENU = SUJET_OPERATION_COUNT + 3;
-
-	/**
 	 * The number of operations of the '<em>Contenu</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU_OPERATION_COUNT = SUJET_OPERATION_COUNT + 4;
+	int CONTENU_OPERATION_COUNT = SUJET_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
@@ -953,13 +944,22 @@ public interface ModelPackage extends EPackage {
 	int ACTION_DEPLACER__CONTENU = ACTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Actions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DEPLACER__ACTIONS = ACTION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Action Deplacer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_DEPLACER_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+	int ACTION_DEPLACER_FEATURE_COUNT = ACTION_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Faire</em>' operation.
@@ -1318,13 +1318,22 @@ public interface ModelPackage extends EPackage {
 	int EDITEUR__SECTION_COURANTE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Caretaker</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITEUR__CARETAKER = 4;
+
+	/**
 	 * The number of structural features of the '<em>Editeur</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDITEUR_FEATURE_COUNT = 4;
+	int EDITEUR_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>Sauvegarder</em>' operation.
@@ -1416,6 +1425,134 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBSERVATEUR_OPERATION_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link model.impl.CaretakerImpl <em>Caretaker</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.CaretakerImpl
+	 * @see model.impl.ModelPackageImpl#getCaretaker()
+	 * @generated
+	 */
+	int CARETAKER = 19;
+
+	/**
+	 * The feature id for the '<em><b>Memento</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARETAKER__MEMENTO = 0;
+
+	/**
+	 * The feature id for the '<em><b>Memento Defaits</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARETAKER__MEMENTO_DEFAITS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Caretaker</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARETAKER_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Caretaker</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARETAKER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link model.impl.MementoImpl <em>Memento</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see model.impl.MementoImpl
+	 * @see model.impl.ModelPackageImpl#getMemento()
+	 * @generated
+	 */
+	int MEMENTO = 20;
+
+	/**
+	 * The feature id for the '<em><b>Etat Deplacer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__ETAT_DEPLACER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Position Curseur</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__POSITION_CURSEUR = 1;
+
+	/**
+	 * The feature id for the '<em><b>Etat Copier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__ETAT_COPIER = 2;
+
+	/**
+	 * The feature id for the '<em><b>Etat Coller</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__ETAT_COLLER = 3;
+
+	/**
+	 * The feature id for the '<em><b>Etat Defaire</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__ETAT_DEFAIRE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Etat Refaire</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__ETAT_REFAIRE = 5;
+
+	/**
+	 * The number of structural features of the '<em>Memento</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO_FEATURE_COUNT = 6;
+
+	/**
+	 * The number of operations of the '<em>Memento</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO_OPERATION_COUNT = 0;
 
 	/**
 	 * Returns the meta object for class '{@link model.Document <em>Document</em>}'.
@@ -1742,16 +1879,6 @@ public interface ModelPackage extends EPackage {
 	EOperation getContenu__Copier__int_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#deplacer(model.Contenu, int, model.Contenu) <em>Deplacer</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Deplacer</em>' operation.
-	 * @see model.Contenu#deplacer(model.Contenu, int, model.Contenu)
-	 * @generated
-	 */
-	EOperation getContenu__Deplacer__Contenu_int_Contenu();
-
-	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertion <em>Strategie Insertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1978,6 +2105,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActionDeplacer_Contenu();
+
+	/**
+	 * Returns the meta object for the reference list '{@link model.ActionDeplacer#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Actions</em>'.
+	 * @see model.ActionDeplacer#getActions()
+	 * @see #getActionDeplacer()
+	 * @generated
+	 */
+	EReference getActionDeplacer_Actions();
 
 	/**
 	 * Returns the meta object for the '{@link model.ActionDeplacer#faire() <em>Faire</em>}' operation.
@@ -2230,6 +2368,17 @@ public interface ModelPackage extends EPackage {
 	EReference getEditeur_SectionCourante();
 
 	/**
+	 * Returns the meta object for the reference '{@link model.Editeur#getCaretaker <em>Caretaker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Caretaker</em>'.
+	 * @see model.Editeur#getCaretaker()
+	 * @see #getEditeur()
+	 * @generated
+	 */
+	EReference getEditeur_Caretaker();
+
+	/**
 	 * Returns the meta object for the '{@link model.Editeur#sauvegarder(java.lang.String) <em>Sauvegarder</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2349,6 +2498,114 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getObservateur__SetColler__boolean();
+
+	/**
+	 * Returns the meta object for class '{@link model.Caretaker <em>Caretaker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Caretaker</em>'.
+	 * @see model.Caretaker
+	 * @generated
+	 */
+	EClass getCaretaker();
+
+	/**
+	 * Returns the meta object for the reference list '{@link model.Caretaker#getMemento <em>Memento</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Memento</em>'.
+	 * @see model.Caretaker#getMemento()
+	 * @see #getCaretaker()
+	 * @generated
+	 */
+	EReference getCaretaker_Memento();
+
+	/**
+	 * Returns the meta object for the reference list '{@link model.Caretaker#getMementoDefaits <em>Memento Defaits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Memento Defaits</em>'.
+	 * @see model.Caretaker#getMementoDefaits()
+	 * @see #getCaretaker()
+	 * @generated
+	 */
+	EReference getCaretaker_MementoDefaits();
+
+	/**
+	 * Returns the meta object for class '{@link model.Memento <em>Memento</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Memento</em>'.
+	 * @see model.Memento
+	 * @generated
+	 */
+	EClass getMemento();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#isEtatDeplacer <em>Etat Deplacer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Etat Deplacer</em>'.
+	 * @see model.Memento#isEtatDeplacer()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_EtatDeplacer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#getPositionCurseur <em>Position Curseur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position Curseur</em>'.
+	 * @see model.Memento#getPositionCurseur()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_PositionCurseur();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#isEtatCopier <em>Etat Copier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Etat Copier</em>'.
+	 * @see model.Memento#isEtatCopier()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_EtatCopier();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#isEtatColler <em>Etat Coller</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Etat Coller</em>'.
+	 * @see model.Memento#isEtatColler()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_EtatColler();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#isEtatDefaire <em>Etat Defaire</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Etat Defaire</em>'.
+	 * @see model.Memento#isEtatDefaire()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_EtatDefaire();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#isEtatRefaire <em>Etat Refaire</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Etat Refaire</em>'.
+	 * @see model.Memento#isEtatRefaire()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_EtatRefaire();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2632,14 +2889,6 @@ public interface ModelPackage extends EPackage {
 		EOperation CONTENU___COPIER__INT_INT = eINSTANCE.getContenu__Copier__int_int();
 
 		/**
-		 * The meta object literal for the '<em><b>Deplacer</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTENU___DEPLACER__CONTENU_INT_CONTENU = eINSTANCE.getContenu__Deplacer__Contenu_int_Contenu();
-
-		/**
 		 * The meta object literal for the '{@link model.StrategieInsertion <em>Strategie Insertion</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2828,6 +3077,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTION_DEPLACER__CONTENU = eINSTANCE.getActionDeplacer_Contenu();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION_DEPLACER__ACTIONS = eINSTANCE.getActionDeplacer_Actions();
 
 		/**
 		 * The meta object literal for the '<em><b>Faire</b></em>' operation.
@@ -3032,6 +3289,14 @@ public interface ModelPackage extends EPackage {
 		EReference EDITEUR__SECTION_COURANTE = eINSTANCE.getEditeur_SectionCourante();
 
 		/**
+		 * The meta object literal for the '<em><b>Caretaker</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDITEUR__CARETAKER = eINSTANCE.getEditeur_Caretaker();
+
+		/**
 		 * The meta object literal for the '<em><b>Sauvegarder</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3130,6 +3395,90 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation OBSERVATEUR___SET_COLLER__BOOLEAN = eINSTANCE.getObservateur__SetColler__boolean();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.CaretakerImpl <em>Caretaker</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.CaretakerImpl
+		 * @see model.impl.ModelPackageImpl#getCaretaker()
+		 * @generated
+		 */
+		EClass CARETAKER = eINSTANCE.getCaretaker();
+
+		/**
+		 * The meta object literal for the '<em><b>Memento</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARETAKER__MEMENTO = eINSTANCE.getCaretaker_Memento();
+
+		/**
+		 * The meta object literal for the '<em><b>Memento Defaits</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARETAKER__MEMENTO_DEFAITS = eINSTANCE.getCaretaker_MementoDefaits();
+
+		/**
+		 * The meta object literal for the '{@link model.impl.MementoImpl <em>Memento</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see model.impl.MementoImpl
+		 * @see model.impl.ModelPackageImpl#getMemento()
+		 * @generated
+		 */
+		EClass MEMENTO = eINSTANCE.getMemento();
+
+		/**
+		 * The meta object literal for the '<em><b>Etat Deplacer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__ETAT_DEPLACER = eINSTANCE.getMemento_EtatDeplacer();
+
+		/**
+		 * The meta object literal for the '<em><b>Position Curseur</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__POSITION_CURSEUR = eINSTANCE.getMemento_PositionCurseur();
+
+		/**
+		 * The meta object literal for the '<em><b>Etat Copier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__ETAT_COPIER = eINSTANCE.getMemento_EtatCopier();
+
+		/**
+		 * The meta object literal for the '<em><b>Etat Coller</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__ETAT_COLLER = eINSTANCE.getMemento_EtatColler();
+
+		/**
+		 * The meta object literal for the '<em><b>Etat Defaire</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__ETAT_DEFAIRE = eINSTANCE.getMemento_EtatDefaire();
+
+		/**
+		 * The meta object literal for the '<em><b>Etat Refaire</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__ETAT_REFAIRE = eINSTANCE.getMemento_EtatRefaire();
 
 	}
 
