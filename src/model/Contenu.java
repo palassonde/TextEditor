@@ -155,7 +155,7 @@ public interface Contenu extends Sujet {
 	 * @model
 	 * @generated
 	 */
-	void supprimer(int positionDebut, int positionFin, Contenu contenuPP);
+	void supprimer(int positionDebut, int positionFin);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,7 +163,7 @@ public interface Contenu extends Sujet {
 	 * @model
 	 * @generated
 	 */
-	void coller(Contenu contenu, int position, Contenu contenuPP);
+	void coller(Contenu contenu, int position);
 
 	/**
 	 * <!-- begin-user-doc -->

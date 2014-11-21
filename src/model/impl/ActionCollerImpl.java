@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.ActionCollerImpl#getReceveur <em>Receveur</em>}</li>
- *   <li>{@link model.impl.ActionCollerImpl#getContenuPP <em>Contenu PP</em>}</li>
  *   <li>{@link model.impl.ActionCollerImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link model.impl.ActionCollerImpl#getContenu <em>Contenu</em>}</li>
  * </ul>
@@ -44,16 +43,6 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 	 * @ordered
 	 */
 	protected Contenu receveur;
-
-	/**
-	 * The cached value of the '{@link #getContenuPP() <em>Contenu PP</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContenuPP()
-	 * @generated
-	 * @ordered
-	 */
-	protected Contenu contenuPP;
 
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -146,44 +135,6 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Contenu getContenuPP() {
-		if (contenuPP != null && contenuPP.eIsProxy()) {
-			InternalEObject oldContenuPP = (InternalEObject)contenuPP;
-			contenuPP = (Contenu)eResolveProxy(oldContenuPP);
-			if (contenuPP != oldContenuPP) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION_COLLER__CONTENU_PP, oldContenuPP, contenuPP));
-			}
-		}
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu basicGetContenuPP() {
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContenuPP(Contenu newContenuPP) {
-		Contenu oldContenuPP = contenuPP;
-		contenuPP = newContenuPP;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION_COLLER__CONTENU_PP, oldContenuPP, contenuPP));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getPosition() {
 		return position;
 	}
@@ -243,7 +194,7 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 	 * <!-- end-user-doc -->
 	 */
 	public void faire() {
-		this.receveur.coller(this.contenu, this.position, this.contenuPP);
+		this.receveur.coller(this.contenu, this.position);
 	}
 
 	/**
@@ -251,7 +202,7 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 	 * <!-- end-user-doc -->
 	 */
 	public void defaire() {
-		this.receveur.supprimer(this.position, this.position + this.contenu.getElements().size(), this.contenuPP);
+		this.receveur.supprimer(this.position, this.position + this.contenu.getElements().size());
 	}
 
 	/**
@@ -265,9 +216,6 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 			case ModelPackage.ACTION_COLLER__RECEVEUR:
 				if (resolve) return getReceveur();
 				return basicGetReceveur();
-			case ModelPackage.ACTION_COLLER__CONTENU_PP:
-				if (resolve) return getContenuPP();
-				return basicGetContenuPP();
 			case ModelPackage.ACTION_COLLER__POSITION:
 				return getPosition();
 			case ModelPackage.ACTION_COLLER__CONTENU:
@@ -287,9 +235,6 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 		switch (featureID) {
 			case ModelPackage.ACTION_COLLER__RECEVEUR:
 				setReceveur((Contenu)newValue);
-				return;
-			case ModelPackage.ACTION_COLLER__CONTENU_PP:
-				setContenuPP((Contenu)newValue);
 				return;
 			case ModelPackage.ACTION_COLLER__POSITION:
 				setPosition((Integer)newValue);
@@ -312,9 +257,6 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 			case ModelPackage.ACTION_COLLER__RECEVEUR:
 				setReceveur((Contenu)null);
 				return;
-			case ModelPackage.ACTION_COLLER__CONTENU_PP:
-				setContenuPP((Contenu)null);
-				return;
 			case ModelPackage.ACTION_COLLER__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -335,8 +277,6 @@ public class ActionCollerImpl extends MinimalEObjectImpl.Container implements Ac
 		switch (featureID) {
 			case ModelPackage.ACTION_COLLER__RECEVEUR:
 				return receveur != null;
-			case ModelPackage.ACTION_COLLER__CONTENU_PP:
-				return contenuPP != null;
 			case ModelPackage.ACTION_COLLER__POSITION:
 				return position != POSITION_EDEFAULT;
 			case ModelPackage.ACTION_COLLER__CONTENU:

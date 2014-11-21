@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.ActionDeplacerImpl#getReceveur <em>Receveur</em>}</li>
- *   <li>{@link model.impl.ActionDeplacerImpl#getContenuPP <em>Contenu PP</em>}</li>
  *   <li>{@link model.impl.ActionDeplacerImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link model.impl.ActionDeplacerImpl#getContenu <em>Contenu</em>}</li>
  *   <li>{@link model.impl.ActionDeplacerImpl#getActions <em>Actions</em>}</li>
@@ -46,16 +45,6 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected Contenu receveur;
-
-	/**
-	 * The cached value of the '{@link #getContenuPP() <em>Contenu PP</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContenuPP()
-	 * @generated
-	 * @ordered
-	 */
-	protected Contenu contenuPP;
 
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -151,44 +140,6 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 		receveur = newReceveur;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION_DEPLACER__RECEVEUR, oldReceveur, receveur));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu getContenuPP() {
-		if (contenuPP != null && contenuPP.eIsProxy()) {
-			InternalEObject oldContenuPP = (InternalEObject)contenuPP;
-			contenuPP = (Contenu)eResolveProxy(oldContenuPP);
-			if (contenuPP != oldContenuPP) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION_DEPLACER__CONTENU_PP, oldContenuPP, contenuPP));
-			}
-		}
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu basicGetContenuPP() {
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContenuPP(Contenu newContenuPP) {
-		Contenu oldContenuPP = contenuPP;
-		contenuPP = newContenuPP;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION_DEPLACER__CONTENU_PP, oldContenuPP, contenuPP));
 	}
 
 	/**
@@ -295,9 +246,6 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.ACTION_DEPLACER__RECEVEUR:
 				if (resolve) return getReceveur();
 				return basicGetReceveur();
-			case ModelPackage.ACTION_DEPLACER__CONTENU_PP:
-				if (resolve) return getContenuPP();
-				return basicGetContenuPP();
 			case ModelPackage.ACTION_DEPLACER__POSITION:
 				return getPosition();
 			case ModelPackage.ACTION_DEPLACER__CONTENU:
@@ -320,9 +268,6 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.ACTION_DEPLACER__RECEVEUR:
 				setReceveur((Contenu)newValue);
-				return;
-			case ModelPackage.ACTION_DEPLACER__CONTENU_PP:
-				setContenuPP((Contenu)newValue);
 				return;
 			case ModelPackage.ACTION_DEPLACER__POSITION:
 				setPosition((Integer)newValue);
@@ -349,9 +294,6 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 			case ModelPackage.ACTION_DEPLACER__RECEVEUR:
 				setReceveur((Contenu)null);
 				return;
-			case ModelPackage.ACTION_DEPLACER__CONTENU_PP:
-				setContenuPP((Contenu)null);
-				return;
 			case ModelPackage.ACTION_DEPLACER__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -375,8 +317,6 @@ public class ActionDeplacerImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ModelPackage.ACTION_DEPLACER__RECEVEUR:
 				return receveur != null;
-			case ModelPackage.ACTION_DEPLACER__CONTENU_PP:
-				return contenuPP != null;
 			case ModelPackage.ACTION_DEPLACER__POSITION:
 				return position != POSITION_EDEFAULT;
 			case ModelPackage.ACTION_DEPLACER__CONTENU:

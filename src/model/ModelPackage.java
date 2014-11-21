@@ -574,7 +574,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___SUPPRIMER__INT_INT_CONTENU = SUJET_OPERATION_COUNT + 0;
+	int CONTENU___SUPPRIMER__INT_INT = SUJET_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Coller</em>' operation.
@@ -583,7 +583,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENU___COLLER__CONTENU_INT_CONTENU = SUJET_OPERATION_COUNT + 1;
+	int CONTENU___COLLER__CONTENU_INT = SUJET_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Copier</em>' operation.
@@ -641,22 +641,13 @@ public interface ModelPackage extends EPackage {
 	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU = 0;
 
 	/**
-	 * The operation id for the '<em>Inserer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT = 1;
-
-	/**
 	 * The number of operations of the '<em>Strategie Insertion</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_OPERATION_COUNT = 2;
+	int STRATEGIE_INSERTION_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link model.impl.StrategieInsertionTexteImpl <em>Strategie Insertion Texte</em>}' class.
@@ -696,22 +687,13 @@ public interface ModelPackage extends EPackage {
 	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU = STRATEGIE_INSERTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Inserer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = STRATEGIE_INSERTION_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Strategie Insertion Texte</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_TEXTE_OPERATION_COUNT = STRATEGIE_INSERTION_OPERATION_COUNT + 2;
+	int STRATEGIE_INSERTION_TEXTE_OPERATION_COUNT = STRATEGIE_INSERTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
@@ -853,22 +835,13 @@ public interface ModelPackage extends EPackage {
 	int ACTION__RECEVEUR = 0;
 
 	/**
-	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__CONTENU_PP = 1;
-
-	/**
 	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_FEATURE_COUNT = 2;
+	int ACTION_FEATURE_COUNT = 1;
 
 	/**
 	 * The operation id for the '<em>Faire</em>' operation.
@@ -915,15 +888,6 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTION_DEPLACER__RECEVEUR = ACTION__RECEVEUR;
-
-	/**
-	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_DEPLACER__CONTENU_PP = ACTION__CONTENU_PP;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1008,15 +972,6 @@ public interface ModelPackage extends EPackage {
 	int ACTION_COLLER__RECEVEUR = ACTION__RECEVEUR;
 
 	/**
-	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_COLLER__CONTENU_PP = ACTION__CONTENU_PP;
-
-	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1090,15 +1045,6 @@ public interface ModelPackage extends EPackage {
 	int ACTION_SUPPRIMER__RECEVEUR = ACTION__RECEVEUR;
 
 	/**
-	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_SUPPRIMER__CONTENU_PP = ACTION__CONTENU_PP;
-
-	/**
 	 * The feature id for the '<em><b>Contenu</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1161,15 +1107,6 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTION_INSERER__RECEVEUR = ACTION__RECEVEUR;
-
-	/**
-	 * The feature id for the '<em><b>Contenu PP</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_INSERER__CONTENU_PP = ACTION__CONTENU_PP;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1849,24 +1786,24 @@ public interface ModelPackage extends EPackage {
 	EReference getContenu_SectionSrc();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#supprimer(int, int, model.Contenu) <em>Supprimer</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#supprimer(int, int) <em>Supprimer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Supprimer</em>' operation.
-	 * @see model.Contenu#supprimer(int, int, model.Contenu)
+	 * @see model.Contenu#supprimer(int, int)
 	 * @generated
 	 */
-	EOperation getContenu__Supprimer__int_int_Contenu();
+	EOperation getContenu__Supprimer__int_int();
 
 	/**
-	 * Returns the meta object for the '{@link model.Contenu#coller(model.Contenu, int, model.Contenu) <em>Coller</em>}' operation.
+	 * Returns the meta object for the '{@link model.Contenu#coller(model.Contenu, int) <em>Coller</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Coller</em>' operation.
-	 * @see model.Contenu#coller(model.Contenu, int, model.Contenu)
+	 * @see model.Contenu#coller(model.Contenu, int)
 	 * @generated
 	 */
-	EOperation getContenu__Coller__Contenu_int_Contenu();
+	EOperation getContenu__Coller__Contenu_int();
 
 	/**
 	 * Returns the meta object for the '{@link model.Contenu#copier(int, int) <em>Copier</em>}' operation.
@@ -1900,16 +1837,6 @@ public interface ModelPackage extends EPackage {
 	EReference getStrategieInsertion_Contenu();
 
 	/**
-	 * Returns the meta object for the '{@link model.StrategieInsertion#inserer(model.Element, int, model.Contenu) <em>Inserer</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Inserer</em>' operation.
-	 * @see model.StrategieInsertion#inserer(model.Element, int, model.Contenu)
-	 * @generated
-	 */
-	EOperation getStrategieInsertion__Inserer__Element_int_Contenu();
-
-	/**
 	 * Returns the meta object for the '{@link model.StrategieInsertion#inserer(model.Element, int) <em>Inserer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1917,7 +1844,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.StrategieInsertion#inserer(model.Element, int)
 	 * @generated
 	 */
-	EOperation getStrategieInsertion__Inserer__Element_int();
+	EOperation getStrategieInsertion__Inserer__Element_int_Contenu();
 
 	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertionTexte <em>Strategie Insertion Texte</em>}'.
@@ -1930,16 +1857,6 @@ public interface ModelPackage extends EPackage {
 	EClass getStrategieInsertionTexte();
 
 	/**
-	 * Returns the meta object for the '{@link model.StrategieInsertionTexte#inserer(model.Element, int, model.Contenu) <em>Inserer</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Inserer</em>' operation.
-	 * @see model.StrategieInsertionTexte#inserer(model.Element, int, model.Contenu)
-	 * @generated
-	 */
-	EOperation getStrategieInsertionTexte__Inserer__Element_int_Contenu();
-
-	/**
 	 * Returns the meta object for the '{@link model.StrategieInsertionTexte#inserer(model.Element, int) <em>Inserer</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1947,7 +1864,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.StrategieInsertionTexte#inserer(model.Element, int)
 	 * @generated
 	 */
-	EOperation getStrategieInsertionTexte__Inserer__Element_int();
+	EOperation getStrategieInsertionTexte__Inserer__Element_int_Contenu();
 
 	/**
 	 * Returns the meta object for class '{@link model.Element <em>Element</em>}'.
@@ -2042,17 +1959,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAction_Receveur();
-
-	/**
-	 * Returns the meta object for the reference '{@link model.Action#getContenuPP <em>Contenu PP</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Contenu PP</em>'.
-	 * @see model.Action#getContenuPP()
-	 * @see #getAction()
-	 * @generated
-	 */
-	EReference getAction_ContenuPP();
 
 	/**
 	 * Returns the meta object for the '{@link model.Action#faire() <em>Faire</em>}' operation.
@@ -2870,7 +2776,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___SUPPRIMER__INT_INT_CONTENU = eINSTANCE.getContenu__Supprimer__int_int_Contenu();
+		EOperation CONTENU___SUPPRIMER__INT_INT = eINSTANCE.getContenu__Supprimer__int_int();
 
 		/**
 		 * The meta object literal for the '<em><b>Coller</b></em>' operation.
@@ -2878,7 +2784,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTENU___COLLER__CONTENU_INT_CONTENU = eINSTANCE.getContenu__Coller__Contenu_int_Contenu();
+		EOperation CONTENU___COLLER__CONTENU_INT = eINSTANCE.getContenu__Coller__Contenu_int();
 
 		/**
 		 * The meta object literal for the '<em><b>Copier</b></em>' operation.
@@ -2915,14 +2821,6 @@ public interface ModelPackage extends EPackage {
 		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU = eINSTANCE.getStrategieInsertion__Inserer__Element_int_Contenu();
 
 		/**
-		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertion__Inserer__Element_int();
-
-		/**
 		 * The meta object literal for the '{@link model.impl.StrategieInsertionTexteImpl <em>Strategie Insertion Texte</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2939,14 +2837,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU = eINSTANCE.getStrategieInsertionTexte__Inserer__Element_int_Contenu();
-
-		/**
-		 * The meta object literal for the '<em><b>Inserer</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertionTexte__Inserer__Element_int();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
@@ -3027,14 +2917,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTION__RECEVEUR = eINSTANCE.getAction_Receveur();
-
-		/**
-		 * The meta object literal for the '<em><b>Contenu PP</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTION__CONTENU_PP = eINSTANCE.getAction_ContenuPP();
 
 		/**
 		 * The meta object literal for the '<em><b>Faire</b></em>' operation.

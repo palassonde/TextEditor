@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.ActionSupprimerImpl#getReceveur <em>Receveur</em>}</li>
- *   <li>{@link model.impl.ActionSupprimerImpl#getContenuPP <em>Contenu PP</em>}</li>
  *   <li>{@link model.impl.ActionSupprimerImpl#getContenu <em>Contenu</em>}</li>
  * </ul>
  * </p>
@@ -43,16 +42,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected Contenu receveur;
-
-	/**
-	 * The cached value of the '{@link #getContenuPP() <em>Contenu PP</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContenuPP()
-	 * @generated
-	 * @ordered
-	 */
-	protected Contenu contenuPP;
 
 	/**
 	 * The cached value of the '{@link #getContenu() <em>Contenu</em>}' reference.
@@ -125,44 +114,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Contenu getContenuPP() {
-		if (contenuPP != null && contenuPP.eIsProxy()) {
-			InternalEObject oldContenuPP = (InternalEObject)contenuPP;
-			contenuPP = (Contenu)eResolveProxy(oldContenuPP);
-			if (contenuPP != oldContenuPP) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION_SUPPRIMER__CONTENU_PP, oldContenuPP, contenuPP));
-			}
-		}
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu basicGetContenuPP() {
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContenuPP(Contenu newContenuPP) {
-		Contenu oldContenuPP = contenuPP;
-		contenuPP = newContenuPP;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION_SUPPRIMER__CONTENU_PP, oldContenuPP, contenuPP));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Contenu getContenu() {
 		if (contenu != null && contenu.eIsProxy()) {
 			InternalEObject oldContenu = (InternalEObject)contenu;
@@ -201,7 +152,7 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 */
 	public void faire() {
-		this.receveur.supprimer(this.getContenu().getPosition(), this.getContenu().getPosition()+this.getContenu().getElements().size(), this.contenuPP);
+		this.receveur.supprimer(this.getContenu().getPosition(), this.getContenu().getPosition()+this.getContenu().getElements().size());
 	}
 
 	/**
@@ -209,7 +160,7 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 */
 	public void defaire() {
-		this.receveur.coller(this.getContenu(), this.getContenu().getPosition(), this.contenuPP);
+		this.receveur.coller(this.getContenu(), this.getContenu().getPosition());
 		
 	}
 
@@ -224,9 +175,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 			case ModelPackage.ACTION_SUPPRIMER__RECEVEUR:
 				if (resolve) return getReceveur();
 				return basicGetReceveur();
-			case ModelPackage.ACTION_SUPPRIMER__CONTENU_PP:
-				if (resolve) return getContenuPP();
-				return basicGetContenuPP();
 			case ModelPackage.ACTION_SUPPRIMER__CONTENU:
 				if (resolve) return getContenu();
 				return basicGetContenu();
@@ -244,9 +192,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case ModelPackage.ACTION_SUPPRIMER__RECEVEUR:
 				setReceveur((Contenu)newValue);
-				return;
-			case ModelPackage.ACTION_SUPPRIMER__CONTENU_PP:
-				setContenuPP((Contenu)newValue);
 				return;
 			case ModelPackage.ACTION_SUPPRIMER__CONTENU:
 				setContenu((Contenu)newValue);
@@ -266,9 +211,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 			case ModelPackage.ACTION_SUPPRIMER__RECEVEUR:
 				setReceveur((Contenu)null);
 				return;
-			case ModelPackage.ACTION_SUPPRIMER__CONTENU_PP:
-				setContenuPP((Contenu)null);
-				return;
 			case ModelPackage.ACTION_SUPPRIMER__CONTENU:
 				setContenu((Contenu)null);
 				return;
@@ -286,8 +228,6 @@ public class ActionSupprimerImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case ModelPackage.ACTION_SUPPRIMER__RECEVEUR:
 				return receveur != null;
-			case ModelPackage.ACTION_SUPPRIMER__CONTENU_PP:
-				return contenuPP != null;
 			case ModelPackage.ACTION_SUPPRIMER__CONTENU:
 				return contenu != null;
 		}

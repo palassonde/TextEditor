@@ -71,12 +71,10 @@
     <eOperations name="supprimer">
       <eParameters name="positionDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="positionFin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="contenuPP" eType="#//Contenu"/>
     </eOperations>
     <eOperations name="coller">
       <eParameters name="contenu" eType="#//Contenu"/>
       <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="contenuPP" eType="#//Contenu"/>
     </eOperations>
     <eOperations name="copier" eType="#//Contenu">
       <eParameters name="positionDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -96,21 +94,11 @@
     <eOperations name="inserer">
       <eParameters name="element" eType="#//Element"/>
       <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="contenuPP" eType="#//Contenu"/>
-    </eOperations>
-    <eOperations name="inserer">
-      <eParameters name="element" eType="#//Element"/>
-      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contenu" lowerBound="1"
         eType="#//Contenu" eOpposite="#//Contenu/strategie"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StrategieInsertionTexte" eSuperTypes="#//StrategieInsertion">
-    <eOperations name="inserer">
-      <eParameters name="element" eType="#//Element"/>
-      <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="contenuPP" eType="#//Contenu"/>
-    </eOperations>
     <eOperations name="inserer">
       <eParameters name="element" eType="#//Element"/>
       <eParameters name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -131,8 +119,6 @@
     <eOperations name="faire"/>
     <eOperations name="defaire"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receveur" lowerBound="1"
-        eType="#//Contenu"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contenuPP" lowerBound="1"
         eType="#//Contenu"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionDeplacer" eSuperTypes="#//Action">

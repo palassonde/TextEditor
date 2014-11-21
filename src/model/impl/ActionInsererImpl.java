@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link model.impl.ActionInsererImpl#getReceveur <em>Receveur</em>}</li>
- *   <li>{@link model.impl.ActionInsererImpl#getContenuPP <em>Contenu PP</em>}</li>
  *   <li>{@link model.impl.ActionInsererImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link model.impl.ActionInsererImpl#getCaractere <em>Caractere</em>}</li>
  * </ul>
@@ -42,16 +41,6 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 	 * @ordered
 	 */
 	protected Contenu receveur;
-
-	/**
-	 * The cached value of the '{@link #getContenuPP() <em>Contenu PP</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContenuPP()
-	 * @generated
-	 * @ordered
-	 */
-	protected Contenu contenuPP;
 
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -154,44 +143,6 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Contenu getContenuPP() {
-		if (contenuPP != null && contenuPP.eIsProxy()) {
-			InternalEObject oldContenuPP = (InternalEObject)contenuPP;
-			contenuPP = (Contenu)eResolveProxy(oldContenuPP);
-			if (contenuPP != oldContenuPP) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.ACTION_INSERER__CONTENU_PP, oldContenuPP, contenuPP));
-			}
-		}
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Contenu basicGetContenuPP() {
-		return contenuPP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContenuPP(Contenu newContenuPP) {
-		Contenu oldContenuPP = contenuPP;
-		contenuPP = newContenuPP;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.ACTION_INSERER__CONTENU_PP, oldContenuPP, contenuPP));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getPosition() {
 		return position;
 	}
@@ -235,7 +186,7 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 	 */
 	public void faire() {
 		Caractere chara = new CaractereImpl(this.caractere);
-		this.receveur.getStrategie().inserer(chara, this.position, this.contenuPP);
+		this.receveur.getStrategie().inserer(chara, this.position);
 	}
 
 	/**
@@ -243,7 +194,7 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 	 * <!-- end-user-doc -->
 	 */
 	public void defaire() {
-		this.receveur.supprimer(this.position, this.position + 1, this.contenuPP);
+		this.receveur.supprimer(this.position, this.position + 1);
 	}
 
 	/**
@@ -257,9 +208,6 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 			case ModelPackage.ACTION_INSERER__RECEVEUR:
 				if (resolve) return getReceveur();
 				return basicGetReceveur();
-			case ModelPackage.ACTION_INSERER__CONTENU_PP:
-				if (resolve) return getContenuPP();
-				return basicGetContenuPP();
 			case ModelPackage.ACTION_INSERER__POSITION:
 				return getPosition();
 			case ModelPackage.ACTION_INSERER__CARACTERE:
@@ -278,9 +226,6 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 		switch (featureID) {
 			case ModelPackage.ACTION_INSERER__RECEVEUR:
 				setReceveur((Contenu)newValue);
-				return;
-			case ModelPackage.ACTION_INSERER__CONTENU_PP:
-				setContenuPP((Contenu)newValue);
 				return;
 			case ModelPackage.ACTION_INSERER__POSITION:
 				setPosition((Integer)newValue);
@@ -303,9 +248,6 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 			case ModelPackage.ACTION_INSERER__RECEVEUR:
 				setReceveur((Contenu)null);
 				return;
-			case ModelPackage.ACTION_INSERER__CONTENU_PP:
-				setContenuPP((Contenu)null);
-				return;
 			case ModelPackage.ACTION_INSERER__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -326,8 +268,6 @@ public class ActionInsererImpl extends MinimalEObjectImpl.Container implements A
 		switch (featureID) {
 			case ModelPackage.ACTION_INSERER__RECEVEUR:
 				return receveur != null;
-			case ModelPackage.ACTION_INSERER__CONTENU_PP:
-				return contenuPP != null;
 			case ModelPackage.ACTION_INSERER__POSITION:
 				return position != POSITION_EDEFAULT;
 			case ModelPackage.ACTION_INSERER__CARACTERE:

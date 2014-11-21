@@ -331,8 +331,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public void supprimer(int positionDebut, int positionFin, Contenu contenuPP) {
-		
+	public void supprimer(int positionDebut, int positionFin) {
 		for (int i = positionFin-1; i >= positionDebut; i--){
 			this.elements.remove(i);
 		}
@@ -344,12 +343,12 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public void coller(Contenu contenu, int position, Contenu contenuPP) {
+	public void coller(Contenu contenu, int position) {
 		ListIterator<Element> iter = contenu.getElements().listIterator();
 		int i = position;
 		while(iter.hasNext()){
 			Element c = new CaractereImpl(iter.next());
-			this.strategie.inserer(c, i,null);
+			this.strategie.inserer(c, i);
 			i++;
 		}
 		if (this.observateur != null)
@@ -368,7 +367,7 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 		ListIterator<Element> iter = this.getElements().listIterator(positionDebut);
 		while(i != positionFin){
 			Element c = new CaractereImpl(iter.next());
-			contenu.getStrategie().inserer(c, j, null);
+			contenu.getStrategie().inserer(c, j);
 			i++;
 			j++;
 		}
@@ -572,11 +571,11 @@ public class ContenuImpl extends MinimalEObjectImpl.Container implements Contenu
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.CONTENU___SUPPRIMER__INT_INT_CONTENU:
-				supprimer((Integer)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
+			case ModelPackage.CONTENU___SUPPRIMER__INT_INT:
+				supprimer((Integer)arguments.get(0), (Integer)arguments.get(1));
 				return null;
-			case ModelPackage.CONTENU___COLLER__CONTENU_INT_CONTENU:
-				coller((Contenu)arguments.get(0), (Integer)arguments.get(1), (Contenu)arguments.get(2));
+			case ModelPackage.CONTENU___COLLER__CONTENU_INT:
+				coller((Contenu)arguments.get(0), (Integer)arguments.get(1));
 				return null;
 			case ModelPackage.CONTENU___COPIER__INT_INT:
 				return copier((Integer)arguments.get(0), (Integer)arguments.get(1));
