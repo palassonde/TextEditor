@@ -370,12 +370,20 @@ public class Controlleur {
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
 			    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
+			    	editeur.setDocumentCourant(nouvDoc);
+					changerSection(editeur.getDocumentCourant().getSectionRacine());
+					vue.setTitle(editeur.getSectionCourante().getTitre());
+					reinitialiserHistorique();
 			    }
 		    }
 			else if (response == JOptionPane.NO_OPTION){				
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
 			    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
+			    	editeur.setDocumentCourant(nouvDoc);
+					changerSection(editeur.getDocumentCourant().getSectionRacine());
+					vue.setTitle(editeur.getSectionCourante().getTitre());
+					reinitialiserHistorique();
 			    }
 			}
 		}
@@ -384,12 +392,12 @@ public class Controlleur {
 		    int retrival = chooser.showOpenDialog(null);
 		    if (retrival == JFileChooser.APPROVE_OPTION) {
 		    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
+		    	editeur.setDocumentCourant(nouvDoc);
+				changerSection(editeur.getDocumentCourant().getSectionRacine());
+				vue.setTitle(editeur.getSectionCourante().getTitre());
+				reinitialiserHistorique();
 		    }
 		}
-		editeur.setDocumentCourant(nouvDoc);
-		changerSection(editeur.getDocumentCourant().getSectionRacine());
-		vue.setTitle(editeur.getSectionCourante().getTitre());
-		reinitialiserHistorique();
 	}
 
 	protected void sauvergarder() {
