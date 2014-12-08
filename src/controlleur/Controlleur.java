@@ -412,7 +412,9 @@ public class Controlleur {
 	    if (retrival == JFileChooser.APPROVE_OPTION) {
 	        try {
 	        	editeur.getDocumentCourant().setModifie(false);
-	            editeur.sauvegarder(chooser.getSelectedFile()+".document");         
+	        	editeur.getSectionCourante().getContenu().detacher(vue);
+	            editeur.sauvegarder(chooser.getSelectedFile()+".document");
+	            editeur.getSectionCourante().getContenu().attacher(vue);
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
 	        }
