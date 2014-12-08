@@ -206,7 +206,7 @@ public class StrategieInsertionTexteImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU:
+			case ModelPackage.STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT:
 				inserer((Element)arguments.get(0), (Integer)arguments.get(1));
 				return null;
 		}

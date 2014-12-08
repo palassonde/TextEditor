@@ -5,10 +5,12 @@ package model.impl;
 import model.Memento;
 import model.ModelPackage;
 
+import model.Section;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -25,6 +27,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link model.impl.MementoImpl#isEtatColler <em>Etat Coller</em>}</li>
  *   <li>{@link model.impl.MementoImpl#isEtatDefaire <em>Etat Defaire</em>}</li>
  *   <li>{@link model.impl.MementoImpl#isEtatRefaire <em>Etat Refaire</em>}</li>
+ *   <li>{@link model.impl.MementoImpl#getDebutSelection <em>Debut Selection</em>}</li>
+ *   <li>{@link model.impl.MementoImpl#getFinSelection <em>Fin Selection</em>}</li>
+ *   <li>{@link model.impl.MementoImpl#getSectionCourante <em>Section Courante</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +155,56 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 	 * @ordered
 	 */
 	protected boolean etatRefaire = ETAT_REFAIRE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDebutSelection() <em>Debut Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDebutSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DEBUT_SELECTION_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getDebutSelection() <em>Debut Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDebutSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected int debutSelection = DEBUT_SELECTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFinSelection() <em>Fin Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFinSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int FIN_SELECTION_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getFinSelection() <em>Fin Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFinSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected int finSelection = FIN_SELECTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSectionCourante() <em>Section Courante</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionCourante()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section sectionCourante;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -300,6 +355,86 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getDebutSelection() {
+		return debutSelection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDebutSelection(int newDebutSelection) {
+		int oldDebutSelection = debutSelection;
+		debutSelection = newDebutSelection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MEMENTO__DEBUT_SELECTION, oldDebutSelection, debutSelection));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getFinSelection() {
+		return finSelection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFinSelection(int newFinSelection) {
+		int oldFinSelection = finSelection;
+		finSelection = newFinSelection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MEMENTO__FIN_SELECTION, oldFinSelection, finSelection));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section getSectionCourante() {
+		if (sectionCourante != null && sectionCourante.eIsProxy()) {
+			InternalEObject oldSectionCourante = (InternalEObject)sectionCourante;
+			sectionCourante = (Section)eResolveProxy(oldSectionCourante);
+			if (sectionCourante != oldSectionCourante) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.MEMENTO__SECTION_COURANTE, oldSectionCourante, sectionCourante));
+			}
+		}
+		return sectionCourante;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSectionCourante() {
+		return sectionCourante;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSectionCourante(Section newSectionCourante) {
+		Section oldSectionCourante = sectionCourante;
+		sectionCourante = newSectionCourante;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MEMENTO__SECTION_COURANTE, oldSectionCourante, sectionCourante));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -315,6 +450,13 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 				return isEtatDefaire();
 			case ModelPackage.MEMENTO__ETAT_REFAIRE:
 				return isEtatRefaire();
+			case ModelPackage.MEMENTO__DEBUT_SELECTION:
+				return getDebutSelection();
+			case ModelPackage.MEMENTO__FIN_SELECTION:
+				return getFinSelection();
+			case ModelPackage.MEMENTO__SECTION_COURANTE:
+				if (resolve) return getSectionCourante();
+				return basicGetSectionCourante();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -344,6 +486,15 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 				return;
 			case ModelPackage.MEMENTO__ETAT_REFAIRE:
 				setEtatRefaire((Boolean)newValue);
+				return;
+			case ModelPackage.MEMENTO__DEBUT_SELECTION:
+				setDebutSelection((Integer)newValue);
+				return;
+			case ModelPackage.MEMENTO__FIN_SELECTION:
+				setFinSelection((Integer)newValue);
+				return;
+			case ModelPackage.MEMENTO__SECTION_COURANTE:
+				setSectionCourante((Section)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -375,6 +526,15 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 			case ModelPackage.MEMENTO__ETAT_REFAIRE:
 				setEtatRefaire(ETAT_REFAIRE_EDEFAULT);
 				return;
+			case ModelPackage.MEMENTO__DEBUT_SELECTION:
+				setDebutSelection(DEBUT_SELECTION_EDEFAULT);
+				return;
+			case ModelPackage.MEMENTO__FIN_SELECTION:
+				setFinSelection(FIN_SELECTION_EDEFAULT);
+				return;
+			case ModelPackage.MEMENTO__SECTION_COURANTE:
+				setSectionCourante((Section)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -399,6 +559,12 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 				return etatDefaire != ETAT_DEFAIRE_EDEFAULT;
 			case ModelPackage.MEMENTO__ETAT_REFAIRE:
 				return etatRefaire != ETAT_REFAIRE_EDEFAULT;
+			case ModelPackage.MEMENTO__DEBUT_SELECTION:
+				return debutSelection != DEBUT_SELECTION_EDEFAULT;
+			case ModelPackage.MEMENTO__FIN_SELECTION:
+				return finSelection != FIN_SELECTION_EDEFAULT;
+			case ModelPackage.MEMENTO__SECTION_COURANTE:
+				return sectionCourante != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -425,6 +591,10 @@ public class MementoImpl extends MinimalEObjectImpl.Container implements Memento
 		result.append(etatDefaire);
 		result.append(", etatRefaire: ");
 		result.append(etatRefaire);
+		result.append(", debutSelection: ");
+		result.append(debutSelection);
+		result.append(", finSelection: ");
+		result.append(finSelection);
 		result.append(')');
 		return result.toString();
 	}

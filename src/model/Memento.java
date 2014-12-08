@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link model.Memento#isEtatColler <em>Etat Coller</em>}</li>
  *   <li>{@link model.Memento#isEtatDefaire <em>Etat Defaire</em>}</li>
  *   <li>{@link model.Memento#isEtatRefaire <em>Etat Refaire</em>}</li>
+ *   <li>{@link model.Memento#getDebutSelection <em>Debut Selection</em>}</li>
+ *   <li>{@link model.Memento#getFinSelection <em>Fin Selection</em>}</li>
+ *   <li>{@link model.Memento#getSectionCourante <em>Section Courante</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,5 +184,83 @@ public interface Memento extends EObject {
 	 * @generated
 	 */
 	void setEtatRefaire(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Debut Selection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Debut Selection</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Debut Selection</em>' attribute.
+	 * @see #setDebutSelection(int)
+	 * @see model.ModelPackage#getMemento_DebutSelection()
+	 * @model
+	 * @generated
+	 */
+	int getDebutSelection();
+
+	/**
+	 * Sets the value of the '{@link model.Memento#getDebutSelection <em>Debut Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Debut Selection</em>' attribute.
+	 * @see #getDebutSelection()
+	 * @generated
+	 */
+	void setDebutSelection(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Fin Selection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fin Selection</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fin Selection</em>' attribute.
+	 * @see #setFinSelection(int)
+	 * @see model.ModelPackage#getMemento_FinSelection()
+	 * @model
+	 * @generated
+	 */
+	int getFinSelection();
+
+	/**
+	 * Sets the value of the '{@link model.Memento#getFinSelection <em>Fin Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fin Selection</em>' attribute.
+	 * @see #getFinSelection()
+	 * @generated
+	 */
+	void setFinSelection(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Section Courante</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Section Courante</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Section Courante</em>' reference.
+	 * @see #setSectionCourante(Section)
+	 * @see model.ModelPackage#getMemento_SectionCourante()
+	 * @model
+	 * @generated
+	 */
+	Section getSectionCourante();
+
+	/**
+	 * Sets the value of the '{@link model.Memento#getSectionCourante <em>Section Courante</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Section Courante</em>' reference.
+	 * @see #getSectionCourante()
+	 * @generated
+	 */
+	void setSectionCourante(Section value);
 
 } // Memento

@@ -24,6 +24,7 @@ public class Main {
 		editeur.setDocumentCourant(editeur.creerNouvDocument());
 		editeur.setSectionCourante(editeur.getDocumentCourant().getSectionRacine());
 		InterfaceEditeur ie = new InterfaceEditeur();
+		ie.setEditeur(editeur);
 		editeur.getSectionCourante().getContenu().attacher(ie);
 		ie.setContenu(editeur.getSectionCourante().getContenu());
 		Controlleur controlleur = new Controlleur(editeur, ie);

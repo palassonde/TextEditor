@@ -297,8 +297,7 @@ public class Controlleur {
 					vue.getAjouterSection().setEnabled(true);
 				vue.getSupprimerSection().setEnabled(true);
 			}
-		}
-		
+		}	
 	}
 
 	protected void fermer() {
@@ -331,23 +330,36 @@ public class Controlleur {
 		
 	}
 	
+	public void newDoc(){
+		Document nouvDoc = this.editeur.creerNouvDocument();
+		editeur.setDocumentCourant(nouvDoc);
+		changerSection(editeur.getDocumentCourant().getSectionRacine());
+		vue.setTitle(editeur.getSectionCourante().getTitre());
+		reinitialiserHistorique();
+	}
+	
 	public void creerNouveauDocument() {
-		Document nouvDoc = null;
+		
 		if(editeur.getDocumentCourant() != null && editeur.getDocumentCourant().isModifie()){
 			int response = JOptionPane.showConfirmDialog(vue, "Voulez vous sauvegarder les modifications? Autrement, les changements seront perdus.", "Confirmation",
 			        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 		    
 			if (response == JOptionPane.YES_OPTION) {
 		    	sauvergarder();
-		    	nouvDoc = this.editeur.creerNouvDocument();
+		    	newDoc();
 		    }
 			else if (response == JOptionPane.NO_OPTION){
-				nouvDoc = this.editeur.creerNouvDocument();
+				newDoc();
 			}
 		}
 		else{
-			nouvDoc = this.editeur.creerNouvDocument();
+			newDoc();
 		}
+		
+	}
+	
+	protected void setOpenedDoc(Document nouvDoc){
+		
 		editeur.setDocumentCourant(nouvDoc);
 		changerSection(editeur.getDocumentCourant().getSectionRacine());
 		vue.setTitle(editeur.getSectionCourante().getTitre());
@@ -370,20 +382,15 @@ public class Controlleur {
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
 			    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
-			    	editeur.setDocumentCourant(nouvDoc);
-					changerSection(editeur.getDocumentCourant().getSectionRacine());
-					vue.setTitle(editeur.getSectionCourante().getTitre());
-					reinitialiserHistorique();
+			    	setOpenedDoc(nouvDoc);
+			    	
 			    }
 		    }
 			else if (response == JOptionPane.NO_OPTION){				
 			    int retrival = chooser.showOpenDialog(null);
 			    if (retrival == JFileChooser.APPROVE_OPTION) {
 			    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
-			    	editeur.setDocumentCourant(nouvDoc);
-					changerSection(editeur.getDocumentCourant().getSectionRacine());
-					vue.setTitle(editeur.getSectionCourante().getTitre());
-					reinitialiserHistorique();
+			    	setOpenedDoc(nouvDoc);
 			    }
 			}
 		}
@@ -392,10 +399,7 @@ public class Controlleur {
 		    int retrival = chooser.showOpenDialog(null);
 		    if (retrival == JFileChooser.APPROVE_OPTION) {
 		    	nouvDoc = editeur.ouvrir(chooser.getSelectedFile().toString());
-		    	editeur.setDocumentCourant(nouvDoc);
-				changerSection(editeur.getDocumentCourant().getSectionRacine());
-				vue.setTitle(editeur.getSectionCourante().getTitre());
-				reinitialiserHistorique();
+		    	setOpenedDoc(nouvDoc);
 		    }
 		}
 	}
@@ -427,20 +431,20 @@ public class Controlleur {
 		action.faire();
 		editeur.getHistorique().getActions().add(0, action);
 		Memento memento = editeur.getCaretaker().getMementoDefaits().get(0);
-		int position = memento.getPositionCurseur();
 		editeur.getCaretaker().getMementoDefaits().remove(memento);
+		vue.setMemento(memento);
+		int position = this.vue.getSurface().getCaretPosition();
 		if(action instanceof ActionInserer)
-			memento.setPositionCurseur(position + 1);
+			vue.getSurface().setCaretPosition(position + 1);
 		else if(action instanceof ActionSupprimer){
 			if (position != 0)
-				memento.setPositionCurseur(position - 1);
+				vue.getSurface().setCaretPosition(position - 1);
 		}
 		else if(action instanceof ActionColler){
 			ActionColler actionColler = (ActionColler)action;
-			memento.setPositionCurseur(position + actionColler.getContenu().getElements().size());
+			vue.getSurface().setCaretPosition(position + actionColler.getContenu().getElements().size());
 		}
-		vue.setMemento(memento);
-		memento.setPositionCurseur(position);
+		
 		vue.getRefaire().setEnabled(true);
 		editeur.getCaretaker().getMemento().add(0, memento);
 		if(editeur.getHistorique().getActionsDefaites().isEmpty())
@@ -561,7 +565,7 @@ public class Controlleur {
 	}
 
 	protected void deplacer() {
-		Memento memento = vue.createMemento();
+		
 		ActionDeplacer action = new ActionDeplacerImpl();
 		ActionSupprimer actionSup = new ActionSupprimerImpl();
 		actionSup.setContenu(editeur.getPressePapier().getContenu());
@@ -575,8 +579,22 @@ public class Controlleur {
 		//actionSup.
 		Contenu contenu = editeur.getPressePapier().getContenu();
 		int position = vue.getSurface().getCaretPosition();
+		int debut = vue.getSurface().getSelectionStart();
+		int fin = vue.getSurface().getSelectionEnd();
 		int finSuppression = contenu.getPosition() + contenu.getElements().size();
-		if (contenu.getSectionSrc() != editeur.getSectionCourante() || position <= contenu.getPosition() || position >= finSuppression){
+		boolean estValide = false;
+		
+		if ((debut < contenu.getPosition() && fin < contenu.getPosition()) || (debut > finSuppression && fin > finSuppression))
+			estValide = true;
+		
+		if (contenu.getSectionSrc() == editeur.getSectionCourante() && vue.getSurface().getSelectedText() != null && !estValide){
+			JOptionPane.showMessageDialog(vue, "Il est impossible de deplacer lorsque le texte à déplacer est sélectionné."); 
+		}
+		else if (contenu.getSectionSrc() != editeur.getSectionCourante() || position <= contenu.getPosition() || position >= finSuppression || vue.getSurface().getSelectedText() != null){
+			if (vue.getSurface().getSelectedText() != null){
+				supprimer();
+			}
+			Memento memento = vue.createMemento();
 			if (contenu.getSectionSrc() == editeur.getSectionCourante() && position > contenu.getPosition()){
 				 actionColler.setPosition(actionColler.getPosition() - contenu.getElements().size());
 				 position -= contenu.getElements().size();
@@ -603,6 +621,8 @@ public class Controlleur {
 	}
 
 	protected void coller() {
+		if (vue.getSurface().getSelectedText() != null)
+			supprimer();
 		Memento memento = vue.createMemento();
 		ActionColler action = new ActionCollerImpl();
 		action.setPosition(vue.getSurface().getCaretPosition());

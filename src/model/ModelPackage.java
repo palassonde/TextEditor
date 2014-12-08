@@ -638,7 +638,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU = 0;
+	int STRATEGIE_INSERTION___INSERER__ELEMENT_INT = 0;
 
 	/**
 	 * The number of operations of the '<em>Strategie Insertion</em>' class.
@@ -684,7 +684,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU = STRATEGIE_INSERTION_OPERATION_COUNT + 0;
+	int STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = STRATEGIE_INSERTION_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Strategie Insertion Texte</em>' class.
@@ -1474,13 +1474,40 @@ public interface ModelPackage extends EPackage {
 	int MEMENTO__ETAT_REFAIRE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Debut Selection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__DEBUT_SELECTION = 6;
+
+	/**
+	 * The feature id for the '<em><b>Fin Selection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__FIN_SELECTION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Section Courante</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMENTO__SECTION_COURANTE = 8;
+
+	/**
 	 * The number of structural features of the '<em>Memento</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMENTO_FEATURE_COUNT = 6;
+	int MEMENTO_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Memento</em>' class.
@@ -1844,7 +1871,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.StrategieInsertion#inserer(model.Element, int)
 	 * @generated
 	 */
-	EOperation getStrategieInsertion__Inserer__Element_int_Contenu();
+	EOperation getStrategieInsertion__Inserer__Element_int();
 
 	/**
 	 * Returns the meta object for class '{@link model.StrategieInsertionTexte <em>Strategie Insertion Texte</em>}'.
@@ -1864,7 +1891,7 @@ public interface ModelPackage extends EPackage {
 	 * @see model.StrategieInsertionTexte#inserer(model.Element, int)
 	 * @generated
 	 */
-	EOperation getStrategieInsertionTexte__Inserer__Element_int_Contenu();
+	EOperation getStrategieInsertionTexte__Inserer__Element_int();
 
 	/**
 	 * Returns the meta object for class '{@link model.Element <em>Element</em>}'.
@@ -2514,6 +2541,39 @@ public interface ModelPackage extends EPackage {
 	EAttribute getMemento_EtatRefaire();
 
 	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#getDebutSelection <em>Debut Selection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Debut Selection</em>'.
+	 * @see model.Memento#getDebutSelection()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_DebutSelection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Memento#getFinSelection <em>Fin Selection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fin Selection</em>'.
+	 * @see model.Memento#getFinSelection()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EAttribute getMemento_FinSelection();
+
+	/**
+	 * Returns the meta object for the reference '{@link model.Memento#getSectionCourante <em>Section Courante</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Section Courante</em>'.
+	 * @see model.Memento#getSectionCourante()
+	 * @see #getMemento()
+	 * @generated
+	 */
+	EReference getMemento_SectionCourante();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2818,7 +2878,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU = eINSTANCE.getStrategieInsertion__Inserer__Element_int_Contenu();
+		EOperation STRATEGIE_INSERTION___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertion__Inserer__Element_int();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.StrategieInsertionTexteImpl <em>Strategie Insertion Texte</em>}' class.
@@ -2836,7 +2896,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU = eINSTANCE.getStrategieInsertionTexte__Inserer__Element_int_Contenu();
+		EOperation STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT = eINSTANCE.getStrategieInsertionTexte__Inserer__Element_int();
 
 		/**
 		 * The meta object literal for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
@@ -3361,6 +3421,30 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MEMENTO__ETAT_REFAIRE = eINSTANCE.getMemento_EtatRefaire();
+
+		/**
+		 * The meta object literal for the '<em><b>Debut Selection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__DEBUT_SELECTION = eINSTANCE.getMemento_DebutSelection();
+
+		/**
+		 * The meta object literal for the '<em><b>Fin Selection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMENTO__FIN_SELECTION = eINSTANCE.getMemento_FinSelection();
+
+		/**
+		 * The meta object literal for the '<em><b>Section Courante</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MEMENTO__SECTION_COURANTE = eINSTANCE.getMemento_SectionCourante();
 
 	}
 

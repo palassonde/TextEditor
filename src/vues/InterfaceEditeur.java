@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import model.Contenu;
+import model.Editeur;
 import model.Memento;
 import model.Observateur;
 import model.impl.MementoImpl;
@@ -64,6 +65,7 @@ public class InterfaceEditeur extends JFrame implements Observateur {
 	JScrollPane panneauDefilement;
 	
 	Contenu contenu;
+	Editeur editeur;
 	
 	public InterfaceEditeur()
 	{
@@ -198,16 +200,28 @@ public class InterfaceEditeur extends JFrame implements Observateur {
 		memento.setEtatDeplacer(this.getDeplacer().isEnabled());
 		memento.setEtatRefaire(this.getRefaire().isEnabled());
 		memento.setPositionCurseur(this.getSurface().getCaretPosition());
+		memento.setDebutSelection(this.getSurface().getSelectionStart());
+		memento.setFinSelection(this.getSurface().getSelectionEnd());
+		memento.setSectionCourante(this.contenu.getSection());
 		return memento;
 	}
 	
 	public void setMemento(Memento memento){
+		if (this.contenu.getSection() != memento.getSectionCourante()){
+			this.contenu.detacher(this);
+			this.contenu = memento.getSectionCourante().getContenu();
+			this.editeur.setSectionCourante(memento.getSectionCourante());
+			this.contenu.attacher(this);
+			update();
+		}
 		this.coller.setEnabled(memento.isEtatColler());
 		this.copier.setEnabled(memento.isEtatCopier());
 		this.defaire.setEnabled(memento.isEtatDefaire());
 		this.deplacer.setEnabled(memento.isEtatDeplacer());
 		this.refaire.setEnabled(memento.isEtatRefaire());
 		this.surface.setCaretPosition(memento.getPositionCurseur());
+		this.surface.setSelectionStart(memento.getDebutSelection());
+		this.surface.setSelectionEnd(memento.getFinSelection());
 	}
 	
 	/**
@@ -447,6 +461,10 @@ public class InterfaceEditeur extends JFrame implements Observateur {
 	public void eNotify(Notification notification) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setEditeur(Editeur editeur){
+		this.editeur = editeur;
 	}
 
 	@Override

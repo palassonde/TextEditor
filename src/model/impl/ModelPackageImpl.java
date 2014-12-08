@@ -550,7 +550,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getStrategieInsertion__Inserer__Element_int_Contenu() {
+	public EOperation getStrategieInsertion__Inserer__Element_int() {
 		return strategieInsertionEClass.getEOperations().get(0);
 	}
 
@@ -568,7 +568,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getStrategieInsertionTexte__Inserer__Element_int_Contenu() {
+	public EOperation getStrategieInsertionTexte__Inserer__Element_int() {
 		return strategieInsertionTexteEClass.getEOperations().get(0);
 	}
 
@@ -1135,6 +1135,33 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMemento_DebutSelection() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemento_FinSelection() {
+		return (EAttribute)mementoEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemento_SectionCourante() {
+		return (EReference)mementoEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModelFactory getModelFactory() {
 		return (ModelFactory)getEFactoryInstance();
 	}
@@ -1196,10 +1223,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		strategieInsertionEClass = createEClass(STRATEGIE_INSERTION);
 		createEReference(strategieInsertionEClass, STRATEGIE_INSERTION__CONTENU);
-		createEOperation(strategieInsertionEClass, STRATEGIE_INSERTION___INSERER__ELEMENT_INT_CONTENU);
+		createEOperation(strategieInsertionEClass, STRATEGIE_INSERTION___INSERER__ELEMENT_INT);
 
 		strategieInsertionTexteEClass = createEClass(STRATEGIE_INSERTION_TEXTE);
-		createEOperation(strategieInsertionTexteEClass, STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT_CONTENU);
+		createEOperation(strategieInsertionTexteEClass, STRATEGIE_INSERTION_TEXTE___INSERER__ELEMENT_INT);
 
 		elementEClass = createEClass(ELEMENT);
 
@@ -1276,6 +1303,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(mementoEClass, MEMENTO__ETAT_COLLER);
 		createEAttribute(mementoEClass, MEMENTO__ETAT_DEFAIRE);
 		createEAttribute(mementoEClass, MEMENTO__ETAT_REFAIRE);
+		createEAttribute(mementoEClass, MEMENTO__DEBUT_SELECTION);
+		createEAttribute(mementoEClass, MEMENTO__FIN_SELECTION);
+		createEReference(mementoEClass, MEMENTO__SECTION_COURANTE);
 	}
 
 	/**
@@ -1401,13 +1431,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(strategieInsertionEClass, StrategieInsertion.class, "StrategieInsertion", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStrategieInsertion_Contenu(), this.getContenu(), this.getContenu_Strategie(), "contenu", null, 1, 1, StrategieInsertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getStrategieInsertion__Inserer__Element_int_Contenu(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getStrategieInsertion__Inserer__Element_int(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getElement(), "element", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(strategieInsertionTexteEClass, StrategieInsertionTexte.class, "StrategieInsertionTexte", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = initEOperation(getStrategieInsertionTexte__Inserer__Element_int_Contenu(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getStrategieInsertionTexte__Inserer__Element_int(), null, "inserer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getElement(), "element", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1513,6 +1543,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getMemento_EtatColler(), ecorePackage.getEBoolean(), "etatColler", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemento_EtatDefaire(), ecorePackage.getEBoolean(), "etatDefaire", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemento_EtatRefaire(), ecorePackage.getEBoolean(), "etatRefaire", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_DebutSelection(), ecorePackage.getEInt(), "debutSelection", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemento_FinSelection(), ecorePackage.getEInt(), "finSelection", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemento_SectionCourante(), this.getSection(), null, "sectionCourante", null, 0, 1, Memento.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
