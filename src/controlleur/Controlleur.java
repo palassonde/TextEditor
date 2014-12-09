@@ -34,6 +34,7 @@ import model.Element;
 import model.Memento;
 import model.Section;
 import model.SectionBranche;
+import model.SectionFeuille;
 import model.impl.ActionCollerImpl;
 import model.impl.ActionDeplacerImpl;
 import model.impl.ActionInsererImpl;
@@ -262,6 +263,7 @@ public class Controlleur {
 			vue.getSupprimerSection().setEnabled(false);
 		else
 			vue.getSupprimerSection().setEnabled(true);		
+		editeur.getDocumentCourant().setModifie(true);
 		
 	}
 
@@ -279,6 +281,7 @@ public class Controlleur {
 			else{
 				editeur.getSectionCourante().setTitre(titre);
 				vue.setTitle(editeur.getSectionCourante().getTitre());
+				editeur.getDocumentCourant().setModifie(true);
 			}
 		}	
 	}
@@ -296,6 +299,7 @@ public class Controlleur {
 				else
 					vue.getAjouterSection().setEnabled(true);
 				vue.getSupprimerSection().setEnabled(true);
+				editeur.getDocumentCourant().setModifie(true);
 			}
 		}	
 	}
@@ -481,9 +485,9 @@ public class Controlleur {
 
 	protected void inserer(char keyChar) {		
 		
-		Memento memento = vue.createMemento();
 		if (vue.getSurface().getSelectedText() != null)
 			supprimer();
+		Memento memento = vue.createMemento();
 		ActionInserer action = new ActionInsererImpl();
 		action.setReceveur(editeur.getSectionCourante().getContenu());
 		int position = vue.getSurface().getCaretPosition();
@@ -714,6 +718,14 @@ public class Controlleur {
 		editeur.setSectionCourante(section);
 		editeur.getSectionCourante().getContenu().attacher(vue);
 		vue.setContenu(editeur.getSectionCourante().getContenu());
+		if(section instanceof SectionFeuille){
+			vue.getAjouterSection().setEnabled(false);
+		}
+		else{
+			vue.getAjouterSection().setEnabled(true);
+		}
+		if(section == editeur.getDocumentCourant().getSectionRacine())
+			vue.getSupprimerSection().setEnabled(false);
 		vue.update();
 	}
 
